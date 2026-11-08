@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+target/
+
+# Environment — NEVER commit secrets
+.env
+.env.local
+.env.production
+apps/api/.env
+
+# Testing
+coverage/
+.pytest_cache/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/settings.json
+*.swp
+
+# Expo
+.expo/
+apps/mobile/android/
+apps/mobile/ios/
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Misc
+.turbo/
