@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 48 25% 97%;
+    --foreground: 36 5% 8%;
+    --card: 45 25% 97%;
+    --card-foreground: 36 5% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 36 5% 8%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 44 20% 94%;
+    --secondary-foreground: 36 5% 20%;
+    --muted: 44 15% 92%;
+    --muted-foreground: 36 5% 45%;
+    --accent: 221 83% 53%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 40 20% 88%;
+    --input: 40 20% 88%;
+    --ring: 221 83% 53%;
+    --radius: 0.75rem;
+    --sidebar-width: 260px;
+    --chat-max-width: 740px;
+  }
+
+  .dark {
+    --background: 240 5% 10%;
+    --foreground: 44 20% 94%;
+    --card: 240 5% 13%;
+    --card-foreground: 44 20% 94%;
+    --popover: 240 5% 11%;
+    --popover-foreground: 44 20% 94%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 18%;
+    --secondary-foreground: 44 15% 80%;
+    --muted: 240 5% 20%;
+    --muted-foreground: 44 10% 55%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 5% 20%;
+    --input: 240 5% 20%;
+    --ring: 217 91% 60%;
+  }
+
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground font-sans antialiased; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
+  ::selection { @apply bg-primary/20 text-foreground; }
+  :focus-visible { @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background; }
+}
+
+@layer components {
+  .streaming-cursor::after { content: '▮'; @apply animate-pulse-cursor text-primary ml-0.5; }
+  .message-user { @apply bg-secondary rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%] ml-auto; }
+  .code-block { @apply relative rounded-xl overflow-hidden bg-warm-950 my-4; }
+  .code-block pre { @apply p-4 overflow-x-auto text-sm font-mono text-warm-100 leading-relaxed; }
+  .code-block-header { @apply flex items-center justify-between px-4 py-2 bg-warm-900 text-warm-400 text-xs font-mono; }
+  .prose-kroex { @apply text-foreground leading-relaxed; }
+  .prose-kroex h1 { @apply text-2xl font-semibold mt-6 mb-3; }
+  .prose-kroex h2 { @apply text-xl font-semibold mt-5 mb-2; }
+  .prose-kroex h3 { @apply text-lg font-medium mt-4 mb-2; }
+  .prose-kroex p  { @apply my-3 leading-7; }
+  .prose-kroex ul { @apply my-3 ml-6 list-disc space-y-1; }
+  .prose-kroex ol { @apply my-3 ml-6 list-decimal space-y-1; }
+  .prose-kroex li { @apply leading-7; }
+  .prose-kroex blockquote { @apply border-l-4 border-border pl-4 italic text-muted-foreground my-4; }
+  .prose-kroex hr { @apply my-6 border-border; }
+  .prose-kroex strong { @apply font-semibold; }
+  .prose-kroex code:not(pre code) { @apply bg-secondary rounded px-1.5 py-0.5 text-sm font-mono; }
+  .prose-kroex table { @apply w-full my-4 text-sm; }
+  .prose-kroex th { @apply border border-border bg-secondary px-3 py-2 text-left font-semibold; }
+  .prose-kroex td { @apply border border-border px-3 py-2; }
+  .prose-kroex a { @apply text-primary underline underline-offset-2 hover:text-primary/80; }
+  .artifact-panel { @apply bg-background border-l border-border h-full overflow-hidden flex flex-col; }
+  .sidebar { @apply flex flex-col h-full bg-secondary/50 border-r border-border overflow-hidden; width: var(--sidebar-width); }
+  .composer { @apply bg-background border border-border rounded-2xl shadow-lg transition-all duration-200; }
+  .composer:focus-within { @apply border-primary/50 shadow-xl shadow-primary/5; }
+}
+
+.katex { font-size: 1em !important; }
+.katex-display { @apply my-4 overflow-x-auto; }
+
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+.skeleton {
+  @apply rounded;
+  background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--muted)/0.5) 50%, hsl(var(--muted)) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
