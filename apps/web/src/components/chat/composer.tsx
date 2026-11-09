@@ -3,7 +3,7 @@ import { useState, useRef, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Send, Square, Paperclip, Mic, MicOff, Globe, Zap,
-  X, FileText, Image, Sparkles, ChevronDown,
+  X, FileText, ChevronDown,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { WithTooltip } from '@/components/ui/tooltip'

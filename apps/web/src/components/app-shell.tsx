@@ -28,7 +28,7 @@ function mapConversation(raw: Record<string, unknown>): Conversation {
 export function AppShell({ children, projects = [] }: AppShellProps) {
   const router = useRouter()
   const { setConversations } = useChatStore()
-  const { user, token } = useAuthStore()
+  const { token } = useAuthStore()
 
   // Redirect to login when there is no session token.
   useEffect(() => {

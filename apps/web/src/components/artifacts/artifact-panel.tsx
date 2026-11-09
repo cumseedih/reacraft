@@ -1,9 +1,9 @@
 'use client'
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import {
-  X, Download, Copy, Check, ExternalLink, Code2, FileText,
-  Globe, BarChart2, GitBranch, Presentation, ChevronDown,
+  X, Download, Copy, Check, Code2, FileText,
+  Globe, BarChart2, GitBranch, Presentation,
   Maximize2, Minimize2,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -11,7 +11,6 @@ import { WithTooltip } from '@/components/ui/tooltip'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { cn } from '@/lib/utils'
 import type { Artifact, ArtifactType } from '@/types'
-import { useChatStore } from '@/store/chat'
 
 const ARTIFACT_ICONS: Record<ArtifactType, React.ElementType> = {
   code:         Code2,
@@ -74,7 +73,6 @@ export function ArtifactPanel({ artifact, onClose }: ArtifactPanelProps) {
   }
 
   const showPreview = artifact.type === 'html' || artifact.type === 'react'
-  const showSource  = artifact.type !== 'html' && artifact.type !== 'react'
 
   return (
     <motion.div

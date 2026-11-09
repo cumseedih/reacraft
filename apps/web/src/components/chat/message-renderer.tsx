@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import rehypeHighlight from 'rehype-highlight'
-import { Check, Copy, Download, ExternalLink } from 'lucide-react'
+import { Check, Copy, ExternalLink } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { WithTooltip } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
@@ -69,7 +69,8 @@ function PreWrapper({ children, ...props }: React.HTMLProps<HTMLPreElement>) {
   return <pre {...props}>{children}</pre>
 }
 
-function CodeBlock({ className, children, node, ...props }: any) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function CodeBlock({ className, children, ...props }: any) {
   const [copied, setCopied] = useState(false)
   const isInline = !className && typeof children === 'string' && !children.includes('\n')
 

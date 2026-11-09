@@ -3,14 +3,14 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import {
-  ThumbsUp, ThumbsDown, Copy, Check, RefreshCw, Edit2,
-  Volume2, ChevronDown, ChevronUp, MoreHorizontal,
+  ThumbsUp, ThumbsDown, Copy, Check, RefreshCw,
+  ChevronDown, ChevronUp,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { WithTooltip } from '@/components/ui/tooltip'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { MessageRenderer } from './message-renderer'
-import { cn, formatDate } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 import type { Message } from '@/types'
 import { useAuthStore } from '@/store/auth'
 
@@ -21,7 +21,7 @@ interface ChatMessageProps {
   onFeedback?: (id: string, feedback: 'up' | 'down' | null) => void
 }
 
-export function ChatMessage({ message, onRegenerate, onEdit, onFeedback }: ChatMessageProps) {
+export function ChatMessage({ message, onRegenerate, onFeedback }: Omit<ChatMessageProps, 'onEdit'>) {
   const { user } = useAuthStore()
   const [copied, setCopied] = useState(false)
   const [expanded, setExpanded] = useState(true)

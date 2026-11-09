@@ -20,11 +20,13 @@ export async function POST(req: NextRequest) {
     return new Response(err, { status: upstream.status })
   }
 
+  const convId = upstream.headers.get('x-conversation-id')
   return new Response(upstream.body, {
     headers: {
       'Content-Type': 'text/event-stream',
       'Cache-Control': 'no-cache',
       'X-Accel-Buffering': 'no',
+      ...(convId ? { 'X-Conversation-Id': convId } : {}),
     },
   })
 }

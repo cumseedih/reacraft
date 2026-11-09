@@ -1,13 +1,13 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   Plus, Search, MessageSquare, FolderOpen, Settings, ChevronLeft,
-  ChevronRight, Archive, Pin, Trash2, Edit2, MoreHorizontal,
-  Zap, User, LogOut, Moon, Sun, Monitor, ChevronDown, Star,
+  ChevronRight, Archive, Pin, Trash2, MoreHorizontal,
+  User, LogOut, Moon, Sun, ChevronDown,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -22,7 +22,7 @@ import {
 import { useChatStore } from '@/store/chat'
 import { useAuthStore } from '@/store/auth'
 import { useSettingsStore } from '@/store/settings'
-import { cn, truncate, formatDate } from '@/lib/utils'
+import { cn, truncate } from '@/lib/utils'
 import type { Conversation, Project } from '@/types'
 
 interface SidebarProps {
@@ -33,7 +33,7 @@ interface SidebarProps {
 export function Sidebar({ projects, onNewConversation }: SidebarProps) {
   const router = useRouter()
   const pathname = usePathname()
-  const { conversations, activeConversationId, setActiveConversation } = useChatStore()
+  const { conversations, activeConversationId } = useChatStore()
   const { user, logout } = useAuthStore()
   const { sidebarCollapsed, theme, update } = useSettingsStore()
   const [search, setSearch] = useState('')

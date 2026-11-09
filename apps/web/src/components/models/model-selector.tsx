@@ -1,5 +1,4 @@
 'use client'
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Check, Zap, Brain, Sparkles, FlaskConical } from 'lucide-react'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
