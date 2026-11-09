@@ -1,1 +1,158 @@
-J3VzZSBjbGllbnQnCmltcG9ydCB7IHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnCmltcG9ydCB7IG1vdGlvbiwgQW5pbWF0ZVByZXNlbmNlIH0gZnJvbSAnZnJhbWVyLW1vdGlvbicKaW1wb3J0IHsKICBYLCBEb3dubG9hZCwgQ29weSwgQ2hlY2ssIEV4dGVybmFsTGluaywgQ29kZTIsIEZpbGVUZXh0LAogIEdsb2JlLCBCYXJDaGFydDIsIEdpdEJyYW5jaCwgUHJlc2VudGF0aW9uLCBDaGV2cm9uRG93biwKICBNYXhpbWl6ZTIsIE1pbmltaXplMiwKfSBmcm9tICdsdWNpZGUtcmVhY3QnCmltcG9ydCB7IEJ1dHRvbiB9IGZyb20gJ0AvY29tcG9uZW50cy91aS9idXR0b24nCmltcG9ydCB7IFdpdGhUb29sdGlwIH0gZnJvbSAnQC9jb21wb25lbnRzL3VpL3Rvb2x0aXAnCmltcG9ydCB7IFNjcm9sbEFyZWEgfSBmcm9tICdAL2NvbXBvbmVudHMvdWkvc2Nyb2xsLWFyZWEnCmltcG9ydCB7IGNuIH0gZnJvbSAnQC9saWIvdXRpbHMnCmltcG9ydCB0eXBlIHsgQXJ0aWZhY3QsIEFydGlmYWN0VHlwZSB9IGZyb20gJ0AvdHlwZXMnCmltcG9ydCB7IHVzZUNoYXRTdG9yZSB9IGZyb20gJ0Avc3RvcmUvY2hhdCcKCmNvbnN0IEFSVElGQUNUX0lDT05TOiBSZWNvcmQ8QXJ0aWZhY3RUeXBlLCBSZWFjdC5FbGVtZW50VHlwZT4gPSB7CiAgY29kZTogICAgICAgICBDb2RlMiwKICBodG1sOiAgICAgICAgIEdsb2JlLAogIHJlYWN0OiAgICAgICAgQ29kZTIsCiAgbWFya2Rvd246ICAgICBGaWxlVGV4dCwKICBjaGFydDogICAgICAgIEJhckNoYXJ0MiwKICBkaWFncmFtOiAgICAgIEdpdEJyYW5jaCwKICBwcmVzZW50YXRpb246IFByZXNlbnRhdGlvbiwKICBkb2N1bWVudDogICAgIEZpbGVUZXh0LAp9Cgpjb25zdCBBUlRJRkFDVF9MQUJFTFM6IFJlY29yZDxBcnRpZmFjdFR5cGUsIHN0cmluZz4gPSB7CiAgY29kZTogICAgICAgICAnQ29kZScsCiAgaHRtbDogICAgICAgICAnSFRNTCBQcmV2aWV3JywKICByZWFjdDogICAgICAgICdSZWFjdCBDb21wb25lbnQnLAogIG1hcmtkb3duOiAgICAgJ0RvY3VtZW50JywKICBjaGFydDogICAgICAgICdDaGFydCcsCiAgZGlhZ3JhbTogICAgICAnRGlhZ3JhbScsCiAgcHJlc2VudGF0aW9uOiAnUHJlc2VudGF0aW9uJywKICBkb2N1bWVudDogICAgICdEb2N1bWVudCcsCn0KCmludGVyZmFjZSBBcnRpZmFjdFBhbmVsUHJvcHMgewogIGFydGlmYWN0OiBBcnRpZmFjdAogIG9uQ2xvc2U6ICgpID0+IHZvaWQKfQoKZXhwb3J0IGZ1bmN0aW9uIEFydGlmYWN0UGFuZWwoeyBhcnRpZmFjdCwgb25DbG9zZSB9OiBBcnRpZmFjdFBhbmVsUHJvcHMpIHsKICBjb25zdCBbY29waWVkLCBzZXRDb3BpZWRdID0gdXNlU3RhdGUoZmFsc2UpCiAgY29uc3QgW2Z1bGxzY3JlZW4sIHNldEZ1bGxzY3JlZW5dID0gdXNlU3RhdGUoZmFsc2UpCiAgY29uc3QgW2FjdGl2ZVRhYiwgc2V0QWN0aXZlVGFiXSA9IHVzZVN0YXRlPCdwcmV2aWV3JyB8ICdzb3VyY2UnPigncHJldmlldycpCiAgY29uc3QgSWNvbiA9IEFSVElGQUNUX0lDT05TW2FydGlmYWN0LnR5cGVdID8/IEZpbGVUZXh0CgogIGNvbnN0IGNvcHkgPSBhc3luYyAoKSA9PiB7CiAgICBhd2FpdCBuYXZpZ2F0b3IuY2xpcGJvYXJkLndyaXRlVGV4dChhcnRpZmFjdC5jb250ZW50KQogICAgc2V0Q29waWVkKHRydWUpCiAgICBzZXRUaW1lb3V0KCgpID0+IHNldENvcGllZChmYWxzZSksIDIwMDApCiAgfQoKICBjb25zdCBkb3dubG9hZCA9ICgpID0+IHsKICAgIGNvbnN0IGV4dGVuc2lvbnM6IFJlY29yZDxBcnRpZmFjdFR5cGUsIHN0cmluZz4gPSB7CiAgICAgIGNvZGU6IGFydGlmYWN0Lmxhbmd1YWdlID8/ICd0eHQnLAogICAgICBodG1sOiAnaHRtbCcsCiAgICAgIHJlYWN0OiAndHN4JywKICAgICAgbWFya2Rvd246ICdtZCcsCiAgICAgIGNoYXJ0OiAnanNvbicsCiAgICAgIGRpYWdyYW06ICd0eHQnLAogICAgICBwcmVzZW50YXRpb246ICdodG1sJywKICAgICAgZG9jdW1lbnQ6ICdtZCcsCiAgICB9CiAgICBjb25zdCBleHQgPSBleHRlbnNpb25zW2FydGlmYWN0LnR5cGVdCiAgICBjb25zdCBibG9iID0gbmV3IEJsb2IoW2FydGlmYWN0LmNvbnRlbnRdLCB7IHR5cGU6ICd0ZXh0L3BsYWluJyB9KQogICAgY29uc3QgdXJsID0gVVJMLmNyZWF0ZU9iamVjdFVSTChibG9iKQogICAgY29uc3QgYSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2EnKQogICAgYS5ocmVmID0gdXJsCiAgICBhLmRvd25sb2FkID0gYCR7YXJ0aWZhY3QudGl0bGUucmVwbGFjZSgvXHMrL2csICctJykudG9Mb3dlckNhc2UoKX0uJHtleHR9YAogICAgYS5jbGljaygpCiAgICBVUkwucmV2b2tlT2JqZWN0VVJMKHVybCkKICB9CgogIGNvbnN0IHNob3dQcmV2aWV3ID0gYXJ0aWZhY3QudHlwZSA9PT0gJ2h0bWwnIHx8IGFydGlmYWN0LnR5cGUgPT09ICdyZWFjdCcKICBjb25zdCBzaG93U291cmNlICA9IGFydGlmYWN0LnR5cGUgIT09ICdodG1sJyAmJiBhcnRpZmFjdC50eXBlICE9PSAncmVhY3QnCgogIHJldHVybiAoCiAgICA8bW90aW9uLmRpdgogICAgICBpbml0aWFsPXt7IG9wYWNpdHk6IDAsIHg6IDI0IH19CiAgICAgIGFuaW1hdGU9e3sgb3BhY2l0eTogMSwgeDogMCB9fQogICAgICBleGl0PXt7IG9wYWNpdHk6IDAsIHg6IDI0IH19CiAgICAgIHRyYW5zaXRpb249e3sgZHVyYXRpb246IDAuMiB9fQogICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICdhcnRpZmFjdC1wYW5lbCBmbGV4IGZsZXgtY29sJywKICAgICAgICBmdWxsc2NyZWVuID8gJ2ZpeGVkIGluc2V0LTQgei01MCByb3VuZGVkLTJ4bCBzaGFkb3ctMnhsJyA6ICdyZWxhdGl2ZScKICAgICAgKX0KICAgID4KICAgICAgey8qIEhlYWRlciAqL30KICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggaXRlbXMtY2VudGVyIGdhcC0yIHB4LTQgcHktMyBib3JkZXItYiBib3JkZXItYm9yZGVyLzUwIj4KICAgICAgICA8SWNvbiBjbGFzc05hbWU9ImgtNCB3LTQgdGV4dC1wcmltYXJ5IHNocmluay0wIiAvPgogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4LTEgbWluLXctMCI+CiAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQtc20gZm9udC1tZWRpdW0gdHJ1bmNhdGUiPnthcnRpZmFjdC50aXRsZX08L3A+CiAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQteHMgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIj57QVJUSUZBQ1RfTEFCRUxTW2FydGlmYWN0LnR5cGVdfTwvcD4KICAgICAgICA8L2Rpdj4KICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTAuNSI+CiAgICAgICAgICB7c2hvd1ByZXZpZXcgJiYgKAogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBib3JkZXIgYm9yZGVyLWJvcmRlciByb3VuZGVkLWxnIG1yLTEgb3ZlcmZsb3ctaGlkZGVuIj4KICAgICAgICAgICAgICB7KFsncHJldmlldycsICdzb3VyY2UnXSBhcyBjb25zdCkubWFwKHRhYiA9PiAoCiAgICAgICAgICAgICAgICA8YnV0dG9uCiAgICAgICAgICAgICAgICAgIGtleT17dGFifQogICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiBzZXRBY3RpdmVUYWIodGFiKX0KICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPXtjbigKICAgICAgICAgICAgICAgICAgICAncHgtMi41IHB5LTEgdGV4dC14cyBjYXBpdGFsaXplIHRyYW5zaXRpb24tY29sb3JzJywKICAgICAgICAgICAgICAgICAgICBhY3RpdmVUYWIgPT09IHRhYgogICAgICAgICAgICAgICAgICAgICAgPyAnYmctc2Vjb25kYXJ5IHRleHQtZm9yZWdyb3VuZCcKICAgICAgICAgICAgICAgICAgICAgIDogJ3RleHQtbXV0ZWQtZm9yZWdyb3VuZCBob3Zlcjp0ZXh0LWZvcmVncm91bmQnCiAgICAgICAgICAgICAgICAgICl9CiAgICAgICAgICAgICAgICA+CiAgICAgICAgICAgICAgICAgIHt0YWJ9CiAgICAgICAgICAgICAgICA8L2J1dHRvbj4KICAgICAgICAgICAgICApKX0KICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICApfQogICAgICAgICAgPFdpdGhUb29sdGlwIHRpcD17Y29waWVkID8gJ0NvcGllZCEnIDogJ0NvcHknfT4KICAgICAgICAgICAgPEJ1dHRvbiBzaXplPSJpY29uLXNtIiB2YXJpYW50PSJnaG9zdCIgY2xhc3NOYW1lPSJoLTcgdy03IHRleHQtbXV0ZWQtZm9yZWdyb3VuZCIgb25DbGljaz17Y29weX0+CiAgICAgICAgICAgICAge2NvcGllZCA/IDxDaGVjayBjbGFzc05hbWU9ImgtMy41IHctMy41IiAvPiA6IDxDb3B5IGNsYXNzTmFtZT0iaC0zLjUgdy0zLjUiIC8+fQogICAgICAgICAgICA8L0J1dHRvbj4KICAgICAgICAgIDwvV2l0aFRvb2x0aXA+CiAgICAgICAgICA8V2l0aFRvb2x0aXAgdGlwPSJEb3dubG9hZCI+CiAgICAgICAgICAgIDxCdXR0b24gc2l6ZT0iaWNvbi1zbSIgdmFyaWFudD0iZ2hvc3QiIGNsYXNzTmFtZT0iaC03IHctNyB0ZXh0LW11dGVkLWZvcmVncm91bmQiIG9uQ2xpY2s9e2Rvd25sb2FkfT4KICAgICAgICAgICAgICA8RG93bmxvYWQgY2xhc3NOYW1lPSJoLTMuNSB3LTMuNSIgLz4KICAgICAgICAgICAgPC9CdXR0b24+CiAgICAgICAgICA8L1dpdGhUb29sdGlwPgogICAgICAgICAgPFdpdGhUb29sdGlwIHRpcD17ZnVsbHNjcmVlbiA/ICdFeGl0IGZ1bGxzY3JlZW4nIDogJ0Z1bGxzY3JlZW4nfT4KICAgICAgICAgICAgPEJ1dHRvbiBzaXplPSJpY29uLXNtIiB2YXJpYW50PSJnaG9zdCIgY2xhc3NOYW1lPSJoLTcgdy03IHRleHQtbXV0ZWQtZm9yZWdyb3VuZCIgb25DbGljaz17KCkgPT4gc2V0RnVsbHNjcmVlbih2ID0+ICF2KX0+CiAgICAgICAgICAgICAge2Z1bGxzY3JlZW4gPyA8TWluaW1pemUyIGNsYXNzTmFtZT0iaC0zLjUgdy0zLjUiIC8+IDogPE1heGltaXplMiBjbGFzc05hbWU9ImgtMy41IHctMy41IiAvPn0KICAgICAgICAgICAgPC9CdXR0b24+CiAgICAgICAgICA8L1dpdGhUb29sdGlwPgogICAgICAgICAgPFdpdGhUb29sdGlwIHRpcD0iQ2xvc2UiPgogICAgICAgICAgICA8QnV0dG9uIHNpemU9Imljb24tc20iIHZhcmlhbnQ9Imdob3N0IiBjbGFzc05hbWU9ImgtNyB3LTcgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIiBvbkNsaWNrPXtvbkNsb3NlfT4KICAgICAgICAgICAgICA8WCBjbGFzc05hbWU9ImgtMy41IHctMy41IiAvPgogICAgICAgICAgICA8L0J1dHRvbj4KICAgICAgICAgIDwvV2l0aFRvb2x0aXA+CiAgICAgICAgPC9kaXY+CiAgICAgIDwvZGl2PgoKICAgICAgey8qIENvbnRlbnQgKi99CiAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4LTEgb3ZlcmZsb3ctaGlkZGVuIj4KICAgICAgICB7c2hvd1ByZXZpZXcgJiYgYWN0aXZlVGFiID09PSAncHJldmlldycgPyAoCiAgICAgICAgICA8aWZyYW1lCiAgICAgICAgICAgIHNyY0RvYz17YXJ0aWZhY3QuY29udGVudH0KICAgICAgICAgICAgdGl0bGU9e2FydGlmYWN0LnRpdGxlfQogICAgICAgICAgICBzYW5kYm94PSJhbGxvdy1zY3JpcHRzIGFsbG93LXNhbWUtb3JpZ2luIgogICAgICAgICAgICBjbGFzc05hbWU9InctZnVsbCBoLWZ1bGwgYm9yZGVyLW5vbmUgYmctd2hpdGUiCiAgICAgICAgICAvPgogICAgICAgICkgOiAoCiAgICAgICAgICA8U2Nyb2xsQXJlYSBjbGFzc05hbWU9ImgtZnVsbCI+CiAgICAgICAgICAgIDxwcmUgY2xhc3NOYW1lPSJwLTQgdGV4dC1zbSBmb250LW1vbm8gbGVhZGluZy1yZWxheGVkIHRleHQtZm9yZWdyb3VuZCBvdmVyZmxvdy14LWF1dG8gd2hpdGVzcGFjZS1wcmUiPgogICAgICAgICAgICAgIDxjb2RlPnthcnRpZmFjdC5jb250ZW50fTwvY29kZT4KICAgICAgICAgICAgPC9wcmU+CiAgICAgICAgICA8L1Njcm9sbEFyZWE+CiAgICAgICAgKX0KICAgICAgPC9kaXY+CiAgICA8L21vdGlvbi5kaXY+CiAgKQp9Cg==
+'use client'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import {
+  X, Download, Copy, Check, ExternalLink, Code2, FileText,
+  Globe, BarChart2, GitBranch, Presentation, ChevronDown,
+  Maximize2, Minimize2,
+} from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { WithTooltip } from '@/components/ui/tooltip'
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { cn } from '@/lib/utils'
+import type { Artifact, ArtifactType } from '@/types'
+import { useChatStore } from '@/store/chat'
+
+const ARTIFACT_ICONS: Record<ArtifactType, React.ElementType> = {
+  code:         Code2,
+  html:         Globe,
+  react:        Code2,
+  markdown:     FileText,
+  chart:        BarChart2,
+  diagram:      GitBranch,
+  presentation: Presentation,
+  document:     FileText,
+}
+
+const ARTIFACT_LABELS: Record<ArtifactType, string> = {
+  code:         'Code',
+  html:         'HTML Preview',
+  react:        'React Component',
+  markdown:     'Document',
+  chart:        'Chart',
+  diagram:      'Diagram',
+  presentation: 'Presentation',
+  document:     'Document',
+}
+
+interface ArtifactPanelProps {
+  artifact: Artifact
+  onClose: () => void
+}
+
+export function ArtifactPanel({ artifact, onClose }: ArtifactPanelProps) {
+  const [copied, setCopied] = useState(false)
+  const [fullscreen, setFullscreen] = useState(false)
+  const [activeTab, setActiveTab] = useState<'preview' | 'source'>('preview')
+  const Icon = ARTIFACT_ICONS[artifact.type] ?? FileText
+
+  const copy = async () => {
+    await navigator.clipboard.writeText(artifact.content)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
+  const download = () => {
+    const extensions: Record<ArtifactType, string> = {
+      code: artifact.language ?? 'txt',
+      html: 'html',
+      react: 'tsx',
+      markdown: 'md',
+      chart: 'json',
+      diagram: 'txt',
+      presentation: 'html',
+      document: 'md',
+    }
+    const ext = extensions[artifact.type]
+    const blob = new Blob([artifact.content], { type: 'text/plain' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `${artifact.title.replace(/\s+/g, '-').toLowerCase()}.${ext}`
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
+  const showPreview = artifact.type === 'html' || artifact.type === 'react'
+  const showSource  = artifact.type !== 'html' && artifact.type !== 'react'
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 24 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 24 }}
+      transition={{ duration: 0.2 }}
+      className={cn(
+        'artifact-panel flex flex-col',
+        fullscreen ? 'fixed inset-4 z-50 rounded-2xl shadow-2xl' : 'relative'
+      )}
+    >
+      {/* Header */}
+      <div className="flex items-center gap-2 px-4 py-3 border-b border-border/50">
+        <Icon className="h-4 w-4 text-primary shrink-0" />
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-medium truncate">{artifact.title}</p>
+          <p className="text-xs text-muted-foreground">{ARTIFACT_LABELS[artifact.type]}</p>
+        </div>
+        <div className="flex items-center gap-0.5">
+          {showPreview && (
+            <div className="flex border border-border rounded-lg mr-1 overflow-hidden">
+              {(['preview', 'source'] as const).map(tab => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={cn(
+                    'px-2.5 py-1 text-xs capitalize transition-colors',
+                    activeTab === tab
+                      ? 'bg-secondary text-foreground'
+                      : 'text-muted-foreground hover:text-foreground'
+                  )}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+          )}
+          <WithTooltip tip={copied ? 'Copied!' : 'Copy'}>
+            <Button size="icon-sm" variant="ghost" className="h-7 w-7 text-muted-foreground" onClick={copy}>
+              {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+            </Button>
+          </WithTooltip>
+          <WithTooltip tip="Download">
+            <Button size="icon-sm" variant="ghost" className="h-7 w-7 text-muted-foreground" onClick={download}>
+              <Download className="h-3.5 w-3.5" />
+            </Button>
+          </WithTooltip>
+          <WithTooltip tip={fullscreen ? 'Exit fullscreen' : 'Fullscreen'}>
+            <Button size="icon-sm" variant="ghost" className="h-7 w-7 text-muted-foreground" onClick={() => setFullscreen(v => !v)}>
+              {fullscreen ? <Minimize2 className="h-3.5 w-3.5" /> : <Maximize2 className="h-3.5 w-3.5" />}
+            </Button>
+          </WithTooltip>
+          <WithTooltip tip="Close">
+            <Button size="icon-sm" variant="ghost" className="h-7 w-7 text-muted-foreground" onClick={onClose}>
+              <X className="h-3.5 w-3.5" />
+            </Button>
+          </WithTooltip>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 overflow-hidden">
+        {showPreview && activeTab === 'preview' ? (
+          <iframe
+            srcDoc={artifact.content}
+            title={artifact.title}
+            sandbox="allow-scripts allow-same-origin"
+            className="w-full h-full border-none bg-white"
+          />
+        ) : (
+          <ScrollArea className="h-full">
+            <pre className="p-4 text-sm font-mono leading-relaxed text-foreground overflow-x-auto whitespace-pre">
+              <code>{artifact.content}</code>
+            </pre>
+          </ScrollArea>
+        )}
+      </div>
+    </motion.div>
+  )
+}
