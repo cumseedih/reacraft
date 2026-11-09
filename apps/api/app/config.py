@@ -47,15 +47,18 @@ class Settings(BaseSettings):
 
     @model_validator(mode='after')
     def check_production_secrets(self) -> 'Settings':
-        if (
-            self.environment == 'production'
-            and self.jwt_secret == 'change-me-in-production'
-        ):
-            raise ValueError(
-                'JWT_SECRET must be changed from the default value before running in '
-                'production. Generate one with: '
-                'python3 -c "import secrets; print(secrets.token_hex(64))"'
-            )
+        if self.environment == 'production':
+            if self.jwt_secret == 'change-me-in-production':
+                raise ValueError(
+                    'JWT_SECRET must be changed from the default value before running in '
+                    'production. Generate one with: '
+                    'python3 -c "import secrets; print(secrets.token_hex(64))"'
+                )
+            if 'kroex_dev_only' in self.database_url:
+                raise ValueError(
+                    'DATABASE_URL contains the default development password. '
+                    'Set a strong unique database password before running in production.'
+                )
         return self
 
 

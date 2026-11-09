@@ -83,7 +83,8 @@ async def stream_chat_endpoint(
         system_parts.append(rag_ctx)
     extra_system = '\n\n'.join(system_parts) or None
 
-    # Persist user message
+    # Persist user message and commit so the streaming generator can reference conv_id
+    # via a separate session (FK requires the conversation to be committed first).
     user_msg = Message(
         id=str(uuid.uuid4()),
         conversation_id=conversation.id,
@@ -91,7 +92,7 @@ async def stream_chat_endpoint(
         content=request.message,
     )
     db.add(user_msg)
-    await db.flush()
+    await db.commit()
 
     conv_id = conversation.id
     user_id = current_user.id

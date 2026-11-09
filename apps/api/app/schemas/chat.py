@@ -1,3 +1,4 @@
+from datetime import datetime
 from pydantic import BaseModel
 from typing import Any
 
@@ -14,8 +15,8 @@ class ConversationOut(BaseModel):
     id: str
     title: str
     model: str
-    created_at: str
-    updated_at: str
+    created_at: datetime
+    updated_at: datetime
 
     class Config:
         from_attributes = True
@@ -25,7 +26,7 @@ class MessageOut(BaseModel):
     id: str
     role: str
     content: str
-    created_at: str
+    created_at: datetime
 
     class Config:
         from_attributes = True
