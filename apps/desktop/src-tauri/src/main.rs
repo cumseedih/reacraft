@@ -1,1 +1,24 @@
-Ly8gUHJldmVudHMgYWRkaXRpb25hbCBjb25zb2xlIHdpbmRvdyBvbiBXaW5kb3dzIGluIHJlbGVhc2UsIERPIE5PVCBSRU1PVkUhIQojIVtjZmdfYXR0cihub3QoZGVidWdfYXNzZXJ0aW9ucyksIHdpbmRvd3Nfc3Vic3lzdGVtID0gIndpbmRvd3MiKV0KCnVzZSB0YXVyaTo6TWFuYWdlcjsKCmZuIG1haW4oKSB7CiAgICB0YXVyaTo6QnVpbGRlcjo6ZGVmYXVsdCgpCiAgICAgICAgLnNldHVwKHxhcHB8IHsKICAgICAgICAgICAgI1tjZmcoZGVidWdfYXNzZXJ0aW9ucyldCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGxldCB3aW5kb3cgPSBhcHAuZ2V0X3dlYnZpZXdfd2luZG93KCJtYWluIikudW53cmFwKCk7CiAgICAgICAgICAgICAgICB3aW5kb3cub3Blbl9kZXZ0b29scygpOwogICAgICAgICAgICB9CiAgICAgICAgICAgIE9rKCgpKQogICAgICAgIH0pCiAgICAgICAgLmludm9rZV9oYW5kbGVyKHRhdXJpOjpnZW5lcmF0ZV9oYW5kbGVyIVtnZXRfYXBwX3ZlcnNpb25dKQogICAgICAgIC5ydW4odGF1cmk6OmdlbmVyYXRlX2NvbnRleHQhKCkpCiAgICAgICAgLmV4cGVjdCgiZXJyb3Igd2hpbGUgcnVubmluZyBLUk9FWCBkZXNrdG9wIGFwcCIpOwp9CgojW3RhdXJpOjpjb21tYW5kXQpmbiBnZXRfYXBwX3ZlcnNpb24oKSAtPiBTdHJpbmcgewogICAgZW52ISgiQ0FSR09fUEtHX1ZFUlNJT04iKS50b19zdHJpbmcoKQp9Cg==
+// Prevents additional console window on Windows in release, DO NOT REMOVE!!
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+
+use tauri::Manager;
+
+fn main() {
+    tauri::Builder::default()
+        .setup(|app| {
+            #[cfg(debug_assertions)]
+            {
+                let window = app.get_webview_window("main").unwrap();
+                window.open_devtools();
+            }
+            Ok(())
+        })
+        .invoke_handler(tauri::generate_handler![get_app_version])
+        .run(tauri::generate_context!())
+        .expect("error while running KROEX desktop app");
+}
+
+#[tauri::command]
+fn get_app_version() -> String {
+    env!("CARGO_PKG_VERSION").to_string()
+}

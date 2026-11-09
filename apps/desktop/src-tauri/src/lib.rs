@@ -1,1 +1,22 @@
-dXNlIHRhdXJpOjpNYW5hZ2VyOwoKI1t0YXVyaTo6Y29tbWFuZF0KcHViIGZuIGdldF9hcHBfdmVyc2lvbigpIC0+IFN0cmluZyB7CiAgICBlbnYhKCJDQVJHT19QS0dfVkVSU0lPTiIpLnRvX3N0cmluZygpCn0KCiNbY2ZnX2F0dHIobW9iaWxlLCB0YXVyaTo6bW9iaWxlX2VudHJ5X3BvaW50KV0KcHViIGZuIHJ1bigpIHsKICAgIHRhdXJpOjpCdWlsZGVyOjpkZWZhdWx0KCkKICAgICAgICAuc2V0dXAofGFwcHwgewogICAgICAgICAgICAjW2NmZyhkZWJ1Z19hc3NlcnRpb25zKV0KICAgICAgICAgICAgewogICAgICAgICAgICAgICAgbGV0IHdpbmRvdyA9IGFwcC5nZXRfd2Vidmlld193aW5kb3coIm1haW4iKS51bndyYXAoKTsKICAgICAgICAgICAgICAgIHdpbmRvdy5vcGVuX2RldnRvb2xzKCk7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgT2soKCkpCiAgICAgICAgfSkKICAgICAgICAuaW52b2tlX2hhbmRsZXIodGF1cmk6OmdlbmVyYXRlX2hhbmRsZXIhW2dldF9hcHBfdmVyc2lvbl0pCiAgICAgICAgLnJ1bih0YXVyaTo6Z2VuZXJhdGVfY29udGV4dCEoKSkKICAgICAgICAuZXhwZWN0KCJlcnJvciB3aGlsZSBydW5uaW5nIEtST0VYIGRlc2t0b3AgYXBwIik7Cn0K
+use tauri::Manager;
+
+#[tauri::command]
+pub fn get_app_version() -> String {
+    env!("CARGO_PKG_VERSION").to_string()
+}
+
+#[cfg_attr(mobile, tauri::mobile_entry_point)]
+pub fn run() {
+    tauri::Builder::default()
+        .setup(|app| {
+            #[cfg(debug_assertions)]
+            {
+                let window = app.get_webview_window("main").unwrap();
+                window.open_devtools();
+            }
+            Ok(())
+        })
+        .invoke_handler(tauri::generate_handler![get_app_version])
+        .run(tauri::generate_context!())
+        .expect("error while running KROEX desktop app");
+}

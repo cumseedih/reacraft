@@ -1,1 +1,3 @@
-Zm4gbWFpbigpIHsKICB0YXVyaV9idWlsZDo6YnVpbGQoKQp9Cg==
+fn main() {
+  tauri_build::build()
+}

@@ -1,1 +1,23 @@
-ewogICJuYW1lIjogIkBrcm9leC9kZXNrdG9wIiwKICAidmVyc2lvbiI6ICIxLjAuMCIsCiAgInByaXZhdGUiOiB0cnVlLAogICJzY3JpcHRzIjogewogICAgImRldiI6ICJ0YXVyaSBkZXYiLAogICAgImJ1aWxkIjogInRhdXJpIGJ1aWxkIiwKICAgICJwcmV2aWV3IjogInRhdXJpIGJ1aWxkIC0tZGVidWciCiAgfSwKICAiZGVwZW5kZW5jaWVzIjogewogICAgIkB0YXVyaS1hcHBzL2FwaSI6ICJeMi4wLjAiLAogICAgInJlYWN0IjogIl4xOS4wLjAiLAogICAgInJlYWN0LWRvbSI6ICJeMTkuMC4wIgogIH0sCiAgImRldkRlcGVuZGVuY2llcyI6IHsKICAgICJAdGF1cmktYXBwcy9jbGkiOiAiXjIuMC4wIiwKICAgICJAdHlwZXMvcmVhY3QiOiAiXjE5LjAuMCIsCiAgICAiQHR5cGVzL3JlYWN0LWRvbSI6ICJeMTkuMC4wIiwKICAgICJ0eXBlc2NyaXB0IjogIl41LjcuMiIsCiAgICAidml0ZSI6ICJeNi4wLjAiLAogICAgIkB2aXRlanMvcGx1Z2luLXJlYWN0IjogIl40LjMuNCIKICB9Cn0K
+{
+  "name": "@kroex/desktop",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "preview": "tauri build --debug"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0",
+    "@vitejs/plugin-react": "^4.3.4"
+  }
+}
