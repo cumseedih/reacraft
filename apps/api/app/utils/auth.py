@@ -1,1 +1,48 @@
-ZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUsIHRpbWVkZWx0YSwgdGltZXpvbmUKZnJvbSB0eXBpbmcgaW1wb3J0IEFueQpmcm9tIGpvc2UgaW1wb3J0IGp3dCwgSldURXJyb3IKZnJvbSBwYXNzbGliLmNvbnRleHQgaW1wb3J0IENyeXB0Q29udGV4dApmcm9tIGZhc3RhcGkgaW1wb3J0IEhUVFBFeGNlcHRpb24sIHN0YXR1cywgRGVwZW5kcwpmcm9tIGZhc3RhcGkuc2VjdXJpdHkgaW1wb3J0IEhUVFBCZWFyZXIsIEhUVFBBdXRob3JpemF0aW9uQ3JlZGVudGlhbHMKZnJvbSBzcWxhbGNoZW15LmV4dC5hc3luY2lvIGltcG9ydCBBc3luY1Nlc3Npb24KZnJvbSBzcWxhbGNoZW15IGltcG9ydCBzZWxlY3QKZnJvbSAuLmNvbmZpZyBpbXBvcnQgZ2V0X3NldHRpbmdzCmZyb20gLi5kYXRhYmFzZSBpbXBvcnQgZ2V0X2RiCmZyb20gLi5tb2RlbHMudXNlciBpbXBvcnQgVXNlcgoKc2V0dGluZ3MgPSBnZXRfc2V0dGluZ3MoKQpwd2RfY29udGV4dCA9IENyeXB0Q29udGV4dChzY2hlbWVzPVsnYmNyeXB0J10sIGRlcHJlY2F0ZWQ9J2F1dG8nKQpiZWFyZXJfc2NoZW1lID0gSFRUUEJlYXJlcihhdXRvX2Vycm9yPUZhbHNlKQoKZGVmIGhhc2hfcGFzc3dvcmQocGFzc3dvcmQ6IHN0cikgLT4gc3RyOgogICAgcmV0dXJuIHB3ZF9jb250ZXh0Lmhhc2gocGFzc3dvcmQpCgpkZWYgdmVyaWZ5X3Bhc3N3b3JkKHBsYWluOiBzdHIsIGhhc2hlZDogc3RyKSAtPiBib29sOgogICAgcmV0dXJuIHB3ZF9jb250ZXh0LnZlcmlmeShwbGFpbiwgaGFzaGVkKQoKZGVmIGNyZWF0ZV9hY2Nlc3NfdG9rZW4oZGF0YTogZGljdFtzdHIsIEFueV0pIC0+IHN0cjoKICAgIHBheWxvYWQgPSBkYXRhLmNvcHkoKQogICAgcGF5bG9hZFsnZXhwJ10gPSBkYXRldGltZS5ub3codGltZXpvbmUudXRjKSArIHRpbWVkZWx0YShtaW51dGVzPXNldHRpbmdzLmp3dF9leHBpcmVfbWludXRlcykKICAgIHJldHVybiBqd3QuZW5jb2RlKHBheWxvYWQsIHNldHRpbmdzLmp3dF9zZWNyZXQsIGFsZ29yaXRobT1zZXR0aW5ncy5qd3RfYWxnb3JpdGhtKQoKZGVmIGRlY29kZV90b2tlbih0b2tlbjogc3RyKSAtPiBkaWN0W3N0ciwgQW55XToKICAgIHRyeToKICAgICAgICByZXR1cm4gand0LmRlY29kZSh0b2tlbiwgc2V0dGluZ3Muand0X3NlY3JldCwgYWxnb3JpdGhtcz1bc2V0dGluZ3Muand0X2FsZ29yaXRobV0pCiAgICBleGNlcHQgSldURXJyb3I6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT1zdGF0dXMuSFRUUF80MDFfVU5BVVRIT1JJWkVELCBkZXRhaWw9J0ludmFsaWQgdG9rZW4nKQoKYXN5bmMgZGVmIGdldF9jdXJyZW50X3VzZXIoCiAgICBjcmVkZW50aWFsczogSFRUUEF1dGhvcml6YXRpb25DcmVkZW50aWFscyB8IE5vbmUgPSBEZXBlbmRzKGJlYXJlcl9zY2hlbWUpLAogICAgZGI6IEFzeW5jU2Vzc2lvbiA9IERlcGVuZHMoZ2V0X2RiKSwKKSAtPiBVc2VyOgogICAgaWYgbm90IGNyZWRlbnRpYWxzOgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9c3RhdHVzLkhUVFBfNDAxX1VOQVVUSE9SSVpFRCwgZGV0YWlsPSdOb3QgYXV0aGVudGljYXRlZCcpCiAgICBwYXlsb2FkID0gZGVjb2RlX3Rva2VuKGNyZWRlbnRpYWxzLmNyZWRlbnRpYWxzKQogICAgdXNlcl9pZDogc3RyIHwgTm9uZSA9IHBheWxvYWQuZ2V0KCdzdWInKQogICAgaWYgbm90IHVzZXJfaWQ6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT1zdGF0dXMuSFRUUF80MDFfVU5BVVRIT1JJWkVELCBkZXRhaWw9J0ludmFsaWQgdG9rZW4gcGF5bG9hZCcpCiAgICByZXN1bHQgPSBhd2FpdCBkYi5leGVjdXRlKHNlbGVjdChVc2VyKS53aGVyZShVc2VyLmlkID09IHVzZXJfaWQsIFVzZXIuaXNfYWN0aXZlID09IFRydWUpKQogICAgdXNlciA9IHJlc3VsdC5zY2FsYXJfb25lX29yX25vbmUoKQogICAgaWYgbm90IHVzZXI6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT1zdGF0dXMuSFRUUF80MDFfVU5BVVRIT1JJWkVELCBkZXRhaWw9J1VzZXIgbm90IGZvdW5kJykKICAgIHJldHVybiB1c2VyCg==
+from datetime import datetime, timedelta, timezone
+from typing import Any
+from jose import jwt, JWTError
+from passlib.context import CryptContext
+from fastapi import HTTPException, status, Depends
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
+from ..config import get_settings
+from ..database import get_db
+from ..models.user import User
+
+settings = get_settings()
+pwd_context = CryptContext(schemes=['bcrypt'], deprecated='auto')
+bearer_scheme = HTTPBearer(auto_error=False)
+
+def hash_password(password: str) -> str:
+    return pwd_context.hash(password)
+
+def verify_password(plain: str, hashed: str) -> bool:
+    return pwd_context.verify(plain, hashed)
+
+def create_access_token(data: dict[str, Any]) -> str:
+    payload = data.copy()
+    payload['exp'] = datetime.now(timezone.utc) + timedelta(minutes=settings.jwt_expire_minutes)
+    return jwt.encode(payload, settings.jwt_secret, algorithm=settings.jwt_algorithm)
+
+def decode_token(token: str) -> dict[str, Any]:
+    try:
+        return jwt.decode(token, settings.jwt_secret, algorithms=[settings.jwt_algorithm])
+    except JWTError:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Invalid token')
+
+async def get_current_user(
+    credentials: HTTPAuthorizationCredentials | None = Depends(bearer_scheme),
+    db: AsyncSession = Depends(get_db),
+) -> User:
+    if not credentials:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Not authenticated')
+    payload = decode_token(credentials.credentials)
+    user_id: str | None = payload.get('sub')
+    if not user_id:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Invalid token payload')
+    result = await db.execute(select(User).where(User.id == user_id, User.is_active == True))
+    user = result.scalar_one_or_none()
+    if not user:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='User not found')
+    return user

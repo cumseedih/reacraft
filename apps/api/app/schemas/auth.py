@@ -1,1 +1,38 @@
-ZnJvbSBweWRhbnRpYyBpbXBvcnQgQmFzZU1vZGVsLCBFbWFpbFN0ciwgZmllbGRfdmFsaWRhdG9yCgpjbGFzcyBSZWdpc3RlclJlcXVlc3QoQmFzZU1vZGVsKToKICAgIG5hbWU6IHN0cgogICAgZW1haWw6IEVtYWlsU3RyCiAgICBwYXNzd29yZDogc3RyCgogICAgQGZpZWxkX3ZhbGlkYXRvcigncGFzc3dvcmQnKQogICAgQGNsYXNzbWV0aG9kCiAgICBkZWYgcGFzc3dvcmRfbWluX2xlbmd0aChjbHMsIHY6IHN0cikgLT4gc3RyOgogICAgICAgIGlmIGxlbih2KSA8IDg6CiAgICAgICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoJ1Bhc3N3b3JkIG11c3QgYmUgYXQgbGVhc3QgOCBjaGFyYWN0ZXJzJykKICAgICAgICByZXR1cm4gdgoKICAgIEBmaWVsZF92YWxpZGF0b3IoJ25hbWUnKQogICAgQGNsYXNzbWV0aG9kCiAgICBkZWYgbmFtZV9ub3RfZW1wdHkoY2xzLCB2OiBzdHIpIC0+IHN0cjoKICAgICAgICBpZiBub3Qgdi5zdHJpcCgpOgogICAgICAgICAgICByYWlzZSBWYWx1ZUVycm9yKCdOYW1lIGNhbm5vdCBiZSBlbXB0eScpCiAgICAgICAgcmV0dXJuIHYuc3RyaXAoKQoKY2xhc3MgTG9naW5SZXF1ZXN0KEJhc2VNb2RlbCk6CiAgICBlbWFpbDogRW1haWxTdHIKICAgIHBhc3N3b3JkOiBzdHIKCmNsYXNzIFVzZXJPdXQoQmFzZU1vZGVsKToKICAgIGlkOiBzdHIKICAgIGVtYWlsOiBzdHIKICAgIG5hbWU6IHN0cgogICAgYXZhdGFyOiBzdHIgfCBOb25lID0gTm9uZQogICAgcGxhbjogc3RyCgogICAgY2xhc3MgQ29uZmlnOgogICAgICAgIGZyb21fYXR0cmlidXRlcyA9IFRydWUKCmNsYXNzIEF1dGhSZXNwb25zZShCYXNlTW9kZWwpOgogICAgdXNlcjogVXNlck91dAogICAgdG9rZW46IHN0cg==
+from pydantic import BaseModel, EmailStr, field_validator
+
+class RegisterRequest(BaseModel):
+    name: str
+    email: EmailStr
+    password: str
+
+    @field_validator('password')
+    @classmethod
+    def password_min_length(cls, v: str) -> str:
+        if len(v) < 8:
+            raise ValueError('Password must be at least 8 characters')
+        return v
+
+    @field_validator('name')
+    @classmethod
+    def name_not_empty(cls, v: str) -> str:
+        if not v.strip():
+            raise ValueError('Name cannot be empty')
+        return v.strip()
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str
+
+class UserOut(BaseModel):
+    id: str
+    email: str
+    name: str
+    avatar: str | None = None
+    plan: str
+
+    class Config:
+        from_attributes = True
+
+class AuthResponse(BaseModel):
+    user: UserOut
+    token: str

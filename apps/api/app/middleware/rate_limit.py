@@ -1,1 +1,36 @@
-aW1wb3J0IHRpbWUKZnJvbSBjb2xsZWN0aW9ucyBpbXBvcnQgZGVmYXVsdGRpY3QKZnJvbSBmYXN0YXBpIGltcG9ydCBSZXF1ZXN0LCBIVFRQRXhjZXB0aW9uLCBzdGF0dXMKZnJvbSBzdGFybGV0dGUubWlkZGxld2FyZS5iYXNlIGltcG9ydCBCYXNlSFRUUE1pZGRsZXdhcmUKZnJvbSAuLmNvbmZpZyBpbXBvcnQgZ2V0X3NldHRpbmdzCgpzZXR0aW5ncyA9IGdldF9zZXR0aW5ncygpCgpjbGFzcyBSYXRlTGltaXRNaWRkbGV3YXJlKEJhc2VIVFRQTWlkZGxld2FyZSk6CiAgICBkZWYgX19pbml0X18oc2VsZiwgYXBwLCBjYWxsczogaW50ID0gNjAsIHBlcmlvZDogaW50ID0gNjApOgogICAgICAgIHN1cGVyKCkuX19pbml0X18oYXBwKQogICAgICAgIHNlbGYuY2FsbHMgPSBjYWxscwogICAgICAgIHNlbGYucGVyaW9kID0gcGVyaW9kCiAgICAgICAgc2VsZi5fc3RvcmU6IGRpY3Rbc3RyLCBsaXN0W2Zsb2F0XV0gPSBkZWZhdWx0ZGljdChsaXN0KQoKICAgIGFzeW5jIGRlZiBkaXNwYXRjaChzZWxmLCByZXF1ZXN0OiBSZXF1ZXN0LCBjYWxsX25leHQpOgogICAgICAgICMgU2tpcCByYXRlIGxpbWl0aW5nIGZvciBub24tQVBJIHBhdGhzIGFuZCBoZWFsdGggY2hlY2sKICAgICAgICBpZiBub3QgcmVxdWVzdC51cmwucGF0aC5zdGFydHN3aXRoKCcvYXBpJykgb3IgcmVxdWVzdC51cmwucGF0aCA9PSAnL2FwaS9oZWFsdGgnOgogICAgICAgICAgICByZXR1cm4gYXdhaXQgY2FsbF9uZXh0KHJlcXVlc3QpCgogICAgICAgIGNsaWVudF9pcCA9IHJlcXVlc3QuY2xpZW50Lmhvc3QgaWYgcmVxdWVzdC5jbGllbnQgZWxzZSAnMC4wLjAuMCcKICAgICAgICBub3cgPSB0aW1lLnRpbWUoKQogICAgICAgIHdpbmRvd19zdGFydCA9IG5vdyAtIHNlbGYucGVyaW9kCgogICAgICAgICMgQ2xlYW4gb2xkIGVudHJpZXMKICAgICAgICBzZWxmLl9zdG9yZVtjbGllbnRfaXBdID0gW3QgZm9yIHQgaW4gc2VsZi5fc3RvcmVbY2xpZW50X2lwXSBpZiB0ID4gd2luZG93X3N0YXJ0XQoKICAgICAgICBpZiBsZW4oc2VsZi5fc3RvcmVbY2xpZW50X2lwXSkgPj0gc2VsZi5jYWxsczoKICAgICAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbigKICAgICAgICAgICAgICAgIHN0YXR1c19jb2RlPXN0YXR1cy5IVFRQXzQyOV9UT09fTUFOWV9SRVFVRVNUUywKICAgICAgICAgICAgICAgIGRldGFpbD0nUmF0ZSBsaW1pdCBleGNlZWRlZC4gUGxlYXNlIHdhaXQgYmVmb3JlIG1ha2luZyBtb3JlIHJlcXVlc3RzLicsCiAgICAgICAgICAgICAgICBoZWFkZXJzPXsnUmV0cnktQWZ0ZXInOiBzdHIoc2VsZi5wZXJpb2QpfSwKICAgICAgICAgICAgKQoKICAgICAgICBzZWxmLl9zdG9yZVtjbGllbnRfaXBdLmFwcGVuZChub3cpCiAgICAgICAgcmV0dXJuIGF3YWl0IGNhbGxfbmV4dChyZXF1ZXN0KQo=
+import time
+from collections import defaultdict
+from fastapi import Request, HTTPException, status
+from starlette.middleware.base import BaseHTTPMiddleware
+from ..config import get_settings
+
+settings = get_settings()
+
+class RateLimitMiddleware(BaseHTTPMiddleware):
+    def __init__(self, app, calls: int = 60, period: int = 60):
+        super().__init__(app)
+        self.calls = calls
+        self.period = period
+        self._store: dict[str, list[float]] = defaultdict(list)
+
+    async def dispatch(self, request: Request, call_next):
+        # Skip rate limiting for non-API paths and health check
+        if not request.url.path.startswith('/api') or request.url.path == '/api/health':
+            return await call_next(request)
+
+        client_ip = request.client.host if request.client else '0.0.0.0'
+        now = time.time()
+        window_start = now - self.period
+
+        # Clean old entries
+        self._store[client_ip] = [t for t in self._store[client_ip] if t > window_start]
+
+        if len(self._store[client_ip]) >= self.calls:
+            raise HTTPException(
+                status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+                detail='Rate limit exceeded. Please wait before making more requests.',
+                headers={'Retry-After': str(self.period)},
+            )
+
+        self._store[client_ip].append(now)
+        return await call_next(request)
