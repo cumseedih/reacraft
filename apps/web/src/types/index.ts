@@ -116,15 +116,18 @@ export interface Model {
   maxOutputTokens: number
   inputCostPer1k: number
   outputCostPer1k: number
+  tier?: 'ultra' | 'pro' | 'free' | 'research'
+  description?: string
+  capabilities?: string[]
 }
 
-export type Provider = 'anthropic' | 'openai' | 'google' | 'openai-compat' | 'local'
+export type Provider = 'anthropic' | 'openai' | 'google' | 'openai-compat' | 'local' | 'kroex'
 
 export interface ApiKey {
   id: string
   provider: Provider
   name: string
-  keyHint: string
+  keyHint: string  // last 4 chars only
   createdAt: string
   isActive: boolean
 }
@@ -177,8 +180,8 @@ export interface ScheduledTask {
   id: string
   name: string
   prompt: string
-  schedule?: string
-  runOnce?: string
+  schedule?: string  // cron
+  runOnce?: string  // ISO date
   enabled: boolean
   lastRun?: string
   nextRun?: string
@@ -209,6 +212,7 @@ export interface AppSettings {
   showTokenCount: boolean
 }
 
+// API response wrappers
 export interface ApiResponse<T> {
   data: T
   message?: string

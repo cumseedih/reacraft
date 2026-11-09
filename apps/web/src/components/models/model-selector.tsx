@@ -1,1 +1,97 @@
-J3VzZSBjbGllbnQnCmltcG9ydCB7IHVzZVN0YXRlIH0gZnJvbSAncmVhY3QnCmltcG9ydCB7IG1vdGlvbiB9IGZyb20gJ2ZyYW1lci1tb3Rpb24nCmltcG9ydCB7IENoZWNrLCBaYXAsIEJyYWluLCBTcGFya2xlcywgRmxhc2tDb25pY2FsIH0gZnJvbSAnbHVjaWRlLXJlYWN0JwppbXBvcnQgeyBEaWFsb2csIERpYWxvZ0NvbnRlbnQsIERpYWxvZ0hlYWRlciwgRGlhbG9nVGl0bGUgfSBmcm9tICdAL2NvbXBvbmVudHMvdWkvZGlhbG9nJwppbXBvcnQgeyBCYWRnZSB9IGZyb20gJ0AvY29tcG9uZW50cy91aS9iYWRnZScKaW1wb3J0IHsgY24gfSBmcm9tICdAL2xpYi91dGlscycKaW1wb3J0IHR5cGUgeyBNb2RlbCB9IGZyb20gJ0AvdHlwZXMnCgpjb25zdCBGRUFUVVJFRF9NT0RFTFM6IE1vZGVsW10gPSBbCiAgewogICAgaWQ6ICdrcm9leC11bHRyYScsCiAgICBuYW1lOiAnS1JPRVggVWx0cmEnLAogICAgcHJvdmlkZXI6ICdrcm9leCcsCiAgICBkZXNjcmlwdGlvbjogJ01heGltdW0gaW50ZWxsaWdlbmNlIGZvciBjb21wbGV4LCBudWFuY2VkIHRhc2tzJywKICAgIGNvbnRleHRXaW5kb3c6IDIwMDAwMCwKICAgIGNhcGFiaWxpdGllczogWyd2aXNpb24nLCAnY29kZScsICdyZWFzb25pbmcnLCAnZG9jdW1lbnRzJ10sCiAgICB0aWVyOiAndWx0cmEnLAogIH0sCiAgewogICAgaWQ6ICdrcm9leC1wcm8nLAogICAgbmFtZTogJ0tST0VYIFBybycsCiAgICBwcm92aWRlcjogJ2tyb2V4JywKICAgIGRlc2NyaXB0aW9uOiAnQmFsYW5jZWQgcG93ZXIgYW5kIHNwZWVkIGZvciBtb3N0IHRhc2tzJywKICAgIGNvbnRleHRXaW5kb3c6IDEwMDAwMCwKICAgIGNhcGFiaWxpdGllczogWyd2aXNpb24nLCAnY29kZScsICdyZWFzb25pbmcnXSwKICAgIHRpZXI6ICdwcm8nLAogIH0sCiAgewogICAgaWQ6ICdrcm9leC1mYXN0JywKICAgIG5hbWU6ICdLUk9FWCBGYXN0JywKICAgIHByb3ZpZGVyOiAna3JvZXgnLAogICAgZGVzY3JpcHRpb246ICdMaWdodHdlaWdodCBhbmQgc25hcHB5IGZvciBxdWljayBhbnN3ZXJzJywKICAgIGNvbnRleHRXaW5kb3c6IDMyMDAwLAogICAgY2FwYWJpbGl0aWVzOiBbJ2NvZGUnLCAncmVhc29uaW5nJ10sCiAgICB0aWVyOiAnZnJlZScsCiAgfSwKXQoKY29uc3QgVElFUl9JQ09OUyA9IHsKICB1bHRyYTogICAgQnJhaW4sCiAgcHJvOiAgICAgIFNwYXJrbGVzLAogIGZyZWU6ICAgICBaYXAsCiAgcmVzZWFyY2g6IEZsYXNrQ29uaWNhbCwKfQoKY29uc3QgVElFUl9DT0xPUlMgPSB7CiAgdWx0cmE6ICAgICd0ZXh0LXB1cnBsZS01MDAnLAogIHBybzogICAgICAndGV4dC1wcmltYXJ5JywKICBmcmVlOiAgICAgJ3RleHQtZW1lcmFsZC01MDAnLAogIHJlc2VhcmNoOiAndGV4dC1vcmFuZ2UtNTAwJywKfQoKaW50ZXJmYWNlIE1vZGVsU2VsZWN0b3JQcm9wcyB7CiAgb3BlbjogYm9vbGVhbgogIG9uQ2xvc2U6ICgpID0+IHZvaWQKICBzZWxlY3RlZE1vZGVsOiBzdHJpbmcKICBvblNlbGVjdDogKG1vZGVsSWQ6IHN0cmluZykgPT4gdm9pZAp9CgpleHBvcnQgZnVuY3Rpb24gTW9kZWxTZWxlY3Rvcih7IG9wZW4sIG9uQ2xvc2UsIHNlbGVjdGVkTW9kZWwsIG9uU2VsZWN0IH06IE1vZGVsU2VsZWN0b3JQcm9wcykgewogIHJldHVybiAoCiAgICA8RGlhbG9nIG9wZW49e29wZW59IG9uT3BlbkNoYW5nZT17diA9PiAhdiAmJiBvbkNsb3NlKCl9PgogICAgICA8RGlhbG9nQ29udGVudCBjbGFzc05hbWU9Im1heC13LWxnIj4KICAgICAgICA8RGlhbG9nSGVhZGVyPgogICAgICAgICAgPERpYWxvZ1RpdGxlPkNob29zZSBhIG1vZGVsPC9EaWFsb2dUaXRsZT4KICAgICAgICA8L0RpYWxvZ0hlYWRlcj4KICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ic3BhY2UteS0yIG10LTIiPgogICAgICAgICAge0ZFQVRVUkVEX01PREVMUy5tYXAobW9kZWwgPT4gewogICAgICAgICAgICBjb25zdCBJY29uID0gVElFUl9JQ09OU1ttb2RlbC50aWVyID8/ICdmcmVlJ10gPz8gWmFwCiAgICAgICAgICAgIGNvbnN0IGlzU2VsZWN0ZWQgPSBzZWxlY3RlZE1vZGVsID09PSBtb2RlbC5pZAogICAgICAgICAgICByZXR1cm4gKAogICAgICAgICAgICAgIDxtb3Rpb24uYnV0dG9uCiAgICAgICAgICAgICAgICBrZXk9e21vZGVsLmlkfQogICAgICAgICAgICAgICAgd2hpbGVUYXA9e3sgc2NhbGU6IDAuOTkgfX0KICAgICAgICAgICAgICAgIG9uQ2xpY2s9eygpID0+IHsgb25TZWxlY3QobW9kZWwuaWQpOyBvbkNsb3NlKCkgfX0KICAgICAgICAgICAgICAgIGNsYXNzTmFtZT17Y24oCiAgICAgICAgICAgICAgICAgICd3LWZ1bGwgZmxleCBpdGVtcy1zdGFydCBnYXAtMyByb3VuZGVkLXhsIHAtMyB0ZXh0LWxlZnQgdHJhbnNpdGlvbi1jb2xvcnMgYm9yZGVyJywKICAgICAgICAgICAgICAgICAgaXNTZWxlY3RlZAogICAgICAgICAgICAgICAgICAgID8gJ2JnLXByaW1hcnkvOCBib3JkZXItcHJpbWFyeS8zMCcKICAgICAgICAgICAgICAgICAgICA6ICdib3JkZXItdHJhbnNwYXJlbnQgaG92ZXI6Ymctc2Vjb25kYXJ5IGhvdmVyOmJvcmRlci1ib3JkZXInCiAgICAgICAgICAgICAgICApfQogICAgICAgICAgICAgID4KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPXtjbignbXQtMC41JywgVElFUl9DT0xPUlNbbW9kZWwudGllciA/PyAnZnJlZSddKX0+CiAgICAgICAgICAgICAgICAgIDxJY29uIGNsYXNzTmFtZT0iaC01IHctNSIgLz4KICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXgtMSBtaW4tdy0wIj4KICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggaXRlbXMtY2VudGVyIGdhcC0yIj4KICAgICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9InRleHQtc20gZm9udC1tZWRpdW0iPnttb2RlbC5uYW1lfTwvc3Bhbj4KICAgICAgICAgICAgICAgICAgICB7bW9kZWwudGllciA9PT0gJ3VsdHJhJyAmJiA8QmFkZ2UgdmFyaWFudD0ic2Vjb25kYXJ5IiBjbGFzc05hbWU9InRleHQteHMiPlBybzwvQmFkZ2U+fQogICAgICAgICAgICAgICAgICAgIHtpc1NlbGVjdGVkICYmIDxDaGVjayBjbGFzc05hbWU9ImgtMy41IHctMy41IHRleHQtcHJpbWFyeSBtbC1hdXRvIiAvPn0KICAgICAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC14cyB0ZXh0LW11dGVkLWZvcmVncm91bmQgbXQtMC41Ij57bW9kZWwuZGVzY3JpcHRpb259PC9wPgogICAgICAgICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTIgbXQtMS41Ij4KICAgICAgICAgICAgICAgICAgICA8c3BhbiBjbGFzc05hbWU9InRleHQteHMgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kLzcwIj4KICAgICAgICAgICAgICAgICAgICAgIHsobW9kZWwuY29udGV4dFdpbmRvdyAvIDEwMDApLnRvRml4ZWQoMCl9SyBjb250ZXh0CiAgICAgICAgICAgICAgICAgICAgPC9zcGFuPgogICAgICAgICAgICAgICAgICAgIHttb2RlbC5jYXBhYmlsaXRpZXMuc2xpY2UoMCwgMykubWFwKGNhcCA9PiAoCiAgICAgICAgICAgICAgICAgICAgICA8c3BhbiBrZXk9e2NhcH0gY2xhc3NOYW1lPSJ0ZXh0LXhzIGJnLXNlY29uZGFyeSByb3VuZGVkLWZ1bGwgcHgtMiBweS0wLjUgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIGNhcGl0YWxpemUiPgogICAgICAgICAgICAgICAgICAgICAgICB7Y2FwfQogICAgICAgICAgICAgICAgICAgICAgPC9zcGFuPgogICAgICAgICAgICAgICAgICAgICkpfQogICAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgIDwvbW90aW9uLmJ1dHRvbj4KICAgICAgICAgICAgKQogICAgICAgICAgfSl9CiAgICAgICAgPC9kaXY+CiAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtbXV0ZWQtZm9yZWdyb3VuZC82MCBtdC0yIj4KICAgICAgICAgIE1vZGVsIHNlbGVjdGlvbiBhcHBsaWVzIHRvIHRoaXMgY29udmVyc2F0aW9uLiBDb25maWd1cmUgZGVmYXVsdHMgaW4gU2V0dGluZ3MuCiAgICAgICAgPC9wPgogICAgICA8L0RpYWxvZ0NvbnRlbnQ+CiAgICA8L0RpYWxvZz4KICApCn0K
+'use client'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { Check, Zap, Brain, Sparkles, FlaskConical } from 'lucide-react'
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { Badge } from '@/components/ui/badge'
+import { cn } from '@/lib/utils'
+import type { Model } from '@/types'
+
+const MODEL_DEFAULTS: Omit<Model, 'id' | 'name' | 'provider' | 'contextWindow' | 'tier' | 'description' | 'capabilities'> = {
+  supportsImages: true, supportsFiles: true, supportsVoice: false,
+  supportsSearch: false, supportsArtifacts: true,
+  maxOutputTokens: 4096, inputCostPer1k: 0, outputCostPer1k: 0,
+}
+
+const FEATURED_MODELS: Model[] = [
+  { ...MODEL_DEFAULTS, id: 'kroex-ultra', name: 'KROEX Ultra', provider: 'kroex', description: 'Maximum intelligence for complex, nuanced tasks', contextWindow: 200000, capabilities: ['vision', 'code', 'reasoning', 'documents'], tier: 'ultra' },
+  { ...MODEL_DEFAULTS, id: 'kroex-pro',   name: 'KROEX Pro',   provider: 'kroex', description: 'Balanced power and speed for most tasks',           contextWindow: 100000, capabilities: ['vision', 'code', 'reasoning'],            tier: 'pro'   },
+  { ...MODEL_DEFAULTS, id: 'kroex-fast',  name: 'KROEX Fast',  provider: 'kroex', description: 'Lightweight and snappy for quick answers',           contextWindow:  32000, capabilities: ['code', 'reasoning'],                       tier: 'free'  },
+]
+
+const TIER_ICONS = {
+  ultra:    Brain,
+  pro:      Sparkles,
+  free:     Zap,
+  research: FlaskConical,
+}
+
+const TIER_COLORS = {
+  ultra:    'text-purple-500',
+  pro:      'text-primary',
+  free:     'text-emerald-500',
+  research: 'text-orange-500',
+}
+
+interface ModelSelectorProps {
+  open: boolean
+  onClose: () => void
+  selectedModel: string
+  onSelect: (modelId: string) => void
+}
+
+export function ModelSelector({ open, onClose, selectedModel, onSelect }: ModelSelectorProps) {
+  return (
+    <Dialog open={open} onOpenChange={v => !v && onClose()}>
+      <DialogContent className="max-w-lg">
+        <DialogHeader>
+          <DialogTitle>Choose a model</DialogTitle>
+        </DialogHeader>
+        <div className="space-y-2 mt-2">
+          {FEATURED_MODELS.map(model => {
+            const Icon = TIER_ICONS[model.tier ?? 'free'] ?? Zap
+            const isSelected = selectedModel === model.id
+            return (
+              <motion.button
+                key={model.id}
+                whileTap={{ scale: 0.99 }}
+                onClick={() => { onSelect(model.id); onClose() }}
+                className={cn(
+                  'w-full flex items-start gap-3 rounded-xl p-3 text-left transition-colors border',
+                  isSelected
+                    ? 'bg-primary/8 border-primary/30'
+                    : 'border-transparent hover:bg-secondary hover:border-border'
+                )}
+              >
+                <div className={cn('mt-0.5', TIER_COLORS[model.tier ?? 'free'])}>
+                  <Icon className="h-5 w-5" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium">{model.name}</span>
+                    {model.tier === 'ultra' && <Badge variant="secondary" className="text-xs">Pro</Badge>}
+                    {isSelected && <Check className="h-3.5 w-3.5 text-primary ml-auto" />}
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-0.5">{model.description}</p>
+                  <div className="flex items-center gap-2 mt-1.5">
+                    <span className="text-xs text-muted-foreground/70">
+                      {(model.contextWindow / 1000).toFixed(0)}K context
+                    </span>
+                    {(model.capabilities ?? []).slice(0, 3).map(cap => (
+                      <span key={cap} className="text-xs bg-secondary rounded-full px-2 py-0.5 text-muted-foreground capitalize">
+                        {cap}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </motion.button>
+            )
+          })}
+        </div>
+        <p className="text-xs text-muted-foreground/60 mt-2">
+          Model selection applies to this conversation. Configure defaults in Settings.
+        </p>
+      </DialogContent>
+    </Dialog>
+  )
+}
