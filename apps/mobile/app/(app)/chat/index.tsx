@@ -7,6 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Animated, { FadeInDown } from 'react-native-reanimated'
 import { Ionicons } from '@expo/vector-icons'
 import { api } from '../../../lib/api'
+import { requireApiBaseUrl } from '../../../lib/config'
 
 interface Message {
   id: string
@@ -77,7 +78,7 @@ export default function ChatScreen() {
       if (conversationId) payload.conversation_id = conversationId
 
       // Use fetch directly to capture X-Conversation-Id from response headers.
-      const BASE_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8000'
+      const BASE_URL = requireApiBaseUrl()
       const { getItemAsync } = await import('expo-secure-store')
       const token = await getItemAsync('kroex_token')
 

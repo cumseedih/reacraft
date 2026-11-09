@@ -1,9 +1,16 @@
 import * as SecureStore from 'expo-secure-store'
-
-const BASE_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8000'
+import { requireApiBaseUrl } from './config'
 
 async function getToken(): Promise<string | null> {
   return SecureStore.getItemAsync('kroex_token')
+}
+
+/** Thrown when the server cannot be reached (DNS, connection refused, offline). */
+export class NetworkError extends Error {
+  constructor(message: string) {
+    super(message)
+    this.name = 'NetworkError'
+  }
 }
 
 async function request<T>(
@@ -11,18 +18,29 @@ async function request<T>(
   path: string,
   body?: unknown,
 ): Promise<T> {
+  const baseUrl = requireApiBaseUrl()
   const token = await getToken()
-  const res = await fetch(`${BASE_URL}${path}`, {
-    method,
-    headers: {
-      'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  })
+
+  let res: Response
+  try {
+    res = await fetch(`${baseUrl}${path}`, {
+      method,
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+      body: body ? JSON.stringify(body) : undefined,
+    })
+  } catch (e) {
+    throw new NetworkError(
+      `Can’t reach the KROEX server at ${baseUrl}. Check your connection and ` +
+        `that the server is running and reachable from this device.`,
+    )
+  }
+
   if (!res.ok) {
     const err = await res.json().catch(() => ({ detail: res.statusText }))
-    throw new Error(err.detail ?? 'Request failed')
+    throw new Error(err.detail ?? `Request failed (${res.status})`)
   }
   return res.json()
 }
@@ -38,15 +56,25 @@ export async function* streamSSE(
   path: string,
   body: unknown,
 ): AsyncGenerator<string> {
+  const baseUrl = requireApiBaseUrl()
   const token = await getToken()
-  const res = await fetch(`${BASE_URL}${path}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-    },
-    body: JSON.stringify(body),
-  })
+
+  let res: Response
+  try {
+    res = await fetch(`${baseUrl}${path}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(token ? { Authorization: `Bearer ${token}` } : {}),
+      },
+      body: JSON.stringify(body),
+    })
+  } catch (e) {
+    throw new NetworkError(
+      `Can’t reach the KROEX server at ${baseUrl}. Check your connection and ` +
+        `that the server is running and reachable from this device.`,
+    )
+  }
 
   if (!res.ok || !res.body) throw new Error('Stream failed')
 
