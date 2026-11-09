@@ -1,1 +1,12 @@
-bW9kdWxlLmV4cG9ydHMgPSBmdW5jdGlvbihhcGkpIHsKICBhcGkuY2FjaGUodHJ1ZSkKICByZXR1cm4gewogICAgcHJlc2V0czogWwogICAgICBbJ2JhYmVsLXByZXNldC1leHBvJywgeyBqc3hJbXBvcnRTb3VyY2U6ICduYXRpdmV3aW5kJyB9XSwKICAgIF0sCiAgICBwbHVnaW5zOiBbCiAgICAgICduYXRpdmV3aW5kL2JhYmVsJywKICAgICAgJ3JlYWN0LW5hdGl2ZS1yZWFuaW1hdGVkL3BsdWdpbicsCiAgICBdLAogIH0KfQo=
+module.exports = function(api) {
+  api.cache(true)
+  return {
+    presets: [
+      ['babel-preset-expo', { jsxImportSource: 'nativewind' }],
+    ],
+    plugins: [
+      'nativewind/babel',
+      'react-native-reanimated/plugin',
+    ],
+  }
+}

@@ -1,1 +1,46 @@
-ewogICJuYW1lIjogIkBrcm9leC9tb2JpbGUiLAogICJ2ZXJzaW9uIjogIjEuMC4wIiwKICAibWFpbiI6ICJleHBvLXJvdXRlci9lbnRyeSIsCiAgInNjcmlwdHMiOiB7CiAgICAic3RhcnQiOiAiZXhwbyBzdGFydCIsCiAgICAiYW5kcm9pZCI6ICJleHBvIHJ1bjphbmRyb2lkIiwKICAgICJpb3MiOiAiZXhwbyBydW46aW9zIiwKICAgICJsaW50IjogImVzbGludCAuIC0tZXh0IC50cywudHN4IiwKICAgICJ0ZXN0IjogImplc3QiCiAgfSwKICAiZGVwZW5kZW5jaWVzIjogewogICAgImV4cG8iOiAifjUyLjAuMCIsCiAgICAiZXhwby1yb3V0ZXIiOiAifjQuMC4wIiwKICAgICJleHBvLXN0YXR1cy1iYXIiOiAifjIuMC4wIiwKICAgICJleHBvLXNlY3VyZS1zdG9yZSI6ICJ+MTQuMC4wIiwKICAgICJleHBvLWZpbGUtc3lzdGVtIjogIn4xOC4wLjAiLAogICAgImV4cG8tZG9jdW1lbnQtcGlja2VyIjogIn4xMy4wLjAiLAogICAgImV4cG8taW1hZ2UtcGlja2VyIjogIn4xNi4wLjAiLAogICAgImV4cG8taGFwdGljcyI6ICJ+MTQuMC4wIiwKICAgICJleHBvLWF2IjogIn4xNS4wLjAiLAogICAgImV4cG8tc3BlZWNoIjogIn4xMy4wLjAiLAogICAgInJlYWN0IjogIjE4LjMuMSIsCiAgICAicmVhY3QtbmF0aXZlIjogIjAuNzYuMyIsCiAgICAicmVhY3QtbmF0aXZlLXNhZmUtYXJlYS1jb250ZXh0IjogIjQuMTIuMCIsCiAgICAicmVhY3QtbmF0aXZlLXNjcmVlbnMiOiAifjQuMS4wIiwKICAgICJyZWFjdC1uYXRpdmUtcmVhbmltYXRlZCI6ICJ+My4xNi4wIiwKICAgICJyZWFjdC1uYXRpdmUtZ2VzdHVyZS1oYW5kbGVyIjogIn4yLjIxLjAiLAogICAgInJlYWN0LW5hdGl2ZS1tYXJrZG93bi1kaXNwbGF5IjogIl43LjAuMiIsCiAgICAiQHRhbnN0YWNrL3JlYWN0LXF1ZXJ5IjogIl41LjYyLjMiLAogICAgInp1c3RhbmQiOiAiXjUuMC4yIiwKICAgICJheGlvcyI6ICJeMS43LjkiLAogICAgInJlYWN0LW5hdGl2ZS1mYXN0LWltYWdlIjogIl44LjYuMyIsCiAgICAibmF0aXZld2luZCI6ICJeNC4xLjIzIiwKICAgICJ0YWlsd2luZGNzcyI6ICJeMy40LjE0IiwKICAgICJAc2hvcGlmeS9mbGFzaC1saXN0IjogIjEuNy4xIiwKICAgICJyZWFjdC1uYXRpdmUtc3ZnIjogIjE1LjguMCIsCiAgICAidmljdG9yeS1uYXRpdmUiOiAiXjQxLjQuMSIsCiAgICAibW90aSI6ICJeMC4zMC4wIgogIH0sCiAgImRldkRlcGVuZGVuY2llcyI6IHsKICAgICJAYmFiZWwvY29yZSI6ICJeNy4yNS4wIiwKICAgICJAdHlwZXMvcmVhY3QiOiAifjE4LjMuMTIiLAogICAgInR5cGVzY3JpcHQiOiAiXjUuNy4yIgogIH0KfQo=
+{
+  "name": "@kroex/mobile",
+  "version": "1.0.0",
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "lint": "eslint . --ext .ts,.tsx",
+    "test": "jest"
+  },
+  "dependencies": {
+    "expo": "~52.0.0",
+    "expo-router": "~4.0.0",
+    "expo-status-bar": "~2.0.0",
+    "expo-secure-store": "~14.0.0",
+    "expo-file-system": "~18.0.0",
+    "expo-document-picker": "~13.0.0",
+    "expo-image-picker": "~16.0.0",
+    "expo-haptics": "~14.0.0",
+    "expo-av": "~15.0.0",
+    "expo-speech": "~13.0.0",
+    "react": "18.3.1",
+    "react-native": "0.76.3",
+    "react-native-safe-area-context": "4.12.0",
+    "react-native-screens": "~4.1.0",
+    "react-native-reanimated": "~3.16.0",
+    "react-native-gesture-handler": "~2.21.0",
+    "react-native-markdown-display": "^7.0.2",
+    "@tanstack/react-query": "^5.62.3",
+    "zustand": "^5.0.2",
+    "axios": "^1.7.9",
+    "react-native-fast-image": "^8.6.3",
+    "nativewind": "^4.1.23",
+    "tailwindcss": "^3.4.14",
+    "@shopify/flash-list": "1.7.1",
+    "react-native-svg": "15.8.0",
+    "victory-native": "^41.4.1",
+    "moti": "^0.30.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.0",
+    "@types/react": "~18.3.12",
+    "typescript": "^5.7.2"
+  }
+}
