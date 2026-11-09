@@ -37,7 +37,8 @@ PG_URL = os.environ.get(
 @pytest_asyncio.fixture
 async def pg_engine():
     from sqlalchemy.ext.asyncio import create_async_engine
-    engine = create_async_engine(PG_URL, echo=False, future=True)
+    from sqlalchemy.pool import NullPool
+    engine = create_async_engine(PG_URL, echo=False, future=True, poolclass=NullPool)
     yield engine
     await engine.dispose()
 

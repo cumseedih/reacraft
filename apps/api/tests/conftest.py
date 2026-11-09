@@ -16,7 +16,7 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sess
 from httpx import AsyncClient, ASGITransport
 
 
-@pytest_asyncio.fixture(scope='session')
+@pytest_asyncio.fixture
 async def engine():
     eng = create_async_engine('sqlite+aiosqlite:///:memory:', echo=False, future=True)
 
@@ -31,16 +31,23 @@ async def engine():
     from pgvector.sqlalchemy import Vector
     from sqlalchemy import Text
 
-    # SQLite does not support pgvector; swap Vector columns to Text
+    # SQLite does not support pgvector; swap Vector columns to Text temporarily.
+    # Save originals so PG tests running in the same session see the right types.
+    swapped: list[tuple] = []
     for table in Base.metadata.tables.values():
         for col in table.columns:
             if isinstance(col.type, Vector):
+                swapped.append((col, col.type))
                 col.type = Text()
 
     async with eng.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     yield eng
     await eng.dispose()
+
+    # Restore original Vector types so subsequent PG tests are unaffected.
+    for col, orig_type in swapped:
+        col.type = orig_type
 
 
 @pytest_asyncio.fixture
