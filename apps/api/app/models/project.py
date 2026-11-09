@@ -1,1 +1,31 @@
-aW1wb3J0IHV1aWQKZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUKZnJvbSBzcWxhbGNoZW15IGltcG9ydCBTdHJpbmcsIERhdGVUaW1lLCBUZXh0LCBGb3JlaWduS2V5LCBKU09OLCBmdW5jCmZyb20gc3FsYWxjaGVteS5vcm0gaW1wb3J0IE1hcHBlZCwgbWFwcGVkX2NvbHVtbgpmcm9tIC4uZGF0YWJhc2UgaW1wb3J0IEJhc2UKCmNsYXNzIFByb2plY3QoQmFzZSk6CiAgICBfX3RhYmxlbmFtZV9fID0gJ3Byb2plY3RzJwoKICAgIGlkOiBNYXBwZWRbc3RyXSA9IG1hcHBlZF9jb2x1bW4oU3RyaW5nKDM2KSwgcHJpbWFyeV9rZXk9VHJ1ZSwgZGVmYXVsdD1sYW1iZGE6IHN0cih1dWlkLnV1aWQ0KCkpKQogICAgdXNlcl9pZDogTWFwcGVkW3N0cl0gPSBtYXBwZWRfY29sdW1uKFN0cmluZygzNiksIEZvcmVpZ25LZXkoJ3VzZXJzLmlkJywgb25kZWxldGU9J0NBU0NBREUnKSwgbnVsbGFibGU9RmFsc2UsIGluZGV4PVRydWUpCiAgICBuYW1lOiBNYXBwZWRbc3RyXSA9IG1hcHBlZF9jb2x1bW4oU3RyaW5nKDI1NSksIG51bGxhYmxlPUZhbHNlKQogICAgZGVzY3JpcHRpb246IE1hcHBlZFtzdHIgfCBOb25lXSA9IG1hcHBlZF9jb2x1bW4oVGV4dCwgbnVsbGFibGU9VHJ1ZSkKICAgIHN5c3RlbV9wcm9tcHQ6IE1hcHBlZFtzdHIgfCBOb25lXSA9IG1hcHBlZF9jb2x1bW4oVGV4dCwgbnVsbGFibGU9VHJ1ZSkKICAgIGNvbG9yOiBNYXBwZWRbc3RyIHwgTm9uZV0gPSBtYXBwZWRfY29sdW1uKFN0cmluZygzMiksIG51bGxhYmxlPVRydWUpCiAgICBpY29uOiBNYXBwZWRbc3RyIHwgTm9uZV0gPSBtYXBwZWRfY29sdW1uKFN0cmluZyg2NCksIG51bGxhYmxlPVRydWUpCiAgICBtZXRhZGF0YV86IE1hcHBlZFtkaWN0XSA9IG1hcHBlZF9jb2x1bW4oJ21ldGFkYXRhJywgSlNPTiwgZGVmYXVsdD1kaWN0LCBudWxsYWJsZT1GYWxzZSkKICAgIGNyZWF0ZWRfYXQ6IE1hcHBlZFtkYXRldGltZV0gPSBtYXBwZWRfY29sdW1uKERhdGVUaW1lKHRpbWV6b25lPVRydWUpLCBzZXJ2ZXJfZGVmYXVsdD1mdW5jLm5vdygpKQogICAgdXBkYXRlZF9hdDogTWFwcGVkW2RhdGV0aW1lXSA9IG1hcHBlZF9jb2x1bW4oRGF0ZVRpbWUodGltZXpvbmU9VHJ1ZSksIHNlcnZlcl9kZWZhdWx0PWZ1bmMubm93KCksIG9udXBkYXRlPWZ1bmMubm93KCkpCgoKY2xhc3MgUHJvamVjdEZpbGUoQmFzZSk6CiAgICBfX3RhYmxlbmFtZV9fID0gJ3Byb2plY3RfZmlsZXMnCgogICAgaWQ6IE1hcHBlZFtzdHJdID0gbWFwcGVkX2NvbHVtbihTdHJpbmcoMzYpLCBwcmltYXJ5X2tleT1UcnVlLCBkZWZhdWx0PWxhbWJkYTogc3RyKHV1aWQudXVpZDQoKSkpCiAgICBwcm9qZWN0X2lkOiBNYXBwZWRbc3RyXSA9IG1hcHBlZF9jb2x1bW4oU3RyaW5nKDM2KSwgRm9yZWlnbktleSgncHJvamVjdHMuaWQnLCBvbmRlbGV0ZT0nQ0FTQ0FERScpLCBudWxsYWJsZT1GYWxzZSwgaW5kZXg9VHJ1ZSkKICAgIG5hbWU6IE1hcHBlZFtzdHJdID0gbWFwcGVkX2NvbHVtbihTdHJpbmcoNTEyKSwgbnVsbGFibGU9RmFsc2UpCiAgICBjb250ZW50X3R5cGU6IE1hcHBlZFtzdHJdID0gbWFwcGVkX2NvbHVtbihTdHJpbmcoMTI4KSwgbnVsbGFibGU9RmFsc2UpCiAgICBzaXplOiBNYXBwZWRbaW50XSA9IG1hcHBlZF9jb2x1bW4obnVsbGFibGU9RmFsc2UpCiAgICBzdG9yYWdlX2tleTogTWFwcGVkW3N0cl0gPSBtYXBwZWRfY29sdW1uKFN0cmluZyg1MTIpLCBudWxsYWJsZT1GYWxzZSkKICAgIGNyZWF0ZWRfYXQ6IE1hcHBlZFtkYXRldGltZV0gPSBtYXBwZWRfY29sdW1uKERhdGVUaW1lKHRpbWV6b25lPVRydWUpLCBzZXJ2ZXJfZGVmYXVsdD1mdW5jLm5vdygpKQo=
+import uuid
+from datetime import datetime
+from sqlalchemy import String, DateTime, Text, ForeignKey, JSON, func
+from sqlalchemy.orm import Mapped, mapped_column
+from ..database import Base
+
+class Project(Base):
+    __tablename__ = 'projects'
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    user_id: Mapped[str] = mapped_column(String(36), ForeignKey('users.id', ondelete='CASCADE'), nullable=False, index=True)
+    name: Mapped[str] = mapped_column(String(255), nullable=False)
+    description: Mapped[str | None] = mapped_column(Text, nullable=True)
+    system_prompt: Mapped[str | None] = mapped_column(Text, nullable=True)
+    color: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    icon: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    metadata_: Mapped[dict] = mapped_column('metadata', JSON, default=dict, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+
+
+class ProjectFile(Base):
+    __tablename__ = 'project_files'
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    project_id: Mapped[str] = mapped_column(String(36), ForeignKey('projects.id', ondelete='CASCADE'), nullable=False, index=True)
+    name: Mapped[str] = mapped_column(String(512), nullable=False)
+    content_type: Mapped[str] = mapped_column(String(128), nullable=False)
+    size: Mapped[int] = mapped_column(nullable=False)
+    storage_key: Mapped[str] = mapped_column(String(512), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())

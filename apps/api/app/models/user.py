@@ -1,1 +1,25 @@
-aW1wb3J0IHV1aWQKZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUKZnJvbSBzcWxhbGNoZW15IGltcG9ydCBTdHJpbmcsIERhdGVUaW1lLCBCb29sZWFuLCBFbnVtIGFzIFNBRW51bSwgZnVuYwpmcm9tIHNxbGFsY2hlbXkub3JtIGltcG9ydCBNYXBwZWQsIG1hcHBlZF9jb2x1bW4KZnJvbSAuLmRhdGFiYXNlIGltcG9ydCBCYXNlCgpjbGFzcyBVc2VyKEJhc2UpOgogICAgX190YWJsZW5hbWVfXyA9ICd1c2VycycKCiAgICBpZDogTWFwcGVkW3N0cl0gPSBtYXBwZWRfY29sdW1uKFN0cmluZygzNiksIHByaW1hcnlfa2V5PVRydWUsIGRlZmF1bHQ9bGFtYmRhOiBzdHIodXVpZC51dWlkNCgpKSkKICAgIGVtYWlsOiBNYXBwZWRbc3RyXSA9IG1hcHBlZF9jb2x1bW4oU3RyaW5nKDI1NSksIHVuaXF1ZT1UcnVlLCBudWxsYWJsZT1GYWxzZSwgaW5kZXg9VHJ1ZSkKICAgIG5hbWU6IE1hcHBlZFtzdHJdID0gbWFwcGVkX2NvbHVtbihTdHJpbmcoMjU1KSwgbnVsbGFibGU9RmFsc2UpCiAgICBoYXNoZWRfcGFzc3dvcmQ6IE1hcHBlZFtzdHJdID0gbWFwcGVkX2NvbHVtbihTdHJpbmcoMjU1KSwgbnVsbGFibGU9RmFsc2UpCiAgICBhdmF0YXI6IE1hcHBlZFtzdHIgfCBOb25lXSA9IG1hcHBlZF9jb2x1bW4oU3RyaW5nKDUxMiksIG51bGxhYmxlPVRydWUpCiAgICBwbGFuOiBNYXBwZWRbc3RyXSA9IG1hcHBlZF9jb2x1bW4oCiAgICAgICAgU0FFbnVtKCdmcmVlJywgJ3BybycsICdtYXgnLCAndWx0cmEnLCBuYW1lPSd1c2VyX3BsYW4nKSwKICAgICAgICBkZWZhdWx0PSdmcmVlJywKICAgICAgICBudWxsYWJsZT1GYWxzZSwKICAgICkKICAgIGlzX2FjdGl2ZTogTWFwcGVkW2Jvb2xdID0gbWFwcGVkX2NvbHVtbihCb29sZWFuLCBkZWZhdWx0PVRydWUsIG51bGxhYmxlPUZhbHNlKQogICAgaXNfdmVyaWZpZWQ6IE1hcHBlZFtib29sXSA9IG1hcHBlZF9jb2x1bW4oQm9vbGVhbiwgZGVmYXVsdD1GYWxzZSwgbnVsbGFibGU9RmFsc2UpCiAgICBjcmVhdGVkX2F0OiBNYXBwZWRbZGF0ZXRpbWVdID0gbWFwcGVkX2NvbHVtbihEYXRlVGltZSh0aW1lem9uZT1UcnVlKSwgc2VydmVyX2RlZmF1bHQ9ZnVuYy5ub3coKSkKICAgIHVwZGF0ZWRfYXQ6IE1hcHBlZFtkYXRldGltZV0gPSBtYXBwZWRfY29sdW1uKAogICAgICAgIERhdGVUaW1lKHRpbWV6b25lPVRydWUpLCBzZXJ2ZXJfZGVmYXVsdD1mdW5jLm5vdygpLCBvbnVwZGF0ZT1mdW5jLm5vdygpCiAgICApCg==
+import uuid
+from datetime import datetime
+from sqlalchemy import String, DateTime, Boolean, Enum as SAEnum, func
+from sqlalchemy.orm import Mapped, mapped_column
+from ..database import Base
+
+class User(Base):
+    __tablename__ = 'users'
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    email: Mapped[str] = mapped_column(String(255), unique=True, nullable=False, index=True)
+    name: Mapped[str] = mapped_column(String(255), nullable=False)
+    hashed_password: Mapped[str] = mapped_column(String(255), nullable=False)
+    avatar: Mapped[str | None] = mapped_column(String(512), nullable=True)
+    plan: Mapped[str] = mapped_column(
+        SAEnum('free', 'pro', 'max', 'ultra', name='user_plan'),
+        default='free',
+        nullable=False,
+    )
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+    is_verified: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now()
+    )

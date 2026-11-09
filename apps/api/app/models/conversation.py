@@ -1,1 +1,39 @@
-aW1wb3J0IHV1aWQKZnJvbSBkYXRldGltZSBpbXBvcnQgZGF0ZXRpbWUKZnJvbSBzcWxhbGNoZW15IGltcG9ydCBTdHJpbmcsIERhdGVUaW1lLCBCb29sZWFuLCBGb3JlaWduS2V5LCBUZXh0LCBKU09OLCBmdW5jCmZyb20gc3FsYWxjaGVteS5vcm0gaW1wb3J0IE1hcHBlZCwgbWFwcGVkX2NvbHVtbiwgcmVsYXRpb25zaGlwCmZyb20gLi5kYXRhYmFzZSBpbXBvcnQgQmFzZQoKY2xhc3MgQ29udmVyc2F0aW9uKEJhc2UpOgogICAgX190YWJsZW5hbWVfXyA9ICdjb252ZXJzYXRpb25zJwoKICAgIGlkOiBNYXBwZWRbc3RyXSA9IG1hcHBlZF9jb2x1bW4oU3RyaW5nKDM2KSwgcHJpbWFyeV9rZXk9VHJ1ZSwgZGVmYXVsdD1sYW1iZGE6IHN0cih1dWlkLnV1aWQ0KCkpKQogICAgdXNlcl9pZDogTWFwcGVkW3N0cl0gPSBtYXBwZWRfY29sdW1uKFN0cmluZygzNiksIEZvcmVpZ25LZXkoJ3VzZXJzLmlkJywgb25kZWxldGU9J0NBU0NBREUnKSwgbnVsbGFibGU9RmFsc2UsIGluZGV4PVRydWUpCiAgICBwcm9qZWN0X2lkOiBNYXBwZWRbc3RyIHwgTm9uZV0gPSBtYXBwZWRfY29sdW1uKFN0cmluZygzNiksIEZvcmVpZ25LZXkoJ3Byb2plY3RzLmlkJywgb25kZWxldGU9J1NFVCBOVUxMJyksIG51bGxhYmxlPVRydWUsIGluZGV4PVRydWUpCiAgICB0aXRsZTogTWFwcGVkW3N0cl0gPSBtYXBwZWRfY29sdW1uKFN0cmluZyg1MTIpLCBudWxsYWJsZT1GYWxzZSwgZGVmYXVsdD0nTmV3IGNvbnZlcnNhdGlvbicpCiAgICBtb2RlbDogTWFwcGVkW3N0cl0gPSBtYXBwZWRfY29sdW1uKFN0cmluZygxMjgpLCBudWxsYWJsZT1GYWxzZSwgZGVmYXVsdD0na3JvZXgtcHJvJykKICAgIHN5c3RlbV9wcm9tcHQ6IE1hcHBlZFtzdHIgfCBOb25lXSA9IG1hcHBlZF9jb2x1bW4oVGV4dCwgbnVsbGFibGU9VHJ1ZSkKICAgIHBpbm5lZDogTWFwcGVkW2Jvb2xdID0gbWFwcGVkX2NvbHVtbihCb29sZWFuLCBkZWZhdWx0PUZhbHNlLCBudWxsYWJsZT1GYWxzZSkKICAgIGFyY2hpdmVkOiBNYXBwZWRbYm9vbF0gPSBtYXBwZWRfY29sdW1uKEJvb2xlYW4sIGRlZmF1bHQ9RmFsc2UsIG51bGxhYmxlPUZhbHNlKQogICAgbWV0YWRhdGFfOiBNYXBwZWRbZGljdF0gPSBtYXBwZWRfY29sdW1uKCdtZXRhZGF0YScsIEpTT04sIGRlZmF1bHQ9ZGljdCwgbnVsbGFibGU9RmFsc2UpCiAgICBjcmVhdGVkX2F0OiBNYXBwZWRbZGF0ZXRpbWVdID0gbWFwcGVkX2NvbHVtbihEYXRlVGltZSh0aW1lem9uZT1UcnVlKSwgc2VydmVyX2RlZmF1bHQ9ZnVuYy5ub3coKSkKICAgIHVwZGF0ZWRfYXQ6IE1hcHBlZFtkYXRldGltZV0gPSBtYXBwZWRfY29sdW1uKERhdGVUaW1lKHRpbWV6b25lPVRydWUpLCBzZXJ2ZXJfZGVmYXVsdD1mdW5jLm5vdygpLCBvbnVwZGF0ZT1mdW5jLm5vdygpKQoKICAgIG1lc3NhZ2VzOiBNYXBwZWRbbGlzdFsnTWVzc2FnZSddXSA9IHJlbGF0aW9uc2hpcCgnTWVzc2FnZScsIGJhY2tfcG9wdWxhdGVzPSdjb252ZXJzYXRpb24nLCBjYXNjYWRlPSdhbGwsIGRlbGV0ZS1vcnBoYW4nKQoKCmNsYXNzIE1lc3NhZ2UoQmFzZSk6CiAgICBfX3RhYmxlbmFtZV9fID0gJ21lc3NhZ2VzJwoKICAgIGlkOiBNYXBwZWRbc3RyXSA9IG1hcHBlZF9jb2x1bW4oU3RyaW5nKDM2KSwgcHJpbWFyeV9rZXk9VHJ1ZSwgZGVmYXVsdD1sYW1iZGE6IHN0cih1dWlkLnV1aWQ0KCkpKQogICAgY29udmVyc2F0aW9uX2lkOiBNYXBwZWRbc3RyXSA9IG1hcHBlZF9jb2x1bW4oU3RyaW5nKDM2KSwgRm9yZWlnbktleSgnY29udmVyc2F0aW9ucy5pZCcsIG9uZGVsZXRlPSdDQVNDQURFJyksIG51bGxhYmxlPUZhbHNlLCBpbmRleD1UcnVlKQogICAgcm9sZTogTWFwcGVkW3N0cl0gPSBtYXBwZWRfY29sdW1uKFN0cmluZygzMiksIG51bGxhYmxlPUZhbHNlKSAgIyB1c2VyIHwgYXNzaXN0YW50IHwgc3lzdGVtCiAgICBjb250ZW50OiBNYXBwZWRbc3RyXSA9IG1hcHBlZF9jb2x1bW4oVGV4dCwgbnVsbGFibGU9RmFsc2UsIGRlZmF1bHQ9JycpCiAgICBtb2RlbDogTWFwcGVkW3N0ciB8IE5vbmVdID0gbWFwcGVkX2NvbHVtbihTdHJpbmcoMTI4KSwgbnVsbGFibGU9VHJ1ZSkKICAgIHRva2Vuc19pbjogTWFwcGVkW2ludCB8IE5vbmVdID0gbWFwcGVkX2NvbHVtbihudWxsYWJsZT1UcnVlKQogICAgdG9rZW5zX291dDogTWFwcGVkW2ludCB8IE5vbmVdID0gbWFwcGVkX2NvbHVtbihudWxsYWJsZT1UcnVlKQogICAgZmVlZGJhY2s6IE1hcHBlZFtzdHIgfCBOb25lXSA9IG1hcHBlZF9jb2x1bW4oU3RyaW5nKDE2KSwgbnVsbGFibGU9VHJ1ZSkgICMgdXAgfCBkb3duCiAgICBtZXRhZGF0YV86IE1hcHBlZFtkaWN0XSA9IG1hcHBlZF9jb2x1bW4oJ21ldGFkYXRhJywgSlNPTiwgZGVmYXVsdD1kaWN0LCBudWxsYWJsZT1GYWxzZSkKICAgIGNyZWF0ZWRfYXQ6IE1hcHBlZFtkYXRldGltZV0gPSBtYXBwZWRfY29sdW1uKERhdGVUaW1lKHRpbWV6b25lPVRydWUpLCBzZXJ2ZXJfZGVmYXVsdD1mdW5jLm5vdygpKQoKICAgIGNvbnZlcnNhdGlvbjogTWFwcGVkWydDb252ZXJzYXRpb24nXSA9IHJlbGF0aW9uc2hpcCgnQ29udmVyc2F0aW9uJywgYmFja19wb3B1bGF0ZXM9J21lc3NhZ2VzJykK
+import uuid
+from datetime import datetime
+from sqlalchemy import String, DateTime, Boolean, ForeignKey, Text, JSON, func
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from ..database import Base
+
+class Conversation(Base):
+    __tablename__ = 'conversations'
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    user_id: Mapped[str] = mapped_column(String(36), ForeignKey('users.id', ondelete='CASCADE'), nullable=False, index=True)
+    project_id: Mapped[str | None] = mapped_column(String(36), ForeignKey('projects.id', ondelete='SET NULL'), nullable=True, index=True)
+    title: Mapped[str] = mapped_column(String(512), nullable=False, default='New conversation')
+    model: Mapped[str] = mapped_column(String(128), nullable=False, default='kroex-pro')
+    system_prompt: Mapped[str | None] = mapped_column(Text, nullable=True)
+    pinned: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    archived: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
+    metadata_: Mapped[dict] = mapped_column('metadata', JSON, default=dict, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
+
+    messages: Mapped[list['Message']] = relationship('Message', back_populates='conversation', cascade='all, delete-orphan')
+
+
+class Message(Base):
+    __tablename__ = 'messages'
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))
+    conversation_id: Mapped[str] = mapped_column(String(36), ForeignKey('conversations.id', ondelete='CASCADE'), nullable=False, index=True)
+    role: Mapped[str] = mapped_column(String(32), nullable=False)  # user | assistant | system
+    content: Mapped[str] = mapped_column(Text, nullable=False, default='')
+    model: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    tokens_in: Mapped[int | None] = mapped_column(nullable=True)
+    tokens_out: Mapped[int | None] = mapped_column(nullable=True)
+    feedback: Mapped[str | None] = mapped_column(String(16), nullable=True)  # up | down
+    metadata_: Mapped[dict] = mapped_column('metadata', JSON, default=dict, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+    conversation: Mapped['Conversation'] = relationship('Conversation', back_populates='messages')
