@@ -76,12 +76,8 @@ async def search_memories_endpoint(
 ):
     """Semantic memory search. Returns closest memories to query q."""
     from ..services.retrieval import search_memories
-    from ..services.embeddings import generate_embedding
 
-    has_embedding_key = bool(generate_embedding.__module__)  # just ensure import works
-    embedding = await generate_embedding(q)
-    contents = await search_memories(current_user.id, q, db, limit=limit)
-    method = 'semantic' if embedding is not None else 'recency'
+    contents, method = await search_memories(current_user.id, q, db, limit=limit)
     return MemorySearchResult(contents=contents, method=method)
 
 

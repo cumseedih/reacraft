@@ -2,6 +2,11 @@
 Semantic retrieval via pgvector cosine similarity.
 Falls back to recency ordering when no embedding is available (no API key,
 pgvector absent, or embedding column is TEXT).
+
+Both search_* functions return (contents, method) where method is either
+'semantic' (cosine similarity was used and returned rows) or 'recency'
+(fallback path).  This is the single source of truth so callers report the
+method that was actually used.
 """
 import logging
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -11,12 +16,7 @@ from ..services.embeddings import generate_embedding
 
 logger = logging.getLogger(__name__)
 
-VECTOR_CAST = "CAST(:vec AS vector)"
-
-
-def _is_vector_column(engine_url: str) -> bool:
-    """True when the DB is PostgreSQL (pgvector may be present)."""
-    return engine_url.startswith('postgresql')
+RetrievalResult = tuple[list[str], str]  # (contents, method)
 
 
 async def search_memories(
@@ -24,13 +24,12 @@ async def search_memories(
     query: str,
     db: AsyncSession,
     limit: int = 5,
-) -> list[str]:
+) -> RetrievalResult:
     """
-    Return up to `limit` memory contents most relevant to `query`.
+    Return (contents, method) for up to `limit` memories most relevant to `query`.
 
-    Uses cosine similarity when an embedding can be generated and the
-    database is PostgreSQL with pgvector.  Falls back to recency order.
-    Returns content strings, not ORM objects, so callers stay DB-agnostic.
+    method is 'semantic' when cosine similarity was used and returned rows,
+    'recency' otherwise.  Embedding generation is performed exactly once.
     """
     embedding = await generate_embedding(query)
 
@@ -47,7 +46,7 @@ async def search_memories(
             rows = result.fetchall()
             if rows:
                 logger.debug('Semantic memory search: %d results for user %s', len(rows), user_id)
-                return [r[0] for r in rows]
+                return ([r[0] for r in rows], 'semantic')
         except Exception as exc:
             logger.warning('Semantic memory search failed (%s), falling back to recency', exc)
 
@@ -59,7 +58,7 @@ async def search_memories(
         .order_by(Memory.created_at.desc())
         .limit(limit)
     )
-    return list(result.scalars().all())
+    return (list(result.scalars().all()), 'recency')
 
 
 async def search_document_chunks(
@@ -67,13 +66,12 @@ async def search_document_chunks(
     query: str,
     db: AsyncSession,
     limit: int = 5,
-) -> list[str]:
+) -> RetrievalResult:
     """
-    Return up to `limit` document chunk contents most relevant to `query`
-    for the given project.
+    Return (contents, method) for up to `limit` document chunks most relevant to `query`.
 
-    Uses cosine similarity when embedding is available, otherwise returns
-    the most-recently-created chunks (which at least surfaces something).
+    method is 'semantic' when cosine similarity was used and returned rows,
+    'recency' otherwise.  Embedding generation is performed exactly once.
     """
     embedding = await generate_embedding(query)
 
@@ -91,7 +89,7 @@ async def search_document_chunks(
             rows = result.fetchall()
             if rows:
                 logger.debug('Semantic doc search: %d chunks for project %s', len(rows), project_id)
-                return [r[0] for r in rows]
+                return ([r[0] for r in rows], 'semantic')
         except Exception as exc:
             logger.warning('Semantic doc search failed (%s), falling back to recency', exc)
 
@@ -104,7 +102,7 @@ async def search_document_chunks(
         .order_by(DocumentChunk.created_at.desc())
         .limit(limit)
     )
-    return list(result.scalars().all())
+    return (list(result.scalars().all()), 'recency')
 
 
 def build_memory_context(contents: list[str]) -> str:

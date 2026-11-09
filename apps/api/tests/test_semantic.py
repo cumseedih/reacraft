@@ -148,8 +148,9 @@ async def test_memory_recency_fallback(pg_db):
 
     from app.services.retrieval import search_memories
     # Pass empty query string; no OPENAI_API_KEY set so generate_embedding returns None
-    contents = await search_memories(user_id, 'any query', pg_db, limit=5)
+    contents, method = await search_memories(user_id, 'any query', pg_db, limit=5)
 
+    assert method == 'recency'
     assert len(contents) >= 2
     assert contents[0] == 'newer memory', f'Expected recency order, got: {contents}'
 
@@ -165,7 +166,7 @@ async def test_memory_search_user_isolation(pg_db):
     await _insert_memory(pg_db, user_b, 'secret memory of user B', embedding=emb)
 
     from app.services.retrieval import search_memories
-    contents = await search_memories(user_a, 'any query', pg_db, limit=10)
+    contents, _ = await search_memories(user_a, 'any query', pg_db, limit=10)
     assert 'secret memory of user B' not in contents
 
 
@@ -255,8 +256,9 @@ async def test_document_chunk_recency_fallback(pg_db):
     await _insert_chunk(pg_db, file_id, 'newer chunk', idx=1)
 
     from app.services.retrieval import search_document_chunks
-    contents = await search_document_chunks(project_id, 'any query', pg_db, limit=5)
+    contents, method = await search_document_chunks(project_id, 'any query', pg_db, limit=5)
 
+    assert method == 'recency'
     assert len(contents) >= 2
     assert contents[0] == 'newer chunk', f'Expected recency order, got: {contents}'
 
@@ -274,7 +276,7 @@ async def test_document_chunk_project_isolation(pg_db):
     await _insert_chunk(pg_db, file_b, 'secret chunk from project B', embedding=emb)
 
     from app.services.retrieval import search_document_chunks
-    contents = await search_document_chunks(project_a, 'any query', pg_db, limit=10)
+    contents, _ = await search_document_chunks(project_a, 'any query', pg_db, limit=10)
     assert 'secret chunk from project B' not in contents
 
 

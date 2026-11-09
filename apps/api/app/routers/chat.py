@@ -68,12 +68,12 @@ async def stream_chat_endpoint(
         db.add(conversation)
         await db.flush()
 
-    # Build context additions
-    memory_contents = await search_memories(current_user.id, request.message, db)
+    # Build context additions (each returns (contents, method); method logged but not surfaced)
+    memory_contents, _ = await search_memories(current_user.id, request.message, db)
     memory_ctx = build_memory_context(memory_contents)
     rag_ctx = ''
     if request.project_id:
-        doc_contents = await search_document_chunks(request.project_id, request.message, db)
+        doc_contents, _ = await search_document_chunks(request.project_id, request.message, db)
         rag_ctx = build_rag_context(doc_contents)
 
     system_parts = []
