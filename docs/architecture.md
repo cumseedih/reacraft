@@ -1,1 +1,70 @@
-IyBLUk9FWCBBcmNoaXRlY3R1cmUKCj4gVGhpbmsgZGVlcGVyLiBCdWlsZCBmdXJ0aGVyLgoKIyMgT3ZlcnZpZXcKCktST0VYIGlzIGEgcHJvZHVjdGlvbi1yZWFkeSBtdWx0aS1wbGF0Zm9ybSBBSSBhc3Npc3RhbnQgZWNvc3lzdGVtIGJ1aWx0IGFzIGEgcG5wbSBtb25vcmVwby4KCmBgYAprb2V4LwrilJzilIDilIAgYXBwcy8K4pSCICAg4pSc4pSA4pSAIHdlYi8gICAgICAgICMgTmV4dC5qcyAxNSArIFJlYWN0IDE5CuKUgiAgIOKUnOKUgOKUgCBhcGkvICAgICAgICAjIEZhc3RBUEkgKFB5dGhvbikK4pSCICAg4pSc4pSA4pSAIG1vYmlsZS8gICAgICMgRXhwbyA1MiAoUmVhY3QgTmF0aXZlKQrilIIgICDilJTilIDilIAgZGVza3RvcC8gICAjIFRhdXJpIDIKYGBgCgojIyBTdGFjayBTdW1tYXJ5CgojIyMgRnJvbnRlbmQgKGBhcHBzL3dlYmApCi0gTmV4dC5qcyAxNSwgUmVhY3QgMTksIFR5cGVTY3JpcHQKLSBUYWlsd2luZCBDU1MgdjMsIFJhZGl4IFVJLCBGcmFtZXIgTW90aW9uCi0gWnVzdGFuZCAoc3RhdGUpLCBUYW5TdGFjayBRdWVyeSAoc2VydmVyIHN0YXRlKQotIFNTRSBzdHJlYW1pbmcgdmlhIE5leHQuanMgQVBJIHJvdXRlcyAoa2VlcHMgQUkgQVBJIGtleXMgc2VydmVyLXNpZGUpCgojIyMgQmFja2VuZCAoYGFwcHMvYXBpYCkKLSBGYXN0QVBJICsgVXZpY29ybiwgUHl0aG9uIDMuMTIKLSBQb3N0Z3JlU1FMIDE2ICsgcGd2ZWN0b3IsIFJlZGlzIDcKLSBTUUxBbGNoZW15IDIuMCBhc3luYywgQWxlbWJpYyBtaWdyYXRpb25zCi0gSldUIGF1dGggKEhTMjU2KSwgc2xpZGluZy13aW5kb3cgcmF0ZSBsaW1pdGluZwotIEFJIFNESyBhZGFwdGVyczogQW50aHJvcGljLCBPcGVuQUksIEdvb2dsZSAoc2VydmVyLXNpZGUgb25seSkKCiMjIyBNb2JpbGUgKGBhcHBzL21vYmlsZWApCi0gRXhwbyA1MiwgUmVhY3QgTmF0aXZlIDAuNzYsIEV4cG8gUm91dGVyIDQKLSBOYXRpdmVXaW5kIChUYWlsd2luZCBmb3IgUk4pLCBaInVzdGFuZCwgVGFuU3RhY2sgUXVlcnkKLSBKV1Qgc3RvcmVkIGluIGV4cG8tc2VjdXJlLXN0b3JlIChub3QgbG9jYWxTdG9yYWdlKQotIFNTRSBzdHJlYW1pbmcgdmlhIGZldGNoICsgUmVhZGFibGVTdHJlYW0KCiMjIyBEZXNrdG9wIChgYXBwcy9kZXNrdG9wYCkKLSBUYXVyaSAyIChSdXN0IHNoZWxsKSArIFZpdGUgKyBSZWFjdCAxOSBmcm9udGVuZAotIFdlYlZpZXcgc2hvd3MgdGhlIG5leHQuanMgd2ViIGFwcCBpbiBkZXZlbG9wbWVudAotIFByb2R1Y3Rpb24gYnVuZGxlIHVzZXMgc3RhdGljIE5leHQuanMgZXhwb3J0CgojIyBNb2RlbCBSb3V0aW5nCgp8IEFsaWFzIHwgTW9kZWwgfCBVc2UgY2FzZSB8CnwtLS0tLS0tfC0tLS0tLS18LS0tLS0tLS0tLS18Cnwga3JvZXgtdWx0cmEgfCBjbGF1ZGUtb3B1cy00LTUgfCBDb21wbGV4IHJlYXNvbmluZywgY29kaW5nIHwKfCBrcm9leC1wcm8gfCBjbGF1ZGUtc29ubmV0LTQuNiB8IEJhbGFuY2VkIHBlcmZvcm1hbmNlIHwKfCBrcm9leC1mYXN0IHwgY2xhdWRlLWhhbmt1LTQuNSB8IFF1aWNrIHJlc3BvbnNlcyB8CgpBbHNvIHN1cHBvcnRlZDogYGdwdC00b2AsIGBncHQtNG8tbWluaWAsIGBnZW1pbmktZmxhc2hgLCBgZ2VtaW5pLXByb2AKCiMjIFNlY3VyaXR5CgotIEFJIEFQSSBrZXlzIG5ldmVyIGV4cG9zZWQgdG8gZnJvbnRlbmQKLSBTZXJ2ZXItc2lkZSBzZWNyZXRzIGxvYWRlZCBmcm9tIGVudmlyb25tZW50IHZhcmlhYmxlcwotIEpXVCBhdXRoIHdpdGggc2hvcnQgZXhwaXJ5ICtyZWZyZXNoIHRva2VucwotIFJhdGUgbGltaXRpbmcgb24gYWxsIEFQSSBlbmRwb2ludHMKLSBYU1MgYW5kIENTUkYgaGVhZGVycyBpbiBOZXh0LmpzCgojIyBEZXBsb3ltZW50CgpSdW4gdGhlIGZ1bGwgc3RhY2sgbG9jYWxseSB3aXRoOgoKYGBgYmFzaApkb2NrZXIgY29tcG9zZSB1cCAtLWJ1aWxkCmBgYAoKU2VydmljZXM6IHBvc3RncmVzOjU0MzIsIHJlZGlzOjYzNzksIGFwaTo4MDAwLCB3ZWI6MzAwMAo=
+# KROEX Architecture
+
+> Think deeper. Build further.
+
+## Overview
+
+KROEX is a production-ready multi-platform AI assistant ecosystem built as a pnpm monorepo.
+
+```
+koex/
+├── apps/
+│   ├── web/        # Next.js 15 + React 19
+│   ├── api/        # FastAPI (Python)
+│   ├── mobile/     # Expo 52 (React Native)
+│   └── desktop/   # Tauri 2
+```
+
+## Stack Summary
+
+### Frontend (`apps/web`)
+- Next.js 15, React 19, TypeScript
+- Tailwind CSS v3, Radix UI, Framer Motion
+- Zustand (state), TanStack Query (server state)
+- SSE streaming via Next.js API routes (keeps AI API keys server-side)
+
+### Backend (`apps/api`)
+- FastAPI + Uvicorn, Python 3.12
+- PostgreSQL 16 + pgvector, Redis 7
+- SQLAlchemy 2.0 async, Alembic migrations
+- JWT auth (HS256), sliding-window rate limiting
+- AI SDK adapters: Anthropic, OpenAI, Google (server-side only)
+
+### Mobile (`apps/mobile`)
+- Expo 52, React Native 0.76, Expo Router 4
+- NativeWind (Tailwind for RN), Zustand, TanStack Query
+- JWT stored in expo-secure-store (not localStorage)
+- SSE streaming via fetch + ReadableStream
+
+### Desktop (`apps/desktop`)
+- Tauri 2 (Rust shell) + Vite + React 19 frontend
+- WebView shows the next.js web app in development
+- Production bundle uses static Next.js export
+
+## Model Routing
+
+| Alias | Model | Use case |
+|-------|-------|-----------|
+| kroex-ultra | claude-opus-4-5 | Complex reasoning, coding |
+| kroex-pro | claude-sonnet-4-6 | Balanced performance |
+| kroex-fast | claude-haiku-4-5 | Quick responses |
+
+Also supported: `gpt-4o`, `gpt-4o-mini`, `gemini-flash`, `gemini-pro`
+
+## Security
+
+- AI API keys never exposed to frontend
+- Server-side secrets loaded from environment variables
+- JWT auth with short expiry + refresh tokens
+- Rate limiting on all API endpoints
+- XSS and CSRF headers in Next.js
+
+## Deployment
+
+Run the full stack locally with:
+
+```bash
+docker compose up --build
+```
+
+Services: postgres:5432, redis:6379, api:8000, web:3000
