@@ -1,1 +1,266 @@
-J3VzZSBjbGllbnQnCmltcG9ydCB7IHVzZVN0YXRlLCB1c2VSZWYsIHVzZUNhbGxiYWNrLCB1c2VFZmZlY3QgfSBmcm9tICdyZWFjdCcKaW1wb3J0IHsgbW90aW9uLCBBbmltYXRlUHJlc2VuY2UgfSBmcm9tICdmcmFtZXItbW90aW9uJwppbXBvcnQgewogIFNlbmQsIFNxdWFyZSwgUGFwZXJjbGlwLCBNaWMsIE1pY09mZiwgR2xvYmUsIFphcCwKICBYLCBGaWxlVGV4dCwgSW1hZ2UsIFNwYXJrbGVzLCBDaGV2cm9uRG93biwKfSBmcm9tICdsdWNpZGUtcmVhY3QnCmltcG9ydCB7IEJ1dHRvbiB9IGZyb20gJ0AvY29tcG9uZW50cy91aS9idXR0b24nCmltcG9ydCB7IFdpdGhUb29sdGlwIH0gZnJvbSAnQC9jb21wb25lbnRzL3VpL3Rvb2x0aXAnCmltcG9ydCB7IGNuLCBmb3JtYXRCeXRlcywgaXNJbWFnZUZpbGUgfSBmcm9tICdAL2xpYi91dGlscycKaW1wb3J0IHsgdXNlU2V0dGluZ3NTdG9yZSB9IGZyb20gJ0Avc3RvcmUvc2V0dGluZ3MnCgppbnRlcmZhY2UgQ29tcG9zZXJGaWxlIHsKICBpZDogc3RyaW5nCiAgZmlsZTogRmlsZQogIHByZXZpZXc/OiBzdHJpbmcKfQoKaW50ZXJmYWNlIENvbXBvc2VyUHJvcHMgewogIG9uU2VuZDogKGNvbnRlbnQ6IHN0cmluZywgZmlsZXM6IEZpbGVbXSkgPT4gUHJvbWlzZTx2b2lkPgogIG9uU3RvcD86ICgpID0+IHZvaWQKICBpc1N0cmVhbWluZz86IGJvb2xlYW4KICBkaXNhYmxlZD86IGJvb2xlYW4KICBwbGFjZWhvbGRlcj86IHN0cmluZwogIG1vZGVsPzogc3RyaW5nCiAgb25Nb2RlbENsaWNrPzogKCkgPT4gdm9pZAp9CgpleHBvcnQgZnVuY3Rpb24gQ29tcG9zZXIoewogIG9uU2VuZCwKICBvblN0b3AsCiAgaXNTdHJlYW1pbmcsCiAgZGlzYWJsZWQsCiAgcGxhY2Vob2xkZXIgPSAnTWVzc2FnZSBLUk9FWOKApicsCiAgbW9kZWwsCiAgb25Nb2RlbENsaWNrLAp9OiBDb21wb3NlclByb3BzKSB7CiAgY29uc3QgW3RleHQsIHNldFRleHRdID0gdXNlU3RhdGUoJycpCiAgY29uc3QgW2ZpbGVzLCBzZXRGaWxlc10gPSB1c2VTdGF0ZTxDb21wb3NlckZpbGVbXT4oW10pCiAgY29uc3QgW2lzTGlzdGVuaW5nLCBzZXRJc0xpc3RlbmluZ10gPSB1c2VTdGF0ZShmYWxzZSkKICBjb25zdCBbc2VhcmNoRW5hYmxlZCwgc2V0U2VhcmNoRW5hYmxlZF0gPSB1c2VTdGF0ZShmYWxzZSkKICBjb25zdCB0ZXh0YXJlYVJlZiA9IHVzZVJlZjxIVE1MVGV4dEFyZWFFbGVtZW50PihudWxsKQogIGNvbnN0IGZpbGVJbnB1dFJlZiA9IHVzZVJlZjxIVE1MSW5wdXRFbGVtZW50PihudWxsKQogIGNvbnN0IHsgZW50ZXJUb1NlbmQgfSA9IHVzZVNldHRpbmdzU3RvcmUoKQoKICAvLyBBdXRvLXJlc2l6ZSB0ZXh0YXJlYQogIHVzZUVmZmVjdCgoKSA9PiB7CiAgICBjb25zdCB0YSA9IHRleHRhcmVhUmVmLmN1cnJlbnQKICAgIGlmICghdGEpIHJldHVybgogICAgdGEuc3R5bGUuaGVpZ2h0ID0gJ2F1dG8nCiAgICB0YS5zdHlsZS5oZWlnaHQgPSBgJHtNYXRoLm1pbih0YS5zY3JvbGxIZWlnaHQsIDMwMCl9cHhgCiAgfSwgW3RleHRdKQoKICBjb25zdCBzdWJtaXQgPSB1c2VDYWxsYmFjayhhc3luYyAoKSA9PiB7CiAgICBjb25zdCB0cmltbWVkID0gdGV4dC50cmltKCkKICAgIGlmICghdHJpbW1lZCAmJiBmaWxlcy5sZW5ndGggPT09IDApIHJldHVybgogICAgaWYgKGlzU3RyZWFtaW5nKSByZXR1cm4KICAgIGNvbnN0IGZpbGVMaXN0ID0gZmlsZXMubWFwKGYgPT4gZi5maWxlKQogICAgc2V0VGV4dCgnJykKICAgIHNldEZpbGVzKFtdKQogICAgaWYgKHRleHRhcmVhUmVmLmN1cnJlbnQpIHRleHRhcmVhUmVmLmN1cnJlbnQuc3R5bGUuaGVpZ2h0ID0gJ2F1dG8nCiAgICBhd2FpdCBvblNlbmQodHJpbW1lZCwgZmlsZUxpc3QpCiAgfSwgW3RleHQsIGZpbGVzLCBpc1N0cmVhbWluZywgb25TZW5kXSkKCiAgY29uc3QgaGFuZGxlS2V5RG93biA9IChlOiBSZWFjdC5LZXlib2FyZEV2ZW50KSA9PiB7CiAgICBpZiAoZS5rZXkgPT09ICdFbnRlcicpIHsKICAgICAgaWYgKGVudGVyVG9TZW5kICYmICFlLnNoaWZ0S2V5KSB7IGUucHJldmVudERlZmF1bHQoKTsgc3VibWl0KCkgfQogICAgICBlbHNlIGlmICghZW50ZXJUb1NlbmQgJiYgKGUubWV0YUtleSB8fCBlLmN0cmxLZXkpKSB7IGUucHJldmVudERlZmF1bHQoKTsgc3VibWl0KCkgfQogICAgfQogIH0KCiAgY29uc3QgaGFuZGxlRmlsZXMgPSAoZTogUmVhY3QuQ2hhbmdlRXZlbnQ8SFRNTElucHV0RWxlbWVudD4pID0+IHsKICAgIGNvbnN0IG5ld0ZpbGVzID0gQXJyYXkuZnJvbShlLnRhcmdldC5maWxlcyA/PyBbXSkubWFwKGYgPT4gKHsKICAgICAgaWQ6IGNyeXB0by5yYW5kb21VVUlEKCksCiAgICAgIGZpbGU6IGYsCiAgICAgIHByZXZpZXc6IGlzSW1hZ2VGaWxlKGYubmFtZSkgPyBVUkwuY3JlYXRlT2JqZWN0VVJMKGYpIDogdW5kZWZpbmVkLAogICAgfSkpCiAgICBzZXRGaWxlcyhwcmV2ID0+IFsuLi5wcmV2LCAuLi5uZXdGaWxlc10pCiAgICBpZiAoZmlsZUlucHV0UmVmLmN1cnJlbnQpIGZpbGVJbnB1dFJlZi5jdXJyZW50LnZhbHVlID0gJycKICB9CgogIGNvbnN0IHJlbW92ZUZpbGUgPSAoaWQ6IHN0cmluZykgPT4gewogICAgc2V0RmlsZXMocHJldiA9PiB7CiAgICAgIGNvbnN0IGYgPSBwcmV2LmZpbmQoeCA9PiB4LmlkID09PSBpZCkKICAgICAgaWYgKGY/LnByZXZpZXcpIFVSTC5yZXZva2VPYmplY3RVUkwoZi5wcmV2aWV3KQogICAgICByZXR1cm4gcHJldi5maWx0ZXIoeCA9PiB4LmlkICE9PSBpZCkKICAgIH0pCiAgfQoKICAvLyBQYXN0ZSBmaWxlcwogIGNvbnN0IGhhbmRsZVBhc3RlID0gKGU6IFJlYWN0LkNsaXBib2FyZEV2ZW50KSA9PiB7CiAgICBjb25zdCBpdGVtcyA9IEFycmF5LmZyb20oZS5jbGlwYm9hcmREYXRhLml0ZW1zKQogICAgY29uc3QgaW1hZ2VJdGVtcyA9IGl0ZW1zLmZpbHRlcihpID0+IGkua2luZCA9PT0gJ2ZpbGUnICYmIGkudHlwZS5zdGFydHNXaXRoKCdpbWFnZS8nKSkKICAgIGlmIChpbWFnZUl0ZW1zLmxlbmd0aCA+IDApIHsKICAgICAgZS5wcmV2ZW50RGVmYXVsdCgpCiAgICAgIGNvbnN0IG5ld0ZpbGVzID0gaW1hZ2VJdGVtcy5tYXAoaXRlbSA9PiB7CiAgICAgICAgY29uc3QgZmlsZSA9IGl0ZW0uZ2V0QXNGaWxlKCkhCiAgICAgICAgcmV0dXJuIHsgaWQ6IGNyeXB0by5yYW5kb21VVUlEKCksIGZpbGUsIHByZXZpZXc6IFVSTC5jcmVhdGVPYmplY3RVUkwoZmlsZSkgfQogICAgICB9KQogICAgICBzZXRGaWxlcyhwcmV2ID0+IFsuLi5wcmV2LCAuLi5uZXdGaWxlc10pCiAgICB9CiAgfQoKICBjb25zdCB0b2dnbGVWb2ljZSA9ICgpID0+IHsKICAgIC8vIFdlYiBTcGVlY2ggQVBJCiAgICBpZiAoISgnd2Via2l0U3BlZWNoUmVjb2duaXRpb24nIGluIHdpbmRvdyB8fCAnU3BlZWNoUmVjb2duaXRpb24nIGluIHdpbmRvdykpIHJldHVybgogICAgc2V0SXNMaXN0ZW5pbmcodiA9PiAhdikKICB9CgogIGNvbnN0IGhhc0NvbnRlbnQgPSB0ZXh0LnRyaW0oKS5sZW5ndGggPiAwIHx8IGZpbGVzLmxlbmd0aCA+IDAKCiAgcmV0dXJuICgKICAgIDxkaXYgY2xhc3NOYW1lPSJweC00IHBiLTQgcHQtMiI+CiAgICAgIHsvKiBNb2RlbCBzZWxlY3RvciBwaWxsICovfQogICAgICB7bW9kZWwgJiYgKAogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGp1c3RpZnktY2VudGVyIG1iLTIiPgogICAgICAgICAgPGJ1dHRvbgogICAgICAgICAgICBvbkNsaWNrPXtvbk1vZGVsQ2xpY2t9CiAgICAgICAgICAgIGNsYXNzTmFtZT0iaW5saW5lLWZsZXggaXRlbXMtY2VudGVyIGdhcC0xLjUgdGV4dC14cyB0ZXh0LW11dGVkLWZvcmVncm91bmQgaG92ZXI6dGV4dC1mb3JlZ3JvdW5kIHRyYW5zaXRpb24tY29sb3JzIGJnLXNlY29uZGFyeS82MCByb3VuZGVkLWZ1bGwgcHgtMyBweS0xIGhvdmVyOmJnLXNlY29uZGFyeSIKICAgICAgICAgID4KICAgICAgICAgICAgPFphcCBjbGFzc05hbWU9ImgtMyB3LTMiIC8+CiAgICAgICAgICAgIHttb2RlbH0KICAgICAgICAgICAgPENoZXZyb25Eb3duIGNsYXNzTmFtZT0iaC0zIHctMyIgLz4KICAgICAgICAgIDwvYnV0dG9uPgogICAgICAgIDwvZGl2PgogICAgICApfQoKICAgICAgPGRpdiBjbGFzc05hbWU9ImNvbXBvc2VyIG14LWF1dG8iIHN0eWxlPXt7IG1heFdpZHRoOiAndmFyKC0tY2hhdC1tYXgtd2lkdGgpJyB9fT4KICAgICAgICB7LyogRmlsZSBwcmV2aWV3cyAqL30KICAgICAgICA8QW5pbWF0ZVByZXNlbmNlPgogICAgICAgICAge2ZpbGVzLmxlbmd0aCA+IDAgJiYgKAogICAgICAgICAgICA8bW90aW9uLmRpdgogICAgICAgICAgICAgIGluaXRpYWw9e3sgaGVpZ2h0OiAwLCBvcGFjaXR5OiAwIH19CiAgICAgICAgICAgICAgYW5pbWF0ZT17eyBoZWlnaHQ6ICdhdXRvJywgb3BhY2l0eTogMSB9fQogICAgICAgICAgICAgIGV4aXQ9e3sgaGVpZ2h0OiAwLCBvcGFjaXR5OiAwIH19CiAgICAgICAgICAgICAgY2xhc3NOYW1lPSJmbGV4IGZsZXgtd3JhcCBnYXAtMiBwLTMgcGItMCIKICAgICAgICAgICAgPgogICAgICAgICAgICAgIHtmaWxlcy5tYXAoZiA9PiAoCiAgICAgICAgICAgICAgICA8ZGl2CiAgICAgICAgICAgICAgICAgIGtleT17Zi5pZH0KICAgICAgICAgICAgICAgICAgY2xhc3NOYW1lPSJyZWxhdGl2ZSBmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMiBiZy1zZWNvbmRhcnkgcm91bmRlZC14bCBweC0zIHB5LTIgdGV4dC1zbSBtYXgtd2ZbMjAwcHhdIGdyb3VwIgogICAgICAgICAgICAgICAgPgogICAgICAgICAgICAgICAgICB7Zi5wcmV2aWV3ID8gKAogICAgICAgICAgICAgICAgICAgIC8vIGVzbGludC1kaXNhYmxlLW5leHQtbGluZSBAbmV4dC9uZXh0L25vLWltZy1lbGVtZW50CiAgICAgICAgICAgICAgICAgICAgPGltZyBzcmM9e2YucHJldmlld30gYWx0PSIiIGNsYXNzTmFtZT0iaC04IHctOCBvYmplY3QtY292ZXIgcm91bmRlZC1sZyIgLz4KICAgICAgICAgICAgICAgICAgKSA6ICgKICAgICAgICAgICAgICAgICAgICA8RmlsZVRleHQgY2xhc3NOYW1lPSJoLTUgdy01IHRleHQtbXV0ZWQtZm9yZWdyb3VuZCBzaHJpbmstMCIgLz4KICAgICAgICAgICAgICAgICAgKX0KICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzc05hbWU9Im1pbi13LTAiPgogICAgICAgICAgICAgICAgICAgIDxwIGNsYXNzTmFtZT0idHJ1bmNhdGUgdGV4dC14cyBmb250LW1lZGl1bSI+e2YuZmlsZS5uYW1lfTwvcD4KICAgICAgICAgICAgICAgICAgICA8cCBjbGFzc05hbWU9InRleHQteHMgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIj57Zm9ybWF0Qnl0ZXMoZi5maWxlLnNpemUpfTwvcD4KICAgICAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgICAgICAgIDxidXR0b24KICAgICAgICAgICAgICAgICAgICBvbkNsaWNrPXsoKSA9PiByZW1vdmVGaWxlKGYuaWQpfQogICAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT0iYWJzb2x1dGUgLXRvcC0xLjUgLXJpZ2h0LTEuNSBiZy1tdXRlZCBib3JkZXIgYm9yZGVyLWJvcmRlciByb3VuZGVkLWZ1bGwgcC0wLjUgb3BhY2l0eS0wIGdyb3VwLWhvdmVyOm9wYWNpdHktMTAwIHRyYW5zaXRpb24tb3BhY2l0eSIKICAgICAgICAgICAgICAgICAgPgogICAgICAgICAgICAgICAgICAgIDxYIGNsYXNzTmFtZT0iaC0zIHctMyIgLz4KICAgICAgICAgICAgICAgICAgPC9idXR0b24+CiAgICAgICAgICAgICAgICA8L2Rpdj4KICAgICAgICAgICAgICApKX0KICAgICAgICAgICAgPC9tb3Rpb24uZGl2PgogICAgICAgICAgKX0KICAgICAgICA8L0FuaW1hdGVQcmVzZW5jZT4KCiAgICAgICAgey8qIFRleHQgaW5wdXQgKi99CiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggaXRlbXMtZW5kIGdhcC0yIHAtMyI+CiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleC0xIG1pbi13LTAiPgogICAgICAgICAgICA8dGV4dGFyZWEKICAgICAgICAgICAgICByZWY9e3RleHRhcmVhUmVmfQogICAgICAgICAgICAgIHZhbHVlPXt0ZXh0fQogICAgICAgICAgICAgIG9uQ2hhbmdlPXtlID0+IHNldFRleHQoZS50YXJnZXQudmFsdWUpfQogICAgICAgICAgICAgIG9uS2V5RG93bj17aGFuZGxlS2V5RG93bn0KICAgICAgICAgICAgICBvblBhc3RlPXtoYW5kbGVQYXN0ZX0KICAgICAgICAgICAgICBwbGFjZWhvbGRlcj17cGxhY2Vob2xkZXJ9CiAgICAgICAgICAgICAgZGlzYWJsZWQ9e2Rpc2FibGVkfQogICAgICAgICAgICAgIHJvd3M9ezF9CiAgICAgICAgICAgICAgY2xhc3NOYW1lPXtjbigKICAgICAgICAgICAgICAgICd3LWZ1bGwgYmctdHJhbnNwYXJlbnQgdGV4dC1zbSB0ZXh0LWZvcmVncm91bmQgcGxhY2Vob2xkZXI6dGV4dC1tdXRlZC1mb3JlZ3JvdW5kJywKICAgICAgICAgICAgICAgICdyZXNpemUtbm9uZSBvdXRsaW5lLW5vbmUgYm9yZGVyLW5vbmUgbGVhZGluZy1yZWxheGVkJywKICAgICAgICAgICAgICAgICdtYXgtaC1bMzAwcHhdIG92ZXJmbG93LXktYXV0bycsCiAgICAgICAgICAgICAgICBkaXNhYmxlZCAmJiAnb3BhY2l0eS01MCBjdXJzb3Itbm90LWFsbG93ZWQnCiAgICAgICAgICAgICAgKX0KICAgICAgICAgICAgLz4KICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvZGl2PgoKICAgICAgICB7LyogQm90dG9tIHRvb2xiYXIgKi99CiAgICAgICAgPGRpdiBjbGFzc05hbWU9ImZsZXggaXRlbXMtY2VudGVyIGp1c3RpZnktYmV0d2VlbiBweC0zIHBiLTIuNSI+CiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iZmxleCBpdGVtcy1jZW50ZXIgZ2FwLTAuNSI+CiAgICAgICAgICAgIHsvKiBGaWxlIGF0dGFjaCAqL30KICAgICAgICAgICAgPGlucHV0CiAgICAgICAgICAgICAgcmVmPXtmaWxlSW5wdXRSZWZ9CiAgICAgICAgICAgICAgdHlwZT0iZmlsZSIKICAgICAgICAgICAgICBtdWx0aXBsZQogICAgICAgICAgICAgIGFjY2VwdD0iaW1hZ2UvKiwucGRmLC5kb2MsLmRvY3gsLnR4dCwubWQsLmNzdiwuanNvbiwueG1sLC5weSwuanMsLnRzLC5qc3gsLnRzeCwuaHRtbCwuY3NzIgogICAgICAgICAgICAgIG9uQ2hhbmdlPXtoYW5kbGVGaWxlc30KICAgICAgICAgICAgICBjbGFzc05hbWU9ImhpZGRlbiIKICAgICAgICAgICAgLz4KICAgICAgICAgICAgPFdpdGhUb29sdGlwIHRpcD0iQXR0YWNoIGZpbGVzIj4KICAgICAgICAgICAgICA8QnV0dG9uCiAgICAgICAgICAgICAgICBzaXplPSJpY29uLXNtIgogICAgICAgICAgICAgICAgdmFyaWFudD0iZ2hvc3QiCiAgICAgICAgICAgICAgICBjbGFzc05hbWU9ImgtNyB3LTcgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIgogICAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gZmlsZUlucHV0UmVmLmN1cnJlbnQ/LmNsaWNrKCl9CiAgICAgICAgICAgICAgPgogICAgICAgICAgICAgICAgPFBhcGVyY2xpcCBjbGFzc05hbWU9ImgtNCB3LTQiIC8+CiAgICAgICAgICAgICAgPC9CdXR0b24+CiAgICAgICAgICAgIDwvV2l0aFRvb2x0aXA+CgogICAgICAgICAgICB7LyogV2ViIHNlYXJjaCB0b2dnbGUgKi99CiAgICAgICAgICAgIDxXaXRoVG9vbHRpcCB0aXA9e3NlYXJjaEVuYWJsZWQgPyAnRGlzYWJsZSBzZWFyY2gnIDogJ0VuYWJsZSBzZWFyY2gnfT4KICAgICAgICAgICAgICA8QnV0dG9uCiAgICAgICAgICAgICAgICBzaXplPSJpY29uLXNtIgogICAgICAgICAgICAgICAgdmFyaWFudD0iZ2hvc3QiCiAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2NuKCdoLTcgdy03Jywgc2VhcmNoRW5hYmxlZCA/ICd0ZXh0LXByaW1hcnknIDogJ3RleHQtbXV0ZWQtZm9yZWdyb3VuZCcpfQogICAgICAgICAgICAgICAgb25DbGljaz17KCkgPT4gc2V0U2VhcmNoRW5hYmxlZCh2ID0+ICF2KX0KICAgICAgICAgICAgICA+CiAgICAgICAgICAgICAgICA8R2xvYmUgY2xhc3NOYW1lPSJoLTQgdy00IiAvPgogICAgICAgICAgICAgIDwvQnV0dG9uPgogICAgICAgICAgICA8L1dpdGhUb29sdGlwPgoKICAgICAgICAgICAgey8qIFZvaWNlICovfQogICAgICAgICAgICA8V2l0aFRvb2x0aXAgdGlwPXtpc0xpc3RlbmluZyA/ICdTdG9wIGxpc3RlbmluZycgOiAnVm9pY2UgaW5wdXQnfT4KICAgICAgICAgICAgICA8QnV0dG9uCiAgICAgICAgICAgICAgICBzaXplPSJpY29uLXNtIgogICAgICAgICAgICAgICAgdmFyaWFudD0iZ2hvc3QiCiAgICAgICAgICAgICAgICBjbGFzc05hbWU9e2NuKCdoLTcgdy03JywgaXNMaXN0ZW5pbmcgPyAndGV4dC1kZXN0cnVjdGl2ZSBhbmltYXRlLXB1bHNlJyA6ICd0ZXh0LW11dGVkLWZvcmVncm91bmQnKX0KICAgICAgICAgICAgICAgIG9uQ2xpY2s9e3RvZ2dsZVZvaWNlfQogICAgICAgICAgICAgID4KICAgICAgICAgICAgICAgIHtpc0xpc3RlbmluZyA/IDxNaWNPZmYgY2xhc3NOYW1lPSJoLTQgdy00IiAvPiA6IDxNaWMgY2xhc3NOYW1lPSJoLTQgdy00IiAvPn0KICAgICAgICAgICAgICA8L0J1dHRvbj4KICAgICAgICAgICAgPC9XaXRoVG9vbHRpcD4KICAgICAgICAgIDwvZGl2PgoKICAgICAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMS41Ij4KICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtbXV0ZWQtZm9yZWdyb3VuZC81MCBoaWRkZW4gc206YmxvY2siPgogICAgICAgICAgICAgIHtlbnRlclRvU2VuZCA/ICfihrUgc2VuZCcgOiAn4oyY4oa1IHNlbmQnfQogICAgICAgICAgICA8L3NwYW4+CiAgICAgICAgICAgIHtpc1N0cmVhbWluZyA/ICgKICAgICAgICAgICAgICA8V2l0aFRvb2x0aXAgdGlwPSJTdG9wIGdlbmVyYXRpbmciPgogICAgICAgICAgICAgICAgPEJ1dHRvbgogICAgICAgICAgICAgICAgICBzaXplPSJpY29uLXNtIgogICAgICAgICAgICAgICAgICB2YXJpYW50PSJvdXRsaW5lIgogICAgICAgICAgICAgICAgICBjbGFzc05hbWU9ImgtOCB3LTggcm91bmRlZC14bCB0ZXh0LWRlc3RydWN0aXZlIGJvcmRlci1kZXN0cnVjdGl2ZS8zMCBob3ZlcjpiZy1kZXN0cnVjdGl2ZS8xMCIKICAgICAgICAgICAgICAgICAgb25DbGljaz17b25TdG9wfQogICAgICAgICAgICAgICAgPgogICAgICAgICAgICAgICAgICA8U3F1YXJlIGNsYXNzTmFtZT0iaC0zLjUgdy0zLjUiIGZpbGw9ImN1cnJlbnRDb2xvciIgLz4KICAgICAgICAgICAgICAgIDwvQnV0dG9uPgogICAgICAgICAgICAgIDwvV2l0aFRvb2x0aXA+CiAgICAgICAgICAgICkgOiAoCiAgICAgICAgICAgICAgPFdpdGhUb29sdGlwIHRpcD0iU2VuZCBtZXNzYWdlIj4KICAgICAgICAgICAgICAgIDxCdXR0b24KICAgICAgICAgICAgICAgICAgc2l6ZT0iaWNvbi1zbSIKICAgICAgICAgICAgICAgICAgb25DbGljaz17c3VibWl0fQogICAgICAgICAgICAgICAgICBkaXNhYmxlZD17IWhhc0NvbnRlbnQgfHwgZGlzYWJsZWR9CiAgICAgICAgICAgICAgICAgIGNsYXNzTmFtZT17Y24oCiAgICAgICAgICAgICAgICAgICAgJ2gtOCB3LTggcm91bmRlZC14bCB0cmFuc2l0aW9uLWFsbCBkdXJhdGlvbi0xNTAnLAogICAgICAgICAgICAgICAgICAgIGhhc0NvbnRlbnQKICAgICAgICAgICAgICAgICAgICAgID8gJ2JnLXByaW1hcnkgdGV4dC1wcmltYXJ5LWZvcmVncm91bmQgaG92ZXI6YmctcHJpbWFyeS85MCBzaGFkb3ctc20gc2hhZG93LXByaW1hcnkvMjAnCiAgICAgICAgICAgICAgICAgICAgICA6ICdiZy1tdXRlZCB0ZXh0LW11dGVkLWZvcmVncm91bmQgY3Vyc29yLW5vdC1hbGxvd2VkJwogICAgICAgICAgICAgICAgICApfQogICAgICAgICAgICAgICAgPgogICAgICAgICAgICAgICAgICA8U2VuZCBjbGFzc05hbWU9ImgtMy41IHctMy41IiAvPgogICAgICAgICAgICAgICAgPC9CdXR0b24+CiAgICAgICAgICAgICAgPC9XaXRoVG9vbHRpcD4KICAgICAgICAgICAgKX0KICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvZGl2PgogICAgICA8L2Rpdj4KCiAgICAgIDxwIGNsYXNzTmFtZT0idGV4dC1jZW50ZXIgdGV4dC14cyB0ZXh0LW11dGVkLWZvcmVncm91bmQvNTAgbXQtMiI+CiAgICAgICAgS1JPRVggY2FuIG1ha2UgbWlzdGFrZXMuIFZlcmlmeSBpbXBvcnRhbnQgaW5mb3JtYXRpb24uCiAgICAgIDwvcD4KICAgIDwvZGl2PgogICkKfQo=
+'use client'
+import { useState, useRef, useCallback, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import {
+  Send, Square, Paperclip, Mic, MicOff, Globe, Zap,
+  X, FileText, Image, Sparkles, ChevronDown,
+} from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { WithTooltip } from '@/components/ui/tooltip'
+import { cn, formatBytes, isImageFile } from '@/lib/utils'
+import { useSettingsStore } from '@/store/settings'
+
+interface ComposerFile {
+  id: string
+  file: File
+  preview?: string
+}
+
+interface ComposerProps {
+  onSend: (content: string, files: File[]) => Promise<void>
+  onStop?: () => void
+  isStreaming?: boolean
+  disabled?: boolean
+  placeholder?: string
+  model?: string
+  onModelClick?: () => void
+}
+
+export function Composer({
+  onSend,
+  onStop,
+  isStreaming,
+  disabled,
+  placeholder = 'Message KROEX…',
+  model,
+  onModelClick,
+}: ComposerProps) {
+  const [text, setText] = useState('')
+  const [files, setFiles] = useState<ComposerFile[]>([])
+  const [isListening, setIsListening] = useState(false)
+  const [searchEnabled, setSearchEnabled] = useState(false)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const { enterToSend } = useSettingsStore()
+
+  useEffect(() => {
+    const ta = textareaRef.current
+    if (!ta) return
+    ta.style.height = 'auto'
+    ta.style.height = `${Math.min(ta.scrollHeight, 300)}px`
+  }, [text])
+
+  const submit = useCallback(async () => {
+    const trimmed = text.trim()
+    if (!trimmed && files.length === 0) return
+    if (isStreaming) return
+    const fileList = files.map(f => f.file)
+    setText('')
+    setFiles([])
+    if (textareaRef.current) textareaRef.current.style.height = 'auto'
+    await onSend(trimmed, fileList)
+  }, [text, files, isStreaming, onSend])
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      if (enterToSend && !e.shiftKey) { e.preventDefault(); submit() }
+      else if (!enterToSend && (e.metaKey || e.ctrlKey)) { e.preventDefault(); submit() }
+    }
+  }
+
+  const handleFiles = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newFiles = Array.from(e.target.files ?? []).map(f => ({
+      id: crypto.randomUUID(),
+      file: f,
+      preview: isImageFile(f.name) ? URL.createObjectURL(f) : undefined,
+    }))
+    setFiles(prev => [...prev, ...newFiles])
+    if (fileInputRef.current) fileInputRef.current.value = ''
+  }
+
+  const removeFile = (id: string) => {
+    setFiles(prev => {
+      const f = prev.find(x => x.id === id)
+      if (f?.preview) URL.revokeObjectURL(f.preview)
+      return prev.filter(x => x.id !== id)
+    })
+  }
+
+  const handlePaste = (e: React.ClipboardEvent) => {
+    const items = Array.from(e.clipboardData.items)
+    const imageItems = items.filter(i => i.kind === 'file' && i.type.startsWith('image/'))
+    if (imageItems.length > 0) {
+      e.preventDefault()
+      const newFiles = imageItems.map(item => {
+        const file = item.getAsFile()!
+        return { id: crypto.randomUUID(), file, preview: URL.createObjectURL(file) }
+      })
+      setFiles(prev => [...prev, ...newFiles])
+    }
+  }
+
+  const toggleVoice = () => {
+    if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) return
+    setIsListening(v => !v)
+  }
+
+  const hasContent = text.trim().length > 0 || files.length > 0
+
+  return (
+    <div className="px-4 pb-4 pt-2">
+      {model && (
+        <div className="flex justify-center mb-2">
+          <button
+            onClick={onModelClick}
+            className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors bg-secondary/60 rounded-full px-3 py-1 hover:bg-secondary"
+          >
+            <Zap className="h-3 w-3" />
+            {model}
+            <ChevronDown className="h-3 w-3" />
+          </button>
+        </div>
+      )}
+
+      <div className="composer mx-auto" style={{ maxWidth: 'var(--chat-max-width)' }}>
+        <AnimatePresence>
+          {files.length > 0 && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="flex flex-wrap gap-2 p-3 pb-0"
+            >
+              {files.map(f => (
+                <div
+                  key={f.id}
+                  className="relative flex items-center gap-2 bg-secondary rounded-xl px-3 py-2 text-sm max-w-[200px] group"
+                >
+                  {f.preview ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={f.preview} alt="" className="h-8 w-8 object-cover rounded-lg" />
+                  ) : (
+                    <FileText className="h-5 w-5 text-muted-foreground shrink-0" />
+                  )}
+                  <div className="min-w-0">
+                    <p className="truncate text-xs font-medium">{f.file.name}</p>
+                    <p className="text-xs text-muted-foreground">{formatBytes(f.file.size)}</p>
+                  </div>
+                  <button
+                    onClick={() => removeFile(f.id)}
+                    className="absolute -top-1.5 -right-1.5 bg-muted border border-border rounded-full p-0.5 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <X className="h-3 w-3" />
+                  </button>
+                </div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <div className="flex items-end gap-2 p-3">
+          <div className="flex-1 min-w-0">
+            <textarea
+              ref={textareaRef}
+              value={text}
+              onChange={e => setText(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onPaste={handlePaste}
+              placeholder={placeholder}
+              disabled={disabled}
+              rows={1}
+              className={cn(
+                'w-full bg-transparent text-sm text-foreground placeholder:text-muted-foreground',
+                'resize-none outline-none border-none leading-relaxed',
+                'max-h-[300px] overflow-y-auto',
+                disabled && 'opacity-50 cursor-not-allowed'
+              )}
+            />
+          </div>
+        </div>
+
+        <div className="flex items-center justify-between px-3 pb-2.5">
+          <div className="flex items-center gap-0.5">
+            <input
+              ref={fileInputRef}
+              type="file"
+              multiple
+              accept="image/*,.pdf,.doc,.docx,.txt,.md,.csv,.json,.xml,.py,.js,.ts,.jsx,.tsx,.html,.css"
+              onChange={handleFiles}
+              className="hidden"
+            />
+            <WithTooltip tip="Attach files">
+              <Button
+                size="icon-sm"
+                variant="ghost"
+                className="h-7 w-7 text-muted-foreground"
+                onClick={() => fileInputRef.current?.click()}
+              >
+                <Paperclip className="h-4 w-4" />
+              </Button>
+            </WithTooltip>
+
+            <WithTooltip tip={searchEnabled ? 'Disable search' : 'Enable search'}>
+              <Button
+                size="icon-sm"
+                variant="ghost"
+                className={cn('h-7 w-7', searchEnabled ? 'text-primary' : 'text-muted-foreground')}
+                onClick={() => setSearchEnabled(v => !v)}
+              >
+                <Globe className="h-4 w-4" />
+              </Button>
+            </WithTooltip>
+
+            <WithTooltip tip={isListening ? 'Stop listening' : 'Voice input'}>
+              <Button
+                size="icon-sm"
+                variant="ghost"
+                className={cn('h-7 w-7', isListening ? 'text-destructive animate-pulse' : 'text-muted-foreground')}
+                onClick={toggleVoice}
+              >
+                {isListening ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+              </Button>
+            </WithTooltip>
+          </div>
+
+          <div className="flex items-center gap-1.5">
+            <span className="text-xs text-muted-foreground/50 hidden sm:block">
+              {enterToSend ? '↵ send' : '⌘↵ send'}
+            </span>
+            {isStreaming ? (
+              <WithTooltip tip="Stop generating">
+                <Button
+                  size="icon-sm"
+                  variant="outline"
+                  className="h-8 w-8 rounded-xl text-destructive border-destructive/30 hover:bg-destructive/10"
+                  onClick={onStop}
+                >
+                  <Square className="h-3.5 w-3.5" fill="currentColor" />
+                </Button>
+              </WithTooltip>
+            ) : (
+              <WithTooltip tip="Send message">
+                <Button
+                  size="icon-sm"
+                  onClick={submit}
+                  disabled={!hasContent || disabled}
+                  className={cn(
+                    'h-8 w-8 rounded-xl transition-all duration-150',
+                    hasContent
+                      ? 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm shadow-primary/20'
+                      : 'bg-muted text-muted-foreground cursor-not-allowed'
+                  )}
+                >
+                  <Send className="h-3.5 w-3.5" />
+                </Button>
+              </WithTooltip>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <p className="text-center text-xs text-muted-foreground/50 mt-2">
+        KROEX can make mistakes. Verify important information.
+      </p>
+    </div>
+  )
+}
