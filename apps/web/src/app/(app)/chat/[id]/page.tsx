@@ -37,7 +37,7 @@ export default function ChatPage() {
 
   const {
     messages, setMessages, addMessage, updateMessage, appendMessageContent,
-    conversations, updateConversation,
+    conversations, updateConversation, setActiveConversation,
     artifacts, activeArtifactId, setActiveArtifact,
     isStreaming, setStreaming,
   } = useChatStore()
@@ -47,6 +47,10 @@ export default function ChatPage() {
   const conversation = conversations.find(c => c.id === id)
   const chatMessages = messages[id] ?? []
   const activeArtifact = activeArtifactId ? artifacts[activeArtifactId] : null
+
+  useEffect(() => {
+    if (id) setActiveConversation(id)
+  }, [id, setActiveConversation])
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })

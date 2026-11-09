@@ -79,7 +79,7 @@ export function Sidebar({ projects, onNewConversation }: SidebarProps) {
   return (
     <motion.div
       initial={false}
-      className="sidebar flex flex-col h-full"
+      className="sidebar flex flex-col h-full group"
       style={{ width: 'var(--sidebar-width)' }}
     >
       <div className="flex items-center justify-between p-3 pb-2">
@@ -184,6 +184,14 @@ export function Sidebar({ projects, onNewConversation }: SidebarProps) {
             No results for &ldquo;{search}&rdquo;
           </div>
         )}
+
+        {conversations.filter(c => !c.archived).length === 0 && !search && (
+          <div className="flex flex-col items-center py-12 px-4 text-center">
+            <MessageSquare className="h-8 w-8 text-muted-foreground/40 mb-3" />
+            <p className="text-sm text-muted-foreground">No conversations yet</p>
+            <p className="text-xs text-muted-foreground/60 mt-1">Start a new conversation to get going</p>
+          </div>
+        )}
       </ScrollArea>
 
       <div className="p-2 border-t border-border mt-auto">
@@ -211,7 +219,7 @@ export function Sidebar({ projects, onNewConversation }: SidebarProps) {
               </div>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => router.push('/settings/profile')}>
+            <DropdownMenuItem onClick={() => router.push('/settings')}>
               <User className="mr-2 h-4 w-4" /> Profile
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => router.push('/settings')}>

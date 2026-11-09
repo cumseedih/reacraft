@@ -2,7 +2,7 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  Send, Square, Paperclip, Mic, MicOff, Globe, Zap,
+  Send, Square, Paperclip, Zap,
   X, FileText, ChevronDown,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -37,8 +37,6 @@ export function Composer({
 }: ComposerProps) {
   const [text, setText] = useState('')
   const [files, setFiles] = useState<ComposerFile[]>([])
-  const [isListening, setIsListening] = useState(false)
-  const [searchEnabled, setSearchEnabled] = useState(false)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const { enterToSend } = useSettingsStore()
@@ -97,11 +95,6 @@ export function Composer({
       })
       setFiles(prev => [...prev, ...newFiles])
     }
-  }
-
-  const toggleVoice = () => {
-    if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) return
-    setIsListening(v => !v)
   }
 
   const hasContent = text.trim().length > 0 || files.length > 0
@@ -199,27 +192,6 @@ export function Composer({
               </Button>
             </WithTooltip>
 
-            <WithTooltip tip={searchEnabled ? 'Disable search' : 'Enable search'}>
-              <Button
-                size="icon-sm"
-                variant="ghost"
-                className={cn('h-7 w-7', searchEnabled ? 'text-primary' : 'text-muted-foreground')}
-                onClick={() => setSearchEnabled(v => !v)}
-              >
-                <Globe className="h-4 w-4" />
-              </Button>
-            </WithTooltip>
-
-            <WithTooltip tip={isListening ? 'Stop listening' : 'Voice input'}>
-              <Button
-                size="icon-sm"
-                variant="ghost"
-                className={cn('h-7 w-7', isListening ? 'text-destructive animate-pulse' : 'text-muted-foreground')}
-                onClick={toggleVoice}
-              >
-                {isListening ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
-              </Button>
-            </WithTooltip>
           </div>
 
           <div className="flex items-center gap-1.5">

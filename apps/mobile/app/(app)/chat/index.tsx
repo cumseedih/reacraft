@@ -6,7 +6,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Animated, { FadeInDown } from 'react-native-reanimated'
 import { Ionicons } from '@expo/vector-icons'
-import { api, streamSSE } from '../../../lib/api'
+import { api } from '../../../lib/api'
 
 interface Message {
   id: string
