@@ -105,7 +105,12 @@ export function Composer({
         <div className="flex justify-center mb-2">
           <button
             onClick={onModelClick}
-            className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors bg-secondary/60 rounded-full px-3 py-1 hover:bg-secondary"
+            className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors rounded-full px-3 py-1 border border-border/60"
+            style={{
+              backgroundColor: 'hsl(var(--card) / 0.7)',
+              backdropFilter: 'blur(16px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(16px) saturate(180%)',
+            }}
           >
             <Zap className="h-3 w-3" />
             {model}

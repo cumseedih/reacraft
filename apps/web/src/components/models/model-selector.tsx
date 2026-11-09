@@ -42,7 +42,16 @@ interface ModelSelectorProps {
 export function ModelSelector({ open, onClose, selectedModel, onSelect }: ModelSelectorProps) {
   return (
     <Dialog open={open} onOpenChange={v => !v && onClose()}>
-      <DialogContent className="max-w-lg">
+      <DialogContent
+        className="max-w-lg"
+        style={{
+          backgroundColor: 'hsl(var(--card) / 0.72)',
+          backdropFilter: 'blur(24px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+          borderColor: 'hsl(var(--glass-highlight) / 0.5)',
+          boxShadow: 'inset 0 1px 0 0 hsl(var(--glass-highlight) / 0.6), 0 24px 60px -20px hsl(240 3% 12% / 0.3)',
+        }}
+      >
         <DialogHeader>
           <DialogTitle>Choose a model</DialogTitle>
         </DialogHeader>

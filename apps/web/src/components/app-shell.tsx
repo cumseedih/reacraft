@@ -33,10 +33,11 @@ export function AppShell({ children, projects = [] }: AppShellProps) {
   // The auth store is persisted to localStorage and rehydrates on the client
   // after the first render. Track hydration so we don't bounce an authenticated
   // user to /login on a hard refresh before the token has been restored.
-  const [hydrated, setHydrated] = useState(() => useAuthStore.persist.hasHydrated())
+  // (persist API is unavailable during server prerender, so access it safely.)
+  const [hydrated, setHydrated] = useState(() => useAuthStore.persist?.hasHydrated?.() ?? false)
   useEffect(() => {
-    const unsub = useAuthStore.persist.onFinishHydration(() => setHydrated(true))
-    setHydrated(useAuthStore.persist.hasHydrated())
+    setHydrated(useAuthStore.persist?.hasHydrated?.() ?? true)
+    const unsub = useAuthStore.persist?.onFinishHydration?.(() => setHydrated(true))
     return unsub
   }, [])
 

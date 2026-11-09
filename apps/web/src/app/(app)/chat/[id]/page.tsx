@@ -172,7 +172,7 @@ export default function ChatPage() {
   return (
     <AppShell>
       <div className="flex h-full">
-        <div className={`flex flex-col flex-1 min-w-0 transition-all duration-300 ${activeArtifact ? 'max-w-[55%]' : ''}`}>
+        <div className={`relative flex flex-col flex-1 min-w-0 transition-all duration-300 ${activeArtifact ? 'max-w-[55%]' : ''}`}>
           {chatMessages.length === 0 ? (
             <WelcomeScreen
               onSend={handleSend}
@@ -182,7 +182,9 @@ export default function ChatPage() {
           ) : (
             <>
               <ScrollArea className="flex-1 px-4">
-                <div className="max-w-[var(--chat-max-width)] mx-auto py-8">
+                {/* Extra bottom padding clears the floating glass composer so the
+                    last message can scroll out from behind it. */}
+                <div className="max-w-[var(--chat-max-width)] mx-auto py-8 pb-40">
                   {chatMessages.map(msg => (
                     <ChatMessage
                       key={msg.id}
@@ -194,13 +196,17 @@ export default function ChatPage() {
                   <div ref={messagesEndRef} />
                 </div>
               </ScrollArea>
-              <Composer
-                onSend={handleSend}
-                onStop={handleStop}
-                isStreaming={isStreaming}
-                model={conversation?.model ?? defaultModel ?? 'kroex-pro'}
-                onModelClick={() => setModelSelectorOpen(true)}
-              />
+              {/* Float the composer over the conversation so messages blur
+                  through the glass as they scroll behind it. */}
+              <div className="absolute inset-x-0 bottom-0">
+                <Composer
+                  onSend={handleSend}
+                  onStop={handleStop}
+                  isStreaming={isStreaming}
+                  model={conversation?.model ?? defaultModel ?? 'kroex-pro'}
+                  onModelClick={() => setModelSelectorOpen(true)}
+                />
+              </div>
             </>
           )}
         </div>
