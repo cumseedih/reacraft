@@ -1,1 +1,42 @@
-J3VzZSBjbGllbnQnCmltcG9ydCB7IHVzZUNhbGxiYWNrLCB1c2VFZmZlY3QgfSBmcm9tICdyZWFjdCcKaW1wb3J0IHsgdXNlUm91dGVyIH0gZnJvbSAnbmV4dC9uYXZpZ2F0aW9uJwppbXBvcnQgeyBTaWRlYmFyIH0gZnJvbSAnQC9jb21wb25lbnRzL3NpZGViYXIvc2lkZWJhcicKaW1wb3J0IHsgdXNlQ2hhdFN0b3JlIH0gZnJvbSAnQC9zdG9yZS9jaGF0JwppbXBvcnQgeyB1c2VBdXRoU3RvcmUgfSBmcm9tICdAL3N0b3JlL2F1dGgnCmltcG9ydCB7IGdlbmVyYXRlSWQgfSBmcm9tICdAL2xpYi91dGlscycKaW1wb3J0IHR5cGUgeyBQcm9qZWN0IH0gZnJvbSAnQC90eXBlcycKCmludGVyZmFjZSBBcHBTaGVsbFByb3BzIHsKICBjaGlsZHJlbjogUmVhY3QuUmVhY3ROb2RlCiAgcHJvamVjdHM/OiBQcm9qZWN0W10KfQoKZXhwb3J0IGZ1bmN0aW9uIEFwcFNoZWxsKHsgY2hpbGRyZW4sIHByb2plY3RzID0gW10gfTogQXBwU2hlbGxQcm9wcykgewogIGNvbnN0IHJvdXRlciA9IHVzZVJvdXRlcigpCiAgY29uc3QgeyBhZGRDb252ZXJzYXRpb24gfSA9IHVzZUNoYXRTdG9yZSgpCiAgY29uc3QgeyB1c2VyIH0gPSB1c2VBdXRoU3RvcmUoKQoKICBjb25zdCBoYW5kbGVOZXdDb252ZXJzYXRpb24gPSB1c2VDYWxsYmFjaygoKSA9PiB7CiAgICBjb25zdCBpZCA9IGdlbmVyYXRlSWQoKQogICAgYWRkQ29udmVyc2F0aW9uKHsKICAgICAgaWQsCiAgICAgIHRpdGxlOiAnTmV3IGNvbnZlcnNhdGlvbicsCiAgICAgIG1vZGVsOiAna3JvZXgtcHJvJywKICAgICAgY3JlYXRlZEF0OiBuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCksCiAgICAgIHVwZGF0ZWRBdDogbmV3IERhdGUoKS50b0lTT1N0cmluZygpLAogICAgICBwaW5uZWQ6IGZhbHNlLAogICAgICBhcmNoaXZlZDogZmFsc2UsCiAgICB9KQogICAgcm91dGVyLnB1c2goYC9jaGF0LyR7aWR9YCkKICB9LCBbYWRkQ29udmVyc2F0aW9uLCByb3V0ZXJdKQoKICByZXR1cm4gKAogICAgPGRpdiBjbGFzc05hbWU9ImZsZXggaC1zY3JlZW4gb3ZlcmZsb3ctaGlkZGVuIGJnLWJhY2tncm91bmQiPgogICAgICA8U2lkZWJhciBwcm9qZWN0cz17cHJvamVjdHN9IG9uTmV3Q29udmVyc2F0aW9uPXtoYW5kbGVOZXdDb252ZXJzYXRpb259IC8+CiAgICAgIDxtYWluIGNsYXNzTmFtZT0iZmxleC0xIG92ZXJmbG93LWhpZGRlbiI+CiAgICAgICAge2NoaWxkcmVufQogICAgICA8L21haW4+CiAgICA8L2Rpdj4KICApCn0K
+'use client'
+import { useCallback, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import { Sidebar } from '@/components/sidebar/sidebar'
+import { useChatStore } from '@/store/chat'
+import { useAuthStore } from '@/store/auth'
+import { generateId } from '@/lib/utils'
+import type { Project } from '@/types'
+
+interface AppShellProps {
+  children: React.ReactNode
+  projects?: Project[]
+}
+
+export function AppShell({ children, projects = [] }: AppShellProps) {
+  const router = useRouter()
+  const { addConversation } = useChatStore()
+  const { user } = useAuthStore()
+
+  const handleNewConversation = useCallback(() => {
+    const id = generateId()
+    addConversation({
+      id,
+      title: 'New conversation',
+      model: 'kroex-pro',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      pinned: false,
+      archived: false,
+    })
+    router.push(`/chat/${id}`)
+  }, [addConversation, router])
+
+  return (
+    <div className="flex h-screen overflow-hidden bg-background">
+      <Sidebar projects={projects} onNewConversation={handleNewConversation} />
+      <main className="flex-1 overflow-hidden">
+        {children}
+      </main>
+    </div>
+  )
+}

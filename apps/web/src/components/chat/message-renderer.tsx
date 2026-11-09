@@ -1,1 +1,114 @@
-J3VzZSBjbGllbnQnCmltcG9ydCB7IG1lbW8sIHVzZVN0YXRlLCB1c2VDYWxsYmFjayB9IGZyb20gJ3JlYWN0JwppbXBvcnQgUmVhY3RNYXJrZG93biBmcm9tICdyZWFjdC1tYXJrZG93bicKaW1wb3J0IHJlbWFya0dmbSBmcm9tICdyZW1hcmstZ2ZtJwppbXBvcnQgcmVtYXJrTWF0aCBmcm9tICdyZW1hcmstbWF0aCcKaW1wb3J0IHJlaHlwZUthdGV4IGZyb20gJ3JlaHlwZS1rYXRleCcKaW1wb3J0IHJlaHlwZUhpZ2hsaWdodCBmcm9tICdyZWh5cGUtaGlnaGxpZ2h0JwppbXBvcnQgeyBDaGVjaywgQ29weSwgRG93bmxvYWQsIEV4dGVybmFsTGluayB9IGZyb20gJ2x1Y2lkZS1yZWFjdCcKaW1wb3J0IHsgQnV0dG9uIH0gZnJvbSAnQC9jb21wb25lbnRzL3VpL2J1dHRvbicKaW1wb3J0IHsgV2l0aFRvb2x0aXAgfSBmcm9tICdAL2NvbXBvbmVudHMvdWkvdG9vbHRpcCcKaW1wb3J0IHsgY24gfSBmcm9tICdAL2xpYi91dGlscycKaW1wb3J0ICdrYXRleC9kaXN0L2thdGV4Lm1pbi5jc3MnCgppbnRlcmZhY2UgTWVzc2FnZVJlbmRlcmVyUHJvcHMgewogIGNvbnRlbnQ6IHN0cmluZwogIGlzU3RyZWFtaW5nPzogYm9vbGVhbgogIGNsYXNzTmFtZT86IHN0cmluZwp9CgpleHBvcnQgY29uc3QgTWVzc2FnZVJlbmRlcmVyID0gbWVtbyhmdW5jdGlvbiBNZXNzYWdlUmVuZGVyZXIoewogIGNvbnRlbnQsCiAgaXNTdHJlYW1pbmcsCiAgY2xhc3NOYW1lLAp9OiBNZXNzYWdlUmVuZGVyZXJQcm9wcykgewogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT17Y24oJ3Byb3NlLWtyb2V4JywgaXNTdHJlYW1pbmcgJiYgJ3N0cmVhbWluZy1jdXJzb3InLCBjbGFzc05hbWUpfT4KICAgICAgPFJlYWN0TWFya2Rvd24KICAgICAgICByZW1hcmtQbHVnaW5zPXtbcmVtYXJrR2ZtLCByZW1hcmtNYXRoXX0KICAgICAgICByZWh5cGVQbHVnaW5zPXtbcmVoeXBlS2F0ZXgsIFtyZWh5cGVIaWdobGlnaHQsIHsgZGV0ZWN0OiB0cnVlIH1dXX0KICAgICAgICBjb21wb25lbnRzPXt7CiAgICAgICAgICBjb2RlOiBDb2RlQmxvY2ssCiAgICAgICAgICBwcmU6IFByZVdyYXBwZXIsCiAgICAgICAgICBhOiAoeyBocmVmLCBjaGlsZHJlbiB9KSA9PiAoCiAgICAgICAgICAgIDxhCiAgICAgICAgICAgICAgaHJlZj17aHJlZn0KICAgICAgICAgICAgICB0YXJnZXQ9Il9ibGFuayIKICAgICAgICAgICAgICByZWw9Im5vb3BlbmVyIG5vcmVmZXJyZXIiCiAgICAgICAgICAgICAgY2xhc3NOYW1lPSJ0ZXh0LXByaW1hcnkgdW5kZXJsaW5lIHVuZGVybGluZS1vZmZzZXQtMiBob3Zlcjp0ZXh0LXByaW1hcnkvODAgaW5saW5lLWZsZXggaXRlbXMtY2VudGVyIGdhcC0wLjUiCiAgICAgICAgICAgID4KICAgICAgICAgICAgICB7Y2hpbGRyZW59CiAgICAgICAgICAgICAgPEV4dGVybmFsTGluayBjbGFzc05hbWU9ImlubGluZSBoLTMgdy0zIG9wYWNpdHktNjAiIC8+CiAgICAgICAgICAgIDwvYT4KICAgICAgICAgICksCiAgICAgICAgICB0YWJsZTogKHsgY2hpbGRyZW4gfSkgPT4gKAogICAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0ib3ZlcmZsb3cteC1hdXRvIG15LTQiPgogICAgICAgICAgICAgIDx0YWJsZSBjbGFzc05hbWU9InctZnVsbCB0ZXh0LXNtIj57Y2hpbGRyZW59PC90YWJsZT4KICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICApLAogICAgICAgICAgYmxvY2txdW90ZTogKHsgY2hpbGRyZW4gfSkgPT4gKAogICAgICAgICAgICA8YmxvY2txdW90ZSBjbGFzc05hbWU9ImJvcmRlci1sLTQgYm9yZGVyLXByaW1hcnkvMzAgcGwtNCBpdGFsaWMgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIG15LTQgYmctc2Vjb25kYXJ5LzMwIHB5LTIgcm91bmRlZC1yLWxnIj4KICAgICAgICAgICAgICB7Y2hpbGRyZW59CiAgICAgICAgICAgIDwvYmxvY2txdW90ZT4KICAgICAgICAgICksCiAgICAgICAgICBpbWc6ICh7IHNyYywgYWx0IH0pID0+ICgKICAgICAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJibG9jayBteS00Ij4KICAgICAgICAgICAgICB7LyogZXNsaW50LWRpc2FibGUtbmV4dC1saW5lIEBuZXh0L25leHQvbm8taW1nLWVsZW1lbnQgKi99CiAgICAgICAgICAgICAgPGltZyBzcmM9e3NyY30gYWx0PXthbHQgPz8gJyd9IGNsYXNzTmFtZT0icm91bmRlZC14bCBtYXgtdy1mdWxsIGgtYXV0byBzaGFkb3ctc20iIC8+CiAgICAgICAgICAgIDwvc3Bhbj4KICAgICAgICAgICksCiAgICAgICAgfX0KICAgICAgPgogICAgICAgIHtjb250ZW50fQogICAgICA8L1JlYWN0TWFya2Rvd24+CiAgICA8L2Rpdj4KICApCn0pCgpmdW5jdGlvbiBQcmVXcmFwcGVyKHsgY2hpbGRyZW4sIC4uLnByb3BzIH06IFJlYWN0LkhUTUxQcm9wczxIVE1MUHJlRWxlbWVudD4pIHsKICByZXR1cm4gPHByZSB7Li4ucHJvcHN9PntjaGlsZHJlbn08L3ByZT4KfQoKZnVuY3Rpb24gQ29kZUJsb2NrKHsgY2xhc3NOYW1lLCBjaGlsZHJlbiwgbm9kZSwgLi4ucHJvcHMgfTogYW55KSB7CiAgY29uc3QgW2NvcGllZCwgc2V0Q29waWVkXSA9IHVzZVN0YXRlKGZhbHNlKQogIGNvbnN0IGlzSW5saW5lID0gIWNsYXNzTmFtZSAmJiB0eXBlb2YgY2hpbGRyZW4gPT09ICdzdHJpbmcnICYmICFjaGlsZHJlbi5pbmNsdWRlcygnXG4nKQoKICBjb25zdCBjb3B5ID0gdXNlQ2FsbGJhY2soYXN5bmMgKCkgPT4gewogICAgYXdhaXQgbmF2aWdhdG9yLmNsaXBib2FyZC53cml0ZVRleHQoU3RyaW5nKGNoaWxkcmVuKSkKICAgIHNldENvcGllZCh0cnVlKQogICAgc2V0VGltZW91dCgoKSA9PiBzZXRDb3BpZWQoZmFsc2UpLCAyMDAwKQogIH0sIFtjaGlsZHJlbl0pCgogIGlmIChpc0lubGluZSkgewogICAgcmV0dXJuICgKICAgICAgPGNvZGUgY2xhc3NOYW1lPSJiZy1zZWNvbmRhcnkgdGV4dC1mb3JlZ3JvdW5kIHJvdW5kZWQgcHgtMS41IHB5LTAuNSB0ZXh0LXNtIGZvbnQtbW9ubyIgey4uLnByb3BzfT4KICAgICAgICB7Y2hpbGRyZW59CiAgICAgIDwvY29kZT4KICAgICkKICB9CgogIGNvbnN0IGxhbmd1YWdlID0gY2xhc3NOYW1lPy5yZXBsYWNlKCdsYW5ndWFnZS0nLCAnJykgPz8gJ3RleHQnCgogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT0iY29kZS1ibG9jayBncm91cCI+CiAgICAgIDxkaXYgY2xhc3NOYW1lPSJjb2RlLWJsb2NrLWhlYWRlciI+CiAgICAgICAgPHNwYW4gY2xhc3NOYW1lPSJ0ZXh0LXdhcm0tNDAwIj57bGFuZ3VhZ2V9PC9zcGFuPgogICAgICAgIDxkaXYgY2xhc3NOYW1lPSJmbGV4IGl0ZW1zLWNlbnRlciBnYXAtMSI+CiAgICAgICAgICA8V2l0aFRvb2x0aXAgdGlwPXtjb3BpZWQgPyAnQ29waWVkIScgOiAnQ29weSBjb2RlJ30+CiAgICAgICAgICAgIDxCdXR0b24KICAgICAgICAgICAgICBzaXplPSJpY29uLXNtIgogICAgICAgICAgICAgIHZhcmlhbnQ9Imdob3N0IgogICAgICAgICAgICAgIG9uQ2xpY2s9e2NvcHl9CiAgICAgICAgICAgICAgY2xhc3NOYW1lPSJoLTYgdy02IHRleHQtd2FybS00MDAgaG92ZXI6dGV4dC13YXJtLTEwMCIKICAgICAgICAgICAgPgogICAgICAgICAgICAgIHtjb3BpZWQgPyA8Q2hlY2sgY2xhc3NOYW1lPSJoLTMuNSB3LTMuNSIgLz4gOiA8Q29weSBjbGFzc05hbWU9ImgtMy41IHctMy41IiAvPn0KICAgICAgICAgICAgPC9CdXR0b24+CiAgICAgICAgICA8L1dpdGhUb29sdGlwPgogICAgICAgIDwvZGl2PgogICAgICA8L2Rpdj4KICAgICAgPGNvZGUgY2xhc3NOYW1lPXtjbihjbGFzc05hbWUsICdobGpzJyl9IHsuLi5wcm9wc30+CiAgICAgICAge2NoaWxkcmVufQogICAgICA8L2NvZGU+CiAgICA8L2Rpdj4KICApCn0K
+'use client'
+import { memo, useState, useCallback } from 'react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import remarkMath from 'remark-math'
+import rehypeKatex from 'rehype-katex'
+import rehypeHighlight from 'rehype-highlight'
+import { Check, Copy, Download, ExternalLink } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { WithTooltip } from '@/components/ui/tooltip'
+import { cn } from '@/lib/utils'
+import 'katex/dist/katex.min.css'
+
+interface MessageRendererProps {
+  content: string
+  isStreaming?: boolean
+  className?: string
+}
+
+export const MessageRenderer = memo(function MessageRenderer({
+  content,
+  isStreaming,
+  className,
+}: MessageRendererProps) {
+  return (
+    <div className={cn('prose-kroex', isStreaming && 'streaming-cursor', className)}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[rehypeKatex, [rehypeHighlight, { detect: true }]]}
+        components={{
+          code: CodeBlock,
+          pre: PreWrapper,
+          a: ({ href, children }) => (
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary underline underline-offset-2 hover:text-primary/80 inline-flex items-center gap-0.5"
+            >
+              {children}
+              <ExternalLink className="inline h-3 w-3 opacity-60" />
+            </a>
+          ),
+          table: ({ children }) => (
+            <div className="overflow-x-auto my-4">
+              <table className="w-full text-sm">{children}</table>
+            </div>
+          ),
+          blockquote: ({ children }) => (
+            <blockquote className="border-l-4 border-primary/30 pl-4 italic text-muted-foreground my-4 bg-secondary/30 py-2 rounded-r-lg">
+              {children}
+            </blockquote>
+          ),
+          img: ({ src, alt }) => (
+            <span className="block my-4">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={src} alt={alt ?? ''} className="rounded-xl max-w-full h-auto shadow-sm" />
+            </span>
+          ),
+        }}
+      >
+        {content}
+      </ReactMarkdown>
+    </div>
+  )
+})
+
+function PreWrapper({ children, ...props }: React.HTMLProps<HTMLPreElement>) {
+  return <pre {...props}>{children}</pre>
+}
+
+function CodeBlock({ className, children, node, ...props }: any) {
+  const [copied, setCopied] = useState(false)
+  const isInline = !className && typeof children === 'string' && !children.includes('\n')
+
+  const copy = useCallback(async () => {
+    await navigator.clipboard.writeText(String(children))
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }, [children])
+
+  if (isInline) {
+    return (
+      <code className="bg-secondary text-foreground rounded px-1.5 py-0.5 text-sm font-mono" {...props}>
+        {children}
+      </code>
+    )
+  }
+
+  const language = className?.replace('language-', '') ?? 'text'
+
+  return (
+    <div className="code-block group">
+      <div className="code-block-header">
+        <span className="text-warm-400">{language}</span>
+        <div className="flex items-center gap-1">
+          <WithTooltip tip={copied ? 'Copied!' : 'Copy code'}>
+            <Button
+              size="icon-sm"
+              variant="ghost"
+              onClick={copy}
+              className="h-6 w-6 text-warm-400 hover:text-warm-100"
+            >
+              {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+            </Button>
+          </WithTooltip>
+        </div>
+      </div>
+      <code className={cn(className, 'hljs')} {...props}>
+        {children}
+      </code>
+    </div>
+  )
+}
