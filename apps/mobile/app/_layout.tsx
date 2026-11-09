@@ -1,1 +1,25 @@
-aW1wb3J0IHsgU3RhY2sgfSBmcm9tICdleHBvLXJvdXRlcicKaW1wb3J0IHsgR2VzdHVyZUhhbmRsZXJSb290VmlldyB9IGZyb20gJ3JlYWN0LW5hdGl2ZS1nZXN0dXJlLWhhbmRsZXInCmltcG9ydCB7IFF1ZXJ5Q2xpZW50LCBRdWVyeUNsaWVudFByb3ZpZGVyIH0gZnJvbSAnQHRhbnN0YWNrL3JlYWN0LXF1ZXJ5JwppbXBvcnQgeyBTdGF0dXNCYXIgfSBmcm9tICdleHBvLXN0YXR1cy1iYXInCmltcG9ydCB7IHVzZUNvbG9yU2NoZW1lIH0gZnJvbSAncmVhY3QtbmF0aXZlJwoKY29uc3QgcXVlcnlDbGllbnQgPSBuZXcgUXVlcnlDbGllbnQoewogIGRlZmF1bHRPcHRpb25zOiB7IHF1ZXJpZXM6IHsgc3RhbGVUaW1lOiA2MF8wMDAgfSB9LAp9KQoKZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gUm9vdExheW91dCgpIHsKICBjb25zdCBjb2xvclNjaGVtZSA9IHVzZUNvbG9yU2NoZW1lKCkKCiAgcmV0dXJuICgKICAgIDxHZXN0dXJlSGFuZGxlclJvb3RWaWV3IHN0eWxlPXt7IGZsZXg6IDEgfX0+CiAgICAgIDxRdWVyeUNsaWVudFByb3ZpZGVyIGNsaWVudD17cXVlcnlDbGllbnR9PgogICAgICAgIDxTdGF0dXNCYXIgc3R5bGU9e2NvbG9yU2NoZW1lID09PSAnZGFyaycgPyAnbGlnaHQnIDogJ2RhcmsnfSAvPgogICAgICAgIDxTdGFjayBzY3JlZW5PcHRpb25zPXt7IGhlYWRlclNob3duOiBmYWxzZSB9fT4KICAgICAgICAgIDxTdGFjay5TY3JlZW4gbmFtZT0iKGF1dGgpIiAvPgogICAgICAgICAgPFN0YWNrLlNjcmVlbiBuYW1lPSIoYXBwKSIgLz4KICAgICAgICA8L1N0YWNrPgogICAgICA8L1F1ZXJ5Q2xpZW50UHJvdmlkZXI+CiAgICA8L0dlc3R1cmVIYW5kbGVyUm9vdFZpZXc+CiAgKQp9Cg==
+import { Stack } from 'expo-router'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { StatusBar } from 'expo-status-bar'
+import { useColorScheme } from 'react-native'
+
+const queryClient = new QueryClient({
+  defaultOptions: { queries: { staleTime: 60_000 } },
+})
+
+export default function RootLayout() {
+  const colorScheme = useColorScheme()
+
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <QueryClientProvider client={queryClient}>
+        <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
+        <Stack screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="(auth)" />
+          <Stack.Screen name="(app)" />
+        </Stack>
+      </QueryClientProvider>
+    </GestureHandlerRootView>
+  )
+}

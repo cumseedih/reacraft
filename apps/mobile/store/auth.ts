@@ -1,1 +1,32 @@
-aW1wb3J0IHsgY3JlYXRlIH0gZnJvbSAnenVzdGFuZCcKaW1wb3J0ICogYXMgU2VjdXJlU3RvcmUgZnJvbSAnZXhwby1zZWN1cmUtc3RvcmUnCgppbnRlcmZhY2UgVXNlciB7CiAgaWQ6IHN0cmluZwogIG5hbWU6IHN0cmluZwogIGVtYWlsOiBzdHJpbmcKICBhdmF0YXI/OiBzdHJpbmcKICBwbGFuOiBzdHJpbmcKfQoKaW50ZXJmYWNlIEF1dGhTdGF0ZSB7CiAgdXNlcjogVXNlciB8IG51bGwKICB0b2tlbjogc3RyaW5nIHwgbnVsbAogIHNldFVzZXI6ICh1c2VyOiBVc2VyKSA9PiB2b2lkCiAgc2V0VG9rZW46ICh0b2tlbjogc3RyaW5nKSA9PiBQcm9taXNlPHZvaWQ+CiAgbG9nb3V0OiAoKSA9PiBQcm9taXNlPHZvaWQ+Cn0KCmV4cG9ydCBjb25zdCB1c2VBdXRoU3RvcmUgPSBjcmVhdGU8QXV0aFN0YXRlPigoc2V0KSA9PiAoewogIHVzZXI6IG51bGwsCiAgdG9rZW46IG51bGwsCiAgc2V0VXNlcjogKHVzZXIpID0+IHNldCh7IHVzZXIgfSksCiAgc2V0VG9rZW46IGFzeW5jICh0b2tlbikgPT4gewogICAgYXdhaXQgU2VjdXJlU3RvcmUuc2V0SXRlbUFzeW5jKCdrcm9leF90b2tlbicsIHRva2VuKQogICAgc2V0KHsgdG9rZW4gfSkKICB9LAogIGxvZ291dDogYXN5bmMgKCkgPT4gewogICAgYXdhaXQgU2VjdXJlU3RvcmUuZGVsZXRlSXRlbUFzeW5jKCdrcm9leF90b2tlbicpCiAgICBzZXQoeyB1c2VyOiBudWxsLCB0b2tlbjogbnVsbCB9KQogIH0sCn0pKQo=
+import { create } from 'zustand'
+import * as SecureStore from 'expo-secure-store'
+
+interface User {
+  id: string
+  name: string
+  email: string
+  avatar?: string
+  plan: string
+}
+
+interface AuthState {
+  user: User | null
+  token: string | null
+  setUser: (user: User) => void
+  setToken: (token: string) => Promise<void>
+  logout: () => Promise<void>
+}
+
+export const useAuthStore = create<AuthState>((set) => ({
+  user: null,
+  token: null,
+  setUser: (user) => set({ user }),
+  setToken: async (token) => {
+    await SecureStore.setItemAsync('kroex_token', token)
+    set({ token })
+  },
+  logout: async () => {
+    await SecureStore.deleteItemAsync('kroex_token')
+    set({ user: null, token: null })
+  },
+}))

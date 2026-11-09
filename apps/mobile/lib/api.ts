@@ -1,1 +1,69 @@
-aW1wb3J0ICogYXMgU2VjdXJlU3RvcmUgZnJvbSAnZXhwby1zZWN1cmUtc3RvcmUnCgpjb25zdCBCQVNFX1VSTCA9IHByb2Nlc3MuZW52LkVYUE9fUFVCTElDX0FQSV9VUkwgPz8gJ2h0dHA6Ly9sb2NhbGhvc3Q6ODAwMCcKCmFzeW5jIGZ1bmN0aW9uIGdldFRva2VuKCk6IFByb21pc2U8c3RyaW5nIHwgbnVsbD4gewogIHJldHVybiBTZWN1cmVTdG9yZS5nZXRJdGVtQXN5bmMoJ2tyb2V4X3Rva2VuJykKfQoKYXN5bmMgZnVuY3Rpb24gcmVxdWVzdDxUPigKICBtZXRob2Q6IHN0cmluZywKICBwYXRoOiBzdHJpbmcsCiAgYm9keT86IHVua25vd24sCik6IFByb21pc2U8VD4gewogIGNvbnN0IHRva2VuID0gYXdhaXQgZ2V0VG9rZW4oKQogIGNvbnN0IHJlcyA9IGF3YWl0IGZldGNoKGAke0JBU0VfVVJMfSR7cGF0aH1gLCB7CiAgICBtZXRob2QsCiAgICBoZWFkZXJzOiB7CiAgICAgICdDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbicsCiAgICAgIC4uLih0b2tlbiA/IHsgQXV0aG9yaXphdGlvbjogYEJlYXJlciAke3Rva2VufWAgfSA6IHt9KSwKICAgIH0sCiAgICBib2R5OiBib2R5ID8gSlNPTi5zdHJpbmdpZnkoYm9keSkgOiB1bmRlZmluZWQsCiAgfSkKICBpZiAoIXJlcy5vaykgewogICAgY29uc3QgZXJyID0gYXdhaXQgcmVzLmpzb24oKS5jYXRjaCgoKSA9PiAoeyBkZXRhaWw6IHJlcy5zdGF0dXNUZXh0IH0pKQogICAgdGhyb3cgbmV3IEVycm9yKGVyci5kZXRhaWwgPz8gJ1JlcXVlc3QgZmFpbGVkJykKICB9CiAgcmV0dXJuIHJlcy5qc29uKCkKfQoKZXhwb3J0IGNvbnN0IGFwaSA9IHsKICBnZXQ6IDxUPihwYXRoOiBzdHJpbmcpID0+IHJlcXVlc3Q8VD4oJ0dFVCcsIHBhdGgpLAogIHBvc3Q6IDxUPihwYXRoOiBzdHJpbmcsIGJvZHk6IHVua25vd24pID0+IHJlcXVlc3Q8VD4oJ1BPU1QnLCBwYXRoLCBib2R5KSwKICBwdXQ6IDxUPihwYXRoOiBzdHJpbmcsIGJvZHk6IHVua25vd24pID0+IHJlcXVlc3Q8VD4oJ1BVVCcsIHBhdGgsIGJvZHkpLAogIGRlbGV0ZTogPFQ+KHBhdGg6IHN0cmluZykgPT4gcmVxdWVzdDxUPignREVMRVRFJywgcGF0aCksCn0KCmV4cG9ydCBhc3luYyBmdW5jdGlvbiogc3RyZWFtU1NFKAogIHBhdGg6IHN0cmluZywKICBib2R5OiB1bmtub3duLAopOiBBc3luY0dlbmVyYXRvcjxzdHJpbmc+IHsKICBjb25zdCB0b2tlbiA9IGF3YWl0IGdldFRva2VuKCkKICBjb25zdCByZXMgPSBhd2FpdCBmZXRjaChgJHtCQVNFX1VSTH0ke3BhdGh9YCwgewogICAgbWV0aG9kOiAnUE9TVCcsCiAgICBoZWFkZXJzOiB7CiAgICAgICdDb250ZW50LVR5cGUnOiAnYXBwbGljYXRpb24vanNvbicsCiAgICAgIC4uLih0b2tlbiA/IHsgQXV0aG9yaXphdGlvbjogYEJlYXJlciAke3Rva2VufWAgfSA6IHt9KSwKICAgIH0sCiAgICBib2R5OiBKU09OLnN0cmluZ2lmeShib2R5KSwKICB9KQoKICBpZiAoIXJlcy5vayB8fCAhcmVzLmJvZHkpIHRocm93IG5ldyBFcnJvcignU3RyZWFtIGZhaWxlZCcpCgogIGNvbnN0IHJlYWRlciA9IHJlcy5ib2R5LmdldFJlYWRlcigpCiAgY29uc3QgZGVjb2RlciA9IG5ldyBUZXh0RGVjb2RlcigpCiAgbGV0IGJ1ZmZlciA9ICcnCgogIHdoaWxlICh0cnVlKSB7CiAgICBjb25zdCB7IGRvbmUsIHZhbHVlIH0gPSBhd2FpdCByZWFkZXIucmVhZCgpCiAgICBpZiAoZG9uZSkgYnJlYWsKICAgIGJ1ZmZlciArPSBkZWNvZGVyLmRlY29kZSh2YWx1ZSwgeyBzdHJlYW06IHRydWUgfSkKICAgIGNvbnN0IGxpbmVzID0gYnVmZmVyLnNwbGl0KCdcbicpCiAgICBidWZmZXIgPSBsaW5lcy5wb3AoKSA/PyAnJwogICAgZm9yIChjb25zdCBsaW5lIG9mIGxpbmVzKSB7CiAgICAgIGlmIChsaW5lLnN0YXJ0c1dpdGgoJ2RhdGE6ICcpICYmICFsaW5lLmluY2x1ZGVzKCdbRE9ORV0nKSkgewogICAgICAgIHlpZWxkIGxpbmUuc2xpY2UoNikKICAgICAgfQogICAgfQogIH0KfQo=
+import * as SecureStore from 'expo-secure-store'
+
+const BASE_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8000'
+
+async function getToken(): Promise<string | null> {
+  return SecureStore.getItemAsync('kroex_token')
+}
+
+async function request<T>(
+  method: string,
+  path: string,
+  body?: unknown,
+): Promise<T> {
+  const token = await getToken()
+  const res = await fetch(`${BASE_URL}${path}`, {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  })
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }))
+    throw new Error(err.detail ?? 'Request failed')
+  }
+  return res.json()
+}
+
+export const api = {
+  get: <T>(path: string) => request<T>('GET', path),
+  post: <T>(path: string, body: unknown) => request<T>('POST', path, body),
+  put: <T>(path: string, body: unknown) => request<T>('PUT', path, body),
+  delete: <T>(path: string) => request<T>('DELETE', path),
+}
+
+export async function* streamSSE(
+  path: string,
+  body: unknown,
+): AsyncGenerator<string> {
+  const token = await getToken()
+  const res = await fetch(`${BASE_URL}${path}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify(body),
+  })
+
+  if (!res.ok || !res.body) throw new Error('Stream failed')
+
+  const reader = res.body.getReader()
+  const decoder = new TextDecoder()
+  let buffer = ''
+
+  while (true) {
+    const { done, value } = await reader.read()
+    if (done) break
+    buffer += decoder.decode(value, { stream: true })
+    const lines = buffer.split('\n')
+    buffer = lines.pop() ?? ''
+    for (const line of lines) {
+      if (line.startsWith('data: ') && !line.includes('[DONE]')) {
+        yield line.slice(6)
+      }
+    }
+  }
+}
