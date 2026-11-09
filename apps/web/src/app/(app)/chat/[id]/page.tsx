@@ -34,7 +34,6 @@ export default function ChatPage() {
   const chatMessages = messages[id] ?? []
   const activeArtifact = activeArtifactId ? artifacts[activeArtifactId] : null
 
-  // Auto-scroll
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [chatMessages.length])
@@ -45,7 +44,6 @@ export default function ChatPage() {
     const userMsgId = generateId()
     const asstMsgId = generateId()
 
-    // Add user message
     addMessage(id, {
       id: userMsgId,
       conversationId: id,
@@ -56,7 +54,6 @@ export default function ChatPage() {
       status: 'done',
     })
 
-    // Add placeholder assistant message
     addMessage(id, {
       id: asstMsgId,
       conversationId: id,
@@ -70,7 +67,6 @@ export default function ChatPage() {
 
     setStreaming(true)
 
-    // Update conversation title on first message
     if (chatMessages.length === 0) {
       updateConversation(id, {
         title: content.slice(0, 60) + (content.length > 60 ? '…' : ''),
@@ -151,7 +147,6 @@ export default function ChatPage() {
   return (
     <AppShell>
       <div className="flex h-full">
-        {/* Chat area */}
         <div className={`flex flex-col flex-1 min-w-0 transition-all duration-300 ${activeArtifact ? 'max-w-[55%]' : ''}`}>
           {chatMessages.length === 0 ? (
             <WelcomeScreen onSend={handleSend} model={conversation?.model ?? defaultModel ?? 'kroex-pro'} onModelClick={() => setModelSelectorOpen(true)} />
@@ -181,7 +176,6 @@ export default function ChatPage() {
           )}
         </div>
 
-        {/* Artifact panel */}
         <AnimatePresence>
           {activeArtifact && (
             <div className="w-[45%] border-l border-border flex-shrink-0">
