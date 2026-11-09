@@ -1,1 +1,115 @@
-aW1wb3J0IHsgdXNlU3RhdGUgfSBmcm9tICdyZWFjdCcKaW1wb3J0IHsKICBWaWV3LCBUZXh0LCBUZXh0SW5wdXQsIFRvdWNoYWJsZU9wYWNpdHksCiAgU3R5bGVTaGVldCwgS2V5Ym9hcmRBdm9pZGluZ1ZpZXcsIFBsYXRmb3JtLCBBY3Rpdml0eUluZGljYXRvciwKfSBmcm9tICdyZWFjdC1uYXRpdmUnCmltcG9ydCB7IFNhZmVBcmVhVmlldyB9IGZyb20gJ3JlYWN0LW5hdGl2ZS1zYWZlLWFyZWEtY29udGV4dCcKaW1wb3J0IHsgcm91dGVyIH0gZnJvbSAnZXhwby1yb3V0ZXInCmltcG9ydCB7IHVzZUF1dGhTdG9yZSB9IGZyb20gJy4uLy4uL3N0b3JlL2F1dGgnCmltcG9ydCB7IGFwaSB9IGZyb20gJy4uLy4uL2xpYi9hcGknCgpleHBvcnQgZGVmYXVsdCBmdW5jdGlvbiBMb2dpblNjcmVlbigpIHsKICBjb25zdCBbZW1haWwsIHNldEVtYWlsXSA9IHVzZVN0YXRlKCcnKQogIGNvbnN0IFtwYXNzd29yZCwgc2V0UGFzc3dvcmRdID0gdXNlU3RhdGUoJycpCiAgY29uc3QgW2xvYWRpbmcsIHNldExvYWRpbmddID0gdXNlU3RhdGUoZmFsc2UpCiAgY29uc3QgW2Vycm9yLCBzZXRFcnJvcl0gPSB1c2VTdGF0ZSgnJykKICBjb25zdCB7IHNldFRva2VuLCBzZXRVc2VyIH0gPSB1c2VBdXRoU3RvcmUoKQoKICBjb25zdCBoYW5kbGVMb2dpbiA9IGFzeW5jICgpID0+IHsKICAgIGlmICghZW1haWwudHJpbSgpIHx8ICFwYXNzd29yZCkgcmV0dXJuCiAgICBzZXRMb2FkaW5nKHRydWUpCiAgICBzZXRFcnJvcignJykKICAgIHRyeSB7CiAgICAgIGNvbnN0IHJlcyA9IGF3YWl0IGFwaS5wb3N0PHsgYWNjZXNzX3Rva2VuOiBzdHJpbmc7IHVzZXI6IGFueSB9PigKICAgICAgICAnL2FwaS9hdXRoL2xvZ2luJywKICAgICAgICB7IHVzZXJuYW1lOiBlbWFpbCwgcGFzc3dvcmQgfSwKICAgICAgKQogICAgICBhd2FpdCBzZXRUb2tlbihyZXMuYWNjZXNzX3Rva2VuKQogICAgICBzZXRVc2VyKHJlcy51c2VyKQogICAgICByb3V0ZXIucmVwbGFjZSgnLyhhcHApL2NoYXQnKQogICAgfSBjYXRjaCAoZTogYW55KSB7CiAgICAgIHNldEVycm9yKGUubWVzc2FnZSA/PyAnTG9naW4gZmFpbGVkJykKICAgIH0gZmluYWxseSB7CiAgICAgIHNldExvYWRpbmcoZmFsc2UpCiAgICB9CiAgfQoKICByZXR1cm4gKAogICAgPFNhZmVBcmVhVmlldyBzdHlsZT17c3R5bGVzLmNvbnRhaW5lcn0+CiAgICAgIDxLZXlib2FyZEF2b2lkaW5nVmlldwogICAgICAgIHN0eWxlPXtzdHlsZXMuaW5uZXJ9CiAgICAgICAgYmVoYXZpb3I9e1BsYXRmb3JtLk9TID09PSAnaW9zJyA/ICdwYWRkaW5nJyA6ICdoZWlnaHQnfQogICAgICA+CiAgICAgICAgPFZpZXcgc3R5bGU9e3N0eWxlcy5oZWFkZXJ9PgogICAgICAgICAgPFRleHQgc3R5bGU9e3N0eWxlcy5sb2dvfT5LUk9FWDwvVGV4dD4KICAgICAgICAgIDxUZXh0IHN0eWxlPXtzdHlsZXMudGFnbGluZX0+VGhpbmsgZGVlcGVyLiBCdWlsZCBmdXJ0aGVyLjwvVGV4dD4KICAgICAgICA8L1ZpZXc+CgogICAgICAgIDxWaWV3IHN0eWxlPXtzdHlsZXMuZm9ybX0+CiAgICAgICAgICB7ZXJyb3IgPyA8VGV4dCBzdHlsZT17c3R5bGVzLmVycm9yfT57ZXJyb3J9PC9UZXh0PiA6IG51bGx9CiAgICAgICAgICA8VGV4dElucHV0CiAgICAgICAgICAgIHN0eWxlPXtzdHlsZXMuaW5wdXR9CiAgICAgICAgICAgIHZhbHVlPXtlbWFpbH0KICAgICAgICAgICAgb25DaGFuZ2VUZXh0PXtzZXRFbWFpbH0KICAgICAgICAgICAgcGxhY2Vob2xkZXI9IkVtYWlsIgogICAgICAgICAgICBwbGFjZWhvbGRlclRleHRDb2xvcj0iIzlDQTNBRiIKICAgICAgICAgICAga2V5Ym9hcmRUeXBlPSJlbWFpbC1hZGRyZXNzIgogICAgICAgICAgICBhdXRvQ2FwaXRhbGl6ZT0ibm9uZSIKICAgICAgICAgICAgYXV0b0NvcnJlY3Q9e2ZhbHNlfQogICAgICAgICAgLz4KICAgICAgICAgIDxUZXh0SW5wdXQKICAgICAgICAgICAgc3R5bGU9e3N0eWxlcy5pbnB1dH0KICAgICAgICAgICAgdmFsdWU9e3Bhc3N3b3JkfQogICAgICAgICAgICBvbkNoYW5nZVRleHQ9e3NldFBhc3N3b3JkfQogICAgICAgICAgICBwbGFjZWhvbGRlcj0iUGFzc3dvcmQiCiAgICAgICAgICAgIHBsYWNlaG9sZGVyVGV4dENvbG9yPSIjOUNBM0FGIgogICAgICAgICAgICBzZWN1cmVUZXh0RW50cnkKICAgICAgICAgIC8+CiAgICAgICAgICA8VG91Y2hhYmxlT3BhY2l0eQogICAgICAgICAgICBzdHlsZT17W3N0eWxlcy5idG4sIGxvYWRpbmcgJiYgc3R5bGVzLmJ0bkRpc2FibGVkXX0KICAgICAgICAgICAgb25QcmVzcz17aGFuZGxlTG9naW59CiAgICAgICAgICAgIGRpc2FibGVkPXtsb2FkaW5nfQogICAgICAgICAgPgogICAgICAgICAgICB7bG9hZGluZwogICAgICAgICAgICAgID8gPEFjdGl2aXR5SW5kaWNhdG9yIGNvbG9yPSIjZmZmIiAvPgogICAgICAgICAgICAgIDogPFRleHQgc3R5bGU9e3N0eWxlcy5idG5UZXh0fT5TaWduIGluPC9UZXh0Pn0KICAgICAgICAgIDwvVG91Y2hhYmxlT3BhY2l0eT4KCiAgICAgICAgICA8VG91Y2hhYmxlT3BhY2l0eQogICAgICAgICAgICBvblByZXNzPXsoKSA9PiByb3V0ZXIucHVzaCgnLyhhdXRoKS9yZWdpc3RlcicpfQogICAgICAgICAgPgogICAgICAgICAgICA8VGV4dCBzdHlsZT17c3R5bGVzLmxpbmt9Pk5ldyB0byBLUk9FWD8gQ3JlYXRlIGFuIGFjY291bnQ8L1RleHQ+CiAgICAgICAgICA8L1RvdWNoYWJsZU9wYWNpdHk+CiAgICAgICAgPC9WaWV3PgogICAgICA8L0tleWJvYXJkQXZvaWRpbmdWaWV3PgogICAgPC9TYWZlQXJlYVZpZXc+CiAgKQp9Cgpjb25zdCBzdHlsZXMgPSBTdHlsZVNoZWV0LmNyZWF0ZSh7CiAgY29udGFpbmVyOiB7IGZsZXg6IDEsIGJhY2tncm91bmRDb2xvcjogJyNGQUZBRjgnIH0sCiAgaW5uZXI6IHsgZmxleDogMSwganVzdGlmeUNvbnRlbnQ6ICdjZW50ZXInLCBwYWRkaW5nSG9yaXpvbnRhbDogMjQgfSwKICBoZWFkZXI6IHsgYWxpZ25JdGVtczogJ2NlbnRlcicsIG1hcmdpbkJvdHRvbTogNDggfSwKICBsb2dvOiB7IGZvbnRTaXplOiAzNiwgZm9udFdlaWdodDogJzcwMCcsIGNvbG9yOiAnIzE0MTQxMycgfSwKICB0YWdsaW5lOiB7IGZvbnRTaXplOiAxNCwgY29sb3I6ICcjNkI3MjgwJywgbWFyZ2luVG9wOiA4IH0sCiAgZm9ybTogeyBnYXA6IDE0IH0sCiAgZXJyb3I6IHsgY29sb3I6ICcjRUY0NDQ0JywgZm9udFNpemU6IDE0LCB0ZXh0QWxpZ246ICdjZW50ZXInIH0sCiAgaW5wdXQ6IHsKICAgIGhlaWdodDogNTIsCiAgICBiYWNrZ3JvdW5kQ29sb3I6ICcjRjNGMkVEJywKICAgIGJvcmRlclJhZGl1czogMTIsCiAgICBwYWRkaW5nSG9yaXpvbnRhbDogMTYsCiAgICBmb250U2l6ZTogMTYsCiAgICBjb2xvcjogJyMxNDE0MTMnLAogIH0sCiAgYnRuOiB7CiAgICBoZWlnaHQ6IDUyLAogICAgYmFja2dyb3VuZENvbG9yOiAnIzI1NjNFQicsCiAgICBib3JkZXJSYWRpdXM6IDEyLAogICAgYWxpZ25JdGVtczogJ2NlbnRlcicsCiAgICBqdXN0aWZ5Q29udGVudDogJ2NlbnRlcicsCiAgfSwKICBidG5EaXNhYmxlZDogeyBvcGFjaXR5OiAwLjYgfSwKICBidG5UZXh0OiB7IGNvbG9yOiAnI2ZmZicsIGZvbnRTaXplOiAxNiwgZm9udFdlaWdodDogJzYwMCcgfSwKICBsaW5rOiB7IHRleHRBbGlnbjogJ2NlbnRlcicsIGNvbG9yOiAnIzI1NjNFQicsIGZvbnRTaXplOiAxNCB9LAp9KQo=
+import { useState } from 'react'
+import {
+  View, Text, TextInput, TouchableOpacity,
+  StyleSheet, KeyboardAvoidingView, Platform, ActivityIndicator,
+} from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { router } from 'expo-router'
+import { useAuthStore } from '../../store/auth'
+import { api } from '../../lib/api'
+
+export default function LoginScreen() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const { setToken, setUser } = useAuthStore()
+
+  const handleLogin = async () => {
+    if (!email.trim() || !password) return
+    setLoading(true)
+    setError('')
+    try {
+      const res = await api.post<{ access_token: string; user: any }>(
+        '/api/auth/login',
+        { username: email, password },
+      )
+      await setToken(res.access_token)
+      setUser(res.user)
+      router.replace('/(app)/chat')
+    } catch (e: any) {
+      setError(e.message ?? 'Login failed')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView
+        style={styles.inner}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      >
+        <View style={styles.header}>
+          <Text style={styles.logo}>KROEX</Text>
+          <Text style={styles.tagline}>Think deeper. Build further.</Text>
+        </View>
+
+        <View style={styles.form}>
+          {error ? <Text style={styles.error}>{error}</Text> : null}
+          <TextInput
+            style={styles.input}
+            value={email}
+            onChangeText={setEmail}
+            placeholder="Email"
+            placeholderTextColor="#9CA3AF"
+            keyboardType="email-address"
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+          <TextInput
+            style={styles.input}
+            value={password}
+            onChangeText={setPassword}
+            placeholder="Password"
+            placeholderTextColor="#9CA3AF"
+            secureTextEntry
+          />
+          <TouchableOpacity
+            style={[styles.btn, loading && styles.btnDisabled]}
+            onPress={handleLogin}
+            disabled={loading}
+          >
+            {loading
+              ? <ActivityIndicator color="#fff" />
+              : <Text style={styles.btnText}>Sign in</Text>}
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => router.push('/(auth)/register')}
+          >
+            <Text style={styles.link}>New to KROEX? Create an account</Text>
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: '#FAFAF8' },
+  inner: { flex: 1, justifyContent: 'center', paddingHorizontal: 24 },
+  header: { alignItems: 'center', marginBottom: 48 },
+  logo: { fontSize: 36, fontWeight: '700', color: '#141413' },
+  tagline: { fontSize: 14, color: '#6B7280', marginTop: 8 },
+  form: { gap: 14 },
+  error: { color: '#EF4444', fontSize: 14, textAlign: 'center' },
+  input: {
+    height: 52,
+    backgroundColor: '#F3F2ED',
+    borderRadius: 12,
+    paddingHorizontal: 16,
+    fontSize: 16,
+    color: '#141413',
+  },
+  btn: {
+    height: 52,
+    backgroundColor: '#2563EB',
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  btnDisabled: { opacity: 0.6 },
+  btnText: { color: '#fff', fontSize: 16, fontWeight: '600' },
+  link: { textAlign: 'center', color: '#2563EB', fontSize: 14 },
+})

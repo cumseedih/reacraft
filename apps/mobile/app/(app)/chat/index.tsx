@@ -1,1 +1,159 @@
-aW1wb3J0IHsgdXNlU3RhdGUsIHVzZVJlZiwgdXNlQ2FsbGJhY2sgfSBmcm9tICdyZWFjdCcKaW1wb3J0IHsKICBWaWV3LCBUZXh0LCBUZXh0SW5wdXQsIFRvdWNoYWJsZU9wYWNpdHksIEZsYXRMaXN0LAogIEtleWJvYXJkQXZvaWRpbmdWaWV3LCBQbGF0Zm9ybSwgU3R5bGVTaGVldCwKfSBmcm9tICdyZWFjdC1uYXRpdmUnCmltcG9ydCB7IFNhZmVBcmVhVmlldyB9IGZyb20gJ3JlYWN0LW5hdGl2ZS1zYWZlLWFyZWEtY29udGV4dCcKaW1wb3J0IEFuaW1hdGVkLCB7IEZhZGVJbkRvd24gfSBmcm9tICdyZWFjdC1uYXRpdmUtcmVhbmltYXRlZCcKaW1wb3J0IHsgSW9uaWNvbnMgfSBmcm9tICdAZXhwby92ZWN0b3ItaWNvbnMnCmltcG9ydCB7IHVzZUF1dGhTdG9yZSB9IGZyb20gJy4uLy4uLy4uL3N0b3JlL2F1dGgnCmltcG9ydCB7IHN0cmVhbVNTRSB9IGZyb20gJy4uLy4uLy4uL2xpYi9hcGknCmltcG9ydCB7IGdlbmVyYXRlSWQgfSBmcm9tICcuLi8uLi8uLi9saWIvdXRpbHMnCgppbnRlcmZhY2UgTWVzc2FnZSB7CiAgaWQ6IHN0cmluZwogIHJvbGU6ICd1c2VyJyB8ICdhc3Npc3RhbnQnCiAgY29udGVudDogc3RyaW5nCiAgc3RhdHVzOiAnZG9uZScgfCAnc3RyZWFtaW5nJyB8ICdlcnJvcicKfQoKZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gQ2hhdFNjcmVlbigpIHsKICBjb25zdCBbbWVzc2FnZXMsIHNldE1lc3NhZ2VzXSA9IHVzZVN0YXRlPE1lc3NhZ2VbXT4oW10pCiAgY29uc3QgW2lucHV0LCBzZXRJbnB1dF0gPSB1c2VTdGF0ZSgnJykKICBjb25zdCBbaXNTdHJlYW1pbmcsIHNldElzU3RyZWFtaW5nXSA9IHVzZVN0YXRlKGZhbHNlKQogIGNvbnN0IGZsYXRMaXN0UmVmID0gdXNlUmVmPEZsYXRMaXN0PihudWxsKQoKICBjb25zdCBhZGRNZXNzYWdlID0gKG1zZzogTWVzc2FnZSkgPT4gc2V0TWVzc2FnZXMocHJldiA9PiBbLi4ucHJldiwgbXNnXSkKICBjb25zdCB1cGRhdGVNZXNzYWdlID0gKGlkOiBzdHJpbmcsIHBhdGNoOiBQYXJ0aWFsPE1lc3NhZ2U+KSA9PgogICAgc2V0TWVzc2FnZXMocHJldiA9PiBwcmV2Lm1hcChtID0+IG0uaWQgPT09IGlkID8geyAuLi5tLCAuLi5wYXRjaCB9IDogbSkpCiAgY29uc3QgYXBwZW5kQ29udGVudCA9IChpZDogc3RyaW5nLCB0ZXh0OiBzdHJpbmcpID0+CiAgICBzZXRNZXNzYWdlcyhwcmV2ID0+IHByZXYubWFwKG0gPT4gbS5pZCA9PT0gaWQgPyB7IC4uLm0sIGNvbnRlbnQ6IG0uY29udGVudCArIHRleHQgfSA6IG0pKQoKICBjb25zdCBoYW5kbGVTZW5kID0gdXNlQ2FsbGJhY2soYXN5bmMgKCkgPT4gewogICAgY29uc3QgdGV4dCA9IGlucHV0LnRyaW0oKQogICAgaWYgKCF0ZXh0IHx8IGlzU3RyZWFtaW5nKSByZXR1cm4KICAgIHNldElucHV0KCcnKQogICAgc2V0SXNTdHJlYW1pbmcodHJ1ZSkKCiAgICBjb25zdCB1c2VyTXNnSWQgPSBnZW5lcmF0ZUlkKCkKICAgIGNvbnN0IGFzc3RNc2dJZCA9IGdlbmVyYXRlSWQoKQoKICAgIGFkZE1lc3NhZ2UoeyBpZDogdXNlck1zZ0lkLCByb2xlOiAndXNlcicsIGNvbnRlbnQ6IHRleHQsIHN0YXR1czogJ2RvbmUnIH0pCiAgICBhZGRNZXNzYWdlKHsgaWQ6IGFzc3RNc2dJZCwgcm9sZTogJ2Fzc2lzdGFudCcsIGNvbnRlbnQ6ICcnLCBzdGF0dXM6ICdzdHJlYW1pbmcnIH0pCgogICAgdHJ5IHsKICAgICAgZm9yIGF3YWl0IChjb25zdCBsaW5lIG9mIHN0cmVhbVNTRSgnL2FwaS9jaGF0L3N0cmVhbScsIHsKICAgICAgICBtZXNzYWdlczogW3sgcm9sZTogJ3VzZXInLCBjb250ZW50OiB0ZXh0IH1dLAogICAgICAgIG1vZGVsOiAna3JvZXgtcHJvJywKICAgICAgfSkpIHsKICAgICAgICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShsaW5lKQogICAgICAgIGlmIChkYXRhLnR5cGUgPT09ICdkZWx0YScpIGFwcGVuZENvbnRlbnQoYXNzdE1zZ0lkLCBkYXRhLnRleHQpCiAgICAgICAgZWxzZSBpZiAoZGF0YS50eXBlID09PSAnZG9uZScpIHVwZGF0ZU1lc3NhZ2UoYXNzdE1zZ0lkLCB7IHN0YXR1czogJ2RvbmUnIH0pCiAgICAgIH0KICAgIH0gY2F0Y2ggewogICAgICB1cGRhdGVNZXNzYWdlKGFzc3RNc2dJZCwgeyBzdGF0dXM6ICdlcnJvcicgfSkKICAgIH0gZmluYWxseSB7CiAgICAgIHNldElzU3RyZWFtaW5nKGZhbHNlKQogICAgfQogIH0sIFtpbnB1dCwgaXNTdHJlYW1pbmddKQoKICByZXR1cm4gKAogICAgPFNhZmVBcmVhVmlldyBzdHlsZT17c3R5bGVzLmNvbnRhaW5lcn0+CiAgICAgIDxWaWV3IHN0eWxlPXtzdHlsZXMuaGVhZGVyfT4KICAgICAgICA8VGV4dCBzdHlsZT17c3R5bGVzLmhlYWRlclRpdGxlfT5LUk9FWDwvVGV4dD4KICAgICAgPC9WaWV3PgoKICAgICAgPEtleWJvYXJkQXZvaWRpbmdWaWV3CiAgICAgICAgc3R5bGU9e3N0eWxlcy5mbGV4fQogICAgICAgIGJlaGF2aW9yPXtQbGF0Zm9ybS5PUyA9PT0gJ2lvcycgPyAncGFkZGluZycgOiAnaGVpZ2h0J30KICAgICAgICBrZXlib2FyZFZlcnRpY2FsT2Zmc2V0PXswfQogICAgICA+CiAgICAgICAgPEZsYXRMaXN0CiAgICAgICAgICByZWY9e2ZsYXRMaXN0UmVmfQogICAgICAgICAgZGF0YT17bWVzc2FnZXN9CiAgICAgICAgICBrZXlFeHRyYWN0b3I9e20gPT4gbS5pZH0KICAgICAgICAgIGNvbnRlbnRDb250YWluZXJTdHlsZT17c3R5bGVzLm1lc3NhZ2VMaXN0fQogICAgICAgICAgb25Db250ZW50U2l6ZUNoYW5nZT17KCkgPT4gZmxhdExpc3RSZWYuY3VycmVudD8uc2Nyb2xsVG9FbmQoeyBhbmltYXRlZDogdHJ1ZSB9KX0KICAgICAgICAgIHJlbmRlckl0ZW09eyh7IGl0ZW06IG1zZyB9KSA9PiAoCiAgICAgICAgICAgIDxBbmltYXRlZC5WaWV3CiAgICAgICAgICAgICAgZW50ZXJpbmc9e0ZhZGVJbkRvd24uZHVyYXRpb24oMjAwKX0KICAgICAgICAgICAgICBzdHlsZT17W3N0eWxlcy5tZXNzYWdlUm93LCBtc2cucm9sZSA9PT0gJ3VzZXInID8gc3R5bGVzLnVzZXJSb3cgOiBzdHlsZXMuYXNzdFJvd119CiAgICAgICAgICAgID4KICAgICAgICAgICAgICA8VmlldyBzdHlsZT17W3N0eWxlcy5idWJibGUsIG1zZy5yb2xlID09PSAndXNlcicgPyBzdHlsZXMudXNlckJ1YmJsZSA6IHN0eWxlcy5hc3N0QnViYmxlXX0+CiAgICAgICAgICAgICAgICA8VGV4dCBzdHlsZT17W3N0eWxlcy5tZXNzYWdlVGV4dCwgbXNnLnJvbGUgPT09ICd1c2VyJyA/IHN0eWxlcy51c2VyVGV4dCA6IHN0eWxlcy5hc3N0VGV4dF19PgogICAgICAgICAgICAgICAgICB7bXNnLmNvbnRlbnR9CiAgICAgICAgICAgICAgICAgIHttc2cuc3RhdHVzID09PSAnc3RyZWFtaW5nJyA/ICfilosnIDogJyd9CiAgICAgICAgICAgICAgICA8L1RleHQ+CiAgICAgICAgICAgICAgPC9WaWV3PgogICAgICAgICAgICA8L0FuaW1hdGVkLlZpZXc+CiAgICAgICAgICApfQogICAgICAgIC8+CgogICAgICAgIDxWaWV3IHN0eWxlPXtzdHlsZXMuaW5wdXRSb3d9PgogICAgICAgICAgPFRleHRJbnB1dAogICAgICAgICAgICBzdHlsZT17c3R5bGVzLmlucHV0fQogICAgICAgICAgICB2YWx1ZT17aW5wdXR9CiAgICAgICAgICAgIG9uQ2hhbmdlVGV4dD17c2V0SW5wdXR9CiAgICAgICAgICAgIHBsYWNlaG9sZGVyPSJNZXNzYWdlIEtST0VY4oCmIgogICAgICAgICAgICBwbGFjZWhvbGRlclRleHRDb2xvcj0iIzlDQTNBRiIKICAgICAgICAgICAgbXVsdGlsaW5lCiAgICAgICAgICAgIG1heExlbmd0aD17ODAwMH0KICAgICAgICAgIC8+CiAgICAgICAgICA8VG91Y2hhYmxlT3BhY2l0eQogICAgICAgICAgICBzdHlsZT17W3N0eWxlcy5zZW5kQnRuLCAoIWlucHV0LnRyaW0oKSB8fCBpc1N0cmVhbWluZykgJiYgc3R5bGVzLnNlbmRCdG5EaXNhYmxlZF19CiAgICAgICAgICAgIG9uUHJlc3M9e2hhbmRsZVNlbmR9CiAgICAgICAgICAgIGRpc2FibGVkPXshaW5wdXQudHJpbSgpIHx8IGlzU3RyZWFtaW5nfQogICAgICAgICAgPgogICAgICAgICAgICA8SW9uaWNvbnMgbmFtZT0iYXJyb3ctdXAiIHNpemU9ezE4fSBjb2xvcj0iI2ZmZiIgLz4KICAgICAgICAgIDwvVG91Y2hhYmxlT3BhY2l0eT4KICAgICAgICA8L1ZpZXc+CiAgICAgIDwvS2V5Ym9hcmRBdm9pZGluZ1ZpZXc+CiAgICA8L1NhZmVBcmVhVmlldz4KICApCn0KCmNvbnN0IHN0eWxlcyA9IFN0eWxlU2hlZXQuY3JlYXRlKHsKICBjb250YWluZXI6IHsgZmxleDogMSwgYmFja2dyb3VuZENvbG9yOiAnI0ZBRkFGOCcgfSwKICBmbGV4OiB7IGZsZXg6IDEgfSwKICBoZWFkZXI6IHsgcGFkZGluZ0hvcml6b250YWw6IDE2LCBwYWRkaW5nVmVydGljYWw6IDEyLCBib3JkZXJCb3R0b21XaWR0aDogMSwgYm9yZGVyQm90dG9tQ29sb3I6ICcjRThFNkRDJyB9LAogIGhlYWRlclRpdGxlOiB7IGZvbnRTaXplOiAxOCwgZm9udFdlaWdodDogJzYwMCcsIGNvbG9yOiAnIzE0MTQxMycgfSwKICBtZXNzYWdlTGlzdDogeyBwYWRkaW5nSG9yaXpvbnRhbDogMTYsIHBhZGRpbmdWZXJ0aWNhbDogMTIsIGdhcDogMTIgfSwKICBtZXNzYWdlUm93OiB7IGZsZXhEaXJlY3Rpb246ICdyb3cnIH0sCiAgdXNlclJvdzogeyBqdXN0aWZ5Q29udGVudDogJ2ZsZXgtZW5kJyB9LAogIGFzc3RSb3c6IHsganVzdGlmeUNvbnRlbnQ6ICdmbGV4LXN0YXJ0JyB9LAogIGJ1YmJsZTogeyBtYXhXaWR0aDogJzgyJScsIGJvcmRlclJhZGl1czogMTgsIHBhZGRpbmc6IDEyIH0sCiAgdXNlckJ1YmJsZTogeyBiYWNrZ3JvdW5kQ29sb3I6ICcjMjU2M0VCJyB9LAogIGFzc3RCdWJibGU6IHsgYmFja2dyb3VuZENvbG9yOiAnI0YzRjJFRCcgfSwKICBtZXNzYWdlVGV4dDogeyBmb250U2l6ZTogMTUsIGxpbmVIZWlnaHQ6IDIyIH0sCiAgdXNlclRleHQ6IHsgY29sb3I6ICcjZmZmJyB9LAogIGFzc3RUZXh0OiB7IGNvbG9yOiAnIzE0MTQxMycgfSwKICBpbnB1dFJvdzogewogICAgZmxleERpcmVjdGlvbjogJ3JvdycsCiAgICBhbGlnbkl0ZW1zOiAnZmxleC1lbmQnLAogICAgcGFkZGluZ0hvcml6b250YWw6IDEyLAogICAgcGFkZGluZ1ZlcnRpY2FsOiAxMCwKICAgIGJvcmRlclRvcFdpZHRoOiAxLAogICAgYm9yZGVyVG9wQ29sb3I6ICcjRThFNkRDJywKICAgIGdhcDogOCwKICB9LAogIGlucHV0OiB7CiAgICBmbGV4OiAxLAogICAgbWluSGVpZ2h0OiA0MCwKICAgIG1heEhlaWdodDogMTYwLAogICAgYmFja2dyb3VuZENvbG9yOiAnI0YzRjJFRCcsCiAgICBib3JkZXJSYWRpdXM6IDIwLAogICAgcGFkZGluZ0hvcml6b250YWw6IDE0LAogICAgcGFkZGluZ1ZlcnRpY2FsOiAxMCwKICAgIGZvbnRTaXplOiAxNSwKICAgIGNvbG9yOiAnIzE0MTQxMycsCiAgfSwKICBzZW5kQnRuOiB7CiAgICB3aWR0aDogNDAsCiAgICBoZWlnaHQ6IDQwLAogICAgYm9yZGVyUmFkaXVzOiAyMCwKICAgIGJhY2tncm91bmRDb2xvcjogJyMyNTYzRUInLAogICAgYWxpZ25JdGVtczogJ2NlbnRlcicsCiAgICBqdXN0aWZ5Q29udGVudDogJ2NlbnRlcicsCiAgfSwKICBzZW5kQnRuRGlzYWJsZWQ6IHsgYmFja2dyb3VuZENvbG9yOiAnI0QxRDVEQicgfSwKfSkK
+import { useState, useRef, useCallback } from 'react'
+import {
+  View, Text, TextInput, TouchableOpacity, FlatList,
+  KeyboardAvoidingView, Platform, StyleSheet,
+} from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
+import Animated, { FadeInDown } from 'react-native-reanimated'
+import { Ionicons } from '@expo/vector-icons'
+import { useAuthStore } from '../../../store/auth'
+import { streamSSE } from '../../../lib/api'
+import { generateId } from '../../../lib/utils'
+
+interface Message {
+  id: string
+  role: 'user' | 'assistant'
+  content: string
+  status: 'done' | 'streaming' | 'error'
+}
+
+export default function ChatScreen() {
+  const [messages, setMessages] = useState<Message[]>([])
+  const [input, setInput] = useState('')
+  const [isStreaming, setIsStreaming] = useState(false)
+  const flatListRef = useRef<FlatList>(null)
+
+  const addMessage = (msg: Message) => setMessages(prev => [...prev, msg])
+  const updateMessage = (id: string, patch: Partial<Message>) =>
+    setMessages(prev => prev.map(m => m.id === id ? { ...m, ...patch } : m))
+  const appendContent = (id: string, text: string) =>
+    setMessages(prev => prev.map(m => m.id === id ? { ...m, content: m.content + text } : m))
+
+  const handleSend = useCallback(async () => {
+    const text = input.trim()
+    if (!text || isStreaming) return
+    setInput('')
+    setIsStreaming(true)
+
+    const userMsgId = generateId()
+    const asstMsgId = generateId()
+
+    addMessage({ id: userMsgId, role: 'user', content: text, status: 'done' })
+    addMessage({ id: asstMsgId, role: 'assistant', content: '', status: 'streaming' })
+
+    try {
+      for await (const line of streamSSE('/api/chat/stream', {
+        messages: [{ role: 'user', content: text }],
+        model: 'kroex-pro',
+      })) {
+        const data = JSON.parse(line)
+        if (data.type === 'delta') appendContent(asstMsgId, data.text)
+        else if (data.type === 'done') updateMessage(asstMsgId, { status: 'done' })
+      }
+    } catch {
+      updateMessage(asstMsgId, { status: 'error' })
+    } finally {
+      setIsStreaming(false)
+    }
+  }, [input, isStreaming])
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>KROEX</Text>
+      </View>
+
+      <KeyboardAvoidingView
+        style={styles.flex}
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        keyboardVerticalOffset={0}
+      >
+        <FlatList
+          ref={flatListRef}
+          data={messages}
+          keyExtractor={m => m.id}
+          contentContainerStyle={styles.messageList}
+          onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
+          renderItem={({ item: msg }) => (
+            <Animated.View
+              entering={FadeInDown.duration(200)}
+              style={[styles.messageRow, msg.role === 'user' ? styles.userRow : styles.asstRow]}
+            >
+              <View style={[styles.bubble, msg.role === 'user' ? styles.userBubble : styles.asstBubble]}>
+                <Text style={[styles.messageText, msg.role === 'user' ? styles.userText : styles.asstText]}>
+                  {msg.content}
+                  {msg.status === 'streaming' ? '▋' : ''}
+                </Text>
+              </View>
+            </Animated.View>
+          )}
+        />
+
+        <View style={styles.inputRow}>
+          <TextInput
+            style={styles.input}
+            value={input}
+            onChangeText={setInput}
+            placeholder="Message KROEX…"
+            placeholderTextColor="#9CA3AF"
+            multiline
+            maxLength={8000}
+          />
+          <TouchableOpacity
+            style={[styles.sendBtn, (!input.trim() || isStreaming) && styles.sendBtnDisabled]}
+            onPress={handleSend}
+            disabled={!input.trim() || isStreaming}
+          >
+            <Ionicons name="arrow-up" size={18} color="#fff" />
+          </TouchableOpacity>
+        </View>
+      </KeyboardAvoidingView>
+    </SafeAreaView>
+  )
+}
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: '#FAFAF8' },
+  flex: { flex: 1 },
+  header: { paddingHorizontal: 16, paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: '#E8E6DC' },
+  headerTitle: { fontSize: 18, fontWeight: '600', color: '#141413' },
+  messageList: { paddingHorizontal: 16, paddingVertical: 12, gap: 12 },
+  messageRow: { flexDirection: 'row' },
+  userRow: { justifyContent: 'flex-end' },
+  asstRow: { justifyContent: 'flex-start' },
+  bubble: { maxWidth: '82%', borderRadius: 18, padding: 12 },
+  userBubble: { backgroundColor: '#2563EB' },
+  asstBubble: { backgroundColor: '#F3F2ED' },
+  messageText: { fontSize: 15, lineHeight: 22 },
+  userText: { color: '#fff' },
+  asstText: { color: '#141413' },
+  inputRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    paddingHorizontal: 12,
+    paddingVertical: 10,
+    borderTopWidth: 1,
+    borderTopColor: '#E8E6DC',
+    gap: 8,
+  },
+  input: {
+    flex: 1,
+    minHeight: 40,
+    maxHeight: 160,
+    backgroundColor: '#F3F2ED',
+    borderRadius: 20,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    fontSize: 15,
+    color: '#141413',
+  },
+  sendBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#2563EB',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  sendBtnDisabled: { backgroundColor: '#D1D5DB' },
+})
