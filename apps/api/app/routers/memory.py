@@ -3,6 +3,7 @@ User-controlled persistent memory.
 Stores plain-text facts per user; retrieves semantically via pgvector.
 """
 import uuid
+from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException, status, BackgroundTasks
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -25,7 +26,7 @@ class MemoryOut(BaseModel):
     id: str
     content: str
     source: str
-    created_at: str
+    created_at: datetime
 
     class Config:
         from_attributes = True

@@ -4,12 +4,12 @@ from .config import get_settings
 
 settings = get_settings()
 
-engine = create_async_engine(
-    settings.database_url,
-    pool_size=settings.database_pool_size,
-    echo=settings.debug,
-    future=True,
-)
+# pool_size is unsupported by SQLite (used in tests); skip it for non-PostgreSQL URLs
+_engine_kwargs: dict = {'echo': settings.debug, 'future': True}
+if settings.database_url.startswith('postgresql'):
+    _engine_kwargs['pool_size'] = settings.database_pool_size
+
+engine = create_async_engine(settings.database_url, **_engine_kwargs)
 
 AsyncSessionLocal = async_sessionmaker(
     engine,
@@ -19,8 +19,10 @@ AsyncSessionLocal = async_sessionmaker(
     autoflush=False,
 )
 
+
 class Base(DeclarativeBase):
     pass
+
 
 async def get_db():
     async with AsyncSessionLocal() as session:

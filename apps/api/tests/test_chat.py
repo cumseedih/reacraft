@@ -24,7 +24,7 @@ async def test_stream_chat(client):
     token = await _register_and_token(client)
     headers = {'Authorization': f'Bearer {token}'}
 
-    with patch('apps.api.app.services.ai.stream_chat', side_effect=_fake_stream):
+    with patch('app.routers.chat.stream_chat', side_effect=_fake_stream):
         async with client.stream(
             'POST',
             '/api/chat/stream',

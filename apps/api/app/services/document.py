@@ -2,7 +2,10 @@
 Document text extraction.
 Supports: .txt, .md, .pdf (pypdf), .docx (python-docx)
 """
+import logging
 import aiofiles
+
+logger = logging.getLogger(__name__)
 
 CHUNK_SIZE = 1000
 CHUNK_OVERLAP = 100
@@ -24,7 +27,8 @@ async def extract_text(file_path: str, content_type: str) -> str:
         try:
             async with aiofiles.open(file_path, 'r', errors='replace') as f:
                 return await f.read()
-        except Exception:
+        except Exception as exc:
+            logger.warning('Text extraction failed for %s: %s', file_path, exc)
             return ''
 
     if ct == 'application/pdf':
@@ -33,6 +37,7 @@ async def extract_text(file_path: str, content_type: str) -> str:
     if ct == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
         return await _run_sync(_extract_docx_sync, file_path)
 
+    logger.warning('Unsupported content_type for extraction: %s (file=%s)', ct, file_path)
     return ''
 
 
@@ -51,8 +56,11 @@ def _extract_pdf_sync(file_path: str) -> str:
             text = page.extract_text()
             if text:
                 pages.append(text)
-        return '\n'.join(pages)
-    except Exception:
+        result = '\n'.join(pages)
+        logger.info('PDF extracted: %s chars from %s', len(result), file_path)
+        return result
+    except Exception as exc:
+        logger.warning('PDF extraction failed for %s: %s', file_path, exc)
         return ''
 
 
@@ -60,8 +68,11 @@ def _extract_docx_sync(file_path: str) -> str:
     try:
         from docx import Document
         doc = Document(file_path)
-        return '\n'.join(p.text for p in doc.paragraphs if p.text.strip())
-    except Exception:
+        result = '\n'.join(p.text for p in doc.paragraphs if p.text.strip())
+        logger.info('DOCX extracted: %s chars from %s', len(result), file_path)
+        return result
+    except Exception as exc:
+        logger.warning('DOCX extraction failed for %s: %s', file_path, exc)
         return ''
 
 

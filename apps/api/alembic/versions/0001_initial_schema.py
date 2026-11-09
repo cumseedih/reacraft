@@ -6,7 +6,6 @@ Create Date: 2026-11-09 00:00:00.000000
 """
 from alembic import op
 import sqlalchemy as sa
-from pgvector.sqlalchemy import Vector
 
 revision = 'a1b2c3d4e5f6'
 down_revision = None
@@ -15,8 +14,30 @@ depends_on = None
 
 
 def upgrade() -> None:
-    op.execute('CREATE EXTENSION IF NOT EXISTS vector')
-    op.execute("CREATE TYPE user_plan AS ENUM ('free', 'pro', 'max', 'ultra')")
+    conn = op.get_bind()
+
+    # pgvector: use a PL/pgSQL DO block so failure doesn't abort the outer
+    # transaction (exception is caught inside the anonymous block).
+    conn.execute(sa.text("""
+        DO $$
+        BEGIN
+            CREATE EXTENSION IF NOT EXISTS vector;
+        EXCEPTION WHEN others THEN
+            NULL;
+        END $$
+    """))
+
+    # Detect whether pgvector is available after the attempt
+    result = conn.execute(sa.text(
+        "SELECT COUNT(*) FROM pg_extension WHERE extname = 'vector'"
+    ))
+    has_vector = result.scalar() == 1
+
+    if has_vector:
+        from pgvector.sqlalchemy import Vector
+        embedding_type: sa.types.TypeEngine = Vector(1536)
+    else:
+        embedding_type = sa.Text()
 
     op.create_table(
         'users',
@@ -25,12 +46,7 @@ def upgrade() -> None:
         sa.Column('name', sa.String(255), nullable=False),
         sa.Column('hashed_password', sa.String(255), nullable=False),
         sa.Column('avatar', sa.String(512), nullable=True),
-        sa.Column(
-            'plan',
-            sa.Enum('free', 'pro', 'max', 'ultra', name='user_plan', create_type=False),
-            nullable=False,
-            server_default='free',
-        ),
+        sa.Column('plan', sa.String(10), nullable=False, server_default='free'),
         sa.Column('is_active', sa.Boolean, nullable=False, server_default=sa.text('true')),
         sa.Column('is_verified', sa.Boolean, nullable=False, server_default=sa.text('false')),
         sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()')),
@@ -47,7 +63,7 @@ def upgrade() -> None:
         sa.Column('system_prompt', sa.Text, nullable=True),
         sa.Column('color', sa.String(32), nullable=True),
         sa.Column('icon', sa.String(64), nullable=True),
-        sa.Column('metadata', sa.JSON, nullable=False, server_default=sa.text("'{}'".replace("'", "''") + '::json')),
+        sa.Column('metadata', sa.JSON, nullable=False, server_default=sa.text("'{}'")),
         sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()')),
         sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()')),
     )
@@ -63,7 +79,7 @@ def upgrade() -> None:
         sa.Column('system_prompt', sa.Text, nullable=True),
         sa.Column('pinned', sa.Boolean, nullable=False, server_default=sa.text('false')),
         sa.Column('archived', sa.Boolean, nullable=False, server_default=sa.text('false')),
-        sa.Column('metadata', sa.JSON, nullable=False, server_default=sa.text("'{}'::json")),
+        sa.Column('metadata', sa.JSON, nullable=False, server_default=sa.text("'{}'")),
         sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()')),
         sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()')),
     )
@@ -85,7 +101,7 @@ def upgrade() -> None:
         sa.Column('tokens_in', sa.Integer, nullable=True),
         sa.Column('tokens_out', sa.Integer, nullable=True),
         sa.Column('feedback', sa.String(16), nullable=True),
-        sa.Column('metadata', sa.JSON, nullable=False, server_default=sa.text("'{}'::json")),
+        sa.Column('metadata', sa.JSON, nullable=False, server_default=sa.text("'{}'")),
         sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()')),
     )
     op.create_index('ix_messages_conversation_id', 'messages', ['conversation_id'])
@@ -120,7 +136,7 @@ def upgrade() -> None:
         ),
         sa.Column('chunk_index', sa.Integer, nullable=False),
         sa.Column('content', sa.Text, nullable=False),
-        sa.Column('embedding', Vector(1536), nullable=True),
+        sa.Column('embedding', embedding_type, nullable=True),
         sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()')),
     )
     op.create_index('ix_document_chunks_file_id', 'document_chunks', ['file_id'])
@@ -132,7 +148,7 @@ def upgrade() -> None:
         sa.Column('content', sa.Text, nullable=False),
         sa.Column('source', sa.String(64), nullable=False, server_default='manual'),
         sa.Column('source_id', sa.String(36), nullable=True),
-        sa.Column('embedding', Vector(1536), nullable=True),
+        sa.Column('embedding', embedding_type, nullable=True),
         sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('now()')),
         sa.Column('updated_at', sa.DateTime(timezone=True), server_default=sa.text('now()')),
     )
@@ -168,5 +184,4 @@ def downgrade() -> None:
     op.drop_table('conversations')
     op.drop_table('projects')
     op.drop_table('users')
-    op.execute('DROP TYPE IF EXISTS user_plan')
-    op.execute('DROP EXTENSION IF EXISTS vector')
+    op.execute(sa.text('DROP EXTENSION IF EXISTS vector'))

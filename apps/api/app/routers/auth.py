@@ -6,7 +6,7 @@ from ..models.user import User
 from ..schemas.auth import RegisterRequest, LoginRequest, AuthResponse, UserOut
 from ..utils.auth import hash_password, verify_password, create_access_token, get_current_user
 
-router = APIRouter(prefix='/auth', tags=['auth'])
+router = APIRouter(prefix='/api/auth', tags=['auth'])
 
 @router.post('/register', response_model=AuthResponse, status_code=status.HTTP_201_CREATED)
 async def register(payload: RegisterRequest, db: AsyncSession = Depends(get_db)):

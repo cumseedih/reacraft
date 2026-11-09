@@ -1,31 +1,37 @@
 """
 Test fixtures: in-memory SQLite database + httpx AsyncClient.
-SQLite is used to avoid requiring a live PostgreSQL during CI;
-pgvector Vector columns are replaced by Text for compatibility.
+SQLite avoids a live PostgreSQL requirement in CI;
+pgvector Vector columns are replaced with Text for compatibility.
 """
 import pytest
 import pytest_asyncio
+import os
+
+# Point the app at SQLite for tests (must be set before app is imported)
+os.environ.setdefault('DATABASE_URL', 'sqlite+aiosqlite:///:memory:')
+os.environ.setdefault('JWT_SECRET', 'test-secret-not-for-production')
+os.environ.setdefault('UPLOAD_DIR', '/tmp/kroex_test_uploads')
+
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
-from sqlalchemy import event
 from httpx import AsyncClient, ASGITransport
 
 
 @pytest_asyncio.fixture(scope='session')
 async def engine():
     eng = create_async_engine('sqlite+aiosqlite:///:memory:', echo=False, future=True)
-    # Patch Vector columns: replace pgvector type with Text before metadata creation
-    from sqlalchemy import Text
+
+    # Import all models to populate Base.metadata
+    import app.models.user  # noqa
+    import app.models.conversation  # noqa
+    import app.models.project  # noqa
+    import app.models.memory  # noqa
+    import app.models.artifact  # noqa
+
+    from app.database import Base
     from pgvector.sqlalchemy import Vector
-    from sqlalchemy import Column
+    from sqlalchemy import Text
 
-    # Import all models to populate metadata; patch Vector -> Text
-    import apps.api.app.models.user  # noqa
-    import apps.api.app.models.conversation  # noqa
-    import apps.api.app.models.project  # noqa
-    import apps.api.app.models.memory  # noqa
-    import apps.api.app.models.artifact  # noqa
-
-    from apps.api.app.database import Base
+    # SQLite does not support pgvector; swap Vector columns to Text
     for table in Base.metadata.tables.values():
         for col in table.columns:
             if isinstance(col.type, Vector):
@@ -46,10 +52,13 @@ async def db_session(engine):
 
 @pytest_asyncio.fixture
 async def client(engine):
-    from apps.api.app.main import app
-    from apps.api.app import database
+    # Invalidate the lru_cache so env vars above are picked up
+    from app.config import get_settings
+    get_settings.cache_clear()
 
-    # Override DB session with test engine
+    from app.main import app
+    from app.database import get_db
+
     Session = async_sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 
     async def override_get_db():
@@ -61,7 +70,6 @@ async def client(engine):
                 await session.rollback()
                 raise
 
-    from apps.api.app.database import get_db
     app.dependency_overrides[get_db] = override_get_db
 
     async with AsyncClient(transport=ASGITransport(app=app), base_url='http://test') as ac:

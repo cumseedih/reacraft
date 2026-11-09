@@ -1,3 +1,4 @@
+from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
@@ -24,8 +25,8 @@ class ProjectOut(BaseModel):
     system_prompt: str | None
     color: str | None
     icon: str | None
-    created_at: str
-    updated_at: str
+    created_at: datetime
+    updated_at: datetime
 
     class Config:
         from_attributes = True

@@ -2,6 +2,7 @@
 Artifact persistence — read and delete code artifacts extracted from chat.
 Artifacts are created by the chat router; this router exposes them for retrieval.
 """
+from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -21,7 +22,7 @@ class ArtifactOut(BaseModel):
     type: str
     language: str | None
     content: str
-    created_at: str
+    created_at: datetime
 
     class Config:
         from_attributes = True

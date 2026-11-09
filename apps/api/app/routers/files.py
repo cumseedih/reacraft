@@ -6,6 +6,7 @@ HTTP response is returned, so upload is always fast.
 """
 import os
 import uuid
+from datetime import datetime
 import aiofiles
 from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File, BackgroundTasks
 from pydantic import BaseModel
@@ -28,7 +29,7 @@ class FileOut(BaseModel):
     content_type: str
     size: int
     chunk_count: int
-    created_at: str
+    created_at: datetime
 
     class Config:
         from_attributes = True
