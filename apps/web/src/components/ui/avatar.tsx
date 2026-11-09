@@ -1,1 +1,38 @@
-J3VzZSBjbGllbnQnCmltcG9ydCAqIGFzIFJlYWN0IGZyb20gJ3JlYWN0JwppbXBvcnQgKiBhcyBBdmF0YXJQcmltaXRpdmUgZnJvbSAnQHJhZGl4LXVpL3JlYWN0LWF2YXRhcicKaW1wb3J0IHsgY24gfSBmcm9tICdAL2xpYi91dGlscycKCmNvbnN0IEF2YXRhciA9IFJlYWN0LmZvcndhcmRSZWY8CiAgUmVhY3QuRWxlbWVudFJlZjx0eXBlb2YgQXZhdGFyUHJpbWl0aXZlLlJvb3Q+LAogIFJlYWN0LkNvbXBvbmVudFByb3BzV2l0aG91dFJlZjx0eXBlb2YgQXZhdGFyUHJpbWl0aXZlLlJvb3Q+Cj4oKHsgY2xhc3NOYW1lLCAuLi5wcm9wcyB9LCByZWYpID0+ICgKICA8QXZhdGFyUHJpbWl0aXZlLlJvb3QKICAgIHJlZj17cmVmfQogICAgY2xhc3NOYW1lPXtjbigncmVsYXRpdmUgZmxleCBoLTkgdy05IHNocmluay0wIG92ZXJmbG93LWhpZGRlbiByb3VuZGVkLWZ1bGwnLCBjbGFzc05hbWUpfQogICAgey4uLnByb3BzfQogIC8+CikpCkF2YXRhci5kaXNwbGF5TmFtZSA9IEF2YXRhclByaW1pdGl2ZS5Sb290LmRpc3BsYXlOYW1lCgpjb25zdCBBdmF0YXJJbWFnZSA9IFJlYWN0LmZvcndhcmRSZWY8CiAgUmVhY3QuRWxlbWVudFJlZjx0eXBlb2YgQXZhdGFyUHJpbWl0aXZlLkltYWdlPiwKICBSZWFjdC5Db21wb25lbnRQcm9wc1dpdGhvdXRSZWY8dHlwZW9mIEF2YXRhclByaW1pdGl2ZS5JbWFnZT4KPigoeyBjbGFzc05hbWUsIC4uLnByb3BzIH0sIHJlZikgPT4gKAogIDxBdmF0YXJQcmltaXRpdmUuSW1hZ2UgcmVmPXtyZWZ9IGNsYXNzTmFtZT17Y24oJ2FzcGVjdC1zcXVhcmUgaC1mdWxsIHctZnVsbCBvYmplY3QtY292ZXInLCBjbGFzc05hbWUpfSB7Li4ucHJvcHN9IC8+CikpCkF2YXRhckltYWdlLmRpc3BsYXlOYW1lID0gQXZhdGFyUHJpbWl0aXZlLkltYWdlLmRpc3BsYXlOYW1lCgpjb25zdCBBdmF0YXJGYWxsYmFjayA9IFJlYWN0LmZvcndhcmRSZWY8CiAgUmVhY3QuRWxlbWVudFJlZjx0eXBlb2YgQXZhdGFyUHJpbWl0aXZlLkZhbGxiYWNrPiwKICBSZWFjdC5Db21wb25lbnRQcm9wc1dpdGhvdXRSZWY8dHlwZW9mIEF2YXRhclByaW1pdGl2ZS5GYWxsYmFjaz4KPigoeyBjbGFzc05hbWUsIC4uLnByb3BzIH0sIHJlZikgPT4gKAogIDxBdmF0YXJQcmltaXRpdmUuRmFsbGJhY2sKICAgIHJlZj17cmVmfQogICAgY2xhc3NOYW1lPXtjbignZmxleCBoLWZ1bGwgdy1mdWxsIGl0ZW1zLWNlbnRlciBqdXN0aWZ5LWNlbnRlciByb3VuZGVkLWZ1bGwgYmctbXV0ZWQgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIHRleHQtc20gZm9udC1tZWRpdW0nLCBjbGFzc05hbWUpfQogICAgey4uLnByb3BzfQogIC8+CikpCkF2YXRhckZhbGxiYWNrLmRpc3BsYXlOYW1lID0gQXZhdGFyUHJpbWl0aXZlLkZhbGxiYWNrLmRpc3BsYXlOYW1lCgpleHBvcnQgeyBBdmF0YXIsIEF2YXRhckltYWdlLCBBdmF0YXJGYWxsYmFjayB9Cg==
+'use client'
+import * as React from 'react'
+import * as AvatarPrimitive from '@radix-ui/react-avatar'
+import { cn } from '@/lib/utils'
+
+const Avatar = React.forwardRef<
+  React.ElementRef<typeof AvatarPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Root>
+>(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Root
+    ref={ref}
+    className={cn('relative flex h-9 w-9 shrink-0 overflow-hidden rounded-full', className)}
+    {...props}
+  />
+))
+Avatar.displayName = AvatarPrimitive.Root.displayName
+
+const AvatarImage = React.forwardRef<
+  React.ElementRef<typeof AvatarPrimitive.Image>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Image>
+>(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Image ref={ref} className={cn('aspect-square h-full w-full object-cover', className)} {...props} />
+))
+AvatarImage.displayName = AvatarPrimitive.Image.displayName
+
+const AvatarFallback = React.forwardRef<
+  React.ElementRef<typeof AvatarPrimitive.Fallback>,
+  React.ComponentPropsWithoutRef<typeof AvatarPrimitive.Fallback>
+>(({ className, ...props }, ref) => (
+  <AvatarPrimitive.Fallback
+    ref={ref}
+    className={cn('flex h-full w-full items-center justify-center rounded-full bg-muted text-muted-foreground text-sm font-medium', className)}
+    {...props}
+  />
+))
+AvatarFallback.displayName = AvatarPrimitive.Fallback.displayName
+
+export { Avatar, AvatarImage, AvatarFallback }

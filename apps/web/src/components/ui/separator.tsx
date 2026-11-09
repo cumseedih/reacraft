@@ -1,1 +1,23 @@
-J3VzZSBjbGllbnQnCmltcG9ydCAqIGFzIFJlYWN0IGZyb20gJ3JlYWN0JwppbXBvcnQgKiBhcyBTZXBhcmF0b3JQcmltaXRpdmUgZnJvbSAnQHJhZGl4LXVpL3JlYWN0LXNlcGFyYXRvcicKaW1wb3J0IHsgY24gfSBmcm9tICdAL2xpYi91dGlscycKCmNvbnN0IFNlcGFyYXRvciA9IFJlYWN0LmZvcndhcmRSZWY8CiAgUmVhY3QuRWxlbWVudFJlZjx0eXBlb2YgU2VwYXJhdG9yUHJpbWl0aXZlLlJvb3Q+LAogIFJlYWN0LkNvbXBvbmVudFByb3BzV2l0aG91dFJlZjx0eXBlb2YgU2VwYXJhdG9yUHJpbWl0aXZlLlJvb3Q+Cj4oKHsgY2xhc3NOYW1lLCBvcmllbnRhdGlvbiA9ICdob3Jpem9udGFsJywgZGVjb3JhdGl2ZSA9IHRydWUsIC4uLnByb3BzIH0sIHJlZikgPT4gKAogIDxTZXBhcmF0b3JQcmltaXRpdmUuUm9vdAogICAgcmVmPXtyZWZ9CiAgICBkZWNvcmF0aXZlPXtkZWNvcmF0aXZlfQogICAgb3JpZW50YXRpb249e29yaWVudGF0aW9ufQogICAgY2xhc3NOYW1lPXtjbigKICAgICAgJ3Nocmluay0wIGJnLWJvcmRlcicsCiAgICAgIG9yaWVudGF0aW9uID09PSAnaG9yaXpvbnRhbCcgPyAnaC1weCB3LWZ1bGwnIDogJ2gtZnVsbCB3LXB4JywKICAgICAgY2xhc3NOYW1lCiAgICApfQogICAgey4uLnByb3BzfQogIC8+CikpClNlcGFyYXRvci5kaXNwbGF5TmFtZSA9IFNlcGFyYXRvclByaW1pdGl2ZS5Sb290LmRpc3BsYXlOYW1lCmV4cG9ydCB7IFNlcGFyYXRvciB9Cg==
+'use client'
+import * as React from 'react'
+import * as SeparatorPrimitive from '@radix-ui/react-separator'
+import { cn } from '@/lib/utils'
+
+const Separator = React.forwardRef<
+  React.ElementRef<typeof SeparatorPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SeparatorPrimitive.Root>
+>(({ className, orientation = 'horizontal', decorative = true, ...props }, ref) => (
+  <SeparatorPrimitive.Root
+    ref={ref}
+    decorative={decorative}
+    orientation={orientation}
+    className={cn(
+      'shrink-0 bg-border',
+      orientation === 'horizontal' ? 'h-px w-full' : 'h-full w-px',
+      className
+    )}
+    {...props}
+  />
+))
+Separator.displayName = SeparatorPrimitive.Root.displayName
+export { Separator }
