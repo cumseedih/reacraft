@@ -17,7 +17,7 @@ from ..models.memory import Memory
 from ..models.artifact import Artifact
 from ..models.project import DocumentChunk
 from ..schemas.chat import StreamRequest, ConversationOut, MessageOut
-from ..services.ai import stream_ai_response
+from ..services.ai import stream_chat
 from ..services.embeddings import generate_embedding
 from ..utils.auth import get_current_user
 
@@ -75,10 +75,10 @@ async def _get_rag_context(project_id: str, query: str, db: AsyncSession, limit:
     return 'Relevant documents:\n' + '\n---\n'.join(r[0] for r in rows)
 
 
-def _extract_code_artifacts(text: str) -> list[dict]:
+def _extract_code_artifacts(response_text: str) -> list[dict]:
     """Parse code blocks from AI response text."""
     artifacts = []
-    for match in ARTIFACT_RE.finditer(text):
+    for match in ARTIFACT_RE.finditer(response_text):
         language = match.group(1) or ''
         content = match.group(2).strip()
         if not content:
@@ -89,7 +89,7 @@ def _extract_code_artifacts(text: str) -> list[dict]:
 
 
 @router.post('/chat/stream')
-async def stream_chat(
+async def stream_chat_endpoint(
     request: StreamRequest,
     current_user: User = Depends(get_current_user),
     db: AsyncSession = Depends(get_db),
@@ -128,7 +128,7 @@ async def stream_chat(
         system_parts.append(memory_ctx)
     if rag_ctx:
         system_parts.append(rag_ctx)
-    extra_system = '\n\n'.join(system_parts)
+    extra_system = '\n\n'.join(system_parts) or None
 
     # Persist user message
     user_msg = Message(
@@ -140,54 +140,67 @@ async def stream_chat(
     db.add(user_msg)
     await db.flush()
 
+    conv_id = conversation.id
+    user_id = current_user.id
+    messages = request.messages + [{'role': 'user', 'content': request.message}]
+
     async def generate():
-        full_response = []
+        full_response_parts: list[str] = []
         try:
-            async for chunk in stream_ai_response(
-                model=request.model,
-                messages=request.messages + [{'role': 'user', 'content': request.message}],
-                system=extra_system if extra_system else None,
+            async for sse_line in stream_chat(
+                messages=messages,
+                model_id=request.model,
+                system_prompt=extra_system,
             ):
-                full_response.append(chunk.get('text', ''))
-                yield f'data: {json.dumps(chunk)}\n\n'
+                # sse_line is already "data: {...}\n\n"; also collect text
+                if sse_line.startswith('data: '):
+                    try:
+                        payload = json.loads(sse_line[6:].strip())
+                        if payload.get('type') == 'delta':
+                            full_response_parts.append(payload.get('text', ''))
+                    except Exception:
+                        pass
+                yield sse_line
         except Exception as exc:
             yield f'data: {json.dumps({"type": "error", "message": str(exc)})}\n\n'
             return
 
-        response_text = ''.join(full_response)
+        response_text = ''.join(full_response_parts)
 
-        # Persist assistant message and artifacts
+        # Persist assistant message and artifacts out-of-band
         try:
-            asst_msg = Message(
-                id=str(uuid.uuid4()),
-                conversation_id=conversation.id,
-                role='assistant',
-                content=response_text,
-            )
-            db.add(asst_msg)
-
-            for art_data in _extract_code_artifacts(response_text):
-                art_id = str(uuid.uuid4())
-                artifact = Artifact(
-                    id=art_id,
-                    conversation_id=conversation.id,
-                    user_id=current_user.id,
-                    title=art_data['title'],
-                    type=art_data['type'],
-                    language=art_data['language'] or None,
-                    content=art_data['content'],
+            from ..database import AsyncSessionLocal
+            async with AsyncSessionLocal() as persist_db:
+                asst_msg = Message(
+                    id=str(uuid.uuid4()),
+                    conversation_id=conv_id,
+                    role='assistant',
+                    content=response_text,
                 )
-                db.add(artifact)
-                yield f'data: {json.dumps({"type": "artifact", "artifact": {"id": art_id, **art_data}})}\n\n'
+                persist_db.add(asst_msg)
 
-            await db.commit()
+                for art_data in _extract_code_artifacts(response_text):
+                    art_id = str(uuid.uuid4())
+                    artifact = Artifact(
+                        id=art_id,
+                        conversation_id=conv_id,
+                        user_id=user_id,
+                        title=art_data['title'],
+                        type=art_data['type'],
+                        language=art_data['language'] or None,
+                        content=art_data['content'],
+                    )
+                    persist_db.add(artifact)
+                    yield f'data: {json.dumps({"type": "artifact", "artifact": {"id": art_id, **art_data}})}\n\n'
+
+                await persist_db.commit()
         except Exception:
-            await db.rollback()
+            pass
 
     return StreamingResponse(
         generate(),
         media_type='text/event-stream',
-        headers={'Cache-Control': 'no-cache', 'X-Conversation-Id': conversation.id},
+        headers={'Cache-Control': 'no-cache', 'X-Conversation-Id': conv_id},
     )
 
 
