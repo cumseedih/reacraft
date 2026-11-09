@@ -62,6 +62,29 @@ async def list_memories(
     return [MemoryOut.model_validate(m) for m in result.scalars().all()]
 
 
+class MemorySearchResult(BaseModel):
+    contents: list[str]
+    method: str  # 'semantic' or 'recency'
+
+
+@router.get('/search', response_model=MemorySearchResult)
+async def search_memories_endpoint(
+    q: str,
+    limit: int = 5,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    """Semantic memory search. Returns closest memories to query q."""
+    from ..services.retrieval import search_memories
+    from ..services.embeddings import generate_embedding
+
+    has_embedding_key = bool(generate_embedding.__module__)  # just ensure import works
+    embedding = await generate_embedding(q)
+    contents = await search_memories(current_user.id, q, db, limit=limit)
+    method = 'semantic' if embedding is not None else 'recency'
+    return MemorySearchResult(contents=contents, method=method)
+
+
 @router.post('', response_model=MemoryOut, status_code=status.HTTP_201_CREATED)
 async def create_memory(
     body: MemoryCreate,

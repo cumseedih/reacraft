@@ -18,61 +18,12 @@ from ..models.artifact import Artifact
 from ..models.project import DocumentChunk
 from ..schemas.chat import StreamRequest, ConversationOut, MessageOut
 from ..services.ai import stream_chat
-from ..services.embeddings import generate_embedding
+from ..services.retrieval import search_memories, search_document_chunks, build_memory_context, build_rag_context
 from ..utils.auth import get_current_user
 
 router = APIRouter(prefix='/api', tags=['chat'])
 
 ARTIFACT_RE = re.compile(r'```(\w+)?\n([\s\S]+?)```', re.MULTILINE)
-
-
-async def _get_memory_context(user_id: str, query: str, db: AsyncSession, limit: int = 5) -> str:
-    """Return top-k memories semantically closest to the query."""
-    embedding = await generate_embedding(query)
-    if not embedding:
-        result = await db.execute(
-            select(Memory.content)
-            .where(Memory.user_id == user_id)
-            .order_by(Memory.created_at.desc())
-            .limit(limit)
-        )
-        rows = result.scalars().all()
-        if not rows:
-            return ''
-        return 'User context:\n' + '\n'.join(f'- {r}' for r in rows)
-
-    vec = str(embedding)
-    sql = text(
-        "SELECT content FROM memories "
-        "WHERE user_id = :uid "
-        "ORDER BY embedding <=> CAST(:vec AS vector) "
-        "LIMIT :lim"
-    )
-    result = await db.execute(sql, {'uid': user_id, 'vec': vec, 'lim': limit})
-    rows = result.fetchall()
-    if not rows:
-        return ''
-    return 'User context:\n' + '\n'.join(f'- {r[0]}' for r in rows)
-
-
-async def _get_rag_context(project_id: str, query: str, db: AsyncSession, limit: int = 5) -> str:
-    """Return top-k document chunks closest to the query for the given project."""
-    embedding = await generate_embedding(query)
-    if not embedding:
-        return ''
-    vec = str(embedding)
-    sql = text(
-        "SELECT dc.content FROM document_chunks dc "
-        "JOIN project_files pf ON pf.id = dc.file_id "
-        "WHERE pf.project_id = :pid "
-        "ORDER BY dc.embedding <=> CAST(:vec AS vector) "
-        "LIMIT :lim"
-    )
-    result = await db.execute(sql, {'pid': project_id, 'vec': vec, 'lim': limit})
-    rows = result.fetchall()
-    if not rows:
-        return ''
-    return 'Relevant documents:\n' + '\n---\n'.join(r[0] for r in rows)
 
 
 def _extract_code_artifacts(response_text: str) -> list[dict]:
@@ -118,10 +69,12 @@ async def stream_chat_endpoint(
         await db.flush()
 
     # Build context additions
-    memory_ctx = await _get_memory_context(current_user.id, request.message, db)
+    memory_contents = await search_memories(current_user.id, request.message, db)
+    memory_ctx = build_memory_context(memory_contents)
     rag_ctx = ''
     if request.project_id:
-        rag_ctx = await _get_rag_context(request.project_id, request.message, db)
+        doc_contents = await search_document_chunks(request.project_id, request.message, db)
+        rag_ctx = build_rag_context(doc_contents)
 
     system_parts = []
     if memory_ctx:

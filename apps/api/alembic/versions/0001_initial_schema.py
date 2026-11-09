@@ -14,10 +14,11 @@ depends_on = None
 
 
 def upgrade() -> None:
+    import os
     conn = op.get_bind()
 
-    # pgvector: use a PL/pgSQL DO block so failure doesn't abort the outer
-    # transaction (exception is caught inside the anonymous block).
+    # Attempt to enable pgvector; the DO block catches any error so the
+    # outer transaction is not aborted (e.g. permission denied on some hosts).
     conn.execute(sa.text("""
         DO $$
         BEGIN
@@ -27,17 +28,26 @@ def upgrade() -> None:
         END $$
     """))
 
-    # Detect whether pgvector is available after the attempt
     result = conn.execute(sa.text(
         "SELECT COUNT(*) FROM pg_extension WHERE extname = 'vector'"
     ))
     has_vector = result.scalar() == 1
 
+    # KROEX_ALLOW_TEXT_EMBEDDING=1 opts out of the hard requirement (CI/SQLite tests).
+    allow_text = os.environ.get('KROEX_ALLOW_TEXT_EMBEDDING', '0') == '1'
+
     if has_vector:
         from pgvector.sqlalchemy import Vector
         embedding_type: sa.types.TypeEngine = Vector(1536)
-    else:
+    elif allow_text:
+        # Test/CI fallback: semantic search will not work, only recency ordering.
         embedding_type = sa.Text()
+    else:
+        raise RuntimeError(
+            "pgvector extension is not available on this PostgreSQL instance. "
+            "Install postgresql-16-pgvector and re-run: alembic upgrade head. "
+            "To skip this check in CI set KROEX_ALLOW_TEXT_EMBEDDING=1."
+        )
 
     op.create_table(
         'users',
