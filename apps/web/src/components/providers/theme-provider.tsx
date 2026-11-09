@@ -1,1 +1,6 @@
-J3VzZSBjbGllbnQnCmltcG9ydCB7IFRoZW1lUHJvdmlkZXIgYXMgTmV4dFRoZW1lc1Byb3ZpZGVyIH0gZnJvbSAnbmV4dC10aGVtZXMnCmltcG9ydCB0eXBlIHsgVGhlbWVQcm92aWRlclByb3BzIH0gZnJvbSAnbmV4dC10aGVtZXMnCmV4cG9ydCBmdW5jdGlvbiBUaGVtZVByb3ZpZGVyKHsgY2hpbGRyZW4sIC4uLnByb3BzIH06IFRoZW1lUHJvdmlkZXJQcm9wcykgewogIHJldHVybiA8TmV4dFRoZW1lc1Byb3ZpZGVyIHsuLi5wcm9wc30+e2NoaWxkcmVufTwvTmV4dFRoZW1lc1Byb3ZpZGVyPgp9Cg==
+'use client'
+import { ThemeProvider as NextThemesProvider } from 'next-themes'
+import type { ThemeProviderProps } from 'next-themes'
+export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
+  return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+}

@@ -1,1 +1,46 @@
-aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAncmVhY3QnCmltcG9ydCB7IGNuIH0gZnJvbSAnQC9saWIvdXRpbHMnCgpleHBvcnQgaW50ZXJmYWNlIElucHV0UHJvcHMgZXh0ZW5kcyBSZWFjdC5JbnB1dEhUTUxBdHRyaWJ1dGVzPEhUTUxJbnB1dEVsZW1lbnQ+IHsKICBzdGFydEljb24/OiBSZWFjdC5SZWFjdE5vZGUKICBlbmRJY29uPzogUmVhY3QuUmVhY3ROb2RlCiAgZXJyb3I/OiBzdHJpbmcKfQoKY29uc3QgSW5wdXQgPSBSZWFjdC5mb3J3YXJkUmVmPEhUTUxJbnB1dEVsZW1lbnQsIElucHV0UHJvcHM+KAogICh7IGNsYXNzTmFtZSwgdHlwZSwgc3RhcnRJY29uLCBlbmRJY29uLCBlcnJvciwgLi4ucHJvcHMgfSwgcmVmKSA9PiB7CiAgICByZXR1cm4gKAogICAgICA8ZGl2IGNsYXNzTmFtZT0icmVsYXRpdmUiPgogICAgICAgIHtzdGFydEljb24gJiYgKAogICAgICAgICAgPGRpdiBjbGFzc05hbWU9ImFic29sdXRlIGxlZnQtMyB0b3AtMS8yIC10cmFuc2xhdGUteS0xLzIgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIHBvaW50ZXItZXZlbnRzLW5vbmUiPgogICAgICAgICAgICB7c3RhcnRJY29ufQogICAgICAgICAgPC9kaXY+CiAgICAgICAgKX0KICAgICAgICA8aW5wdXQKICAgICAgICAgIHR5cGU9e3R5cGV9CiAgICAgICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICAgICAnZmxleCBoLTEwIHctZnVsbCByb3VuZGVkLXhsIGJvcmRlciBib3JkZXItaW5wdXQgYmctYmFja2dyb3VuZCBweC0zIHB5LTIgdGV4dC1zbSByaW5nLW9mZnNldC1iYWNrZ3JvdW5kJywKICAgICAgICAgICAgJ3BsYWNlaG9sZGVyOnRleHQtbXV0ZWQtZm9yZWdyb3VuZCcsCiAgICAgICAgICAgICdmb2N1cy12aXNpYmxlOm91dGxpbmUtbm9uZSBmb2N1cy12aXNpYmxlOnJpbmctMiBmb2N1cy12aXNpYmxlOnJpbmctcmluZyBmb2N1cy12aXNpYmxlOnJpbmctb2Zmc2V0LTInLAogICAgICAgICAgICAnZGlzYWJsZWQ6Y3Vyc29yLW5vdC1hbGxvd2VkIGRpc2FibGVkOm9wYWNpdHktNTAnLAogICAgICAgICAgICAndHJhbnNpdGlvbi1jb2xvcnMgZHVyYXRpb24tMTUwJywKICAgICAgICAgICAgZXJyb3IgJiYgJ2JvcmRlci1kZXN0cnVjdGl2ZSBmb2N1cy12aXNpYmxlOnJpbmctZGVzdHJ1Y3RpdmUnLAogICAgICAgICAgICBzdGFydEljb24gJiYgJ3BsLTknLAogICAgICAgICAgICBlbmRJY29uICYmICdwci05JywKICAgICAgICAgICAgY2xhc3NOYW1lCiAgICAgICAgICApfQogICAgICAgICAgcmVmPXtyZWZ9CiAgICAgICAgICB7Li4ucHJvcHN9CiAgICAgICAgLz4KICAgICAgICB7ZW5kSWNvbiAmJiAoCiAgICAgICAgICA8ZGl2IGNsYXNzTmFtZT0iYWJzb2x1dGUgcmlnaHQtMyB0b3AtMS8yIC10cmFuc2xhdGUteS0xLzIgdGV4dC1tdXRlZC1mb3JlZ3JvdW5kIj4KICAgICAgICAgICAge2VuZEljb259CiAgICAgICAgICA8L2Rpdj4KICAgICAgICApfQogICAgICAgIHtlcnJvciAmJiA8cCBjbGFzc05hbWU9Im10LTEgdGV4dC14cyB0ZXh0LWRlc3RydWN0aXZlIj57ZXJyb3J9PC9wPn0KICAgICAgPC9kaXY+CiAgICApCiAgfQopCklucHV0LmRpc3BsYXlOYW1lID0gJ0lucHV0JwpleHBvcnQgeyBJbnB1dCB9Cg==
+import * as React from 'react'
+import { cn } from '@/lib/utils'
+
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  startIcon?: React.ReactNode
+  endIcon?: React.ReactNode
+  error?: string
+}
+
+const Input = React.forwardRef<HTMLInputElement, InputProps>(
+  ({ className, type, startIcon, endIcon, error, ...props }, ref) => {
+    return (
+      <div className="relative">
+        {startIcon && (
+          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none">
+            {startIcon}
+          </div>
+        )}
+        <input
+          type={type}
+          className={cn(
+            'flex h-10 w-full rounded-xl border border-input bg-background px-3 py-2 text-sm ring-offset-background',
+            'placeholder:text-muted-foreground',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+            'disabled:cursor-not-allowed disabled:opacity-50',
+            'transition-colors duration-150',
+            error && 'border-destructive focus-visible:ring-destructive',
+            startIcon && 'pl-9',
+            endIcon && 'pr-9',
+            className
+          )}
+          ref={ref}
+          {...props}
+        />
+        {endIcon && (
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
+            {endIcon}
+          </div>
+        )}
+        {error && <p className="mt-1 text-xs text-destructive">{error}</p>}
+      </div>
+    )
+  }
+)
+Input.displayName = 'Input'
+export { Input }

@@ -1,1 +1,27 @@
-aW1wb3J0ICogYXMgUmVhY3QgZnJvbSAncmVhY3QnCmltcG9ydCB7IGNuIH0gZnJvbSAnQC9saWIvdXRpbHMnCgpleHBvcnQgaW50ZXJmYWNlIFRleHRhcmVhUHJvcHMgZXh0ZW5kcyBSZWFjdC5UZXh0YXJlYUhUTUxBdHRyaWJ1dGVzPEhUTUxUZXh0QXJlYUVsZW1lbnQ+IHsKICBlcnJvcj86IHN0cmluZwp9Cgpjb25zdCBUZXh0YXJlYSA9IFJlYWN0LmZvcndhcmRSZWY8SFRNTFRleHRBcmVhRWxlbWVudCwgVGV4dGFyZWFQcm9wcz4oCiAgKHsgY2xhc3NOYW1lLCBlcnJvciwgLi4ucHJvcHMgfSwgcmVmKSA9PiB7CiAgICByZXR1cm4gKAogICAgICA8dGV4dGFyZWEKICAgICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICAgJ2ZsZXggbWluLWgtWzgwcHhdIHctZnVsbCByb3VuZGVkLXhsIGJvcmRlciBib3JkZXItaW5wdXQgYmctYmFja2dyb3VuZCBweC0zIHB5LTIgdGV4dC1zbScsCiAgICAgICAgICAncGxhY2Vob2xkZXI6dGV4dC1tdXRlZC1mb3JlZ3JvdW5kIHJpbmctb2Zmc2V0LWJhY2tncm91bmQnLAogICAgICAgICAgJ2ZvY3VzLXZpc2libGU6b3V0bGluZS1ub25lIGZvY3VzLXZpc2libGU6cmluZy0yIGZvY3VzLXZpc2libGU6cmluZy1yaW5nIGZvY3VzLXZpc2libGU6cmluZy1vZmZzZXQtMicsCiAgICAgICAgICAnZGlzYWJsZWQ6Y3Vyc29yLW5vdC1hbGxvd2VkIGRpc2FibGVkOm9wYWNpdHktNTAgcmVzaXplLW5vbmUgdHJhbnNpdGlvbi1jb2xvcnMnLAogICAgICAgICAgZXJyb3IgJiYgJ2JvcmRlci1kZXN0cnVjdGl2ZScsCiAgICAgICAgICBjbGFzc05hbWUKICAgICAgICApfQogICAgICAgIHJlZj17cmVmfQogICAgICAgIHsuLi5wcm9wc30KICAgICAgLz4KICAgICkKICB9CikKVGV4dGFyZWEuZGlzcGxheU5hbWUgPSAnVGV4dGFyZWEnCmV4cG9ydCB7IFRleHRhcmVhIH0K
+import * as React from 'react'
+import { cn } from '@/lib/utils'
+
+export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  error?: string
+}
+
+const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+  ({ className, error, ...props }, ref) => {
+    return (
+      <textarea
+        className={cn(
+          'flex min-h-[80px] w-full rounded-xl border border-input bg-background px-3 py-2 text-sm',
+          'placeholder:text-muted-foreground ring-offset-background',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+          'disabled:cursor-not-allowed disabled:opacity-50 resize-none transition-colors',
+          error && 'border-destructive',
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
+textarea.displayName = 'Textarea'
+export { Textarea }

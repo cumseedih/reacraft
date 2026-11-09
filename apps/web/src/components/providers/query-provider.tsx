@@ -1,1 +1,13 @@
-J3VzZSBjbGllbnQnCmltcG9ydCB7IFF1ZXJ5Q2xpZW50LCBRdWVyeUNsaWVudFByb3ZpZGVyIH0gZnJvbSAnQHRhbnN0YWNrL3JlYWN0LXF1ZXJ5JwppbXBvcnQgeyB1c2VTdGF0ZSB9IGZyb20gJ3JlYWN0JwoKZXhwb3J0IGZ1bmN0aW9uIFF1ZXJ5UHJvdmlkZXIoeyBjaGlsZHJlbiB9OiB7IGNoaWxkcmVuOiBSZWFjdC5SZWFjdE5vZGUgfSkgewogIGNvbnN0IFtjbGllbnRdID0gdXNlU3RhdGUoKCkgPT4gbmV3IFF1ZXJ5Q2xpZW50KHsKICAgIGRlZmF1bHRPcHRpb25zOiB7CiAgICAgIHF1ZXJpZXM6IHsgc3RhbGVUaW1lOiA2MF8wMDAsIHJldHJ5OiAxIH0sCiAgICAgIG11dGF0aW9uczogeyByZXRyeTogMCB9LAogICAgfQogIH0pKQogIHJldHVybiA8UXVlcnlDbGllbnRQcm92aWRlciBjbGllbnQ9e2NsaWVudH0+e2NoaWxkcmVufTwvUXVlcnlDbGllbnRQcm92aWRlcj4KfQo=
+'use client'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { useState } from 'react'
+
+export function QueryProvider({ children }: { children: React.ReactNode }) {
+  const [client] = useState(() => new QueryClient({
+    defaultOptions: {
+      queries: { staleTime: 60_000, retry: 1 },
+      mutations: { retry: 0 },
+    }
+  }))
+  return <QueryClientProvider client={client}>{children}</QueryClientProvider>
+}
