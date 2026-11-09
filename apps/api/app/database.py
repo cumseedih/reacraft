@@ -1,1 +1,34 @@
-ZnJvbSBzcWxhbGNoZW15LmV4dC5hc3luY2lvIGltcG9ydCBjcmVhdGVfYXN5bmNfZW5naW5lLCBBc3luY1Nlc3Npb24sIGFzeW5jX3Nlc3Npb25tYWtlcgpmcm9tIHNxbGFsY2hlbXkub3JtIGltcG9ydCBEZWNsYXJhdGl2ZUJhc2UKZnJvbSAuY29uZmlnIGltcG9ydCBnZXRfc2V0dGluZ3MKCnNldHRpbmdzID0gZ2V0X3NldHRpbmdzKCkKCmVuZ2luZSA9IGNyZWF0ZV9hc3luY19lbmdpbmUoCiAgICBzZXR0aW5ncy5kYXRhYmFzZV91cmwsCiAgICBwb29sX3NpemU9c2V0dGluZ3MuZGF0YWJhc2VfcG9vbF9zaXplLAogICAgZWNobz1zZXR0aW5ncy5kZWJ1ZywKICAgIGZ1dHVyZT1UcnVlLAopCgpBc3luY1Nlc3Npb25Mb2NhbCA9IGFzeW5jX3Nlc3Npb25tYWtlcigKICAgIGVuZ2luZSwKICAgIGNsYXNzXz1Bc3luY1Nlc3Npb24sCiAgICBleHBpcmVfb25fY29tbWl0PUZhbHNlLAogICAgYXV0b2NvbW1pdD1GYWxzZSwKICAgIGF1dG9mbHVzaD1GYWxzZSwKKQoKY2xhc3MgQmFzZShEZWNsYXJhdGl2ZUJhc2UpOgogICAgcGFzcwoKYXN5bmMgZGVmIGdldF9kYigpOgogICAgYXN5bmMgd2l0aCBBc3luY1Nlc3Npb25Mb2NhbCgpIGFzIHNlc3Npb246CiAgICAgICAgdHJ5OgogICAgICAgICAgICB5aWVsZCBzZXNzaW9uCiAgICAgICAgICAgIGF3YWl0IHNlc3Npb24uY29tbWl0KCkKICAgICAgICBleGNlcHQgRXhjZXB0aW9uOgogICAgICAgICAgICBhd2FpdCBzZXNzaW9uLnJvbGxiYWNrKCkKICAgICAgICAgICAgcmFpc2UKICAgICAgICBmaW5hbGx5OgogICAgICAgICAgICBhd2FpdCBzZXNzaW9uLmNsb3NlKCkK
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
+from sqlalchemy.orm import DeclarativeBase
+from .config import get_settings
+
+settings = get_settings()
+
+engine = create_async_engine(
+    settings.database_url,
+    pool_size=settings.database_pool_size,
+    echo=settings.debug,
+    future=True,
+)
+
+AsyncSessionLocal = async_sessionmaker(
+    engine,
+    class_=AsyncSession,
+    expire_on_commit=False,
+    autocommit=False,
+    autoflush=False,
+)
+
+class Base(DeclarativeBase):
+    pass
+
+async def get_db():
+    async with AsyncSessionLocal() as session:
+        try:
+            yield session
+            await session.commit()
+        except Exception:
+            await session.rollback()
+            raise
+        finally:
+            await session.close()

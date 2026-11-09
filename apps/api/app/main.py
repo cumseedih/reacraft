@@ -1,1 +1,46 @@
-ZnJvbSBjb250ZXh0bGliIGltcG9ydCBhc3luY2NvbnRleHRtYW5hZ2VyCmZyb20gZmFzdGFwaSBpbXBvcnQgRmFzdEFQSQpmcm9tIGZhc3RhcGkubWlkZGxld2FyZS5jb3JzIGltcG9ydCBDT1JTTWlkZGxld2FyZQpmcm9tIGZhc3RhcGkubWlkZGxld2FyZS5nemlwIGltcG9ydCBHWmlwTWlkZGxld2FyZQpmcm9tIC5jb25maWcgaW1wb3J0IGdldF9zZXR0aW5ncwpmcm9tIC5kYXRhYmFzZSBpbXBvcnQgZW5naW5lLCBCYXNlCmZyb20gLm1pZGRsZXdhcmUucmF0ZV9saW1pdCBpbXBvcnQgUmF0ZUxpbWl0TWlkZGxld2FyZQpmcm9tIC5yb3V0ZXJzIGltcG9ydCBhdXRoLCBjaGF0LCBwcm9qZWN0cwoKc2V0dGluZ3MgPSBnZXRfc2V0dGluZ3MoKQoKQGFzeW5jY29udGV4dG1hbmFnZXIKYXN5bmMgZGVmIGxpZmVzcGFuKGFwcDogRmFzdEFQSSk6CiAgICAjIENyZWF0ZSB0YWJsZXMgb24gc3RhcnR1cCAodXNlIEFsZW1iaWMgaW4gcHJvZHVjdGlvbikKICAgIGFzeW5jIHdpdGggZW5naW5lLmJlZ2luKCkgYXMgY29ubjoKICAgICAgICBhd2FpdCBjb25uLnJ1bl9zeW5jKEJhc2UubWV0YWRhdGEuY3JlYXRlX2FsbCkKICAgIHlpZWxkCiAgICBhd2FpdCBlbmdpbmUuZGlzcG9zZSgpCgphcHAgPSBGYXN0QVBJKAogICAgdGl0bGU9c2V0dGluZ3MuYXBwX25hbWUsCiAgICB2ZXJzaW9uPXNldHRpbmdzLnZlcnNpb24sCiAgICBkb2NzX3VybD0nL2RvY3MnIGlmIHNldHRpbmdzLmRlYnVnIGVsc2UgTm9uZSwKICAgIHJlZG9jX3VybD0nL3JlZG9jJyBpZiBzZXR0aW5ncy5kZWJ1ZyBlbHNlIE5vbmUsCiAgICBsaWZlc3Bhbj1saWZlc3BhbiwKKQoKIyBNaWRkbGV3YXJlCmFwcC5hZGRfbWlkZGxld2FyZSgKICAgIENPUlNNaWRkbGV3YXJlLAogICAgYWxsb3dfb3JpZ2lucz1zZXR0aW5ncy5hbGxvd2VkX29yaWdpbnMsCiAgICBhbGxvd19jcmVkZW50aWFscz1UcnVlLAogICAgYWxsb3dfbWV0aG9kcz1bJyonXSwKICAgIGFsbG93X2hlYWRlcnM9WycqJ10sCikKYXBwLmFkZF9taWRkbGV3YXJlKEdaaXBNaWRkbGV3YXJlLCBtaW5pbXVtX3NpemU9MTAyNCkKYXBwLmFkZF9taWRkbGV3YXJlKFJhdGVMaW1pdE1pZGRsZXdhcmUsIGNhbGxzPXNldHRpbmdzLnJhdGVfbGltaXRfcGVyX21pbnV0ZSkKCiMgUm91dGVycwphcHAuaW5jbHVkZV9yb3V0ZXIoYXV0aC5yb3V0ZXIpCmFwcC5pbmNsdWRlX3JvdXRlcihjaGF0LnJvdXRlcikKYXBwLmluY2x1ZGVfcm91dGVyKHByb2plY3RzLnJvdXRlcikKCkBhcHAuZ2V0KCcvYXBpL2hlYWx0aCcpCmFzeW5jIGRlZiBoZWFsdGgoKToKICAgIHJldHVybiB7J3N0YXR1cyc6ICdvaycsICd2ZXJzaW9uJzogc2V0dGluZ3MudmVyc2lvbn0K
+from contextlib import asynccontextmanager
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
+from .config import get_settings
+from .database import engine, Base
+from .middleware.rate_limit import RateLimitMiddleware
+from .routers import auth, chat, projects
+
+settings = get_settings()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Create tables on startup (use Alembic in production)
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    yield
+    await engine.dispose()
+
+app = FastAPI(
+    title=settings.app_name,
+    version=settings.version,
+    docs_url='/docs' if settings.debug else None,
+    redoc_url='/redoc' if settings.debug else None,
+    lifespan=lifespan,
+)
+
+# Middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.allowed_origins,
+    allow_credentials=True,
+    allow_methods=['*'],
+    allow_headers=['*'],
+)
+app.add_middleware(GZipMiddleware, minimum_size=1024)
+app.add_middleware(RateLimitMiddleware, calls=settings.rate_limit_per_minute)
+
+# Routers
+app.include_router(auth.router)
+app.include_router(chat.router)
+app.include_router(projects.router)
+
+@app.get('/api/health')
+async def health():
+    return {'status': 'ok', 'version': settings.version}
