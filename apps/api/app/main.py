@@ -2,20 +2,24 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
+from sqlalchemy import text
 from .config import get_settings
 from .database import engine, Base
 from .middleware.rate_limit import RateLimitMiddleware
-from .routers import auth, chat, projects
+from .routers import auth, chat, projects, files, memory, artifacts
 
 settings = get_settings()
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Create tables on startup (use Alembic in production)
+    # Enable pgvector extension and create tables
     async with engine.begin() as conn:
+        await conn.execute(text('CREATE EXTENSION IF NOT EXISTS vector'))
         await conn.run_sync(Base.metadata.create_all)
     yield
     await engine.dispose()
+
 
 app = FastAPI(
     title=settings.app_name,
@@ -25,7 +29,6 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# Middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.allowed_origins,
@@ -36,10 +39,13 @@ app.add_middleware(
 app.add_middleware(GZipMiddleware, minimum_size=1024)
 app.add_middleware(RateLimitMiddleware, calls=settings.rate_limit_per_minute)
 
-# Routers
 app.include_router(auth.router)
 app.include_router(chat.router)
 app.include_router(projects.router)
+app.include_router(files.router)
+app.include_router(memory.router)
+app.include_router(artifacts.router)
+
 
 @app.get('/api/health')
 async def health():
