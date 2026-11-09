@@ -1,1 +1,40 @@
-J3VzZSBjbGllbnQnCmltcG9ydCAqIGFzIFJlYWN0IGZyb20gJ3JlYWN0JwppbXBvcnQgKiBhcyBUb29sdGlwUHJpbWl0aXZlIGZyb20gJ0ByYWRpeC11aS9yZWFjdC10b29sdGlwJwppbXBvcnQgeyBjbiB9IGZyb20gJ0AvbGliL3V0aWxzJwoKY29uc3QgVG9vbHRpcFByb3ZpZGVyID0gVG9vbHRpcFByaW1pdGl2ZS5Qcm92aWRlcgpjb25zdCBUb29sdGlwID0gVG9vbHRpcFByaW1pdGl2ZS5Sb290CmNvbnN0IFRvb2x0aXBUcmlnZ2VyID0gVG9vbHRpcFByaW1pdGl2ZS5UcmlnZ2VyCgpjb25zdCBUb29sdGlwQ29udGVudCA9IFJlYWN0LmZvcndhcmRSZWY8CiAgUmVhY3QuRWxlbWVudFJlZjx0eXBlb2YgVG9vbHRpcFByaW1pdGl2ZS5Db250ZW50PiwKICBSZWFjdC5Db21wb25lbnRQcm9wc1dpdGhvdXRSZWY8dHlwZW9mIFRvb2x0aXBQcmltaXRpdmUuQ29udGVudD4KPigoeyBjbGFzc05hbWUsIHNpZGVPZmZzZXQgPSA0LCAuLi5wcm9wcyB9LCByZWYpID0+ICgKICA8VG9vbHRpcFByaW1pdGl2ZS5Db250ZW50CiAgICByZWY9e3JlZn0KICAgIHNpZGVPZmZzZXQ9e3NpZGVPZmZzZXR9CiAgICBjbGFzc05hbWU9e2NuKAogICAgICAnei01MCBvdmVyZmxvdy1oaWRkZW4gcm91bmRlZC1sZyBib3JkZXIgYm9yZGVyLWJvcmRlciBiZy1wb3BvdmVyIHB4LTMgcHktMS41IHRleHQteHMgdGV4dC1wb3BvdmVyLWZvcmVncm91bmQgc2hhZG93LW1kJywKICAgICAgJ2FuaW1hdGUtaW4gZmFkZS1pbi0wIHpvb20taW4tOTUnLAogICAgICAnZGF0YS1bc2lkZT1ib3R0b21dOnNsaWRlLWluLWZyb20tdG9wLTIgZGF0YS1bc2lkZT1sZWZ0XTpzbGlkZS1pbi1mcm9tLXJpZ2h0LTInLAogICAgICAnZGF0YS1bc2lkZT1yaWdodF06c2xpZGUtaW4tZnJvbS1sZWZ0LTIgZGF0YS1bc2lkZT10b3BdOnNsaWRlLWluLWZyb20tYm90dG9tLTInLAogICAgICBjbGFzc05hbWUKICAgICl9CiAgICB7Li4ucHJvcHN9CiAgLz4KKSkKVG9vbHRpcENvbnRlbnQuZGlzcGxheU5hbWUgPSBUb29sdGlwUHJpbWl0aXZlLkNvbnRlbnQuZGlzcGxheU5hbWUKCmZ1bmN0aW9uIFdpdGhUb29sdGlwKHsgY2hpbGRyZW4sIHRpcCwgc2lkZSA9ICd0b3AnIH06IHsgY2hpbGRyZW46IFJlYWN0LlJlYWN0Tm9kZTsgdGlwOiBzdHJpbmc7IHNpZGU/OiAndG9wJ3wnYm90dG9tJ3wnbGVmdCd8J3JpZ2h0JyB9KSB7CiAgcmV0dXJuICgKICAgIDxUb29sdGlwUHJvdmlkZXIgZGVsYXlEdXJhdGlvbj17NDAwfT4KICAgICAgPFRvb2x0aXA+CiAgICAgICAgPFRvb2x0aXBUcmlnZ2VyIGFzQ2hpbGQ+e2NoaWxkcmVufTwvVG9vbHRpcFRyaWdnZXI+CiAgICAgICAgPFRvb2x0aXBDb250ZW50IHNpZGU9e3NpZGV9PjxwPnt0aXB9PC9wPjwvVG9vbHRpcENvbnRlbnQ+CiAgICAgIDwvVG9vbHRpcD4KICAgIDwvVG9vbHRpcFByb3ZpZGVyPgogICkKfQoKZXhwb3J0IHsgVG9vbHRpcCwgVG9vbHRpcFRyaWdnZXIsIFRvb2x0aXBDb250ZW50LCBUb29sdGlwUHJvdmlkZXIsIFdpdGhUb29sdGlwIH0K
+'use client'
+import * as React from 'react'
+import * as TooltipPrimitive from '@radix-ui/react-tooltip'
+import { cn } from '@/lib/utils'
+
+const TooltipProvider = TooltipPrimitive.Provider
+const Tooltip = TooltipPrimitive.Root
+const TooltipTrigger = TooltipPrimitive.Trigger
+
+const TooltipContent = React.forwardRef<
+  React.ElementRef<typeof TooltipPrimitive.Content>,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
+>(({ className, sideOffset = 4, ...props }, ref) => (
+  <TooltipPrimitive.Content
+    ref={ref}
+    sideOffset={sideOffset}
+    className={cn(
+      'z-50 overflow-hidden rounded-lg border border-border bg-popover px-3 py-1.5 text-xs text-popover-foreground shadow-md',
+      'animate-in fade-in-0 zoom-in-95',
+      'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2',
+      'data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+      className
+    )}
+    {...props}
+  />
+))
+TooltipContent.displayName = TooltipPrimitive.Content.displayName
+
+function WithTooltip({ children, tip, side = 'top' }: { children: React.ReactNode; tip: string; side?: 'top'|'bottom'|'left'|'right' }) {
+  return (
+    <TooltipProvider delayDuration={400}>
+      <Tooltip>
+        <TooltipTrigger asChild>{children}</TooltipTrigger>
+        <TooltipContent side={side}><p>{tip}</p></TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  )
+}
+
+export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider, WithTooltip }
