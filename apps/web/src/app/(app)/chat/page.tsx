@@ -1,28 +1,99 @@
 'use client'
+import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { toast } from 'sonner'
 import { AppShell } from '@/components/app-shell'
 import { Composer } from '@/components/chat/composer'
 import { useChatStore } from '@/store/chat'
 import { useSettingsStore } from '@/store/settings'
+import { chatStream, getApiError } from '@/lib/api'
 import { generateId } from '@/lib/utils'
 
 export default function ChatIndexPage() {
   const router = useRouter()
-  const { addConversation } = useChatStore()
+  const { addConversation, addMessage, appendMessageContent, updateMessage, setStreaming } = useChatStore()
   const { defaultModel } = useSettingsStore()
+  const [isStarting, setIsStarting] = useState(false)
 
-  const handleSend = async (content: string, files: File[]) => {
-    const id = generateId()
-    addConversation({
-      id,
-      title: content.slice(0, 60) + (content.length > 60 ? '…' : ''),
-      model: defaultModel ?? 'kroex-pro',
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      pinned: false,
-      archived: false,
-    })
-    router.push(`/chat/${id}?q=${encodeURIComponent(content)}`)
+  const handleSend = async (content: string, _files: File[]) => {
+    if (!content.trim() || isStarting) return
+    setIsStarting(true)
+
+    const model = defaultModel ?? 'kroex-pro'
+
+    try {
+      // Stream to backend without conversation_id — backend creates the conversation.
+      const { conversationId, generator } = await chatStream({
+        message: content,
+        messages: [{ role: 'user', content }],
+        model,
+      })
+
+      if (!conversationId) throw new Error('Server did not return a conversation ID')
+
+      const userMsgId = generateId()
+      const asstMsgId = generateId()
+
+      addConversation({
+        id: conversationId,
+        title: content.slice(0, 60) + (content.length > 60 ? '…' : ''),
+        model,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        pinned: false,
+        archived: false,
+      })
+
+      addMessage(conversationId, {
+        id: userMsgId,
+        conversationId,
+        role: 'user',
+        content,
+        status: 'done',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      })
+
+      addMessage(conversationId, {
+        id: asstMsgId,
+        conversationId,
+        role: 'assistant',
+        content: '',
+        status: 'streaming',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      })
+
+      setStreaming(true, asstMsgId)
+
+      // Navigate immediately — the Zustand store updates will reach the new page
+      // as the stream continues processing below.
+      router.push(`/chat/${conversationId}`)
+
+      for await (const line of generator) {
+        try {
+          const data = JSON.parse(line)
+          if (data.type === 'delta' && data.text) {
+            appendMessageContent(conversationId, asstMsgId, data.text)
+          } else if (data.type === 'done') {
+            updateMessage(conversationId, asstMsgId, {
+              status: 'done',
+              tokens: data.usage,
+              model: data.model,
+            })
+          } else if (data.type === 'error') {
+            throw new Error(data.message)
+          }
+        } catch {
+          // ignore JSON parse errors on individual lines
+        }
+      }
+    } catch (err: unknown) {
+      toast.error(getApiError(err))
+    } finally {
+      setIsStarting(false)
+      setStreaming(false)
+    }
   }
 
   return (
@@ -43,7 +114,8 @@ export default function ChatIndexPage() {
               <button
                 key={p}
                 onClick={() => handleSend(p, [])}
-                className="text-left p-3 rounded-xl border border-border hover:border-primary/40 hover:bg-secondary/60 transition-all text-sm text-muted-foreground hover:text-foreground"
+                disabled={isStarting}
+                className="text-left p-3 rounded-xl border border-border hover:border-primary/40 hover:bg-secondary/60 transition-all text-sm text-muted-foreground hover:text-foreground disabled:opacity-50"
               >
                 {p}
               </button>
@@ -53,6 +125,7 @@ export default function ChatIndexPage() {
         <Composer
           onSend={handleSend}
           model={defaultModel ?? 'kroex-pro'}
+          isStreaming={isStarting}
         />
       </div>
     </AppShell>

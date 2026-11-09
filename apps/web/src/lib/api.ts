@@ -55,6 +55,65 @@ export async function del<T>(url: string, config?: AxiosRequestConfig): Promise<
   return res.data
 }
 
+/**
+ * chatStream sends a streaming chat request and returns both the
+ * conversation ID (from the X-Conversation-Id response header) and an
+ * async generator that yields raw SSE data payloads.
+ *
+ * Capturing the header before reading the body is the reason this exists
+ * separately from streamSSE.
+ */
+export async function chatStream(
+  payload: {
+    message: string
+    messages: Array<{ role: string; content: string }>
+    model: string
+    conversation_id?: string
+  },
+  signal?: AbortSignal,
+): Promise<{ conversationId: string | null; generator: AsyncGenerator<string> }> {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('kroex_token') : null
+  const res = await fetch(`${BASE_URL}/api/chat/stream`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify(payload),
+    signal,
+  })
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }))
+    throw new Error(err.detail ?? err.message ?? 'Stream failed')
+  }
+
+  const conversationId = res.headers.get('x-conversation-id')
+
+  async function* gen(): AsyncGenerator<string> {
+    if (!res.body) return
+    const reader = res.body.getReader()
+    const decoder = new TextDecoder()
+    let buffer = ''
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) break
+      buffer += decoder.decode(value, { stream: true })
+      const lines = buffer.split('\n')
+      buffer = lines.pop() ?? ''
+      for (const line of lines) {
+        if (line.startsWith('data: ')) {
+          const data = line.slice(6).trim()
+          if (data === '[DONE]') return
+          yield data
+        }
+      }
+    }
+  }
+
+  return { conversationId, generator: gen() }
+}
+
 export async function* streamSSE(url: string, body: unknown): AsyncGenerator<string> {
   const token = typeof window !== 'undefined' ? localStorage.getItem('kroex_token') : null
   const res = await fetch(`${BASE_URL}${url}`, {
@@ -93,7 +152,7 @@ export async function* streamSSE(url: string, body: unknown): AsyncGenerator<str
 
 export function getApiError(error: unknown): string {
   if (axios.isAxiosError(error)) {
-    return error.response?.data?.message ?? error.message
+    return error.response?.data?.detail ?? error.response?.data?.message ?? error.message
   }
   if (error instanceof Error) return error.message
   return 'An unexpected error occurred'

@@ -12,7 +12,7 @@ export const useSettingsStore = create<SettingsState>()(
     (set) => ({
       theme: 'system',
       language: 'en',
-      defaultModel: 'claude-sonnet-4-5',
+      defaultModel: 'kroex-pro',
       defaultProvider: 'anthropic',
       enableMemory: true,
       enableSearch: true,

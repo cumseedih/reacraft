@@ -11,18 +11,32 @@ import { ModelSelector } from '@/components/models/model-selector'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { useChatStore } from '@/store/chat'
 import { useSettingsStore } from '@/store/settings'
-import { streamSSE, getApiError } from '@/lib/api'
+import { chatStream, get, getApiError } from '@/lib/api'
 import { generateId } from '@/lib/utils'
 import type { Message, Artifact } from '@/types'
+
+// Backend returns snake_case Message fields; map to frontend type.
+function mapMessage(raw: Record<string, unknown>, convId: string): Message {
+  return {
+    id: raw.id as string,
+    conversationId: convId,
+    role: raw.role as 'user' | 'assistant',
+    content: raw.content as string,
+    status: 'done',
+    createdAt: raw.created_at as string,
+    updatedAt: raw.created_at as string,
+  }
+}
 
 export default function ChatPage() {
   const { id } = useParams<{ id: string }>()
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const abortRef = useRef<AbortController | null>(null)
+  const loadedRef = useRef<Set<string>>(new Set())
   const [modelSelectorOpen, setModelSelectorOpen] = useState(false)
 
   const {
-    messages, addMessage, updateMessage, appendMessageContent,
+    messages, setMessages, addMessage, updateMessage, appendMessageContent,
     conversations, updateConversation,
     artifacts, activeArtifactId, setActiveArtifact,
     isStreaming, setStreaming,
@@ -38,11 +52,28 @@ export default function ChatPage() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [chatMessages.length])
 
-  const handleSend = useCallback(async (content: string, files: File[]) => {
-    if (!content.trim() && files.length === 0) return
+  // Load messages from backend when navigating to an existing conversation
+  // that doesn't yet have its history in the store.
+  useEffect(() => {
+    if (!id || loadedRef.current.has(id)) return
+    // If messages are already populated (e.g. navigated from new-chat flow), skip.
+    if (messages[id] && messages[id].length > 0) {
+      loadedRef.current.add(id)
+      return
+    }
+    loadedRef.current.add(id)
+    get<Record<string, unknown>[]>(`/api/conversations/${id}/messages`)
+      .then(raw => setMessages(id, raw.map(r => mapMessage(r, id))))
+      .catch(() => {
+        // 401 handled globally; 404 means conversation was deleted.
+      })
+  }, [id, messages, setMessages])
 
-    const userMsgId = generateId()
+  const handleSend = useCallback(async (content: string, _files: File[]) => {
+    if (!content.trim()) return
+
     const asstMsgId = generateId()
+    const userMsgId = generateId()
 
     addMessage(id, {
       id: userMsgId,
@@ -65,37 +96,30 @@ export default function ChatPage() {
       status: 'streaming',
     })
 
-    setStreaming(true)
+    setStreaming(true, asstMsgId)
 
-    if (chatMessages.length === 0) {
-      updateConversation(id, {
-        title: content.slice(0, 60) + (content.length > 60 ? '…' : ''),
-        updatedAt: new Date().toISOString(),
-      })
-    }
+    const history = chatMessages.map(m => ({
+      role: m.role,
+      content: typeof m.content === 'string' ? m.content : '',
+    }))
 
     abortRef.current = new AbortController()
 
     try {
-      const history = chatMessages.map(m => ({
-        role: m.role,
-        content: typeof m.content === 'string' ? m.content : '',
-      }))
-
-      let fullContent = ''
-
-      for await (const line of streamSSE(
-        '/api/chat/stream',
+      const { generator } = await chatStream(
         {
+          message: content,
           messages: [...history, { role: 'user', content }],
           model: conversation?.model ?? defaultModel ?? 'kroex-pro',
           conversation_id: id,
-        }
-      )) {
+        },
+        abortRef.current.signal,
+      )
+
+      for await (const line of generator) {
         try {
           const data = JSON.parse(line)
           if (data.type === 'delta' && data.text) {
-            fullContent += data.text
             appendMessageContent(id, asstMsgId, data.text)
           } else if (data.type === 'artifact') {
             const artifact: Artifact = data.artifact
@@ -107,16 +131,13 @@ export default function ChatPage() {
               tokens: data.usage,
               model: data.model,
             })
+            updateConversation(id, { updatedAt: new Date().toISOString() })
           } else if (data.type === 'error') {
             throw new Error(data.message)
           }
         } catch {
           // ignore parse errors on individual lines
         }
-      }
-
-      if (!fullContent) {
-        updateMessage(id, asstMsgId, { status: 'done' })
       }
     } catch (err: unknown) {
       if ((err as Error).name === 'AbortError') {
@@ -149,7 +170,11 @@ export default function ChatPage() {
       <div className="flex h-full">
         <div className={`flex flex-col flex-1 min-w-0 transition-all duration-300 ${activeArtifact ? 'max-w-[55%]' : ''}`}>
           {chatMessages.length === 0 ? (
-            <WelcomeScreen onSend={handleSend} model={conversation?.model ?? defaultModel ?? 'kroex-pro'} onModelClick={() => setModelSelectorOpen(true)} />
+            <WelcomeScreen
+              onSend={handleSend}
+              model={conversation?.model ?? defaultModel ?? 'kroex-pro'}
+              onModelClick={() => setModelSelectorOpen(true)}
+            />
           ) : (
             <>
               <ScrollArea className="flex-1 px-4">

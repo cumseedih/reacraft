@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useAuthStore } from '@/store/auth'
 import { post, getApiError } from '@/lib/api'
-import type { ApiResponse, User } from '@/types'
+import type { User } from '@/types'
 
 export default function RegisterPage() {
   const router = useRouter()
@@ -33,11 +33,11 @@ export default function RegisterPage() {
     if (!validate()) return
     setLoading(true)
     try {
-      const res = await post<ApiResponse<{ user: User; token: string }>>('/auth/register', {
+      const res = await post<{ user: User; token: string }>('/api/auth/register', {
         name: form.name, email: form.email, password: form.password,
       })
-      setUser(res.data.user)
-      setToken(res.data.token)
+      setUser(res.user)
+      setToken(res.token)
       toast.success('Account created! Welcome to KROEX.')
       router.push('/chat')
     } catch (err) {

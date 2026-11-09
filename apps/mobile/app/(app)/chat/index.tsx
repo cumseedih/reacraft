@@ -1,14 +1,12 @@
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import {
   View, Text, TextInput, TouchableOpacity, FlatList,
-  KeyboardAvoidingView, Platform, StyleSheet,
+  KeyboardAvoidingView, Platform, StyleSheet, ActivityIndicator,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Animated, { FadeInDown } from 'react-native-reanimated'
 import { Ionicons } from '@expo/vector-icons'
-import { useAuthStore } from '../../../store/auth'
-import { streamSSE } from '../../../lib/api'
-import { generateId } from '../../../lib/utils'
+import { api, streamSSE } from '../../../lib/api'
 
 interface Message {
   id: string
@@ -17,17 +15,40 @@ interface Message {
   status: 'done' | 'streaming' | 'error'
 }
 
+function generateId() {
+  return Math.random().toString(36).slice(2) + Date.now().toString(36)
+}
+
 export default function ChatScreen() {
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
   const [isStreaming, setIsStreaming] = useState(false)
+  const [conversationId, setConversationId] = useState<string | null>(null)
+  const [loadingHistory, setLoadingHistory] = useState(false)
   const flatListRef = useRef<FlatList>(null)
 
-  const addMessage = (msg: Message) => setMessages(prev => [...prev, msg])
   const updateMessage = (id: string, patch: Partial<Message>) =>
     setMessages(prev => prev.map(m => m.id === id ? { ...m, ...patch } : m))
   const appendContent = (id: string, text: string) =>
     setMessages(prev => prev.map(m => m.id === id ? { ...m, content: m.content + text } : m))
+
+  // Load history when resuming an existing conversation.
+  useEffect(() => {
+    if (!conversationId) return
+    setLoadingHistory(true)
+    api.get<any[]>(`/api/conversations/${conversationId}/messages`)
+      .then(raw => {
+        const loaded: Message[] = raw.map(r => ({
+          id: r.id,
+          role: r.role,
+          content: r.content,
+          status: 'done' as const,
+        }))
+        setMessages(loaded)
+      })
+      .catch(() => {})
+      .finally(() => setLoadingHistory(false))
+  }, [conversationId])
 
   const handleSend = useCallback(async () => {
     const text = input.trim()
@@ -38,24 +59,90 @@ export default function ChatScreen() {
     const userMsgId = generateId()
     const asstMsgId = generateId()
 
-    addMessage({ id: userMsgId, role: 'user', content: text, status: 'done' })
-    addMessage({ id: asstMsgId, role: 'assistant', content: '', status: 'streaming' })
+    setMessages(prev => [
+      ...prev,
+      { id: userMsgId, role: 'user', content: text, status: 'done' },
+      { id: asstMsgId, role: 'assistant', content: '', status: 'streaming' },
+    ])
 
     try {
-      for await (const line of streamSSE('/api/chat/stream', {
-        messages: [{ role: 'user', content: text }],
+      // Build history from current messages (before the new pair was appended).
+      const history = messages.map(m => ({ role: m.role, content: m.content }))
+
+      const payload: Record<string, unknown> = {
+        message: text,
+        messages: [...history, { role: 'user', content: text }],
         model: 'kroex-pro',
-      })) {
-        const data = JSON.parse(line)
-        if (data.type === 'delta') appendContent(asstMsgId, data.text)
-        else if (data.type === 'done') updateMessage(asstMsgId, { status: 'done' })
+      }
+      if (conversationId) payload.conversation_id = conversationId
+
+      // Use fetch directly to capture X-Conversation-Id from response headers.
+      const BASE_URL = process.env.EXPO_PUBLIC_API_URL ?? 'http://localhost:8000'
+      const { getItemAsync } = await import('expo-secure-store')
+      const token = await getItemAsync('kroex_token')
+
+      const res = await fetch(`${BASE_URL}/api/chat/stream`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify(payload),
+      })
+
+      if (!res.ok || !res.body) throw new Error('Stream failed')
+
+      // Capture conversation ID from first response so follow-up turns continue it.
+      const returnedConvId = res.headers.get('x-conversation-id')
+      if (returnedConvId && !conversationId) {
+        setConversationId(returnedConvId)
+      }
+
+      // Read SSE body.
+      const reader = res.body.getReader()
+      const decoder = new TextDecoder()
+      let buffer = ''
+
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+        buffer += decoder.decode(value, { stream: true })
+        const lines = buffer.split('\n')
+        buffer = lines.pop() ?? ''
+        for (const line of lines) {
+          if (line.startsWith('data: ')) {
+            try {
+              const data = JSON.parse(line.slice(6))
+              if (data.type === 'delta' && data.text) {
+                appendContent(asstMsgId, data.text)
+              } else if (data.type === 'done') {
+                updateMessage(asstMsgId, { status: 'done' })
+              }
+            } catch {
+              // ignore parse errors
+            }
+          }
+        }
       }
     } catch {
       updateMessage(asstMsgId, { status: 'error' })
     } finally {
       setIsStreaming(false)
     }
-  }, [input, isStreaming])
+  }, [input, isStreaming, messages, conversationId])
+
+  if (loadingHistory) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.headerTitle}>KROEX</Text>
+        </View>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <ActivityIndicator size="large" color="#2563EB" />
+        </View>
+      </SafeAreaView>
+    )
+  }
 
   return (
     <SafeAreaView style={styles.container}>

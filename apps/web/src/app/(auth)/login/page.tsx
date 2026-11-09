@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { useAuthStore } from '@/store/auth'
 import { post, getApiError } from '@/lib/api'
-import type { ApiResponse, User } from '@/types'
+import type { User } from '@/types'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -31,9 +31,9 @@ export default function LoginPage() {
     if (!validate()) return
     setLoading(true)
     try {
-      const res = await post<ApiResponse<{ user: User; token: string }>>('/auth/login', { email, password })
-      setUser(res.data.user)
-      setToken(res.data.token)
+      const res = await post<{ user: User; token: string }>('/api/auth/login', { email, password })
+      setUser(res.user)
+      setToken(res.token)
       router.push('/chat')
     } catch (err) {
       toast.error(getApiError(err))

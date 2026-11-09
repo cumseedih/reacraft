@@ -20,11 +20,11 @@ export default function LoginScreen() {
     setLoading(true)
     setError('')
     try {
-      const res = await api.post<{ access_token: string; user: any }>(
+      const res = await api.post<{ token: string; user: any }>(
         '/api/auth/login',
-        { username: email, password },
+        { email, password },
       )
-      await setToken(res.access_token)
+      await setToken(res.token)
       setUser(res.user)
       router.replace('/(app)/chat')
     } catch (e: any) {
