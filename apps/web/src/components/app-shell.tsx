@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Sidebar } from '@/components/sidebar/sidebar'
 import { useChatStore } from '@/store/chat'
@@ -30,14 +30,24 @@ export function AppShell({ children, projects = [] }: AppShellProps) {
   const { setConversations } = useChatStore()
   const { token } = useAuthStore()
 
-  // Redirect to login when there is no session token.
+  // The auth store is persisted to localStorage and rehydrates on the client
+  // after the first render. Track hydration so we don't bounce an authenticated
+  // user to /login on a hard refresh before the token has been restored.
+  const [hydrated, setHydrated] = useState(() => useAuthStore.persist.hasHydrated())
   useEffect(() => {
-    if (!token) {
+    const unsub = useAuthStore.persist.onFinishHydration(() => setHydrated(true))
+    setHydrated(useAuthStore.persist.hasHydrated())
+    return unsub
+  }, [])
+
+  // Redirect to login only once hydration has settled and there is still no token.
+  useEffect(() => {
+    if (hydrated && !token) {
       router.replace('/login')
     }
-  }, [token, router])
+  }, [hydrated, token, router])
 
-  // Load conversation list from the backend on mount.
+  // Load conversation list from the backend once authenticated.
   useEffect(() => {
     if (!token) return
     get<Record<string, unknown>[]>('/api/conversations')
@@ -51,6 +61,7 @@ export function AppShell({ children, projects = [] }: AppShellProps) {
     router.push('/chat')
   }, [router])
 
+  if (!hydrated) return null
   if (!token) return null
 
   return (
