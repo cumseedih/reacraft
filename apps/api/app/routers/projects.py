@@ -1,1 +1,75 @@
-ZnJvbSBmYXN0YXBpIGltcG9ydCBBUElSb3V0ZXIsIERlcGVuZHMsIEhUVFBFeGNlcHRpb24sIHN0YXR1cywgVXBsb2FkRmlsZSwgRmlsZQpmcm9tIHNxbGFsY2hlbXkuZXh0LmFzeW5jaW8gaW1wb3J0IEFzeW5jU2Vzc2lvbgpmcm9tIHNxbGFsY2hlbXkgaW1wb3J0IHNlbGVjdApmcm9tIHB5ZGFudGljIGltcG9ydCBCYXNlTW9kZWwKZnJvbSAuLmRhdGFiYXNlIGltcG9ydCBnZXRfZGIKZnJvbSAuLm1vZGVscy51c2VyIGltcG9ydCBVc2VyCmZyb20gLi5tb2RlbHMucHJvamVjdCBpbXBvcnQgUHJvamVjdCwgUHJvamVjdEZpbGUKZnJvbSAuLnV0aWxzLmF1dGggaW1wb3J0IGdldF9jdXJyZW50X3VzZXIKaW1wb3J0IHV1aWQKCnJvdXRlciA9IEFQSVJvdXRlcihwcmVmaXg9Jy9hcGkvcHJvamVjdHMnLCB0YWdzPVsncHJvamVjdHMnXSkKCmNsYXNzIFByb2plY3RDcmVhdGUoQmFzZU1vZGVsKToKICAgIG5hbWU6IHN0cgogICAgZGVzY3JpcHRpb246IHN0ciB8IE5vbmUgPSBOb25lCiAgICBzeXN0ZW1fcHJvbXB0OiBzdHIgfCBOb25lID0gTm9uZQogICAgY29sb3I6IHN0ciB8IE5vbmUgPSBOb25lCiAgICBpY29uOiBzdHIgfCBOb25lID0gTm9uZQoKY2xhc3MgUHJvamVjdE91dChCYXNlTW9kZWwpOgogICAgaWQ6IHN0cgogICAgbmFtZTogc3RyCiAgICBkZXNjcmlwdGlvbjogc3RyIHwgTm9uZQogICAgc3lzdGVtX3Byb21wdDogc3RyIHwgTm9uZQogICAgY29sb3I6IHN0ciB8IE5vbmUKICAgIGljb246IHN0ciB8IE5vbmUKICAgIGNyZWF0ZWRfYXQ6IHN0cgogICAgdXBkYXRlZF9hdDogc3RyCgogICAgY2xhc3MgQ29uZmlnOgogICAgICAgIGZyb21fYXR0cmlidXRlcyA9IFRydWUKCkByb3V0ZXIuZ2V0KCcnLCByZXNwb25zZV9tb2RlbD1saXN0W1Byb2plY3RPdXRdKQphc3luYyBkZWYgbGlzdF9wcm9qZWN0cygKICAgIGN1cnJlbnRfdXNlcjogVXNlciA9IERlcGVuZHMoZ2V0X2N1cnJlbnRfdXNlciksCiAgICBkYjogQXN5bmNTZXNzaW9uID0gRGVwZW5kcyhnZXRfZGIpLAopOgogICAgcmVzdWx0ID0gYXdhaXQgZGIuZXhlY3V0ZSgKICAgICAgICBzZWxlY3QoUHJvamVjdCkKICAgICAgICAud2hlcmUoUHJvamVjdC51c2VyX2lkID09IGN1cnJlbnRfdXNlci5pZCkKICAgICAgICAub3JkZXJfYnkoUHJvamVjdC51cGRhdGVkX2F0LmRlc2MoKSkKICAgICkKICAgIHJldHVybiBbUHJvamVjdE91dC5tb2RlbF92YWxpZGF0ZShwKSBmb3IgcCBpbiByZXN1bHQuc2NhbGFycygpLmFsbCgpXQoKQHJvdXRlci5wb3N0KCcnLCByZXNwb25zZV9tb2RlbD1Qcm9qZWN0T3V0LCBzdGF0dXNfY29kZT1zdGF0dXMuSFRUUF8yMDFfQ1JFQVRFRCkKYXN5bmMgZGVmIGNyZWF0ZV9wcm9qZWN0KAogICAgcGF5bG9hZDogUHJvamVjdENyZWF0ZSwKICAgIGN1cnJlbnRfdXNlcjogVXNlciA9IERlcGVuZHMoZ2V0X2N1cnJlbnRfdXNlciksCiAgICBkYjogQXN5bmNTZXNzaW9uID0gRGVwZW5kcyhnZXRfZGIpLAopOgogICAgcHJvamVjdCA9IFByb2plY3QoCiAgICAgICAgdXNlcl9pZD1jdXJyZW50X3VzZXIuaWQsCiAgICAgICAgbmFtZT1wYXlsb2FkLm5hbWUsCiAgICAgICAgZGVzY3JpcHRpb249cGF5bG9hZC5kZXNjcmlwdGlvbiwKICAgICAgICBzeXN0ZW1fcHJvbXB0PXBheWxvYWQuc3lzdGVtX3Byb21wdCwKICAgICAgICBjb2xvcj1wYXlsb2FkLmNvbG9yLAogICAgICAgIGljb249cGF5bG9hZC5pY29uLAogICAgKQogICAgZGIuYWRkKHByb2plY3QpCiAgICBhd2FpdCBkYi5mbHVzaCgpCiAgICByZXR1cm4gUHJvamVjdE91dC5tb2RlbF92YWxpZGF0ZShwcm9qZWN0KQoKQHJvdXRlci5kZWxldGUoJy97cHJvamVjdF9pZH0nLCBzdGF0dXNfY29kZT1zdGF0dXMuSFRUUF8yMDRfTk9fQ09OVEVOVCkKYXN5bmMgZGVmIGRlbGV0ZV9wcm9qZWN0KAogICAgcHJvamVjdF9pZDogc3RyLAogICAgY3VycmVudF91c2VyOiBVc2VyID0gRGVwZW5kcyhnZXRfY3VycmVudF91c2VyKSwKICAgIGRiOiBBc3luY1Nlc3Npb24gPSBEZXBlbmRzKGdldF9kYiksCik6CiAgICByZXN1bHQgPSBhd2FpdCBkYi5leGVjdXRlKAogICAgICAgIHNlbGVjdChQcm9qZWN0KS53aGVyZShQcm9qZWN0LmlkID09IHByb2plY3RfaWQsIFByb2plY3QudXNlcl9pZCA9PSBjdXJyZW50X3VzZXIuaWQpCiAgICApCiAgICBwcm9qZWN0ID0gcmVzdWx0LnNjYWxhcl9vbmVfb3Jfbm9uZSgpCiAgICBpZiBub3QgcHJvamVjdDoKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPXN0YXR1cy5IVFRQXzQwNF9OT1RfRk9VTkQsIGRldGFpbD0nUHJvamVjdCBub3QgZm91bmQnKQogICAgYXdhaXQgZGIuZGVsZXRlKHByb2plY3QpCg==
+from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
+from pydantic import BaseModel
+from ..database import get_db
+from ..models.user import User
+from ..models.project import Project, ProjectFile
+from ..utils.auth import get_current_user
+import uuid
+
+router = APIRouter(prefix='/api/projects', tags=['projects'])
+
+class ProjectCreate(BaseModel):
+    name: str
+    description: str | None = None
+    system_prompt: str | None = None
+    color: str | None = None
+    icon: str | None = None
+
+class ProjectOut(BaseModel):
+    id: str
+    name: str
+    description: str | None
+    system_prompt: str | None
+    color: str | None
+    icon: str | None
+    created_at: str
+    updated_at: str
+
+    class Config:
+        from_attributes = True
+
+@router.get('', response_model=list[ProjectOut])
+async def list_projects(
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    result = await db.execute(
+        select(Project)
+        .where(Project.user_id == current_user.id)
+        .order_by(Project.updated_at.desc())
+    )
+    return [ProjectOut.model_validate(p) for p in result.scalars().all()]
+
+@router.post('', response_model=ProjectOut, status_code=status.HTTP_201_CREATED)
+async def create_project(
+    payload: ProjectCreate,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    project = Project(
+        user_id=current_user.id,
+        name=payload.name,
+        description=payload.description,
+        system_prompt=payload.system_prompt,
+        color=payload.color,
+        icon=payload.icon,
+    )
+    db.add(project)
+    await db.flush()
+    return ProjectOut.model_validate(project)
+
+@router.delete('/{project_id}', status_code=status.HTTP_204_NO_CONTENT)
+async def delete_project(
+    project_id: str,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    result = await db.execute(
+        select(Project).where(Project.id == project_id, Project.user_id == current_user.id)
+    )
+    project = result.scalar_one_or_none()
+    if not project:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Project not found')
+    await db.delete(project)

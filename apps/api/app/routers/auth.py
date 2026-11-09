@@ -1,1 +1,38 @@
-ZnJvbSBmYXN0YXBpIGltcG9ydCBBUElSb3V0ZXIsIEhUVFBFeGNlcHRpb24sIERlcGVuZHMsIHN0YXR1cwpmcm9tIHNxbGFsY2hlbXkuZXh0LmFzeW5jaW8gaW1wb3J0IEFzeW5jU2Vzc2lvbgpmcm9tIHNxbGFsY2hlbXkgaW1wb3J0IHNlbGVjdApmcm9tIC4uZGF0YWJhc2UgaW1wb3J0IGdldF9kYgpmcm9tIC4ubW9kZWxzLnVzZXIgaW1wb3J0IFVzZXIKZnJvbSAuLnNjaGVtYXMuYXV0aCBpbXBvcnQgUmVnaXN0ZXJSZXF1ZXN0LCBMb2dpblJlcXVlc3QsIEF1dGhSZXNwb25zZSwgVXNlck91dApmcm9tIC4udXRpbHMuYXV0aCBpbXBvcnQgaGFzaF9wYXNzd29yZCwgdmVyaWZ5X3Bhc3N3b3JkLCBjcmVhdGVfYWNjZXNzX3Rva2VuLCBnZXRfY3VycmVudF91c2VyCgpyb3V0ZXIgPSBBUElSb3V0ZXIocHJlZml4PScvYXV0aCcsIHRhZ3M9WydhdXRoJ10pCgpAcm91dGVyLnBvc3QoJy9yZWdpc3RlcicsIHJlc3BvbnNlX21vZGVsPUF1dGhSZXNwb25zZSwgc3RhdHVzX2NvZGU9c3RhdHVzLkhUVFBfMjAxX0NSRUFURUQpCmFzeW5jIGRlZiByZWdpc3RlcihwYXlsb2FkOiBSZWdpc3RlclJlcXVlc3QsIGRiOiBBc3luY1Nlc3Npb24gPSBEZXBlbmRzKGdldF9kYikpOgogICAgZXhpc3RpbmcgPSBhd2FpdCBkYi5leGVjdXRlKHNlbGVjdChVc2VyKS53aGVyZShVc2VyLmVtYWlsID09IHBheWxvYWQuZW1haWwpKQogICAgaWYgZXhpc3Rpbmcuc2NhbGFyX29uZV9vcl9ub25lKCk6CiAgICAgICAgcmFpc2UgSFRUUEV4Y2VwdGlvbihzdGF0dXNfY29kZT1zdGF0dXMuSFRUUF80MDlfQ09ORkxJQ1QsIGRldGFpbD0nRW1haWwgYWxyZWFkeSByZWdpc3RlcmVkJykKCiAgICB1c2VyID0gVXNlcigKICAgICAgICBuYW1lPXBheWxvYWQubmFtZSwKICAgICAgICBlbWFpbD1wYXlsb2FkLmVtYWlsLAogICAgICAgIGhhc2hlZF9wYXNzd29yZD1oYXNoX3Bhc3N3b3JkKHBheWxvYWQucGFzc3dvcmQpLAogICAgKQogICAgZGIuYWRkKHVzZXIpCiAgICBhd2FpdCBkYi5mbHVzaCgpCiAgICB0b2tlbiA9IGNyZWF0ZV9hY2Nlc3NfdG9rZW4oeydzdWInOiB1c2VyLmlkfSkKICAgIHJldHVybiBBdXRoUmVzcG9uc2UodXNlcj1Vc2VyT3V0Lm1vZGVsX3ZhbGlkYXRlKHVzZXIpLCB0b2tlbj10b2tlbikKCkByb3V0ZXIucG9zdCgnL2xvZ2luJywgcmVzcG9uc2VfbW9kZWw9QXV0aFJlc3BvbnNlKQphc3luYyBkZWYgbG9naW4ocGF5bG9hZDogTG9naW5SZXF1ZXN0LCBkYjogQXN5bmNTZXNzaW9uID0gRGVwZW5kcyhnZXRfZGIpKToKICAgIHJlc3VsdCA9IGF3YWl0IGRiLmV4ZWN1dGUoc2VsZWN0KFVzZXIpLndoZXJlKFVzZXIuZW1haWwgPT0gcGF5bG9hZC5lbWFpbCwgVXNlci5pc19hY3RpdmUgPT0gVHJ1ZSkpCiAgICB1c2VyID0gcmVzdWx0LnNjYWxhcl9vbmVfb3Jfbm9uZSgpCiAgICBpZiBub3QgdXNlciBvciBub3QgdmVyaWZ5X3Bhc3N3b3JkKHBheWxvYWQucGFzc3dvcmQsIHVzZXIuaGFzaGVkX3Bhc3N3b3JkKToKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPXN0YXR1cy5IVFRQXzQwMV9VTkFVVEhPUklaRUQsIGRldGFpbD0nSW52YWxpZCBjcmVkZW50aWFscycpCiAgICB0b2tlbiA9IGNyZWF0ZV9hY2Nlc3NfdG9rZW4oeydzdWInOiB1c2VyLmlkfSkKICAgIHJldHVybiBBdXRoUmVzcG9uc2UodXNlcj1Vc2VyT3V0Lm1vZGVsX3ZhbGlkYXRlKHVzZXIpLCB0b2tlbj10b2tlbikKCkByb3V0ZXIuZ2V0KCcvbWUnLCByZXNwb25zZV9tb2RlbD1Vc2VyT3V0KQphc3luYyBkZWYgbWUoY3VycmVudF91c2VyOiBVc2VyID0gRGVwZW5kcyhnZXRfY3VycmVudF91c2VyKSk6CiAgICByZXR1cm4gVXNlck91dC5tb2RlbF92YWxpZGF0ZShjdXJyZW50X3VzZXIpCg==
+from fastapi import APIRouter, HTTPException, Depends, status
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
+from ..database import get_db
+from ..models.user import User
+from ..schemas.auth import RegisterRequest, LoginRequest, AuthResponse, UserOut
+from ..utils.auth import hash_password, verify_password, create_access_token, get_current_user
+
+router = APIRouter(prefix='/auth', tags=['auth'])
+
+@router.post('/register', response_model=AuthResponse, status_code=status.HTTP_201_CREATED)
+async def register(payload: RegisterRequest, db: AsyncSession = Depends(get_db)):
+    existing = await db.execute(select(User).where(User.email == payload.email))
+    if existing.scalar_one_or_none():
+        raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail='Email already registered')
+
+    user = User(
+        name=payload.name,
+        email=payload.email,
+        hashed_password=hash_password(payload.password),
+    )
+    db.add(user)
+    await db.flush()
+    token = create_access_token({'sub': user.id})
+    return AuthResponse(user=UserOut.model_validate(user), token=token)
+
+@router.post('/login', response_model=AuthResponse)
+async def login(payload: LoginRequest, db: AsyncSession = Depends(get_db)):
+    result = await db.execute(select(User).where(User.email == payload.email, User.is_active == True))
+    user = result.scalar_one_or_none()
+    if not user or not verify_password(payload.password, user.hashed_password):
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='Invalid credentials')
+    token = create_access_token({'sub': user.id})
+    return AuthResponse(user=UserOut.model_validate(user), token=token)
+
+@router.get('/me', response_model=UserOut)
+async def me(current_user: User = Depends(get_current_user)):
+    return UserOut.model_validate(current_user)

@@ -1,1 +1,127 @@
-ZnJvbSBmYXN0YXBpIGltcG9ydCBBUElSb3V0ZXIsIERlcGVuZHMsIEhUVFBFeGNlcHRpb24sIHN0YXR1cwpmcm9tIGZhc3RhcGkucmVzcG9uc2VzIGltcG9ydCBTdHJlYW1pbmdSZXNwb25zZQpmcm9tIHNxbGFsY2hlbXkuZXh0LmFzeW5jaW8gaW1wb3J0IEFzeW5jU2Vzc2lvbgpmcm9tIHNxbGFsY2hlbXkgaW1wb3J0IHNlbGVjdApmcm9tIC4uZGF0YWJhc2UgaW1wb3J0IGdldF9kYgpmcm9tIC4ubW9kZWxzLnVzZXIgaW1wb3J0IFVzZXIKZnJvbSAuLm1vZGVscy5jb252ZXJzYXRpb24gaW1wb3J0IENvbnZlcnNhdGlvbiwgTWVzc2FnZQpmcm9tIC4uc2NoZW1hcy5jaGF0IGltcG9ydCBTdHJlYW1SZXF1ZXN0LCBDb252ZXJzYXRpb25PdXQsIE1lc3NhZ2VPdXQKZnJvbSAuLnNlcnZpY2VzLmFpIGltcG9ydCBzdHJlYW1fY2hhdApmcm9tIC4udXRpbHMuYXV0aCBpbXBvcnQgZ2V0X2N1cnJlbnRfdXNlcgppbXBvcnQgdXVpZAoKcm91dGVyID0gQVBJUm91dGVyKHByZWZpeD0nL2FwaScsIHRhZ3M9WydjaGF0J10pCgpAcm91dGVyLnBvc3QoJy9jaGF0L3N0cmVhbScpCmFzeW5jIGRlZiBjaGF0X3N0cmVhbSgKICAgIHBheWxvYWQ6IFN0cmVhbVJlcXVlc3QsCiAgICBjdXJyZW50X3VzZXI6IFVzZXIgPSBEZXBlbmRzKGdldF9jdXJyZW50X3VzZXIpLAogICAgZGI6IEFzeW5jU2Vzc2lvbiA9IERlcGVuZHMoZ2V0X2RiKSwKKToKICAgIG1lc3NhZ2VzID0gW3sncm9sZSc6IG0ucm9sZSwgJ2NvbnRlbnQnOiBtLmNvbnRlbnR9IGZvciBtIGluIHBheWxvYWQubWVzc2FnZXNdCgogICAgIyBQZXJzaXN0IGNvbnZlcnNhdGlvbiArIG1lc3NhZ2VzIGFmdGVyIHN0cmVhbWluZwogICAgYXN5bmMgZGVmIGdlbmVyYXRlKCk6CiAgICAgICAgZnVsbF9yZXNwb25zZSA9IFtdCiAgICAgICAgYXN5bmMgZm9yIGNodW5rIGluIHN0cmVhbV9jaGF0KAogICAgICAgICAgICBtZXNzYWdlcz1tZXNzYWdlcywKICAgICAgICAgICAgbW9kZWxfaWQ9cGF5bG9hZC5tb2RlbCwKICAgICAgICAgICAgc3lzdGVtX3Byb21wdD1wYXlsb2FkLnN5c3RlbV9wcm9tcHQsCiAgICAgICAgICAgIHRlbXBlcmF0dXJlPXBheWxvYWQudGVtcGVyYXR1cmUsCiAgICAgICAgICAgIG1heF90b2tlbnM9cGF5bG9hZC5tYXhfdG9rZW5zLAogICAgICAgICk6CiAgICAgICAgICAgIGlmIGNodW5rLnN0YXJ0c3dpdGgoJ2RhdGE6ICcpOgogICAgICAgICAgICAgICAgaW1wb3J0IGpzb24KICAgICAgICAgICAgICAgIHRyeToKICAgICAgICAgICAgICAgICAgICBkYXRhID0ganNvbi5sb2FkcyhjaHVua1s2Ol0pCiAgICAgICAgICAgICAgICAgICAgaWYgZGF0YS5nZXQoJ3R5cGUnKSA9PSAnZGVsdGEnOgogICAgICAgICAgICAgICAgICAgICAgICBmdWxsX3Jlc3BvbnNlLmFwcGVuZChkYXRhLmdldCgndGV4dCcsICcnKSkKICAgICAgICAgICAgICAgIGV4Y2VwdCBFeGNlcHRpb246CiAgICAgICAgICAgICAgICAgICAgcGFzcwogICAgICAgICAgICB5aWVsZCBjaHVuawoKICAgICAgICAjIFBlcnNpc3QgdG8gREIKICAgICAgICB0cnk6CiAgICAgICAgICAgIGNvbnZfaWQgPSBwYXlsb2FkLmNvbnZlcnNhdGlvbl9pZCBvciBzdHIodXVpZC51dWlkNCgpKQogICAgICAgICAgICByZXN1bHQgPSBhd2FpdCBkYi5leGVjdXRlKAogICAgICAgICAgICAgICAgc2VsZWN0KENvbnZlcnNhdGlvbikud2hlcmUoCiAgICAgICAgICAgICAgICAgICAgQ29udmVyc2F0aW9uLmlkID09IGNvbnZfaWQsCiAgICAgICAgICAgICAgICAgICAgQ29udmVyc2F0aW9uLnVzZXJfaWQgPT0gY3VycmVudF91c2VyLmlkLAogICAgICAgICAgICAgICAgKQogICAgICAgICAgICApCiAgICAgICAgICAgIGNvbnYgPSByZXN1bHQuc2NhbGFyX29uZV9vcl9ub25lKCkKICAgICAgICAgICAgaWYgbm90IGNvbnY6CiAgICAgICAgICAgICAgICBjb252ID0gQ29udmVyc2F0aW9uKGlkPWNvbnZfaWQsIHVzZXJfaWQ9Y3VycmVudF91c2VyLmlkLCBtb2RlbD1wYXlsb2FkLm1vZGVsKQogICAgICAgICAgICAgICAgZGIuYWRkKGNvbnYpCgogICAgICAgICAgICBmb3IgbSBpbiBwYXlsb2FkLm1lc3NhZ2VzOgogICAgICAgICAgICAgICAgZGIuYWRkKE1lc3NhZ2UoCiAgICAgICAgICAgICAgICAgICAgY29udmVyc2F0aW9uX2lkPWNvbnZfaWQsCiAgICAgICAgICAgICAgICAgICAgcm9sZT1tLnJvbGUsCiAgICAgICAgICAgICAgICAgICAgY29udGVudD1tLmNvbnRlbnQsCiAgICAgICAgICAgICAgICApKQogICAgICAgICAgICBkYi5hZGQoTWVzc2FnZSgKICAgICAgICAgICAgICAgIGNvbnZlcnNhdGlvbl9pZD1jb252X2lkLAogICAgICAgICAgICAgICAgcm9sZT0nYXNzaXN0YW50JywKICAgICAgICAgICAgICAgIGNvbnRlbnQ9Jycuam9pbihmdWxsX3Jlc3BvbnNlKSwKICAgICAgICAgICAgICAgIG1vZGVsPXBheWxvYWQubW9kZWwsCiAgICAgICAgICAgICkpCiAgICAgICAgICAgIGF3YWl0IGRiLmNvbW1pdCgpCiAgICAgICAgZXhjZXB0IEV4Y2VwdGlvbjoKICAgICAgICAgICAgcGFzcyAgIyBzdHJlYW1pbmcgYWxyZWFkeSBkZWxpdmVyZWQ7IHBlcnNpc3RlbmNlIGZhaWx1cmUgaXMgbm9uLWZhdGFsCgogICAgcmV0dXJuIFN0cmVhbWluZ1Jlc3BvbnNlKAogICAgICAgIGdlbmVyYXRlKCksCiAgICAgICAgbWVkaWFfdHlwZT0ndGV4dC9ldmVudC1zdHJlYW0nLAogICAgICAgIGhlYWRlcnM9eydYLUFjY2VsLUJ1ZmZlcmluZyc6ICdubyd9LAogICAgKQoKQHJvdXRlci5nZXQoJy9jb252ZXJzYXRpb25zJywgcmVzcG9uc2VfbW9kZWw9bGlzdFtDb252ZXJzYXRpb25PdXRdKQphc3luYyBkZWYgbGlzdF9jb252ZXJzYXRpb25zKAogICAgY3VycmVudF91c2VyOiBVc2VyID0gRGVwZW5kcyhnZXRfY3VycmVudF91c2VyKSwKICAgIGRiOiBBc3luY1Nlc3Npb24gPSBEZXBlbmRzKGdldF9kYiksCik6CiAgICByZXN1bHQgPSBhd2FpdCBkYi5leGVjdXRlKAogICAgICAgIHNlbGVjdChDb252ZXJzYXRpb24pCiAgICAgICAgLndoZXJlKENvbnZlcnNhdGlvbi51c2VyX2lkID09IGN1cnJlbnRfdXNlci5pZCwgQ29udmVyc2F0aW9uLmFyY2hpdmVkID09IEZhbHNlKQogICAgICAgIC5vcmRlcl9ieShDb252ZXJzYXRpb24udXBkYXRlZF9hdC5kZXNjKCkpCiAgICApCiAgICByZXR1cm4gW0NvbnZlcnNhdGlvbk91dC5tb2RlbF92YWxpZGF0ZShjKSBmb3IgYyBpbiByZXN1bHQuc2NhbGFycygpLmFsbCgpXQoKQHJvdXRlci5nZXQoJy9jb252ZXJzYXRpb25zL3tjb252X2lkfS9tZXNzYWdlcycsIHJlc3BvbnNlX21vZGVsPWxpc3RbTWVzc2FnZU91dF0pCmFzeW5jIGRlZiBsaXN0X21lc3NhZ2VzKAogICAgY29udl9pZDogc3RyLAogICAgY3VycmVudF91c2VyOiBVc2VyID0gRGVwZW5kcyhnZXRfY3VycmVudF91c2VyKSwKICAgIGRiOiBBc3luY1Nlc3Npb24gPSBEZXBlbmRzKGdldF9kYiksCik6CiAgICByZXN1bHQgPSBhd2FpdCBkYi5leGVjdXRlKAogICAgICAgIHNlbGVjdChDb252ZXJzYXRpb24pLndoZXJlKAogICAgICAgICAgICBDb252ZXJzYXRpb24uaWQgPT0gY29udl9pZCwKICAgICAgICAgICAgQ29udmVyc2F0aW9uLnVzZXJfaWQgPT0gY3VycmVudF91c2VyLmlkLAogICAgICAgICkKICAgICkKICAgIGNvbnYgPSByZXN1bHQuc2NhbGFyX29uZV9vcl9ub25lKCkKICAgIGlmIG5vdCBjb252OgogICAgICAgIHJhaXNlIEhUVFBFeGNlcHRpb24oc3RhdHVzX2NvZGU9c3RhdHVzLkhUVFBfNDA0X05PVF9GT1VORCwgZGV0YWlsPSdDb252ZXJzYXRpb24gbm90IGZvdW5kJykKCiAgICBtc2dzID0gYXdhaXQgZGIuZXhlY3V0ZSgKICAgICAgICBzZWxlY3QoTWVzc2FnZSkKICAgICAgICAud2hlcmUoTWVzc2FnZS5jb252ZXJzYXRpb25faWQgPT0gY29udl9pZCkKICAgICAgICAub3JkZXJfYnkoTWVzc2FnZS5jcmVhdGVkX2F0KQogICAgKQogICAgcmV0dXJuIFtNZXNzYWdlT3V0Lm1vZGVsX3ZhbGlkYXRlKG0pIGZvciBtIGluIG1zZ3Muc2NhbGFycygpLmFsbCgpXQoKQHJvdXRlci5kZWxldGUoJy9jb252ZXJzYXRpb25zL3tjb252X2lkfScsIHN0YXR1c19jb2RlPXN0YXR1cy5IVFRQXzIwNF9OT19DT05URU5UKQphc3luYyBkZWYgZGVsZXRlX2NvbnZlcnNhdGlvbigKICAgIGNvbnZfaWQ6IHN0ciwKICAgIGN1cnJlbnRfdXNlcjogVXNlciA9IERlcGVuZHMoZ2V0X2N1cnJlbnRfdXNlciksCiAgICBkYjogQXN5bmNTZXNzaW9uID0gRGVwZW5kcyhnZXRfZGIpLAopOgogICAgcmVzdWx0ID0gYXdhaXQgZGIuZXhlY3V0ZSgKICAgICAgICBzZWxlY3QoQ29udmVyc2F0aW9uKS53aGVyZSgKICAgICAgICAgICAgQ29udmVyc2F0aW9uLmlkID09IGNvbnZfaWQsCiAgICAgICAgICAgIENvbnZlcnNhdGlvbi51c2VyX2lkID09IGN1cnJlbnRfdXNlci5pZCwKICAgICAgICApCiAgICApCiAgICBjb252ID0gcmVzdWx0LnNjYWxhcl9vbmVfb3Jfbm9uZSgpCiAgICBpZiBub3QgY29udjoKICAgICAgICByYWlzZSBIVFRQRXhjZXB0aW9uKHN0YXR1c19jb2RlPXN0YXR1cy5IVFRQXzQwNF9OT1RfRk9VTkQsIGRldGFpbD0nQ29udmVyc2F0aW9uIG5vdCBmb3VuZCcpCiAgICBhd2FpdCBkYi5kZWxldGUoY29udikK
+from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.responses import StreamingResponse
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
+from ..database import get_db
+from ..models.user import User
+from ..models.conversation import Conversation, Message
+from ..schemas.chat import StreamRequest, ConversationOut, MessageOut
+from ..services.ai import stream_chat
+from ..utils.auth import get_current_user
+import uuid
+
+router = APIRouter(prefix='/api', tags=['chat'])
+
+@router.post('/chat/stream')
+async def chat_stream(
+    payload: StreamRequest,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    messages = [{'role': m.role, 'content': m.content} for m in payload.messages]
+
+    async def generate():
+        full_response = []
+        async for chunk in stream_chat(
+            messages=messages,
+            model_id=payload.model,
+            system_prompt=payload.system_prompt,
+            temperature=payload.temperature,
+            max_tokens=payload.max_tokens,
+        ):
+            if chunk.startswith('data: '):
+                import json
+                try:
+                    data = json.loads(chunk[6:])
+                    if data.get('type') == 'delta':
+                        full_response.append(data.get('text', ''))
+                except Exception:
+                    pass
+            yield chunk
+
+        try:
+            conv_id = payload.conversation_id or str(uuid.uuid4())
+            result = await db.execute(
+                select(Conversation).where(
+                    Conversation.id == conv_id,
+                    Conversation.user_id == current_user.id,
+                )
+            )
+            conv = result.scalar_one_or_none()
+            if not conv:
+                conv = Conversation(id=conv_id, user_id=current_user.id, model=payload.model)
+                db.add(conv)
+
+            for m in payload.messages:
+                db.add(Message(
+                    conversation_id=conv_id,
+                    role=m.role,
+                    content=m.content,
+                ))
+            db.add(Message(
+                conversation_id=conv_id,
+                role='assistant',
+                content=''.join(full_response),
+                model=payload.model,
+            ))
+            await db.commit()
+        except Exception:
+            pass
+
+    return StreamingResponse(
+        generate(),
+        media_type='text/event-stream',
+        headers={'X-Accel-Buffering': 'no'},
+    )
+
+@router.get('/conversations', response_model=list[ConversationOut])
+async def list_conversations(
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    result = await db.execute(
+        select(Conversation)
+        .where(Conversation.user_id == current_user.id, Conversation.archived == False)
+        .order_by(Conversation.updated_at.desc())
+    )
+    return [ConversationOut.model_validate(c) for c in result.scalars().all()]
+
+@router.get('/conversations/{conv_id}/messages', response_model=list[MessageOut])
+async def list_messages(
+    conv_id: str,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    result = await db.execute(
+        select(Conversation).where(
+            Conversation.id == conv_id,
+            Conversation.user_id == current_user.id,
+        )
+    )
+    conv = result.scalar_one_or_none()
+    if not conv:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Conversation not found')
+
+    msgs = await db.execute(
+        select(Message)
+        .where(Message.conversation_id == conv_id)
+        .order_by(Message.created_at)
+    )
+    return [MessageOut.model_validate(m) for m in msgs.scalars().all()]
+
+@router.delete('/conversations/{conv_id}', status_code=status.HTTP_204_NO_CONTENT)
+async def delete_conversation(
+    conv_id: str,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    result = await db.execute(
+        select(Conversation).where(
+            Conversation.id == conv_id,
+            Conversation.user_id == current_user.id,
+        )
+    )
+    conv = result.scalar_one_or_none()
+    if not conv:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='Conversation not found')
+    await db.delete(conv)
