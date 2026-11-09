@@ -4,15 +4,15 @@ services:
   postgres:
     image: pgvector/pgvector:pg16
     environment:
-      POSTGRES_USER: kroex
-      POSTGRES_PASSWORD: kroex
-      POSTGRES_DB: kroex
+      POSTGRES_USER: ${POSTGRES_USER:-kroex}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-kroex_dev_only}
+      POSTGRES_DB: ${POSTGRES_DB:-kroex}
     ports:
-      - '5432:5432'
+      - '127.0.0.1:5432:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U kroex']
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-kroex}']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -20,7 +20,7 @@ services:
   redis:
     image: redis:7-alpine
     ports:
-      - '6379:6379'
+      - '127.0.0.1:6379:6379'
     volumes:
       - redis_data:/data
     healthcheck:
@@ -35,12 +35,14 @@ services:
     ports:
       - '8000:8000'
     environment:
-      DATABASE_URL: postgresql+asyncpg://kroex:kroex@postgres:5432/kroex
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-kroex}:${POSTGRES_PASSWORD:-kroex_dev_only}@postgres:5432/${POSTGRES_DB:-kroex}
       REDIS_URL: redis://redis:6379/0
       DEBUG: ${DEBUG:-false}
       ALLOWED_ORIGINS: '["http://localhost:3000"]'
     env_file:
       - ./apps/api/.env
+    volumes:
+      - api_uploads:/app/uploads
     depends_on:
       postgres:
         condition: service_healthy
@@ -72,3 +74,4 @@ services:
 volumes:
   postgres_data:
   redis_data:
+  api_uploads:
