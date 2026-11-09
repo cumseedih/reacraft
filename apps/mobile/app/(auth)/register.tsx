@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import {
-  View, Text, TextInput, TouchableOpacity,
-  StyleSheet, KeyboardAvoidingView, Platform, ActivityIndicator, ScrollView,
+  View, Text, StyleSheet, KeyboardAvoidingView, Platform, ScrollView,
 } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { router } from 'expo-router'
 import { useAuthStore } from '../../store/auth'
 import { api } from '../../lib/api'
+import { Button } from '../../components/ui/Button'
+import { Input } from '../../components/ui/Input'
+import { colors, spacing, typography } from '../../theme/tokens'
 
 export default function RegisterScreen() {
   const [name, setName] = useState('')
@@ -27,7 +29,7 @@ export default function RegisterScreen() {
     try {
       const res = await api.post<{ token: string; user: any }>(
         '/api/auth/register',
-        { name, email, password },
+        { name: name.trim(), email: email.trim(), password },
       )
       await setToken(res.token)
       setUser(res.user)
@@ -38,6 +40,8 @@ export default function RegisterScreen() {
       setLoading(false)
     }
   }
+
+  const canSubmit = !!name.trim() && !!email.trim() && !!password
 
   return (
     <SafeAreaView style={styles.container}>
@@ -52,47 +56,62 @@ export default function RegisterScreen() {
           </View>
 
           <View style={styles.form}>
-            {error ? <Text style={styles.error}>{error}</Text> : null}
-            <TextInput
-              style={styles.input}
-              value={name}
-              onChangeText={setName}
-              placeholder="Full name"
-              placeholderTextColor="#9CA3AF"
-              autoCapitalize="words"
-              autoCorrect={false}
-            />
-            <TextInput
-              style={styles.input}
-              value={email}
-              onChangeText={setEmail}
-              placeholder="Email"
-              placeholderTextColor="#9CA3AF"
-              keyboardType="email-address"
-              autoCapitalize="none"
-              autoCorrect={false}
-            />
-            <TextInput
-              style={styles.input}
-              value={password}
-              onChangeText={setPassword}
-              placeholder="Password (min. 8 characters)"
-              placeholderTextColor="#9CA3AF"
-              secureTextEntry
-            />
-            <TouchableOpacity
-              style={[styles.btn, loading && styles.btnDisabled]}
-              onPress={handleRegister}
-              disabled={loading}
-            >
-              {loading
-                ? <ActivityIndicator color="#fff" />
-                : <Text style={styles.btnText}>Create account</Text>}
-            </TouchableOpacity>
+            <Text style={styles.title}>Get started</Text>
+            <Text style={styles.subtitle}>Start thinking deeper with KROEX</Text>
 
-            <TouchableOpacity onPress={() => router.back()}>
-              <Text style={styles.link}>Already have an account? Sign in</Text>
-            </TouchableOpacity>
+            {error ? <Text style={styles.error}>{error}</Text> : null}
+
+            <View style={styles.field}>
+              <Text style={styles.label}>Full name</Text>
+              <Input
+                value={name}
+                onChangeText={setName}
+                placeholder="Your name"
+                autoCapitalize="words"
+                autoCorrect={false}
+                returnKeyType="next"
+              />
+            </View>
+
+            <View style={styles.field}>
+              <Text style={styles.label}>Email</Text>
+              <Input
+                value={email}
+                onChangeText={setEmail}
+                placeholder="you@example.com"
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+                autoComplete="email"
+                returnKeyType="next"
+              />
+            </View>
+
+            <View style={styles.field}>
+              <Text style={styles.label}>Password</Text>
+              <Input
+                value={password}
+                onChangeText={setPassword}
+                placeholder="Min. 8 characters"
+                secureTextEntry
+                autoComplete="password-new"
+                returnKeyType="go"
+                onSubmitEditing={handleRegister}
+              />
+            </View>
+
+            <Button
+              title="Create account"
+              onPress={handleRegister}
+              loading={loading}
+              disabled={!canSubmit}
+              style={{ marginTop: spacing.xs }}
+            />
+
+            <View style={styles.footer}>
+              <Text style={styles.footerText}>Already have an account? </Text>
+              <Button title="Sign in" variant="link" onPress={() => router.back()} />
+            </View>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
@@ -101,30 +120,18 @@ export default function RegisterScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#FAFAF8' },
+  container: { flex: 1, backgroundColor: colors.background },
   inner: { flex: 1 },
-  scroll: { flexGrow: 1, justifyContent: 'center', paddingHorizontal: 24, paddingVertical: 32 },
-  header: { alignItems: 'center', marginBottom: 40 },
-  logo: { fontSize: 36, fontWeight: '700', color: '#141413' },
-  tagline: { fontSize: 14, color: '#6B7280', marginTop: 8 },
-  form: { gap: 14 },
-  error: { color: '#EF4444', fontSize: 14, textAlign: 'center' },
-  input: {
-    height: 52,
-    backgroundColor: '#F3F2ED',
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    fontSize: 16,
-    color: '#141413',
-  },
-  btn: {
-    height: 52,
-    backgroundColor: '#2563EB',
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  btnDisabled: { opacity: 0.6 },
-  btnText: { color: '#fff', fontSize: 16, fontWeight: '600' },
-  link: { textAlign: 'center', color: '#2563EB', fontSize: 14 },
+  scroll: { flexGrow: 1, justifyContent: 'center', paddingHorizontal: spacing.md, paddingVertical: spacing.md },
+  header: { alignItems: 'center', marginBottom: spacing.md },
+  logo: { ...typography.headlineSm, color: colors.onSurface, fontWeight: '700', letterSpacing: 1 },
+  tagline: { ...typography.bodySm, color: colors.mutedForeground, marginTop: spacing.xs },
+  form: { gap: spacing.sm },
+  title: { ...typography.headlineSm, color: colors.onSurface },
+  subtitle: { ...typography.bodySm, color: colors.mutedForeground, marginTop: -spacing.xs, marginBottom: spacing.xs },
+  field: { gap: 6 },
+  label: { ...typography.labelMd, color: colors.onSurface },
+  error: { ...typography.bodySm, color: colors.error },
+  footer: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: spacing.xs },
+  footerText: { ...typography.bodySm, color: colors.mutedForeground },
 })

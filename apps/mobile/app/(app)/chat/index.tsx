@@ -8,6 +8,8 @@ import Animated, { FadeInDown } from 'react-native-reanimated'
 import { Ionicons } from '@expo/vector-icons'
 import { api } from '../../../lib/api'
 import { requireApiBaseUrl } from '../../../lib/config'
+import { GlassView } from '../../../components/ui/GlassView'
+import { colors, radii, spacing, typography } from '../../../theme/tokens'
 
 interface Message {
   id: string
@@ -156,44 +158,50 @@ export default function ChatScreen() {
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         keyboardVerticalOffset={0}
       >
-        <FlatList
-          ref={flatListRef}
-          data={messages}
-          keyExtractor={m => m.id}
-          contentContainerStyle={styles.messageList}
-          onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
-          renderItem={({ item: msg }) => (
-            <Animated.View
-              entering={FadeInDown.duration(200)}
-              style={[styles.messageRow, msg.role === 'user' ? styles.userRow : styles.asstRow]}
-            >
-              <View style={[styles.bubble, msg.role === 'user' ? styles.userBubble : styles.asstBubble]}>
-                <Text style={[styles.messageText, msg.role === 'user' ? styles.userText : styles.asstText]}>
-                  {msg.content}
-                  {msg.status === 'streaming' ? '▋' : ''}
-                </Text>
-              </View>
-            </Animated.View>
-          )}
-        />
-
-        <View style={styles.inputRow}>
-          <TextInput
-            style={styles.input}
-            value={input}
-            onChangeText={setInput}
-            placeholder="Message KROEX…"
-            placeholderTextColor="#9CA3AF"
-            multiline
-            maxLength={8000}
+        <View style={styles.flex}>
+          <FlatList
+            ref={flatListRef}
+            data={messages}
+            keyExtractor={m => m.id}
+            contentContainerStyle={styles.messageList}
+            onContentSizeChange={() => flatListRef.current?.scrollToEnd({ animated: true })}
+            renderItem={({ item: msg }) => (
+              <Animated.View
+                entering={FadeInDown.duration(200)}
+                style={[styles.messageRow, msg.role === 'user' ? styles.userRow : styles.asstRow]}
+              >
+                <View style={[styles.bubble, msg.role === 'user' ? styles.userBubble : styles.asstBubble]}>
+                  <Text style={[styles.messageText, msg.role === 'user' ? styles.userText : styles.asstText]}>
+                    {msg.content}
+                    {msg.status === 'streaming' ? '▋' : ''}
+                  </Text>
+                </View>
+              </Animated.View>
+            )}
           />
-          <TouchableOpacity
-            style={[styles.sendBtn, (!input.trim() || isStreaming) && styles.sendBtnDisabled]}
-            onPress={handleSend}
-            disabled={!input.trim() || isStreaming}
-          >
-            <Ionicons name="arrow-up" size={18} color="#fff" />
-          </TouchableOpacity>
+
+          {/* Floating Liquid Glass composer: messages blur behind it as they
+              scroll underneath (real native blur via expo-blur). */}
+          <GlassView style={styles.composer} radius={radii.xl} intensity={50}>
+            <View style={styles.inputRow}>
+              <TextInput
+                style={styles.input}
+                value={input}
+                onChangeText={setInput}
+                placeholder="Message KROEX…"
+                placeholderTextColor={colors.mutedForeground}
+                multiline
+                maxLength={8000}
+              />
+              <TouchableOpacity
+                style={[styles.sendBtn, (!input.trim() || isStreaming) && styles.sendBtnDisabled]}
+                onPress={handleSend}
+                disabled={!input.trim() || isStreaming}
+              >
+                <Ionicons name="arrow-up" size={18} color={colors.primaryForeground} />
+              </TouchableOpacity>
+            </View>
+          </GlassView>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -201,47 +209,57 @@ export default function ChatScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#FAFAF8' },
+  container: { flex: 1, backgroundColor: colors.background },
   flex: { flex: 1 },
-  header: { paddingHorizontal: 16, paddingVertical: 12, borderBottomWidth: 1, borderBottomColor: '#E8E6DC' },
-  headerTitle: { fontSize: 18, fontWeight: '600', color: '#141413' },
-  messageList: { paddingHorizontal: 16, paddingVertical: 12, gap: 12 },
+  header: {
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 12,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: colors.border,
+  },
+  headerTitle: { ...typography.labelLg, color: colors.onSurface, fontWeight: '600' },
+  // Bottom padding clears the floating glass composer so the last message can
+  // scroll out from behind it.
+  messageList: { paddingHorizontal: spacing.sm, paddingVertical: 12, paddingBottom: 96, gap: 12 },
   messageRow: { flexDirection: 'row' },
   userRow: { justifyContent: 'flex-end' },
   asstRow: { justifyContent: 'flex-start' },
-  bubble: { maxWidth: '82%', borderRadius: 18, padding: 12 },
-  userBubble: { backgroundColor: '#2563EB' },
-  asstBubble: { backgroundColor: '#F3F2ED' },
-  messageText: { fontSize: 15, lineHeight: 22 },
-  userText: { color: '#fff' },
-  asstText: { color: '#141413' },
+  bubble: { maxWidth: '82%', borderRadius: radii.lg, padding: 12 },
+  userBubble: { backgroundColor: colors.primary },
+  asstBubble: { backgroundColor: colors.secondarySurface },
+  messageText: { ...typography.bodyMd, fontSize: 15, lineHeight: 22 },
+  userText: { color: colors.primaryForeground },
+  asstText: { color: colors.onSurface },
+  composer: {
+    position: 'absolute',
+    left: spacing.sm,
+    right: spacing.sm,
+    bottom: spacing.sm,
+  },
   inputRow: {
     flexDirection: 'row',
     alignItems: 'flex-end',
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    borderTopWidth: 1,
-    borderTopColor: '#E8E6DC',
+    paddingHorizontal: 10,
+    paddingVertical: 8,
     gap: 8,
   },
   input: {
     flex: 1,
     minHeight: 40,
     maxHeight: 160,
-    backgroundColor: '#F3F2ED',
-    borderRadius: 20,
-    paddingHorizontal: 14,
+    paddingHorizontal: 10,
     paddingVertical: 10,
+    ...typography.bodyMd,
     fontSize: 15,
-    color: '#141413',
+    color: colors.onSurface,
   },
   sendBtn: {
     width: 40,
     height: 40,
-    borderRadius: 20,
-    backgroundColor: '#2563EB',
+    borderRadius: radii.full,
+    backgroundColor: colors.primary,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  sendBtnDisabled: { backgroundColor: '#D1D5DB' },
+  sendBtnDisabled: { backgroundColor: colors.muted },
 })
