@@ -143,6 +143,15 @@ export interface SnapshotCreate {
   label?: string | null
 }
 
+/**
+ * Restore-progress states (idle | queued | running | completed | failed).
+ * NOTE: this `restore_state` field was specified by the product owner for
+ * the snapshot-restore flow and is not present in the OpenAPI snapshot this
+ * package was originally built from — it is optional here and MUST be
+ * confirmed against the live staging schema (field name + values).
+ */
+export type SnapshotRestoreState = 'idle' | 'queued' | 'running' | 'completed' | 'failed'
+
 export interface SnapshotOut {
   id: string
   workspace_id: string
@@ -151,7 +160,20 @@ export interface SnapshotOut {
   sha256: string
   size_bytes: number
   state: string
+  /** Progress of an in-flight restore, per the restore_state contract. */
+  restore_state?: SnapshotRestoreState | null
+  restore_error?: string | null
   created_at: IsoDateTime
+}
+
+export const SNAPSHOT_RESTORE_IN_PROGRESS: readonly SnapshotRestoreState[] = ['queued', 'running']
+
+/** A restore is only "done" when the backend reports `completed` — never assume success earlier. */
+export function isRestoreInProgress(state: SnapshotRestoreState | null | undefined): boolean {
+  return state === 'queued' || state === 'running'
+}
+export function isRestoreComplete(state: SnapshotRestoreState | null | undefined): boolean {
+  return state === 'completed'
 }
 
 export interface PatchOut {

@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   Plus, Search, MessageSquare, FolderOpen, Settings, ChevronLeft,
   ChevronRight, Archive, Pin, Trash2, MoreHorizontal,
-  User, LogOut, Moon, Sun, ChevronDown, Brain, Boxes, Bot, Cpu,
+  User, LogOut, Moon, Sun, ChevronDown, Brain, Boxes, Bot, Cpu, Server,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -124,6 +124,7 @@ export function Sidebar({ projects, onNewConversation }: SidebarProps) {
         <NavLink href="/artifacts" icon={<Boxes className="h-4 w-4" />} label="Artifacts" active={pathname.startsWith('/artifacts')} />
         <NavLink href="/bot" icon={<Bot className="h-4 w-4" />} label="Bot" active={pathname.startsWith('/bot')} />
         <NavLink href="/agents" icon={<Cpu className="h-4 w-4" />} label="Agents" active={pathname.startsWith('/agents')} />
+        <NavLink href="/sandbox" icon={<Server className="h-4 w-4" />} label="Sandbox" active={pathname.startsWith('/sandbox')} />
       </nav>
 
       <div className="px-3 pb-2">
