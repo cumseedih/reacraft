@@ -9,13 +9,19 @@ export interface JsonRequestInit {
 }
 
 function buildUrl(baseUrl: string, path: string, query?: JsonRequestInit['query']): string {
-  const url = new URL(path.replace(/^\//, ''), baseUrl.endsWith('/') ? baseUrl : baseUrl + '/')
+  const p = path.startsWith('/') ? path : `/${path}`
+  const search = new URLSearchParams()
   if (query) {
     for (const [key, value] of Object.entries(query)) {
-      if (value !== undefined) url.searchParams.set(key, String(value))
+      if (value !== undefined) search.set(key, String(value))
     }
   }
-  return url.toString()
+  const qs = search.toString() ? `?${search.toString()}` : ''
+  // Empty baseUrl => same-origin relative request (web uses this to hit its
+  // own Next proxy route; staging API is loopback-only, see §7/STAGING_CONFIG).
+  if (!baseUrl) return `${p}${qs}`
+  const base = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl
+  return `${base}${p}${qs}`
 }
 
 /** Links an internal timeout controller to an optional external signal, without requiring AbortSignal.any (kept portable across TS/lib target combinations). */

@@ -1,15 +1,36 @@
 'use client'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { useQuery } from '@tanstack/react-query'
 import { Sidebar } from '@/components/sidebar/sidebar'
 import { useChatStore } from '@/store/chat'
 import { useAuthStore } from '@/store/auth'
 import { get } from '@/lib/api'
+import { getKroexClient } from '@/lib/kroex-client'
 import type { Conversation, Project } from '@/types'
+import type { ProjectOut } from '@kroex/api'
 
 interface AppShellProps {
   children: React.ReactNode
   projects?: Project[]
+}
+
+// Map the API's ProjectOut (contract shape) to the sidebar's local Project
+// type. The sidebar only displays id + name; counts are not available from
+// the API, so they are zeroed (and not rendered).
+function mapProject(p: ProjectOut): Project {
+  return {
+    id: p.id,
+    name: p.name,
+    description: p.description ?? undefined,
+    instructions: p.system_prompt ?? undefined,
+    color: p.color ?? undefined,
+    icon: p.icon ?? undefined,
+    conversationCount: 0,
+    fileCount: 0,
+    createdAt: p.created_at,
+    updatedAt: p.updated_at,
+  }
 }
 
 // Backend returns snake_case; map to frontend camelCase Conversation type.
@@ -25,10 +46,23 @@ function mapConversation(raw: Record<string, unknown>): Conversation {
   }
 }
 
-export function AppShell({ children, projects = [] }: AppShellProps) {
+export function AppShell({ children, projects: projectsProp }: AppShellProps) {
   const router = useRouter()
   const { setConversations } = useChatStore()
   const { token } = useAuthStore()
+
+  // Load projects for the sidebar via the shared client + React Query, so
+  // creating/deleting a project anywhere invalidates ['projects'] and the
+  // sidebar updates in lockstep. An explicit `projects` prop overrides this.
+  const projectsQuery = useQuery({
+    queryKey: ['projects'],
+    queryFn: () => getKroexClient().projects.list(),
+    enabled: !!token && !projectsProp,
+  })
+  const projects = useMemo<Project[]>(
+    () => projectsProp ?? (projectsQuery.data ?? []).map(mapProject),
+    [projectsProp, projectsQuery.data],
+  )
 
   // The auth store is persisted to localStorage and rehydrates on the client
   // after the first render. Track hydration so we don't bounce an authenticated

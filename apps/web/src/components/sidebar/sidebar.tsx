@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   Plus, Search, MessageSquare, FolderOpen, Settings, ChevronLeft,
   ChevronRight, Archive, Pin, Trash2, MoreHorizontal,
-  User, LogOut, Moon, Sun, ChevronDown,
+  User, LogOut, Moon, Sun, ChevronDown, Brain,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -61,7 +61,10 @@ export function Sidebar({ projects, onNewConversation }: SidebarProps) {
           <Button size="icon-sm" variant="ghost"><Search className="h-4 w-4"/></Button>
         </WithTooltip>
         <WithTooltip tip="Projects" side="right">
-          <Button size="icon-sm" variant="ghost"><FolderOpen className="h-4 w-4"/></Button>
+          <Button size="icon-sm" variant="ghost" onClick={() => router.push('/projects')}><FolderOpen className="h-4 w-4"/></Button>
+        </WithTooltip>
+        <WithTooltip tip="Memory" side="right">
+          <Button size="icon-sm" variant="ghost" onClick={() => router.push('/memory')}><Brain className="h-4 w-4"/></Button>
         </WithTooltip>
         <div className="flex-1" />
         <WithTooltip tip="Settings" side="right">
@@ -115,6 +118,11 @@ export function Sidebar({ projects, onNewConversation }: SidebarProps) {
         </Button>
       </div>
 
+      <nav className="px-3 pb-2 space-y-0.5">
+        <NavLink href="/projects" icon={<FolderOpen className="h-4 w-4" />} label="Projects" active={pathname.startsWith('/projects')} />
+        <NavLink href="/memory" icon={<Brain className="h-4 w-4" />} label="Memory" active={pathname.startsWith('/memory')} />
+      </nav>
+
       <div className="px-3 pb-2">
         <Input
           placeholder="Search conversations…"
@@ -148,7 +156,7 @@ export function Sidebar({ projects, onNewConversation }: SidebarProps) {
                     <SidebarProject key={p.id} project={p} active={pathname.includes(`/projects/${p.id}`)} />
                   ))}
                   <Link
-                    href="/projects/new"
+                    href="/projects"
                     className="flex items-center gap-2 px-2 py-1.5 text-xs text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted/50 transition-colors"
                   >
                     <Plus className="h-3.5 w-3.5" />
@@ -290,6 +298,21 @@ function ConversationItem({ conversation: c, active }: { conversation: Conversat
         )}
       </AnimatePresence>
     </div>
+  )
+}
+
+function NavLink({ href, icon, label, active }: { href: string; icon: React.ReactNode; label: string; active: boolean }) {
+  return (
+    <Link
+      href={href}
+      className={cn(
+        'flex items-center gap-2.5 rounded-xl px-2.5 py-2 text-sm transition-colors',
+        active ? 'bg-secondary text-foreground font-medium' : 'text-muted-foreground hover:bg-muted/60 hover:text-foreground'
+      )}
+    >
+      {icon}
+      {label}
+    </Link>
   )
 }
 
