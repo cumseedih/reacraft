@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "tauri dev",
     "build": "tauri build",
-    "preview": "tauri build --debug"
+    "preview": "tauri build --debug",
+    "build:frontend": "vite build"
   },
   "dependencies": {
     "@tauri-apps/api": "^2.0.0",

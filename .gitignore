@@ -48,3 +48,6 @@ pnpm-debug.log*
 
 # Tauri generated schemas
 apps/desktop/src-tauri/gen/
+
+# Tauri staged Next standalone server (build artifact)
+apps/desktop/src-tauri/kroex-server/
