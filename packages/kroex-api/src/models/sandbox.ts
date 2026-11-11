@@ -2,7 +2,7 @@
  * Source: API Integration Specification §1.9, §4.3, §6.
  * Flag-gated: sandbox_enabled (+ per-capability flags). 404 when off (§5.3).
  */
-import type { IsoDateTime } from './common.js'
+import type { IsoDateTime } from './common'
 
 /**
  * Logical sandbox image names. IMPORTANT: "full" (kroex/sandbox-full:1) is

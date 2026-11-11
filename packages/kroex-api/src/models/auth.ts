@@ -1,5 +1,5 @@
 /** Source: API Integration Specification §1.1, §4.1. */
-import type { IsoDateTime } from './common.js'
+import type { IsoDateTime } from './common'
 
 export interface RegisterRequest {
   name: string

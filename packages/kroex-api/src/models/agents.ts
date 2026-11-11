@@ -1,5 +1,5 @@
 /** Source: API Integration Specification §1.8. Flag-gated: agents_enabled (404 when off, §5.3). */
-import type { IsoDateTime } from './common.js'
+import type { IsoDateTime } from './common'
 
 export interface AgentCreate {
   /** 1-255 chars */

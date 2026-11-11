@@ -1,4 +1,4 @@
-import { NamedSseParser, SandboxEventCursor, isSandboxExitEvent, type SandboxCommandEvent } from './named.js'
+import { NamedSseParser, SandboxEventCursor, isSandboxExitEvent, type SandboxCommandEvent } from './named'
 
 /**
  * Transport injection point: opens ONE streaming HTTP connection to

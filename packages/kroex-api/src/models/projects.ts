@@ -1,5 +1,5 @@
 /** Source: API Integration Specification §1.3, §1.4. */
-import type { IsoDateTime } from './common.js'
+import type { IsoDateTime } from './common'
 
 export interface ProjectCreate {
   name: string

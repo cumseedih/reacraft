@@ -6,7 +6,7 @@ import {
   encodePingFrame,
   encodeResizeFrame,
   parsePtyServerControlFrame,
-} from '../src/ws/pty.js'
+} from '../src/ws/pty'
 
 describe('PTY protocol — frames (spec §3.3)', () => {
   it('parses the hello frame exactly as documented', () => {

@@ -1,4 +1,4 @@
-import { KroexApiError } from '../errors.js'
+import { KroexApiError } from '../errors'
 
 export interface RetryOn429Options {
   /** Max additional attempts after the first (default 1 — one retry total, matching "batch and debounce, honour Retry-After" guidance in Compatibility Report C8/spec §9.8 rather than aggressive auto-retry loops). */

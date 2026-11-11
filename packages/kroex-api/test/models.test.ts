@@ -1,14 +1,14 @@
 import { describe, expect, it } from 'vitest'
-import { DEFAULT_KROEX_MODEL_ID, KROEX_MODEL_IDS, isKroexModelId } from '../src/models.js'
-import { BOT_ACTION_REGISTRY } from '../src/models/bot.js'
-import { isTerminalRunStatus } from '../src/models/agents.js'
+import { DEFAULT_KROEX_MODEL_ID, KROEX_MODEL_IDS, isKroexModelId } from '../src/models'
+import { BOT_ACTION_REGISTRY } from '../src/models/bot'
+import { isTerminalRunStatus } from '../src/models/agents'
 import {
   SANDBOX_LOGICAL_IMAGES,
   SANDBOX_UNBUILT_IMAGE,
   filterBuiltSandboxImages,
   isSandboxSessionLive,
   isTerminalCommandStatus,
-} from '../src/models/sandbox.js'
+} from '../src/models/sandbox'
 
 describe('model catalog (spec §8 + Phase-4 directive: no legacy ids exposed)', () => {
   it('exposes exactly the four supported tiers', () => {

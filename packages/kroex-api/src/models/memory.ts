@@ -1,5 +1,5 @@
 /** Source: API Integration Specification §1.5, Compatibility Report C3. */
-import type { IsoDateTime } from './common.js'
+import type { IsoDateTime } from './common'
 
 export interface MemoryCreate {
   content: string

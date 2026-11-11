@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
-import { request } from '../src/client/http.js'
-import { KroexApiError, KroexCancelledError, KroexNetworkError } from '../src/errors.js'
-import type { KroexClientConfig } from '../src/client/types.js'
+import { request } from '../src/client/http'
+import { KroexApiError, KroexCancelledError, KroexNetworkError } from '../src/errors'
+import type { KroexClientConfig } from '../src/client/types'
 
 function jsonResponse(body: unknown, status = 200, headers: Record<string, string> = {}): Response {
   return new Response(body === undefined ? null : JSON.stringify(body), { status, headers })

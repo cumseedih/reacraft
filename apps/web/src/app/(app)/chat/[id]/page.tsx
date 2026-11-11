@@ -11,7 +11,7 @@ import { ModelSelector } from '@/components/models/model-selector'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { useChatStore } from '@/store/chat'
 import { useSettingsStore } from '@/store/settings'
-import { chatStream, get, getApiError } from '@/lib/api'
+import { chatStreamEvents, get, getApiError } from '@/lib/api'
 import { generateId } from '@/lib/utils'
 import type { Message, Artifact } from '@/types'
 
@@ -110,7 +110,7 @@ export default function ChatPage() {
     abortRef.current = new AbortController()
 
     try {
-      const { generator } = await chatStream(
+      const { events } = await chatStreamEvents(
         {
           message: content,
           messages: [...history, { role: 'user', content }],
@@ -120,27 +120,25 @@ export default function ChatPage() {
         abortRef.current.signal,
       )
 
-      for await (const line of generator) {
-        try {
-          const data = JSON.parse(line)
-          if (data.type === 'delta' && data.text) {
-            appendMessageContent(id, asstMsgId, data.text)
-          } else if (data.type === 'artifact') {
-            const artifact: Artifact = data.artifact
-            useChatStore.getState().addArtifact(artifact)
-            setActiveArtifact(artifact.id)
-          } else if (data.type === 'done') {
-            updateMessage(id, asstMsgId, {
-              status: 'done',
-              tokens: data.usage,
-              model: data.model,
-            })
-            updateConversation(id, { updatedAt: new Date().toISOString() })
-          } else if (data.type === 'error') {
-            throw new Error(data.message)
-          }
-        } catch {
-          // ignore parse errors on individual lines
+      // Events are already parsed and discriminated by the shared
+      // @kroex/api parser (spec §2.1), so no per-line JSON handling here.
+      for await (const event of events) {
+        if (event.type === 'delta') {
+          appendMessageContent(id, asstMsgId, event.text)
+        } else if (event.type === 'artifact') {
+          const artifact = event.artifact as unknown as Artifact
+          useChatStore.getState().addArtifact(artifact)
+          setActiveArtifact(artifact.id)
+        } else if (event.type === 'done') {
+          updateMessage(id, asstMsgId, {
+            status: 'done',
+            tokens: event.usage,
+            model: event.model,
+          })
+          updateConversation(id, { updatedAt: new Date().toISOString() })
+        } else if (event.type === 'error') {
+          // In-stream failures keep HTTP 200 (spec §9 guidance #6).
+          throw new Error(event.message)
         }
       }
     } catch (err: unknown) {

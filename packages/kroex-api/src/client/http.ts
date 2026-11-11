@@ -1,5 +1,5 @@
-import { KroexApiError, KroexCancelledError, KroexNetworkError, toKroexApiError } from '../errors.js'
-import { DEFAULT_TIMEOUT_MS, type KroexClientConfig, type RequestOptions } from './types.js'
+import { KroexApiError, KroexCancelledError, KroexNetworkError, toKroexApiError } from '../errors'
+import { DEFAULT_TIMEOUT_MS, type KroexClientConfig, type RequestOptions } from './types'
 
 export interface JsonRequestInit {
   method: string

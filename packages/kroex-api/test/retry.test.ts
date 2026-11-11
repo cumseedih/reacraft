@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest'
-import { withRetryAfter429 } from '../src/client/retry.js'
-import { KroexApiError } from '../src/errors.js'
+import { withRetryAfter429 } from '../src/client/retry'
+import { KroexApiError } from '../src/errors'
 
 describe('withRetryAfter429 (spec §5.4, §9 guidance #8)', () => {
   it('retries once after the Retry-After duration, then succeeds', async () => {

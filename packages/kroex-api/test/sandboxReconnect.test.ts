@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { streamSandboxCommandEvents, type SandboxEventsTransport } from '../src/sse/sandboxReconnect.js'
-import type { SandboxCommandEvent } from '../src/sse/named.js'
+import { streamSandboxCommandEvents, type SandboxEventsTransport } from '../src/sse/sandboxReconnect'
+import type { SandboxCommandEvent } from '../src/sse/named'
 
 /**
  * Simulates the server closing the connection after its ~240-poll heartbeat

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { KroexApiError, parseRetryAfter, toKroexApiError } from '../src/errors.js'
+import { KroexApiError, parseRetryAfter, toKroexApiError } from '../src/errors'
 
 describe('error contract (spec §5)', () => {
   it('handles the plain-string detail shape (§5.1, the common case)', () => {

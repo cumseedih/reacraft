@@ -5,7 +5,7 @@
  * disabled"). Types are inventoried here for contract completeness only —
  * no UI should call these endpoints while the flag is off (they 404).
  */
-import type { IsoDateTime } from './common.js'
+import type { IsoDateTime } from './common'
 
 export interface ConnectionCreate {
   /** 1-255 */

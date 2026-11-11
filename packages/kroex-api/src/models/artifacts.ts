@@ -1,5 +1,5 @@
 /** Source: API Integration Specification §1.6. There is no POST — artifacts are created only by the chat pipeline. */
-import type { IsoDateTime } from './common.js'
+import type { IsoDateTime } from './common'
 
 export interface ArtifactOut {
   id: string

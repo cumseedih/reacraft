@@ -1,7 +1,20 @@
 import axios, { AxiosError, type AxiosRequestConfig } from 'axios'
+import { UnnamedSseParser, type ChatStreamEvent } from '@kroex/api'
 import type { ApiError } from '@/types'
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000'
+/**
+ * Base URL resolution.
+ *
+ * Default (unset NEXT_PUBLIC_API_URL): '' — same-origin, so browser calls
+ * hit this app's own /api/* route handlers, which proxy server-side to
+ * BACKEND_URL. This is the path STAGING_CONFIG.md prescribes, because the
+ * staging API is loopback-only and unreachable from a browser; it also
+ * removes any CORS dependency. Works identically against a local backend.
+ *
+ * Set NEXT_PUBLIC_API_URL to call an API origin directly from the browser
+ * instead (local-dev escape hatch; requires that origin to allow CORS).
+ */
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? ''
 
 export const api = axios.create({
   baseURL: BASE_URL,
@@ -112,6 +125,59 @@ export async function chatStream(
   }
 
   return { conversationId, generator: gen() }
+}
+
+/**
+ * Typed chat streaming built on the shared @kroex/api SSE parser.
+ *
+ * Preferred over chatStream(): it yields parsed, discriminated
+ * ChatStreamEvent values (delta | done | error | artifact, spec §2.1)
+ * instead of raw JSON strings, and it reuses the unit-tested frame buffer
+ * so a frame split across network chunks can never corrupt a JSON parse
+ * (spec §9 guidance #2). chatStream() is kept for backward compatibility.
+ */
+export async function chatStreamEvents(
+  payload: {
+    message: string
+    messages: Array<{ role: string; content: string }>
+    model: string
+    conversation_id?: string
+  },
+  signal?: AbortSignal,
+): Promise<{ conversationId: string | null; events: AsyncGenerator<ChatStreamEvent> }> {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('kroex_token') : null
+  const res = await fetch(`${BASE_URL}/api/chat/stream`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify(payload),
+    signal,
+  })
+
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }))
+    throw new Error(err.detail ?? err.message ?? 'Stream failed')
+  }
+
+  const conversationId = res.headers.get('x-conversation-id')
+
+  async function* events(): AsyncGenerator<ChatStreamEvent> {
+    if (!res.body) return
+    const reader = res.body.getReader()
+    const decoder = new TextDecoder()
+    const parser = new UnnamedSseParser<ChatStreamEvent>()
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) break
+      for (const event of parser.feed(decoder.decode(value, { stream: true }))) {
+        yield event
+      }
+    }
+  }
+
+  return { conversationId, events: events() }
 }
 
 export async function* streamSSE(url: string, body: unknown): AsyncGenerator<string> {

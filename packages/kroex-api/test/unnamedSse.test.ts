@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { UnnamedSseParser, iterateUnnamedSse } from '../src/sse/unnamed.js'
-import type { ChatStreamEvent, BotStreamEvent, AgentRunStreamEvent } from '../src/sse/events.js'
+import { UnnamedSseParser, iterateUnnamedSse } from '../src/sse/unnamed'
+import type { ChatStreamEvent, BotStreamEvent, AgentRunStreamEvent } from '../src/sse/events'
 
 // Frame text below is built from the EXACT JSON shapes documented in the
 // API Integration Specification §2.1-§2.3.

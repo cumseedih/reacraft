@@ -1,5 +1,5 @@
 /** Source: API Integration Specification §1.2. */
-import type { IsoDateTime } from './common.js'
+import type { IsoDateTime } from './common'
 
 export interface StreamRequest {
   message: string

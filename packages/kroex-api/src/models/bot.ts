@@ -1,5 +1,5 @@
 /** Source: API Integration Specification §1.7, §2.2. Flag-gated: bot_enabled (404 when off, §5.3). */
-import type { IsoDateTime } from './common.js'
+import type { IsoDateTime } from './common'
 
 export interface BotStreamRequest {
   /** min_length=1 */

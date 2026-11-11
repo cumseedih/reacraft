@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { NamedSseParser, SandboxEventCursor, isSandboxExitEvent, isSandboxHeartbeatEvent } from '../src/sse/named.js'
+import { NamedSseParser, SandboxEventCursor, isSandboxExitEvent, isSandboxHeartbeatEvent } from '../src/sse/named'
 
 // Frame format from spec §2.4:
 //   id: <seq>            (only on output events)

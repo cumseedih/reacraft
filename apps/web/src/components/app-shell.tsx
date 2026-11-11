@@ -34,18 +34,33 @@ export function AppShell({ children, projects = [] }: AppShellProps) {
   // after the first render. Track hydration so we don't bounce an authenticated
   // user to /login on a hard refresh before the token has been restored.
   // (persist API is unavailable during server prerender, so access it safely.)
-  const [hydrated, setHydrated] = useState(() => useAuthStore.persist?.hasHydrated?.() ?? false)
+  const [hydrated, setHydrated] = useState(() => useAuthStore.persist?.hasHydrated?.() === true)
   useEffect(() => {
-    setHydrated(useAuthStore.persist?.hasHydrated?.() ?? true)
+    if (useAuthStore.persist?.hasHydrated?.() === true) {
+      setHydrated(true)
+      return
+    }
     const unsub = useAuthStore.persist?.onFinishHydration?.(() => setHydrated(true))
+    if (!unsub) {
+      // persist API genuinely unavailable: unblock rendering rather than hang,
+      // but the redirect below still checks persisted storage before acting.
+      setHydrated(true)
+    }
     return unsub
   }, [])
 
-  // Redirect to login only once hydration has settled and there is still no token.
+  // Redirect to login only once hydration has settled AND no session exists.
+  // The localStorage check is deliberate belt-and-braces: `hydrated` alone is
+  // not sufficient, because a momentarily-unavailable persist API would mark
+  // hydration "done" while the store's token is still null, bouncing an
+  // authenticated user to /login on hard refresh. setToken()/logout() keep
+  // this key in lockstep with the store, so it is a safe second opinion.
   useEffect(() => {
-    if (hydrated && !token) {
-      router.replace('/login')
-    }
+    if (!hydrated || token) return
+    const persistedToken =
+      typeof window !== 'undefined' ? window.localStorage.getItem('kroex_token') : null
+    if (persistedToken) return
+    router.replace('/login')
   }, [hydrated, token, router])
 
   // Load conversation list from the backend once authenticated.
