@@ -1,5 +1,5 @@
 import axios, { AxiosError, type AxiosRequestConfig } from 'axios'
-import { UnnamedSseParser, type ChatStreamEvent } from '@kroex/api'
+import { UnnamedSseParser, type ChatStreamEvent, type BotStreamEvent, type AgentRunStreamEvent } from '@kroex/api'
 import type { ApiError } from '@/types'
 
 /**
@@ -178,6 +178,78 @@ export async function chatStreamEvents(
   }
 
   return { conversationId, events: events() }
+}
+
+/**
+ * BOT chat streaming (spec §2.2) — same unnamed-SSE dialect as chat, with
+ * additional `action` / `action_result` events, parsed by the shared
+ * UnnamedSseParser. History is rebuilt server-side (the client cannot inject
+ * it), so the payload is just the message + optional model.
+ */
+export async function botStreamEvents(
+  payload: { message: string; model?: string },
+  signal?: AbortSignal,
+): Promise<{ conversationId: string | null; events: AsyncGenerator<BotStreamEvent> }> {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('kroex_token') : null
+  const res = await fetch(`${BASE_URL}/api/bot/chat/stream`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+    body: JSON.stringify(payload),
+    signal,
+  })
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }))
+    throw new Error(err.detail ?? err.message ?? 'Stream failed')
+  }
+  const conversationId = res.headers.get('x-conversation-id')
+  async function* events(): AsyncGenerator<BotStreamEvent> {
+    if (!res.body) return
+    const reader = res.body.getReader()
+    const decoder = new TextDecoder()
+    const parser = new UnnamedSseParser<BotStreamEvent>()
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) break
+      for (const event of parser.feed(decoder.decode(value, { stream: true }))) yield event
+    }
+  }
+  return { conversationId, events: events() }
+}
+
+/**
+ * Agent-run event stream (spec §2.3) — unnamed-SSE dialect with
+ * run_status / sandbox_step / delta / done / error, parsed by the shared
+ * parser. This is a GET stream; it is poll-based server-side and closes
+ * after ~2 min with a timeout `error` event, at which point the caller
+ * should reconnect (no data loss). Reconnection policy is left to the
+ * caller so UI can show a "reconnecting" state.
+ */
+export async function agentRunEvents(
+  runId: string,
+  signal?: AbortSignal,
+): Promise<AsyncGenerator<AgentRunStreamEvent>> {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('kroex_token') : null
+  const res = await fetch(`${BASE_URL}/api/agent-runs/${runId}/events`, {
+    method: 'GET',
+    headers: { ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+    signal,
+  })
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ detail: res.statusText }))
+    throw new Error(err.detail ?? 'Stream failed')
+  }
+  async function* events(): AsyncGenerator<AgentRunStreamEvent> {
+    if (!res.body) return
+    const reader = res.body.getReader()
+    const decoder = new TextDecoder()
+    const parser = new UnnamedSseParser<AgentRunStreamEvent>()
+    while (true) {
+      const { done, value } = await reader.read()
+      if (done) break
+      for (const event of parser.feed(decoder.decode(value, { stream: true }))) yield event
+    }
+  }
+  return events()
 }
 
 export async function* streamSSE(url: string, body: unknown): AsyncGenerator<string> {

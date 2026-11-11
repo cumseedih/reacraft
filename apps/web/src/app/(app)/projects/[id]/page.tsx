@@ -189,12 +189,14 @@ function FileRow({ file, onDelete, deleting }: { file: FileOut; onDelete: () => 
       <FileText className="h-5 w-5 text-muted-foreground shrink-0" />
       <div className="min-w-0 flex-1">
         <p className="text-sm font-medium truncate">{file.name}</p>
-        <p className="text-xs text-muted-foreground">{formatBytes(file.size)}</p>
+        <p className="text-xs text-muted-foreground">
+          {formatBytes(file.size)} · {file.content_type} · {new Date(file.created_at).toLocaleDateString()}
+        </p>
       </div>
       {processing ? (
-        <Badge variant="warning" className="gap-1"><Loader2 className="h-3 w-3 animate-spin" /> Processing</Badge>
+        <Badge variant="warning" className="gap-1" title="Extraction/embedding runs in the background"><Loader2 className="h-3 w-3 animate-spin" /> Processing</Badge>
       ) : (
-        <Badge variant="success">{file.chunk_count} chunks</Badge>
+        <Badge variant="success" title="Processed into retrievable chunks">Ready · {file.chunk_count} chunks</Badge>
       )}
       <Button size="icon-sm" variant="ghost" className="text-muted-foreground hover:text-destructive" disabled={deleting} onClick={onDelete} aria-label="Delete file">
         <Trash2 className="h-4 w-4" />
