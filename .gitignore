@@ -45,3 +45,6 @@ pnpm-debug.log*
 
 # TypeScript incremental build info
 *.tsbuildinfo
+
+# Tauri generated schemas
+apps/desktop/src-tauri/gen/
