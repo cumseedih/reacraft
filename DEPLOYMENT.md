@@ -5,8 +5,12 @@
 KROEX is a monorepo with four deployable targets:
 - **API** (`apps/api`): FastAPI + PostgreSQL 16 + pgvector
 - **Web** (`apps/web`): Next.js 15 static/server-rendered app
-- **Desktop** (`apps/desktop`): Tauri 2 (wraps Web)
-- **Mobile** (`apps/mobile`): Expo 52 (Android + iOS)
+- **Desktop** (`apps/desktop`): Tauri 2 (embeds the Next standalone server)
+- **Mobile** (`apps/mobile`): Expo SDK 58 / React Native 0.88 (Android + iOS)
+
+> Operational procedures (backup/restore, rollback, migration steps,
+> monitoring) are in `docs/OPERATIONS_RUNBOOK.md`. The gated-pilot go-live
+> gate is in `docs/RELEASE_READINESS.md`.
 
 ---
 
@@ -144,9 +148,18 @@ pnpm install
 pnpm tauri build    # outputs installer to src-tauri/target/release/bundle/
 ```
 
-The desktop app wraps `http://localhost:3000` by default. For a production
-Tauri build, update `VITE_WEB_URL` in `apps/desktop/.env` to point to the
-hosted web URL.
+Production architecture (as of Increment I): the release build **embeds the
+Next.js standalone server** and spawns it on a loopback port at launch (the
+Rust side navigates the webview to it once it accepts connections); it does
+**not** depend on a dev server. Point the embedded server at the API with the
+`BACKEND_URL` environment variable at launch. In debug builds Tauri loads the
+Next dev server (`devUrl`) directly.
+
+Linux installers produced by `tauri build` here: `.deb` and `.rpm`
+(`bundle.targets`). The AppImage target needs FUSE and must be built on a
+FUSE-capable host; macOS/Windows installers must be built on those OSes.
+Requires a Node.js runtime on the host to run the embedded server (bundling a
+Node runtime is a documented follow-up).
 
 ---
 
@@ -155,17 +168,26 @@ hosted web URL.
 ```bash
 cd apps/mobile
 
-# Configure EAS (Expo Application Services)
-npx eas-cli build --platform android --profile production
+# Validate the JS/Hermes bundle (no native SDK needed; used in CI):
+npx expo export --platform android     # → dist/ (Hermes bytecode bundle)
 
-# Or local APK (requires Android SDK)
+# Build an installable binary (needs the Android SDK, NOT available in the
+# CI container — build on a machine with ANDROID_HOME set, or via EAS cloud):
+npx eas-cli build --platform android --profile production   # EAS cloud
+# or, locally with the Android SDK installed:
 npx expo run:android --variant release
 ```
 
 Before release:
-1. Set `EXPO_PUBLIC_API_URL` in `apps/mobile/.env`
-2. Update `app.json` with correct `bundleIdentifier`, `versionCode`, `version`
-3. Generate a release keystore and configure `eas.json`
+1. Set `EXPO_PUBLIC_API_URL` in `apps/mobile/.env` (a URL the device can
+   reach — never `localhost` on a physical device).
+2. Update `app.json` with correct `package`/`bundleIdentifier`, `versionCode`,
+   `version`.
+3. Generate a release keystore and configure `eas.json`.
+
+> Note: `expo export` validates that the entire app bundles and compiles; it
+> does **not** produce an installable APK/AAB. The APK/AAB step requires the
+> Android SDK or EAS and must run outside this CI container.
 
 ---
 
