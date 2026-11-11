@@ -6,6 +6,7 @@ import { StatusBar } from 'expo-status-bar'
 import { useColorScheme } from 'react-native'
 import * as SecureStore from 'expo-secure-store'
 import { useAuthStore } from '../store/auth'
+import { useSettingsStore } from '../store/settings'
 import { getClient } from '../lib/client'
 
 const queryClient = new QueryClient({
@@ -15,6 +16,11 @@ const queryClient = new QueryClient({
 function AuthInitializer({ children }: { children: React.ReactNode }) {
   const { setToken, setUser, token } = useAuthStore()
   const [ready, setReady] = useState(false)
+
+  useEffect(() => {
+    // Load the persisted default-model preference (non-blocking).
+    useSettingsStore.getState().hydrate()
+  }, [])
 
   useEffect(() => {
     // On first launch, restore token from SecureStore and verify it is still valid.

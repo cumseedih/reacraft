@@ -7,7 +7,8 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "lint": "eslint . --ext .ts,.tsx",
-    "test": "jest"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
     "@babel/runtime": "^7.25.0",
@@ -50,6 +51,7 @@
     "@babel/core": "^7.29.13",
     "@types/node": "^22",
     "@types/react": "~19.3.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^2.1.9"
   }
 }
