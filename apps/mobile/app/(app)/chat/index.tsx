@@ -6,7 +6,9 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import Animated, { FadeInDown } from 'react-native-reanimated'
 import { Ionicons } from '@expo/vector-icons'
-import { api } from '../../../lib/api'
+import { fetch as expoFetch } from 'expo/fetch'
+import { UnnamedSseParser, type ChatStreamEvent } from '@kroex/api'
+import { getClient } from '../../../lib/client'
 import { requireApiBaseUrl } from '../../../lib/config'
 import { GlassView } from '../../../components/ui/GlassView'
 import { colors, radii, spacing, typography } from '../../../theme/tokens'
@@ -39,11 +41,11 @@ export default function ChatScreen() {
   useEffect(() => {
     if (!conversationId) return
     setLoadingHistory(true)
-    api.get<any[]>(`/api/conversations/${conversationId}/messages`)
+    getClient().chat.listMessages(conversationId)
       .then(raw => {
         const loaded: Message[] = raw.map(r => ({
           id: r.id,
-          role: r.role,
+          role: r.role as 'user' | 'assistant',
           content: r.content,
           status: 'done' as const,
         }))
@@ -79,12 +81,14 @@ export default function ChatScreen() {
       }
       if (conversationId) payload.conversation_id = conversationId
 
-      // Use fetch directly to capture X-Conversation-Id from response headers.
+      // expo/fetch supports streaming response bodies on native (the standard
+      // RN fetch returns a null body); we read it directly to capture the
+      // X-Conversation-Id header and stream the SSE frames.
       const BASE_URL = requireApiBaseUrl()
       const { getItemAsync } = await import('expo-secure-store')
       const token = await getItemAsync('kroex_token')
 
-      const res = await fetch(`${BASE_URL}/api/chat/stream`, {
+      const res = await expoFetch(`${BASE_URL}/api/chat/stream`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -101,32 +105,28 @@ export default function ChatScreen() {
         setConversationId(returnedConvId)
       }
 
-      // Read SSE body.
+      // Frames parsed by the shared, unit-tested @kroex/api parser (spec §2.1)
+      // so chunk boundaries can never corrupt a JSON parse (§9.2).
       const reader = res.body.getReader()
       const decoder = new TextDecoder()
-      let buffer = ''
+      const parser = new UnnamedSseParser<ChatStreamEvent>()
+      let streamError: string | null = null
 
       while (true) {
         const { done, value } = await reader.read()
         if (done) break
-        buffer += decoder.decode(value, { stream: true })
-        const lines = buffer.split('\n')
-        buffer = lines.pop() ?? ''
-        for (const line of lines) {
-          if (line.startsWith('data: ')) {
-            try {
-              const data = JSON.parse(line.slice(6))
-              if (data.type === 'delta' && data.text) {
-                appendContent(asstMsgId, data.text)
-              } else if (data.type === 'done') {
-                updateMessage(asstMsgId, { status: 'done' })
-              }
-            } catch {
-              // ignore parse errors
-            }
+        for (const event of parser.feed(decoder.decode(value, { stream: true }))) {
+          if (event.type === 'delta') {
+            appendContent(asstMsgId, event.text)
+          } else if (event.type === 'done') {
+            updateMessage(asstMsgId, { status: 'done' })
+          } else if (event.type === 'error') {
+            // In-stream errors keep HTTP 200 (spec §9.6).
+            streamError = event.message
           }
         }
       }
+      if (streamError) updateMessage(asstMsgId, { status: 'error' })
     } catch {
       updateMessage(asstMsgId, { status: 'error' })
     } finally {

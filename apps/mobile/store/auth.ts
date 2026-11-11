@@ -1,13 +1,11 @@
 import { create } from 'zustand'
 import * as SecureStore from 'expo-secure-store'
+import type { UserOut } from '@kroex/api'
 
-interface User {
-  id: string
-  name: string
-  email: string
-  avatar?: string
-  plan: string
-}
+// The session user is exactly the backend's UserOut shape (avatar is
+// string | null per the API contract), sourced from the shared package so
+// the store and the typed client never drift.
+type User = UserOut
 
 interface AuthState {
   user: User | null

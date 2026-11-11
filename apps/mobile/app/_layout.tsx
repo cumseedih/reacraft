@@ -6,7 +6,7 @@ import { StatusBar } from 'expo-status-bar'
 import { useColorScheme } from 'react-native'
 import * as SecureStore from 'expo-secure-store'
 import { useAuthStore } from '../store/auth'
-import { api } from '../lib/api'
+import { getClient } from '../lib/client'
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 60_000 } },
@@ -24,7 +24,7 @@ function AuthInitializer({ children }: { children: React.ReactNode }) {
         if (stored) {
           await setToken(stored)
           // Validate the stored token by fetching the current user.
-          const me = await api.get<any>('/api/auth/me')
+          const me = await getClient().auth.me()
           setUser(me)
         }
       } catch {

@@ -5,7 +5,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { router } from 'expo-router'
 import { useAuthStore } from '../../store/auth'
-import { api } from '../../lib/api'
+import { getClient } from '../../lib/client'
 import { Button } from '../../components/ui/Button'
 import { Input } from '../../components/ui/Input'
 import { colors, spacing, typography } from '../../theme/tokens'
@@ -27,15 +27,12 @@ export default function RegisterScreen() {
     setLoading(true)
     setError('')
     try {
-      const res = await api.post<{ token: string; user: any }>(
-        '/api/auth/register',
-        { name: name.trim(), email: email.trim(), password },
-      )
+      const res = await getClient().auth.register({ name: name.trim(), email: email.trim(), password })
       await setToken(res.token)
       setUser(res.user)
       router.replace('/(app)/chat')
     } catch (e: any) {
-      setError(e.message ?? 'Registration failed')
+      setError(e?.message ?? 'Registration failed')
     } finally {
       setLoading(false)
     }
