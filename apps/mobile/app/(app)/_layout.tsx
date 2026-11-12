@@ -1,13 +1,16 @@
-import { Redirect, Tabs } from 'expo-router'
+import { Redirect, Tabs, useRouter } from 'expo-router'
 import { Ionicons } from '@expo/vector-icons'
 import { useAuthStore } from '../../store/auth'
 import { colors } from '../../theme/tokens'
+import { SidebarDrawer } from '../../components/SidebarDrawer'
 
 export default function AppLayout() {
   const { token } = useAuthStore()
+  const router = useRouter()
   if (!token) return <Redirect href="/(auth)/login" />
 
   return (
+    <SidebarDrawer onNewConversation={() => router.push('/chat')}>
     <Tabs
       screenOptions={{
         headerShown: false,
@@ -56,5 +59,6 @@ export default function AppLayout() {
         }}
       />
     </Tabs>
+    </SidebarDrawer>
   )
 }
