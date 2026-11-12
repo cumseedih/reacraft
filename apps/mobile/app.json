@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "KROEX",
+    "slug": "kroex",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-png.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#141413"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "ai.kroex.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#141413"
+      },
+      "package": "ai.kroex.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

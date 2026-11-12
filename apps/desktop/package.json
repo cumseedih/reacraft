@@ -1,0 +1,24 @@
+{
+  "name": "@kroex/desktop",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "preview": "tauri build --debug",
+    "build:frontend": "vite build"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.0",
+    "@vitejs/plugin-react": "^4.3.4"
+  }
+}

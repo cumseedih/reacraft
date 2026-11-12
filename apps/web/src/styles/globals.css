@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Apple Light design tokens (hex -> hsl):
+     primary #0071E3 · secondary #2997FF · tertiary #0066CC · neutral #1D1D1F
+     surface/background #FFFFFF · muted/border #E5E7EB · error #D92D20 */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 3% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 3% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 3% 12%;
+    --primary: 210 100% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 11% 96%;
+    --secondary-foreground: 240 3% 20%;
+    --muted: 220 16% 96%;
+    --muted-foreground: 240 2% 42%;
+    --accent: 210 100% 45%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 4 74% 49%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 210 100% 45%;
+    /* Apple secondary / tertiary blues for interactive accents and links */
+    --accent-light: 209 100% 58%;
+    --link: 210 100% 40%;
+    --radius: 0.75rem;
+    --sidebar-width: 260px;
+    --chat-max-width: 740px;
+    /* Liquid Glass material tunables */
+    --glass-blur: 24px;
+    --glass-opacity: 0.62;
+    --glass-highlight: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 240 6% 8%;
+    --foreground: 0 0% 96%;
+    --card: 240 5% 12%;
+    --card-foreground: 0 0% 96%;
+    --popover: 240 5% 11%;
+    --popover-foreground: 0 0% 96%;
+    --primary: 209 100% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 16%;
+    --secondary-foreground: 0 0% 85%;
+    --muted: 240 5% 18%;
+    --muted-foreground: 240 5% 60%;
+    --accent: 209 100% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 4 74% 54%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 5% 20%;
+    --input: 240 5% 20%;
+    --ring: 209 100% 58%;
+    --accent-light: 209 100% 64%;
+    --link: 209 100% 64%;
+    --glass-opacity: 0.5;
+    --glass-highlight: 0 0% 100%;
+  }
+
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground font-sans antialiased; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { @apply bg-border rounded-full; }
+  ::selection { @apply bg-primary/20 text-foreground; }
+  :focus-visible { @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background; }
+}
+
+@layer components {
+  .streaming-cursor::after { content: '▮'; @apply animate-pulse-cursor text-primary ml-0.5; }
+  .message-user { @apply bg-secondary rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%] ml-auto; }
+  .code-block { @apply relative rounded-xl overflow-hidden bg-warm-950 my-4; }
+  .code-block pre { @apply p-4 overflow-x-auto text-sm font-mono text-warm-100 leading-relaxed; }
+  .code-block-header { @apply flex items-center justify-between px-4 py-2 bg-warm-900 text-warm-400 text-xs font-mono; }
+  .prose-kroex { @apply text-foreground leading-relaxed; }
+  .prose-kroex h1 { @apply text-2xl font-semibold mt-6 mb-3; }
+  .prose-kroex h2 { @apply text-xl font-semibold mt-5 mb-2; }
+  .prose-kroex h3 { @apply text-lg font-medium mt-4 mb-2; }
+  .prose-kroex p  { @apply my-3 leading-7; }
+  .prose-kroex ul { @apply my-3 ml-6 list-disc space-y-1; }
+  .prose-kroex ol { @apply my-3 ml-6 list-decimal space-y-1; }
+  .prose-kroex li { @apply leading-7; }
+  .prose-kroex blockquote { @apply border-l-4 border-border pl-4 italic text-muted-foreground my-4; }
+  .prose-kroex hr { @apply my-6 border-border; }
+  .prose-kroex strong { @apply font-semibold; }
+  .prose-kroex code:not(pre code) { @apply bg-secondary rounded px-1.5 py-0.5 text-sm font-mono; }
+  .prose-kroex table { @apply w-full my-4 text-sm; }
+  .prose-kroex th { @apply border border-border bg-secondary px-3 py-2 text-left font-semibold; }
+  .prose-kroex td { @apply border border-border px-3 py-2; }
+  .prose-kroex a { @apply text-primary underline underline-offset-2 hover:text-primary/80; }
+  .artifact-panel { @apply bg-background border-l border-border h-full overflow-hidden flex flex-col; }
+
+  /* Liquid Glass: a translucent material that samples and blurs whatever sits
+     behind it. Real backdrop-filter — not an opacity fake. Falls back to a
+     near-opaque surface where backdrop-filter is unsupported. */
+  .glass {
+    background-color: hsl(var(--card) / var(--glass-opacity));
+    backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    border: 1px solid hsl(var(--glass-highlight) / 0.5);
+    box-shadow:
+      inset 0 1px 0 0 hsl(var(--glass-highlight) / 0.6),
+      0 10px 40px -16px hsl(240 3% 12% / 0.22);
+  }
+  .dark .glass {
+    border-color: hsl(var(--glass-highlight) / 0.08);
+    box-shadow:
+      inset 0 1px 0 0 hsl(var(--glass-highlight) / 0.1),
+      0 10px 40px -16px hsl(0 0% 0% / 0.55);
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass { background-color: hsl(var(--card) / 0.96); }
+  }
+
+  .sidebar {
+    @apply flex flex-col h-full overflow-hidden;
+    width: var(--sidebar-width);
+    background-color: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(180%);
+    border-right: 1px solid hsl(var(--border) / 0.8);
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .sidebar { background-color: hsl(var(--secondary)); }
+  }
+
+  .composer {
+    @apply rounded-2xl transition-all duration-200;
+    background-color: hsl(var(--card) / 0.68);
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border: 1px solid hsl(var(--glass-highlight) / 0.6);
+    box-shadow:
+      inset 0 1px 0 0 hsl(var(--glass-highlight) / 0.7),
+      0 12px 44px -16px hsl(240 3% 12% / 0.24);
+  }
+  .dark .composer {
+    border-color: hsl(var(--glass-highlight) / 0.1);
+    box-shadow:
+      inset 0 1px 0 0 hsl(var(--glass-highlight) / 0.12),
+      0 12px 44px -16px hsl(0 0% 0% / 0.6);
+  }
+  .composer:focus-within {
+    border-color: hsl(var(--primary) / 0.45);
+    box-shadow:
+      inset 0 1px 0 0 hsl(var(--glass-highlight) / 0.7),
+      0 14px 48px -14px hsl(var(--primary) / 0.22);
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .composer { background-color: hsl(var(--card) / 0.98); }
+  }
+
+  /* Soft fade so messages dissolve into the composer area instead of being
+     clipped by a hard edge as they scroll behind the glass. */
+  .composer-fade {
+    background: linear-gradient(to top, hsl(var(--background)) 18%, hsl(var(--background) / 0) 100%);
+    pointer-events: none;
+  }
+}
+
+.katex { font-size: 1em !important; }
+.katex-display { @apply my-4 overflow-x-auto; }
+
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+.skeleton {
+  @apply rounded;
+  background: linear-gradient(90deg, hsl(var(--muted)) 25%, hsl(var(--muted)/0.5) 50%, hsl(var(--muted)) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}

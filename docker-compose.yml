@@ -1,0 +1,77 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-kroex}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-kroex_dev_only}
+      POSTGRES_DB: ${POSTGRES_DB:-kroex}
+    ports:
+      - '127.0.0.1:5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-kroex}']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - '127.0.0.1:6379:6379'
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build:
+      context: ./apps/api
+    ports:
+      - '8000:8000'
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-kroex}:${POSTGRES_PASSWORD:-kroex_dev_only}@postgres:5432/${POSTGRES_DB:-kroex}
+      REDIS_URL: redis://redis:6379/0
+      DEBUG: ${DEBUG:-false}
+      ALLOWED_ORIGINS: '["http://localhost:3000"]'
+    env_file:
+      - ./apps/api/.env
+    volumes:
+      - api_uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    develop:
+      watch:
+        - action: sync
+          path: ./apps/api
+          target: /app
+
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+      BACKEND_URL: http://api:8000
+    depends_on:
+      - api
+    develop:
+      watch:
+        - action: sync
+          path: ./apps/web/src
+          target: /app/src
+
+volumes:
+  postgres_data:
+  redis_data:
+  api_uploads:
