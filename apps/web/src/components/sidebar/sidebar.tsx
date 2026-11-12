@@ -2,11 +2,29 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname } from 'next/navigation'
-import {
-  Search, Settings, ChevronRight, ChevronDown,
-  MoreHorizontal, LogOut, Pin, Archive, Trash2,
-  ChevronsRight, Edit3,
-} from 'lucide-react'
+import { LogOut, Pin, Archive, Trash2 } from 'lucide-react'
+
+// Figma-exact icon paths (public/icons/nav/*)
+const ICONS = {
+  automations:  '/icons/nav/automations.svg',
+  plugins:      '/icons/nav/plugins.svg',
+  projects:     '/icons/nav/projects.svg',
+  kroexBot:     '/icons/nav/kroex-bot.svg',
+  chevronRight: '/icons/nav/chevron-right.svg',
+  chevronDown:  '/icons/nav/chevron-down.svg',
+  more:         '/icons/nav/more.svg',
+  search:       '/icons/nav/search.svg',
+  settings:     '/icons/nav/settings.svg',
+  compose:      '/icons/nav/compose.svg',
+  collapse:     '/icons/nav/collapse.svg',
+} as const
+
+function Icon({ src, size = 20, label = '' }: { src: string; size?: number; label?: string }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src={src} alt={label} width={size} height={size} className="shrink-0 select-none" aria-hidden={!label} />
+  )
+}
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
@@ -62,32 +80,20 @@ export function Sidebar({ onNewConversation }: SidebarProps) {
         <button
           onClick={() => update({ sidebarCollapsed: false })}
           className="w-8 h-8 rounded-full flex items-center justify-center transition-colors hover:bg-gray-100"
-          style={{ color: AL.primary, border: `1.5px solid ${AL.primary}` }}
+          style={{ border: `1px solid ${AL.border}` }}
           aria-label="Expand sidebar"
         >
-          <ChevronsRight className="h-4 w-4" />
+          <Icon src={ICONS.collapse} size={14} label="Expand" />
         </button>
-        <button
-          onClick={() => router.push('/projects')}
-          className="w-9 h-9 flex items-center justify-center rounded-xl hover:bg-gray-100 transition-colors"
-          style={{ color: AL.primary }}
-        >
-          <FolderOpen className="h-5 w-5" />
+        <button onClick={() => router.push('/projects')} className="w-9 h-9 flex items-center justify-center rounded-xl hover:bg-gray-100 transition-colors">
+          <Icon src={ICONS.projects} size={20} />
         </button>
-        <button
-          onClick={() => router.push('/bot')}
-          className="w-9 h-9 flex items-center justify-center rounded-xl hover:bg-gray-100 transition-colors"
-          style={{ color: AL.primary }}
-        >
-          <Bot className="h-5 w-5" />
+        <button onClick={() => router.push('/bot')} className="w-9 h-9 flex items-center justify-center rounded-xl hover:bg-gray-100 transition-colors">
+          <Icon src={ICONS.kroexBot} size={20} />
         </button>
         <div className="flex-1" />
-        <button
-          onClick={() => router.push('/settings')}
-          className="w-9 h-9 flex items-center justify-center rounded-xl hover:bg-gray-100 transition-colors"
-          style={{ color: AL.muted }}
-        >
-          <Settings className="h-5 w-5" />
+        <button onClick={() => router.push('/settings')} className="w-9 h-9 flex items-center justify-center rounded-xl hover:bg-gray-100 transition-colors">
+          <Icon src={ICONS.settings} size={20} />
         </button>
       </div>
     )
@@ -118,10 +124,10 @@ export function Sidebar({ onNewConversation }: SidebarProps) {
         <button
           onClick={() => update({ sidebarCollapsed: true })}
           className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors hover:opacity-80"
-          style={{ border: `1px solid ${AL.border}`, color: AL.primary, background: AL.surface }}
+          style={{ border: `1px solid ${AL.border}`, background: AL.surface }}
           aria-label="Collapse sidebar"
         >
-          <ChevronsRight className="h-4 w-4" />
+          <Icon src={ICONS.collapse} size={14} label="Collapse" />
         </button>
       </div>
 
@@ -157,10 +163,7 @@ export function Sidebar({ onNewConversation }: SidebarProps) {
                   >
                     {label}
                   </span>
-                  <ChevronRight
-                    className="h-4 w-4 shrink-0"
-                    style={{ color: AL.muted }}
-                  />
+                  <Icon src={ICONS.chevronRight} size={16} />
                 </Link>
                 {i < NAV_ITEMS.length - 1 && (
                   <div style={{ height: 1, background: AL.border, marginLeft: 48 }} />
@@ -182,11 +185,9 @@ export function Sidebar({ onNewConversation }: SidebarProps) {
         <button
           onClick={() => setConvExpanded(v => !v)}
           className="p-1 rounded-lg hover:bg-gray-100 transition-colors"
+          style={{ transform: convExpanded ? 'rotate(0deg)' : 'rotate(-90deg)', transition: 'transform .2s' }}
         >
-          <ChevronDown
-            className="h-5 w-5 transition-transform"
-            style={{ color: AL.muted, transform: convExpanded ? 'rotate(0deg)' : 'rotate(-90deg)' }}
-          />
+          <Icon src={ICONS.chevronDown} size={18} />
         </button>
       </div>
 
@@ -223,10 +224,9 @@ export function Sidebar({ onNewConversation }: SidebarProps) {
         style={{ borderTop: `1px solid ${AL.border}` }}
       >
         <div className="relative flex-1">
-          <Search
-            className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 pointer-events-none"
-            style={{ color: AL.muted }}
-          />
+          <div className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
+            <Icon src={ICONS.search} size={16} />
+          </div>
           <input
             type="text"
             placeholder="Search"
@@ -248,7 +248,7 @@ export function Sidebar({ onNewConversation }: SidebarProps) {
               className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors shrink-0"
               aria-label="Settings"
             >
-              <Settings className="h-5 w-5" style={{ color: AL.primary }} />
+              <Icon src={ICONS.settings} size={22} />
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent side="top" align="end" className="w-48">
@@ -280,7 +280,7 @@ export function Sidebar({ onNewConversation }: SidebarProps) {
           className="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors shrink-0"
           aria-label="New conversation"
         >
-          <Edit3 className="h-5 w-5" style={{ color: AL.primary }} />
+          <Icon src={ICONS.compose} size={22} />
         </button>
       </div>
     </div>
@@ -328,7 +328,7 @@ function ConversationRow({ conversation: c, active, onSelect, onPin, onArchive, 
             onClick={e => e.stopPropagation()}
             aria-label="Conversation options"
           >
-            <MoreHorizontal className="h-4 w-4" style={{ color: AL.muted }} />
+            <Icon src={ICONS.more} size={16} />
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end" onClick={e => e.stopPropagation()}>
