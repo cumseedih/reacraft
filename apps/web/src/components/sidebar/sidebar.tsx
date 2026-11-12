@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import {
   Search, Settings, ChevronRight, ChevronDown,
   MoreHorizontal, LogOut, Pin, Archive, Trash2,
-  Zap, Puzzle, FolderOpen, Bot, ChevronsRight, Edit3,
+  ChevronsRight, Edit3,
 } from 'lucide-react'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
@@ -24,7 +24,7 @@ const AL = {
   primary: '#0071E3',
   secondary: '#2997FF',
   text: '#1D1D1F',
-  muted: '#6B7280',
+  muted: '#737782',
   border: '#E5E7EB',
   surface: '#FFFFFF',
   bg: '#FFFFFF',
@@ -36,10 +36,10 @@ interface SidebarProps {
 }
 
 const NAV_ITEMS = [
-  { href: '/automations', label: 'Automations', Icon: Zap },
-  { href: '/plugins',     label: 'Plugins',     Icon: Puzzle },
-  { href: '/projects',    label: 'Projects',    Icon: FolderOpen },
-  { href: '/bot',         label: 'Kroex Bot',   Icon: Bot },
+  { href: '/automations', label: 'Automations', icon: '/icons/nav/automations.svg' },
+  { href: '/plugins',     label: 'Plugins',     icon: '/icons/nav/plugins.svg' },
+  { href: '/projects',    label: 'Projects',    icon: '/icons/nav/projects.svg' },
+  { href: '/bot',         label: 'Kroex Bot',   icon: '/icons/nav/kroex-bot.svg' },
 ] as const
 
 export function Sidebar({ onNewConversation }: SidebarProps) {
@@ -118,7 +118,7 @@ export function Sidebar({ onNewConversation }: SidebarProps) {
         <button
           onClick={() => update({ sidebarCollapsed: true })}
           className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors hover:opacity-80"
-          style={{ border: `1.5px solid ${AL.primary}`, color: AL.primary, background: AL.surface }}
+          style={{ border: `1px solid ${AL.border}`, color: AL.primary, background: AL.surface }}
           aria-label="Collapse sidebar"
         >
           <ChevronsRight className="h-4 w-4" />
@@ -135,7 +135,7 @@ export function Sidebar({ onNewConversation }: SidebarProps) {
             borderRadius: 16,
           }}
         >
-          {NAV_ITEMS.map(({ href, label, Icon }, i) => {
+          {NAV_ITEMS.map(({ href, label, icon }, i) => {
             const active = pathname.startsWith(href)
             return (
               <div key={href}>
@@ -144,12 +144,12 @@ export function Sidebar({ onNewConversation }: SidebarProps) {
                   className="flex items-center gap-3 px-4 transition-colors hover:bg-gray-50"
                   style={{ height: 44, color: AL.text }}
                 >
-                  <Icon
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={icon}
+                    alt=""
                     className="h-5 w-5 shrink-0"
-                    style={{
-                      color: AL.primary,
-                      strokeWidth: 1.75,
-                    }}
+                    aria-hidden="true"
                   />
                   <span
                     className="flex-1 text-sm"
